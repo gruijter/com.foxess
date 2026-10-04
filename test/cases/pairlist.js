@@ -32,11 +32,20 @@ module.exports = async (t) => {
         ...real.get(sn), deviceStatus: Number(entry.status), generationToday: 3.2, generationMonth: 41.5,
       };
       const seen = { ...dev.store.seenCaps, ...pointMap.seenInPayload(id, poll) };
-      const wanted = [...pointMap.deviceCapabilities(id, seen), ...driver.extraCapabilities(dev.store)];
+      const wanted = pointMap.deviceCapabilities(id, seen, driver.extraCapabilities(dev.store));
       t.eq(dev.capabilities.join(','), wanted.join(','), `${id} ${sn}: paired list is the final list, no migration`);
     }
     if (!paired.length) t.skip(`${id}: no device in this fixture`);
   }
+
+  // values that are legitimately zero on hardware that has them still count as evidence
+  const seenBat = (data) => Boolean(pointMap.seenInPayload('battery', data).measure_current);
+  t.ok(seenBat({ invBatCurrent: 0, batVolt: 380 }), 'an idle battery (0 A) with a voltage shows its current');
+  t.ok(!seenBat({ invBatCurrent: 0 }), 'a current without a battery voltage does not');
+  t.ok(!seenBat({ batVolt: 380 }), 'a voltage without a reported current does not');
+  t.ok(pointMap.seenInPayload('inverter', { generationToday: 0, generationMonth: 0 })['meter_power.month'],
+    'a reported month yield counts on the first of the month too (0 kWh)');
+  t.ok(!pointMap.seenInPayload('inverter', {})['meter_power.month'], 'no generation answer, no month');
 
   // the extras themselves come from the support checks
   const [bat] = await fixtures.makeDriver('battery', { own: true }).onPairListDevices({ client });

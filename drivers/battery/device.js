@@ -305,6 +305,9 @@ module.exports = class MyDevice extends CommonDevice {
     });
     if (mode === ctl.MODE_SCHEDULE && groups.length) await this.setStoreValue('ownerSchedule', groups);
     if (mode) await this.setCapability('target_power_mode', mode);
+    // the slot running now, as the inverter has it: no scheduler, no setpoint
+    await this.setCapability('measure_power.target', this.schedulerOn
+      ? ctl.activeSlotPower(groups, ctl.inverterNow(this.snapshotTime)) : null);
     await this.checkOverride({ mode }, startedAt);
   }
 

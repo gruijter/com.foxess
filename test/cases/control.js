@@ -77,4 +77,17 @@ module.exports = async (t) => {
   t.ok(ctl.needsRenewal(one, { hour: 14, minute: 0 }), 'and when it has ended');
   t.ok(!ctl.needsRenewal(split, { hour: 23, minute: 50 }), 'a split slot is followed across midnight');
   t.ok(ctl.needsRenewal(split, { hour: 0, minute: 15 }), 'and renewed in its last half hour after midnight');
+
+  // --- measure_power.target: the slot running now, read back ---
+  const now = { hour: 12, minute: 30 };
+  const slots = (workMode, fdPwr) => ctl.slotGroups({ now: { hour: 12, minute: 5 }, workMode, extraParam: { fdPwr } });
+  t.eq(ctl.activeSlotPower(slots('ForceCharge', 1500), now), 1500, 'ForceCharge shows +fdPwr');
+  t.eq(ctl.activeSlotPower(slots('ForceDischarge', 2650), now), -2650, 'ForceDischarge shows -fdPwr');
+  t.eq(ctl.activeSlotPower(slots('Backup', 0), now), 0, 'a Backup hold shows 0');
+  t.eq(ctl.activeSlotPower(slots('SelfUse', 0), now), null, 'another slot mode has no setpoint');
+  t.eq(ctl.activeSlotPower(slots('ForceCharge', 1500), { hour: 14, minute: 0 }), null, 'no slot running now, no setpoint');
+  t.eq(ctl.activeSlotPower(slots('ForceCharge', 1500), null), undefined, 'unknown inverter time leaves the tile alone');
+  const late = ctl.slotGroups({ now: { hour: 23, minute: 40 }, workMode: 'ForceCharge', extraParam: { fdPwr: 900 } });
+  t.eq(ctl.activeSlotPower(late, { hour: 23, minute: 59 }), 900, 'the 23:59 minute belongs to the slot ending then');
+  t.eq(ctl.activeSlotPower(late, { hour: 0, minute: 10 }), 900, 'and after midnight the second half runs');
 };

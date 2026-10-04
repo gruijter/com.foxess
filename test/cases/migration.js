@@ -74,6 +74,18 @@ module.exports = async (t) => {
     t.eq(variables.size, pointMap.pointList(driverId).length, `${driverId}: no variable requested twice`);
   }
 
+  // --- the tile order covers every capability a device of the driver can get ---
+  for (const driverId of ['inverter', 'battery', 'meter']) {
+    const order = pointMap.capabilityOrder(driverId);
+    const driver = fixtures.makeDriver(driverId, { own: true });
+    const all = [...pointMap.baseCapabilities(driverId), ...pointMap.optionalCapabilities(driverId),
+      ...driver.extraCapabilities({
+        controlSupported: true, socLimitsSupported: true, exportLimitSupported: true,
+      })];
+    t.eq(all.filter((cap) => !order.includes(cap)).join(','), '', `${driverId}: every capability has a place in the tile order`);
+    t.eq(new Set(order).size, order.length, `${driverId}: no capability twice in the tile order`);
+  }
+
   // --- a device that is already right is not touched ---
   const inverterBase = pointMap.baseCapabilities('inverter');
   const same = fakeDevice(inverterBase);

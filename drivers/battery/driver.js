@@ -52,7 +52,7 @@ module.exports = class MyDevice extends CommonDriver {
   }
 
   extraCapabilities(store) {
-    const caps = store?.controlSupported ? ['target_power', 'target_power_mode'] : [];
+    const caps = store?.controlSupported ? ['measure_power.target', 'target_power', 'target_power_mode'] : [];
     if (store?.socLimitsSupported) caps.push('battery_min_soc', 'battery_min_soc_ongrid');
     if (caps.length) caps.push('alarm_generic.control');
     return caps;

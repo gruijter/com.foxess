@@ -17,11 +17,11 @@
   "class": "sensor",
   "capabilities": [
     "measure_power",
-    "meter_power",
-    "measure_frequency",
     "measure_voltage.1",
     "measure_voltage.2",
     "measure_voltage.3",
+    "measure_frequency",
+    "meter_power",
     "meter_power.imported",
     "meter_power.exported"
   ],

@@ -1131,9 +1131,9 @@
       "capabilities": [
         "measure_power",
         "measure_battery",
-        "measure_temperature",
         "meter_power.charged",
-        "meter_power.discharged"
+        "meter_power.discharged",
+        "measure_temperature"
       ],
       "capabilitiesOptions": {
         "meter_power.charged": {
@@ -1355,6 +1355,24 @@
             "ar": "تم تجاوز التحكم",
             "ko": "제어 덮어씀"
           }
+        },
+        "measure_power.target": {
+          "title": {
+            "en": "Target power",
+            "nl": "Doelvermogen",
+            "de": "Zielleistung",
+            "fr": "Puissance cible",
+            "es": "Potencia objetivo",
+            "it": "Potenza obiettivo",
+            "da": "Måleffekt",
+            "sv": "Måleffekt",
+            "no": "Måleffekt",
+            "pl": "Moc docelowa",
+            "ru": "Целевая мощность",
+            "ar": "القدرة المستهدفة",
+            "ko": "목표 전력"
+          },
+          "decimals": 0
         }
       },
       "energy": {
@@ -2518,11 +2536,11 @@
       "class": "sensor",
       "capabilities": [
         "measure_power",
-        "meter_power",
-        "measure_frequency",
         "measure_voltage.1",
         "measure_voltage.2",
         "measure_voltage.3",
+        "measure_frequency",
+        "meter_power",
         "meter_power.imported",
         "meter_power.exported"
       ],
