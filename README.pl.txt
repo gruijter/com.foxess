@@ -1,0 +1,2 @@
+Podłącz swój falownik Fox ESS do Homey i uzyskaj szczegółowe informacje na temat produkcji energii słonecznej oraz zużycia baterii.
+Monitoruj bieżącą moc wyjściową, a także generację dzienną, miesięczną, roczną i całkowitą. Dzięki aplikacji Fox ESS dla Homey możesz wykorzystać te dane do optymalizacji zużycia energii, tworzenia przepływów (Flows) i śledzenia wydajności swojego systemu – wszystko w jednym miejscu.

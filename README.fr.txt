@@ -1,0 +1,2 @@
+Connectez votre onduleur Fox ESS à Homey et obtenez des informations détaillées sur votre production d'énergie solaire et l'utilisation de votre batterie.
+Suivez votre puissance de sortie actuelle, ainsi que vos productions quotidiennes, mensuelles, annuelles et totales. Avec l'application Fox ESS pour Homey, vous pouvez utiliser ces données pour optimiser votre consommation d'énergie, créer des Flows et suivre les performances de votre système, le tout au même endroit.

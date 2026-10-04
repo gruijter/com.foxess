@@ -1,0 +1,129 @@
+{
+  "name": {
+    "en": "Heat pump",
+    "nl": "Warmtepomp",
+    "de": "Wärmepumpe",
+    "fr": "Pompe à chaleur",
+    "it": "Pompa di calore",
+    "es": "Bomba de calor",
+    "pl": "Pompa ciepła",
+    "sv": "Värmepump",
+    "no": "Varmepumpe",
+    "da": "Varmepumpe",
+    "ru": "Тепловой насос",
+    "ko": "히트펌프",
+    "ar": "مضخة حرارية"
+  },
+  "class": "heatpump",
+  "capabilities": [
+    "thermostat_mode",
+    "onoff.dhw",
+    "target_temperature.dhw"
+  ],
+  "capabilitiesOptions": {
+    "onoff.dhw": {
+      "title": {
+        "en": "Hot water",
+        "nl": "Warm water",
+        "de": "Warmwasser",
+        "fr": "Eau chaude",
+        "it": "Acqua calda",
+        "es": "Agua caliente",
+        "pl": "Ciepła woda",
+        "sv": "Varmvatten",
+        "no": "Varmtvann",
+        "da": "Varmt vand",
+        "ru": "Горячая вода",
+        "ko": "온수",
+        "ar": "الماء الساخن"
+      },
+      "insightsTitleTrue": {
+        "en": "Hot water turned on",
+        "nl": "Warm water ingeschakeld",
+        "de": "Warmwasser eingeschaltet",
+        "fr": "Eau chaude activée",
+        "it": "Acqua calda attivata",
+        "es": "Agua caliente activada",
+        "pl": "Ciepła woda włączona",
+        "sv": "Varmvatten påslaget",
+        "no": "Varmtvann slått på",
+        "da": "Varmt vand tændt",
+        "ru": "Горячая вода включена",
+        "ko": "온수 켜짐",
+        "ar": "تم تشغيل الماء الساخن"
+      },
+      "insightsTitleFalse": {
+        "en": "Hot water turned off",
+        "nl": "Warm water uitgeschakeld",
+        "de": "Warmwasser ausgeschaltet",
+        "fr": "Eau chaude désactivée",
+        "it": "Acqua calda disattivata",
+        "es": "Agua caliente desactivada",
+        "pl": "Ciepła woda wyłączona",
+        "sv": "Varmvatten avstängt",
+        "no": "Varmtvann slått av",
+        "da": "Varmt vand slukket",
+        "ru": "Горячая вода выключена",
+        "ko": "온수 꺼짐",
+        "ar": "تم إيقاف الماء الساخن"
+      }
+    },
+    "target_temperature.dhw": {
+      "title": {
+        "en": "Hot water temperature",
+        "nl": "Warmwatertemperatuur",
+        "de": "Warmwassertemperatur",
+        "fr": "Température de l'eau chaude",
+        "it": "Temperatura acqua calda",
+        "es": "Temperatura del agua caliente",
+        "pl": "Temperatura ciepłej wody",
+        "sv": "Varmvattentemperatur",
+        "no": "Varmtvannstemperatur",
+        "da": "Varmtvandstemperatur",
+        "ru": "Температура горячей воды",
+        "ko": "온수 온도",
+        "ar": "درجة حرارة الماء الساخن"
+      },
+      "min": 30,
+      "max": 65,
+      "step": 0.5,
+      "decimals": 1
+    }
+  },
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "connectivity": [
+    "cloud"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "login_apikey",
+      "navigation": {
+        "next": "list_devices"
+      }
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "repair": [
+    {
+      "id": "login_apikey"
+    }
+  ]
+}

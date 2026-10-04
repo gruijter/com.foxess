@@ -1,0 +1,35 @@
+{
+  "Life by Sunshine.": "Liv av solskinn.",
+  "This will try to update the status of all devices immediately. Careful: too many updates will cause the server to temporarily block you.": "Dette vil prøve å oppdatere statusen for alle enheter umiddelbart. Forsiktig: for mange oppdateringer vil føre til at serveren midlertidig blokkerer deg.",
+  "pair.regions.eu": "Europa / Global",
+  "pair.regions.us": "Nord-Amerika",
+  "pair": {
+    "regions": {
+      "eu": "Europa / Global",
+      "us": "Nord-Amerika"
+    },
+    "login": {
+      "title": "Fox ESS API-nøkkel",
+      "intro": "Opprett en API-nøkkel i FoxCloud: Brukerprofil > API-administrasjon.",
+      "region": "Region",
+      "apiKey": "API-nøkkel",
+      "connect": "Koble til"
+    }
+  },
+  "errors": {
+    "heatpumpSetFailed": "Kunne ikke endre innstillingen til varmepumpen.",
+    "noUpdates": "Ingen oppdateringer fra enheten",
+    "noApiKey": "Ingen API-nøkkel. Reparer enheten for å legge inn en.",
+    "apiKeyRequired": "Skriv inn Fox ESS API-nøkkelen din.",
+    "unknownRegion": "Ukjent region:",
+    "loginFailed": "API-nøkkelen ble ikke godtatt:",
+    "controlFailed": "Kunne ikke endre batteristyringen:",
+    "noSchedule": "Fant ingen FoxCloud-plan. Opprett en i FoxCloud først.",
+    "socRange": "SoC-grenser må være 10–100 %, med minimum ≤ minimum på nettet ≤ maksimum.",
+    "settingFailed": "Kunne ikke endre innstillingen:"
+  },
+  "notifications": {
+    "controlOverridden": "**__name__**: en innstilling fra Homey ble endret et annet sted, for eksempel i FoxCloud eller av en energileverandør."
+  },
+  "migrating": "Migrerer enhet, vennligst vent..."
+}

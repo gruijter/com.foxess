@@ -1,0 +1,122 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Heat pump information",
+      "nl": "Warmtepomp informatie",
+      "de": "Wärmepumpen-Informationen",
+      "fr": "Informations de la pompe à chaleur",
+      "it": "Informazioni pompa di calore",
+      "es": "Información de la bomba de calor",
+      "pl": "Informacje o pompie ciepła",
+      "sv": "Värmepumpsinformation",
+      "no": "Varmepumpeinformasjon",
+      "da": "Varmepumpeinformation",
+      "ru": "Информация о тепловом насосе",
+      "ko": "히트펌프 정보",
+      "ar": "معلومات المضخة الحرارية"
+    },
+    "children": [
+      {
+        "id": "productType",
+        "type": "label",
+        "label": {
+          "en": "Model",
+          "nl": "Model",
+          "de": "Modell",
+          "fr": "Modèle",
+          "it": "Modello",
+          "es": "Modelo",
+          "pl": "Model",
+          "sv": "Modell",
+          "no": "Modell",
+          "da": "Model",
+          "ru": "Модель",
+          "ko": "모델",
+          "ar": "طراز"
+        },
+        "value": ""
+      },
+      {
+        "id": "heatSn",
+        "type": "label",
+        "label": {
+          "en": "Outdoor unit serial number",
+          "nl": "Serienummer buitenunit",
+          "de": "Seriennummer Außeneinheit",
+          "fr": "Numéro de série de l'unité extérieure",
+          "it": "Numero di serie unità esterna",
+          "es": "Número de serie de la unidad exterior",
+          "pl": "Numer seryjny jednostki zewnętrznej",
+          "sv": "Serienummer utomhusenhet",
+          "no": "Serienummer utedel",
+          "da": "Serienummer udedel",
+          "ru": "Серийный номер наружного блока",
+          "ko": "실외기 일련 번호",
+          "ar": "الرقم التسلسلي للوحدة الخارجية"
+        },
+        "value": ""
+      },
+      {
+        "id": "moduleSn",
+        "type": "label",
+        "label": {
+          "en": "Module serial number",
+          "nl": "Serienummer module",
+          "de": "Seriennummer Modul",
+          "fr": "Numéro de série du module",
+          "it": "Numero di serie modulo",
+          "es": "Número de serie del módulo",
+          "pl": "Numer seryjny modułu",
+          "sv": "Serienummer modul",
+          "no": "Serienummer modul",
+          "da": "Serienummer modul",
+          "ru": "Серийный номер модуля",
+          "ko": "모듈 일련 번호",
+          "ar": "الرقم التسلسلي للوحدة"
+        },
+        "value": ""
+      },
+      {
+        "id": "masterVersion",
+        "type": "label",
+        "label": {
+          "en": "Firmware version",
+          "nl": "Firmwareversie",
+          "de": "Firmware-Version",
+          "fr": "Version du micrologiciel",
+          "it": "Versione firmware",
+          "es": "Versión del firmware",
+          "pl": "Wersja oprogramowania",
+          "sv": "Firmwareversion",
+          "no": "Fastvareversjon",
+          "da": "Firmwareversion",
+          "ru": "Версия прошивки",
+          "ko": "펌웨어 버전",
+          "ar": "إصدار البرنامج الثابت"
+        },
+        "value": ""
+      },
+      {
+        "id": "region",
+        "type": "label",
+        "label": {
+          "en": "Cloud region",
+          "nl": "Cloud-regio",
+          "de": "Cloud-Region",
+          "fr": "Région cloud",
+          "it": "Regione cloud",
+          "es": "Región de la nube",
+          "pl": "Region chmury",
+          "sv": "Molnregion",
+          "no": "Skyregion",
+          "da": "Cloud-region",
+          "ru": "Облачный регион",
+          "ko": "클라우드 지역",
+          "ar": "منطقة السحابة"
+        },
+        "value": ""
+      }
+    ]
+  }
+]

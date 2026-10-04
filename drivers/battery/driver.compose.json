@@ -1,0 +1,288 @@
+{
+  "name": {
+    "en": "Battery",
+    "nl": "Batterij",
+    "de": "Batterie",
+    "fr": "Batterie",
+    "it": "Batteria",
+    "es": "Batería",
+    "pl": "Akumulator",
+    "sv": "Batteri",
+    "no": "Batteri",
+    "da": "Batteri",
+    "ru": "Батарея",
+    "ko": "배터리",
+    "ar": "بطارية"
+  },
+  "class": "battery",
+  "capabilities": [
+    "measure_power",
+    "measure_battery",
+    "measure_temperature",
+    "meter_power.charged",
+    "meter_power.discharged"
+  ],
+  "capabilitiesOptions": {
+    "meter_power.charged": {
+      "title": {
+        "en": "Charged Energy",
+        "nl": "Geladen energie",
+        "de": "Geladene Energie",
+        "fr": "Énergie chargée",
+        "it": "Energia caricata",
+        "es": "Energía cargada",
+        "pl": "Naładowana energia",
+        "sv": "Laddad energi",
+        "no": "Ladet energi",
+        "da": "Opladet energi",
+        "ru": "Заряженная энергия",
+        "ko": "충전된 에너지",
+        "ar": "الطاقة المشحونة"
+      }
+    },
+    "meter_power.discharged": {
+      "title": {
+        "en": "Discharged Energy",
+        "nl": "Ontladen energie",
+        "de": "Entladene Energie",
+        "fr": "Énergie déchargée",
+        "it": "Energia scaricata",
+        "es": "Energía descargada",
+        "pl": "Rozładowana energia",
+        "sv": "Urladdad energi",
+        "no": "Utladet energi",
+        "da": "Afladet energi",
+        "ru": "Разряженная энергия",
+        "ko": "방전된 에너지",
+        "ar": "الطاقة المفرغة"
+      }
+    },
+    "measure_voltage": {
+      "title": {
+        "en": "Battery voltage",
+        "nl": "Batterijspanning",
+        "de": "Batteriespannung",
+        "fr": "Tension batterie",
+        "es": "Voltaje de batería",
+        "it": "Tensione batteria",
+        "da": "Batterispænding",
+        "sv": "Batterispänning",
+        "no": "Batterispenning",
+        "pl": "Napięcie akumulatora",
+        "ru": "Напряжение батареи",
+        "ar": "جهد البطارية",
+        "ko": "배터리 전압"
+      }
+    },
+    "measure_current": {
+      "title": {
+        "en": "Battery current",
+        "nl": "Batterijstroom",
+        "de": "Batteriestrom",
+        "fr": "Courant batterie",
+        "es": "Corriente de batería",
+        "it": "Corrente batteria",
+        "da": "Batteristrøm",
+        "sv": "Batteriström",
+        "no": "Batteristrøm",
+        "pl": "Prąd akumulatora",
+        "ru": "Ток батареи",
+        "ar": "تيار البطارية",
+        "ko": "배터리 전류"
+      }
+    },
+    "meter_power.throughput": {
+      "title": {
+        "en": "Energy throughput",
+        "nl": "Energiedoorvoer",
+        "de": "Energiedurchsatz",
+        "fr": "Énergie échangée",
+        "es": "Energía procesada",
+        "it": "Energia scambiata",
+        "da": "Energigennemstrømning",
+        "sv": "Energigenomströmning",
+        "no": "Energigjennomstrømning",
+        "pl": "Przepływ energii",
+        "ru": "Пропущенная энергия",
+        "ar": "إجمالي الطاقة المتداولة",
+        "ko": "에너지 처리량"
+      },
+      "decimals": 1
+    },
+    "target_power_mode": {
+      "values": [
+        {
+          "id": "homey",
+          "title": {
+            "en": "Homey",
+            "nl": "Homey",
+            "de": "Homey",
+            "fr": "Homey",
+            "it": "Homey",
+            "es": "Homey",
+            "pl": "Homey",
+            "sv": "Homey",
+            "no": "Homey",
+            "da": "Homey",
+            "ru": "Homey",
+            "ko": "Homey",
+            "ar": "Homey"
+          }
+        },
+        {
+          "id": "self_use",
+          "title": {
+            "en": "Self-use",
+            "nl": "Eigen verbruik",
+            "de": "Eigenverbrauch",
+            "fr": "Autoconsommation",
+            "it": "Autoconsumo",
+            "es": "Autoconsumo",
+            "pl": "Autokonsumpcja",
+            "sv": "Egenanvändning",
+            "no": "Egetforbruk",
+            "da": "Eget forbrug",
+            "ru": "Собственное потребление",
+            "ko": "자가 소비",
+            "ar": "الاستهلاك الذاتي"
+          }
+        },
+        {
+          "id": "feed_in",
+          "title": {
+            "en": "Feed-in priority",
+            "nl": "Teruglevering eerst",
+            "de": "Einspeisung zuerst",
+            "fr": "Priorité injection",
+            "it": "Priorità immissione",
+            "es": "Prioridad de inyección",
+            "pl": "Priorytet oddawania do sieci",
+            "sv": "Inmatning först",
+            "no": "Innmating først",
+            "da": "Levering til nettet først",
+            "ru": "Приоритет отдачи в сеть",
+            "ko": "계통 송전 우선",
+            "ar": "أولوية التغذية للشبكة"
+          }
+        },
+        {
+          "id": "backup",
+          "title": {
+            "en": "Backup",
+            "nl": "Back-up",
+            "de": "Notstromreserve",
+            "fr": "Secours",
+            "it": "Backup",
+            "es": "Respaldo",
+            "pl": "Rezerwa",
+            "sv": "Reserv",
+            "no": "Reserve",
+            "da": "Backup",
+            "ru": "Резерв",
+            "ko": "백업",
+            "ar": "احتياطي"
+          }
+        },
+        {
+          "id": "peak_shaving",
+          "title": {
+            "en": "Peak shaving",
+            "nl": "Piekafvlakking",
+            "de": "Spitzenlastkappung",
+            "fr": "Écrêtement des pointes",
+            "it": "Riduzione dei picchi",
+            "es": "Recorte de picos",
+            "pl": "Ścinanie szczytów",
+            "sv": "Toppkapning",
+            "no": "Toppkutting",
+            "da": "Spidsbelastningsudjævning",
+            "ru": "Сглаживание пиков",
+            "ko": "피크 저감",
+            "ar": "خفض الذروة"
+          }
+        },
+        {
+          "id": "schedule",
+          "title": {
+            "en": "FoxCloud schedule",
+            "nl": "FoxCloud-schema",
+            "de": "FoxCloud-Zeitplan",
+            "fr": "Planning FoxCloud",
+            "it": "Programma FoxCloud",
+            "es": "Programación FoxCloud",
+            "pl": "Harmonogram FoxCloud",
+            "sv": "FoxCloud-schema",
+            "no": "FoxCloud-plan",
+            "da": "FoxCloud-plan",
+            "ru": "Расписание FoxCloud",
+            "ko": "FoxCloud 일정",
+            "ar": "جدول FoxCloud"
+          }
+        }
+      ]
+    },
+    "target_power": {
+      "min": -5000,
+      "max": 5000,
+      "step": 100
+    },
+    "alarm_generic.control": {
+      "title": {
+        "en": "Control overridden",
+        "nl": "Sturing overschreven",
+        "de": "Steuerung überschrieben",
+        "fr": "Pilotage écrasé",
+        "es": "Control anulado",
+        "it": "Controllo sovrascritto",
+        "da": "Styring overskrevet",
+        "sv": "Styrning överskriven",
+        "no": "Styring overstyrt",
+        "pl": "Sterowanie nadpisane",
+        "ru": "Управление перехвачено",
+        "ar": "تم تجاوز التحكم",
+        "ko": "제어 덮어씀"
+      }
+    }
+  },
+  "energy": {
+    "homeBattery": true,
+    "meterPowerImportedCapability": "meter_power.charged",
+    "meterPowerExportedCapability": "meter_power.discharged"
+  },
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "connectivity": [
+    "cloud"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "login_apikey",
+      "navigation": {
+        "next": "list_devices"
+      }
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "repair": [
+    {
+      "id": "login_apikey"
+    }
+  ]
+}

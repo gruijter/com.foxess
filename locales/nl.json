@@ -1,0 +1,35 @@
+{
+  "Life by Sunshine.": "Leven op zonneschijn.",
+  "This will try to update the status of all devices immediately. Careful: too many updates will cause the server to temporarily block you.": "Dit zal proberen de status van alle apparaten direct bij te werken. Let op: te veel updates zorgen ervoor dat de server je tijdelijk blokkeert.",
+  "pair.regions.eu": "Europa / Global",
+  "pair.regions.us": "Noord-Amerika",
+  "pair": {
+    "regions": {
+      "eu": "Europa / Global",
+      "us": "Noord-Amerika"
+    },
+    "login": {
+      "title": "Fox ESS API-sleutel",
+      "intro": "Maak een API-sleutel aan in FoxCloud: Gebruikersprofiel > API-beheer.",
+      "region": "Regio",
+      "apiKey": "API-sleutel",
+      "connect": "Verbinden"
+    }
+  },
+  "errors": {
+    "heatpumpSetFailed": "Kon de instelling van de warmtepomp niet wijzigen.",
+    "noUpdates": "Geen updates van apparaat",
+    "noApiKey": "Geen API-sleutel. Repareer dit apparaat om er een in te voeren.",
+    "apiKeyRequired": "Voer je Fox ESS API-sleutel in.",
+    "unknownRegion": "Onbekende regio:",
+    "loginFailed": "De API-sleutel werd niet geaccepteerd:",
+    "controlFailed": "Kon de batterijsturing niet wijzigen:",
+    "noSchedule": "Geen FoxCloud-schema gevonden. Stel er eerst een in via FoxCloud.",
+    "socRange": "SoC-grenzen moeten 10–100% zijn, met minimum ≤ minimum op net ≤ maximum.",
+    "settingFailed": "Kon de instelling niet wijzigen:"
+  },
+  "notifications": {
+    "controlOverridden": "**__name__**: een instelling van Homey is elders gewijzigd, bijvoorbeeld in FoxCloud of door een energieleverancier."
+  },
+  "migrating": "Apparaat wordt gemigreerd, even geduld..."
+}

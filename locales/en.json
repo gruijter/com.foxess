@@ -1,0 +1,35 @@
+{
+  "Life by Sunshine.": "Life by Sunshine.",
+  "This will try to update the status of all devices immediately. Careful: too many updates will cause the server to temporarily block you.": "This will try to update the status of all devices immediately. Careful: too many updates will cause the server to temporarily block you.",
+  "pair.regions.eu": "Europe / Global",
+  "pair.regions.us": "North America",
+  "pair": {
+    "regions": {
+      "eu": "Europe / Global",
+      "us": "North America"
+    },
+    "login": {
+      "title": "Fox ESS API key",
+      "intro": "Create an API key in FoxCloud: User Profile > API Management.",
+      "region": "Region",
+      "apiKey": "API key",
+      "connect": "Connect"
+    }
+  },
+  "errors": {
+    "heatpumpSetFailed": "Could not change the heat pump setting.",
+    "noUpdates": "No updates from device",
+    "noApiKey": "No API key. Repair this device to enter one.",
+    "apiKeyRequired": "Enter your Fox ESS API key.",
+    "unknownRegion": "Unknown region:",
+    "loginFailed": "The API key was not accepted:",
+    "controlFailed": "Could not change the battery control:",
+    "noSchedule": "No FoxCloud schedule found. Set one up in FoxCloud first.",
+    "socRange": "SoC limits must be 10–100%, with minimum ≤ minimum on grid ≤ maximum.",
+    "settingFailed": "Could not change the setting:"
+  },
+  "notifications": {
+    "controlOverridden": "**__name__**: a setting Homey made was changed elsewhere, for example in FoxCloud or by an energy provider."
+  },
+  "migrating": "Migrating device, please wait..."
+}

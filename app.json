@@ -1,0 +1,3424 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.foxess",
+  "version": "1.0.0",
+  "compatibility": ">=12.13.0",
+  "sdk": 3,
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "name": {
+    "en": "Fox ESS",
+    "nl": "Fox ESS",
+    "de": "Fox ESS",
+    "fr": "Fox ESS",
+    "it": "Fox ESS",
+    "es": "Fox ESS",
+    "pl": "Fox ESS",
+    "sv": "Fox ESS",
+    "no": "Fox ESS",
+    "da": "Fox ESS",
+    "ru": "Fox ESS",
+    "ko": "Fox ESS",
+    "ar": "Fox ESS"
+  },
+  "description": {
+    "en": "Life by Sunshine.",
+    "nl": "Leven op zonneschijn.",
+    "de": "Leben durch Sonnenschein.",
+    "fr": "La vie grâce au soleil.",
+    "it": "La vita grazie al sole.",
+    "es": "Vivir gracias al sol.",
+    "pl": "Życie dzięki słońcu.",
+    "sv": "Liv av solsken.",
+    "no": "Liv av solskinn.",
+    "da": "Liv af solskin.",
+    "ru": "Жизнь благодаря солнцу.",
+    "ko": "햇빛으로 사는 삶.",
+    "ar": "حياة بضوء الشمس."
+  },
+  "brandColor": "#984EFF",
+  "tags": {
+    "en": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "Inverter",
+      "Solar",
+      "Solar panels",
+      "PV"
+    ],
+    "nl": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "Omvormer",
+      "Zonnepanelen",
+      "PV"
+    ],
+    "da": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "Inverter",
+      "Solenergi",
+      "Solpaneler",
+      "PV"
+    ],
+    "de": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "Wechselrichter",
+      "Solar",
+      "Solarmodule",
+      "PV"
+    ],
+    "es": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "Inversor",
+      "Solar",
+      "Paneles solares",
+      "PV"
+    ],
+    "fr": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "Onduleur",
+      "Solaire",
+      "Panneaux solaires",
+      "PV"
+    ],
+    "it": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "Inverter",
+      "Solare",
+      "Pannelli solari",
+      "PV"
+    ],
+    "no": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "Inverter",
+      "Solenergi",
+      "Solcellepaneler",
+      "PV"
+    ],
+    "sv": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "Växelriktare",
+      "Solenergi",
+      "Solpaneler",
+      "PV"
+    ],
+    "pl": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "Falownik",
+      "Słoneczna",
+      "Panele słoneczne",
+      "PV"
+    ],
+    "ru": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "Инвертор",
+      "Солнечная",
+      "Солнечные панели",
+      "PV"
+    ],
+    "ko": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "인버터",
+      "태양광",
+      "태양광 패널",
+      "PV"
+    ],
+    "ar": [
+      "FoxESS",
+      "Fox ESS",
+      "foxcloud",
+      "Solarwatt",
+      "1KOMMA5",
+      "Energizer",
+      "SmartFlex",
+      "Kuara",
+      "Sonnenkraft",
+      "Solavita",
+      "a-TroniX",
+      "Enpal",
+      "عاكس",
+      "طاقة شمسية",
+      "ألواح شمسية",
+      "PV"
+    ]
+  },
+  "category": [
+    "energy"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "R.M. de Gruijter"
+  },
+  "copyright": "R.M. de Gruijter (rmdegruijter@gmail.com)",
+  "license": "GPL-3.0-or-later",
+  "homeyCommunityTopicId": 159666,
+  "support": "https://github.com/gruijter/com.foxess/issues",
+  "flow": {
+    "triggers": [
+      {
+        "title": {
+          "en": "Voltage phase 1 changed",
+          "nl": "Voltage fase 1 is veranderd",
+          "de": "Spannung Phase 1 geändert",
+          "fr": "Tension phase 1 modifiée",
+          "it": "Tensione fase 1 modificata",
+          "es": "Voltaje fase 1 cambiado",
+          "pl": "Napięcie fazy 1 uległo zmianie",
+          "sv": "Spänning fas 1 ändrad",
+          "no": "Spenning fase 1 endret",
+          "da": "Spænding fase 1 ændret",
+          "ru": "Напряжение фазы 1 изменено",
+          "ko": "전압 위상 1 변경됨",
+          "ar": "تغير جهد المرحلة 1"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=meter"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_voltage.1",
+            "type": "number",
+            "title": {
+              "en": "Voltage phase 1",
+              "nl": "Voltage fase 1",
+              "de": "Spannung Phase 1",
+              "fr": "Tension phase 1",
+              "it": "Tensione fase 1",
+              "es": "Voltaje fase 1",
+              "pl": "Napięcie fazy 1",
+              "sv": "Spänning fas 1",
+              "no": "Spenning fase 1",
+              "da": "Spænding fase 1",
+              "ru": "Напряжение фазы 1",
+              "ko": "전압 위상 1",
+              "ar": "جهد المرحلة 1"
+            },
+            "example": 230
+          }
+        ],
+        "id": "measure_voltage.1_changed"
+      },
+      {
+        "title": {
+          "en": "Voltage phase 2 changed",
+          "nl": "Voltage fase 2 is veranderd",
+          "de": "Spannung Phase 2 geändert",
+          "fr": "Tension phase 2 modifiée",
+          "it": "Tensione fase 2 modificata",
+          "es": "Voltaje fase 2 cambiado",
+          "pl": "Napięcie fazy 2 uległo zmianie",
+          "sv": "Spänning fas 2 ändrad",
+          "no": "Spenning fase 2 endret",
+          "da": "Spænding fase 2 ændret",
+          "ru": "Напряжение фазы 2 изменено",
+          "ko": "전압 위상 2 변경됨",
+          "ar": "تغير جهد المرحلة 2"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=meter"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_voltage.2",
+            "type": "number",
+            "title": {
+              "en": "Voltage phase 2",
+              "nl": "Voltage fase 2",
+              "de": "Spannung Phase 2",
+              "fr": "Tension phase 2",
+              "it": "Tensione fase 2",
+              "es": "Voltaje fase 2",
+              "pl": "Napięcie fazy 2",
+              "sv": "Spänning fas 2",
+              "no": "Spenning fase 2",
+              "da": "Spænding fase 2",
+              "ru": "Напряжение фазы 2",
+              "ko": "전압 위상 2",
+              "ar": "جهد المرحلة 2"
+            },
+            "example": 230
+          }
+        ],
+        "id": "measure_voltage.2_changed"
+      },
+      {
+        "title": {
+          "en": "Voltage phase 3 changed",
+          "nl": "Voltage fase 3 is veranderd",
+          "de": "Spannung Phase 3 geändert",
+          "fr": "Tension phase 3 modifiée",
+          "it": "Tensione fase 3 modificata",
+          "es": "Voltaje fase 3 cambiado",
+          "pl": "Napięcie fazy 3 uległo zmianie",
+          "sv": "Spänning fas 3 ändrad",
+          "no": "Spenning fase 3 endret",
+          "da": "Spænding fase 3 ændret",
+          "ru": "Напряжение фазы 3 изменено",
+          "ko": "전압 위상 3 변경됨",
+          "ar": "تغير جهد المرحلة 3"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=meter"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_voltage.3",
+            "type": "number",
+            "title": {
+              "en": "Voltage phase 3",
+              "nl": "Voltage fase 3",
+              "de": "Spannung Phase 3",
+              "fr": "Tension phase 3",
+              "it": "Tensione fase 3",
+              "es": "Voltaje fase 3",
+              "pl": "Napięcie fazy 3",
+              "sv": "Spänning fas 3",
+              "no": "Spenning fase 3",
+              "da": "Spænding fase 3",
+              "ru": "Напряжение фазы 3",
+              "ko": "전압 위상 3",
+              "ar": "جهد المرحلة 3"
+            },
+            "example": 230
+          }
+        ],
+        "id": "measure_voltage.3_changed"
+      },
+      {
+        "title": {
+          "en": "Exported energy changed",
+          "nl": "Energie export is veranderd",
+          "de": "Exportierte Energie geändert",
+          "fr": "Énergie exportée modifiée",
+          "it": "Energia esportata modificata",
+          "es": "Energía exportada cambiada",
+          "pl": "Eksportowana energia uległa zmianie",
+          "sv": "Exporterad energi ändrad",
+          "no": "Eksportert energi endret",
+          "da": "Eksporteret energi ændret",
+          "ru": "Экспортированная энергия изменена",
+          "ko": "내보낸 에너지가 변경됨",
+          "ar": "تغيرت الطاقة المصدرة"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=meter"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "meter_power.exported",
+            "type": "number",
+            "title": {
+              "en": "Exported energy",
+              "nl": "Energie export",
+              "de": "Exportierte Energie",
+              "fr": "Énergie exportée",
+              "it": "Energia esportata",
+              "es": "Energía exportada",
+              "pl": "Energia eksportowana",
+              "sv": "Exporterad energi",
+              "no": "Eksportert energi",
+              "da": "Eksporteret energi",
+              "ru": "Экспортированная энергия",
+              "ko": "내보낸 에너지",
+              "ar": "الطاقة المصدرة"
+            },
+            "example": 1500
+          }
+        ],
+        "id": "meter_power.exported_changed"
+      },
+      {
+        "title": {
+          "en": "Imported energy changed",
+          "nl": "Energie import is veranderd",
+          "de": "Importierte Energie geändert",
+          "fr": "Énergie importée modifiée",
+          "it": "Energia importata modificata",
+          "es": "Energía importada cambiada",
+          "pl": "Importowana energia uległa zmianie",
+          "sv": "Importerad energi ändrad",
+          "no": "Importert energi endret",
+          "da": "Importeret energi ændret",
+          "ru": "Импортированная энергия изменена",
+          "ko": "가져온 에너지가 변경됨",
+          "ar": "تغيرت الطاقة المستوردة"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=meter"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "meter_power.imported",
+            "type": "number",
+            "title": {
+              "en": "Imported energy",
+              "nl": "Energie import",
+              "de": "Importierte Energie",
+              "fr": "Énergie importée",
+              "it": "Energia importata",
+              "es": "Energía importada",
+              "pl": "Energia importowana",
+              "sv": "Importerad energi",
+              "no": "Importert energi",
+              "da": "Importeret energi",
+              "ru": "Импортированная энергия",
+              "ko": "가져온 에너지",
+              "ar": "الطاقة المستوردة"
+            },
+            "example": 1500
+          }
+        ],
+        "id": "meter_power.imported_changed"
+      },
+      {
+        "title": {
+          "en": "Energy today changed",
+          "nl": "Energie vandaag is veranderd",
+          "de": "Heutige Energie geändert",
+          "fr": "Énergie du jour modifiée",
+          "it": "Energia di oggi modificata",
+          "es": "Energía de hoy cambiada",
+          "pl": "Dzisiejsza energia uległa zmianie",
+          "sv": "Energi idag ändrad",
+          "no": "Energi i dag endret",
+          "da": "Energi i dag ændret",
+          "ru": "Энергия за сегодня изменена",
+          "ko": "오늘의 에너지가 변경됨",
+          "ar": "تغيرت طاقة اليوم"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=inverter"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "meter_power.today",
+            "type": "number",
+            "title": {
+              "en": "Energy today",
+              "nl": "Energie vandaag",
+              "de": "Energie heute",
+              "fr": "Énergie du jour",
+              "it": "Energia di oggi",
+              "es": "Energía de hoy",
+              "pl": "Dzisiejsza energia",
+              "sv": "Energi idag",
+              "no": "Energi i dag",
+              "da": "Energi i dag",
+              "ru": "Энергия за сегодня",
+              "ko": "오늘의 에너지",
+              "ar": "طاقة اليوم"
+            },
+            "example": 1500
+          }
+        ],
+        "id": "meter_power.today_changed"
+      },
+      {
+        "title": {
+          "en": "Inverter status changed",
+          "nl": "Omvormerstatus is veranderd",
+          "de": "Wechselrichterstatus geändert",
+          "fr": "État de l'onduleur modifié",
+          "es": "Estado del inversor cambiado",
+          "it": "Stato inverter modificato",
+          "da": "Inverterstatus ændret",
+          "sv": "Växelriktarstatus ändrad",
+          "no": "Vekselretterstatus endret",
+          "pl": "Stan inwertera zmienił się",
+          "ru": "Состояние инвертора изменилось",
+          "ar": "تغيرت حالة العاكس",
+          "ko": "인버터 상태가 변경됨"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=inverter&capabilities=running_state"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "running_state",
+            "type": "string",
+            "title": {
+              "en": "Inverter status",
+              "nl": "Omvormerstatus",
+              "de": "Wechselrichterstatus",
+              "fr": "État de l'onduleur",
+              "es": "Estado del inversor",
+              "it": "Stato inverter",
+              "da": "Inverterstatus",
+              "sv": "Växelriktarstatus",
+              "no": "Vekselretterstatus",
+              "pl": "Stan inwertera",
+              "ru": "Состояние инвертора",
+              "ar": "حالة العاكس",
+              "ko": "인버터 상태"
+            },
+            "example": "on_grid"
+          }
+        ],
+        "id": "running_state_changed"
+      }
+    ],
+    "conditions": [
+      {
+        "title": {
+          "en": "Inverter status is ...",
+          "nl": "Omvormerstatus is ...",
+          "de": "Wechselrichterstatus ist ...",
+          "fr": "L'état de l'onduleur est ...",
+          "es": "El estado del inversor es ...",
+          "it": "Lo stato dell'inverter è ...",
+          "da": "Inverterstatus er ...",
+          "sv": "Växelriktarstatus är ...",
+          "no": "Vekselretterstatus er ...",
+          "pl": "Stan inwertera to ...",
+          "ru": "Состояние инвертора ...",
+          "ar": "حالة العاكس هي ...",
+          "ko": "인버터 상태는 ..."
+        },
+        "titleFormatted": {
+          "en": "Inverter status !{{is|is not}} [[status]]",
+          "nl": "Omvormerstatus !{{is|is niet}} [[status]]",
+          "de": "Wechselrichterstatus !{{ist|ist nicht}} [[status]]",
+          "fr": "État de l'onduleur !{{est|n'est pas}} [[status]]",
+          "es": "Estado del inversor !{{es|no es}} [[status]]",
+          "it": "Stato inverter !{{è|non è}} [[status]]",
+          "da": "Inverterstatus !{{er|er ikke}} [[status]]",
+          "sv": "Växelriktarstatus !{{är|är inte}} [[status]]",
+          "no": "Vekselretterstatus !{{er|er ikke}} [[status]]",
+          "pl": "Stan inwertera !{{jest|nie jest}} [[status]]",
+          "ru": "Состояние инвертора !{{—|не}} [[status]]",
+          "ar": "حالة العاكس !{{هي|ليست}} [[status]]",
+          "ko": "인버터 상태: [[status]] !{{입니다|이(가) 아닙니다}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=inverter&capabilities=running_state"
+          },
+          {
+            "type": "dropdown",
+            "name": "status",
+            "title": {
+              "en": "Inverter status",
+              "nl": "Omvormerstatus",
+              "de": "Wechselrichterstatus",
+              "fr": "État de l'onduleur",
+              "es": "Estado del inversor",
+              "it": "Stato inverter",
+              "da": "Inverterstatus",
+              "sv": "Växelriktarstatus",
+              "no": "Vekselretterstatus",
+              "pl": "Stan inwertera",
+              "ru": "Состояние инвертора",
+              "ar": "حالة العاكس",
+              "ko": "인버터 상태"
+            },
+            "values": [
+              {
+                "id": "self_test",
+                "label": {
+                  "en": "Self-test",
+                  "nl": "Zelftest",
+                  "de": "Selbsttest",
+                  "fr": "Autotest",
+                  "es": "Autoprueba",
+                  "it": "Autotest",
+                  "da": "Selvtest",
+                  "sv": "Självtest",
+                  "no": "Selvtest",
+                  "pl": "Autotest",
+                  "ru": "Самотестирование",
+                  "ar": "اختبار ذاتي",
+                  "ko": "자가 진단"
+                }
+              },
+              {
+                "id": "waiting",
+                "label": {
+                  "en": "Waiting",
+                  "nl": "Wachten",
+                  "de": "Wartend",
+                  "fr": "En attente",
+                  "es": "Esperando",
+                  "it": "In attesa",
+                  "da": "Venter",
+                  "sv": "Väntar",
+                  "no": "Venter",
+                  "pl": "Oczekiwanie",
+                  "ru": "Ожидание",
+                  "ar": "انتظار",
+                  "ko": "대기 중"
+                }
+              },
+              {
+                "id": "checking",
+                "label": {
+                  "en": "Checking",
+                  "nl": "Controleren",
+                  "de": "Prüfung",
+                  "fr": "Vérification",
+                  "es": "Comprobando",
+                  "it": "Verifica",
+                  "da": "Kontrollerer",
+                  "sv": "Kontrollerar",
+                  "no": "Kontrollerer",
+                  "pl": "Sprawdzanie",
+                  "ru": "Проверка",
+                  "ar": "فحص",
+                  "ko": "점검 중"
+                }
+              },
+              {
+                "id": "on_grid",
+                "label": {
+                  "en": "On-grid",
+                  "nl": "Netgekoppeld",
+                  "de": "Netzbetrieb",
+                  "fr": "Sur réseau",
+                  "es": "Conectado a red",
+                  "it": "In rete",
+                  "da": "Nettilsluttet",
+                  "sv": "Nätansluten",
+                  "no": "Nettilkoblet",
+                  "pl": "Praca sieciowa",
+                  "ru": "Сетевой режим",
+                  "ar": "متصل بالشبكة",
+                  "ko": "계통 연계"
+                }
+              },
+              {
+                "id": "off_grid",
+                "label": {
+                  "en": "Off-grid",
+                  "nl": "Eilandbedrijf",
+                  "de": "Inselbetrieb",
+                  "fr": "Hors réseau",
+                  "es": "Fuera de red",
+                  "it": "Fuori rete",
+                  "da": "Ø-drift",
+                  "sv": "Ödrift",
+                  "no": "Øydrift",
+                  "pl": "Praca wyspowa",
+                  "ru": "Автономный режим",
+                  "ar": "خارج الشبكة",
+                  "ko": "독립 운전"
+                }
+              },
+              {
+                "id": "fault",
+                "label": {
+                  "en": "Fault",
+                  "nl": "Storing",
+                  "de": "Fehler",
+                  "fr": "Défaut",
+                  "es": "Fallo",
+                  "it": "Guasto",
+                  "da": "Fejl",
+                  "sv": "Fel",
+                  "no": "Feil",
+                  "pl": "Usterka",
+                  "ru": "Неисправность",
+                  "ar": "عطل",
+                  "ko": "고장"
+                }
+              },
+              {
+                "id": "permanent_fault",
+                "label": {
+                  "en": "Permanent fault",
+                  "nl": "Permanente storing",
+                  "de": "Dauerhafter Fehler",
+                  "fr": "Défaut permanent",
+                  "es": "Fallo permanente",
+                  "it": "Guasto permanente",
+                  "da": "Permanent fejl",
+                  "sv": "Permanent fel",
+                  "no": "Permanent feil",
+                  "pl": "Trwała usterka",
+                  "ru": "Постоянная неисправность",
+                  "ar": "عطل دائم",
+                  "ko": "영구 고장"
+                }
+              },
+              {
+                "id": "standby",
+                "label": {
+                  "en": "Standby",
+                  "nl": "Stand-by",
+                  "de": "Standby",
+                  "fr": "Veille",
+                  "es": "Reposo",
+                  "it": "Standby",
+                  "da": "Standby",
+                  "sv": "Standby",
+                  "no": "Standby",
+                  "pl": "Czuwanie",
+                  "ru": "Режим ожидания",
+                  "ar": "وضع الاستعداد",
+                  "ko": "대기 모드"
+                }
+              },
+              {
+                "id": "upgrading",
+                "label": {
+                  "en": "Upgrading",
+                  "nl": "Bijwerken",
+                  "de": "Aktualisierung",
+                  "fr": "Mise à jour",
+                  "es": "Actualizando",
+                  "it": "Aggiornamento",
+                  "da": "Opdaterer",
+                  "sv": "Uppdaterar",
+                  "no": "Oppdaterer",
+                  "pl": "Aktualizacja",
+                  "ru": "Обновление",
+                  "ar": "جارٍ التحديث",
+                  "ko": "업데이트 중"
+                }
+              },
+              {
+                "id": "fct",
+                "label": {
+                  "en": "FCT",
+                  "nl": "FCT",
+                  "de": "FCT",
+                  "fr": "FCT",
+                  "es": "FCT",
+                  "it": "FCT",
+                  "da": "FCT",
+                  "sv": "FCT",
+                  "no": "FCT",
+                  "pl": "FCT",
+                  "ru": "FCT",
+                  "ar": "FCT",
+                  "ko": "FCT"
+                }
+              },
+              {
+                "id": "illegal",
+                "label": {
+                  "en": "Invalid state",
+                  "nl": "Ongeldige status",
+                  "de": "Ungültiger Zustand",
+                  "fr": "État invalide",
+                  "es": "Estado no válido",
+                  "it": "Stato non valido",
+                  "da": "Ugyldig tilstand",
+                  "sv": "Ogiltigt läge",
+                  "no": "Ugyldig tilstand",
+                  "pl": "Nieprawidłowy stan",
+                  "ru": "Недопустимое состояние",
+                  "ar": "حالة غير صالحة",
+                  "ko": "잘못된 상태"
+                }
+              },
+              {
+                "id": "unknown",
+                "label": {
+                  "en": "Unknown",
+                  "nl": "Onbekend",
+                  "de": "Unbekannt",
+                  "fr": "Inconnu",
+                  "es": "Desconocido",
+                  "it": "Sconosciuto",
+                  "da": "Ukendt",
+                  "sv": "Okänd",
+                  "no": "Ukjent",
+                  "pl": "Nieznany",
+                  "ru": "Неизвестно",
+                  "ar": "غير معروف",
+                  "ko": "알 수 없음"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "running_state_is"
+      }
+    ],
+    "actions": [
+      {
+        "title": {
+          "en": "Get status update",
+          "nl": "Haal status update op",
+          "de": "Status-Update anfordern",
+          "fr": "Obtenir la mise à jour du statut",
+          "it": "Ottieni aggiornamento di stato",
+          "es": "Obtener actualización de estado",
+          "pl": "Pobierz aktualizację statusu",
+          "sv": "Hämta statusuppdatering",
+          "no": "Hent statusoppdatering",
+          "da": "Hent statusopdatering",
+          "ru": "Получить обновление статуса",
+          "ko": "상태 업데이트 가져오기",
+          "ar": "الحصول على تحديث الحالة"
+        },
+        "hint": {
+          "en": "This will try to update the status of all devices immediately. Careful: too many updates will cause the server to temporarily block you.",
+          "nl": "Dit zal proberen de status van alle apparaten onmiddellijk bij te werken. Let op: te veel updates zullen ervoor zorgen dat de server je tijdelijk blokkeert.",
+          "de": "Dies versucht, den Status aller Geräte sofort zu aktualisieren. Achtung: Zu viele Updates führen dazu, dass der Server Sie vorübergehend blockiert.",
+          "fr": "Cela tentera de mettre à jour le statut de tous les appareils immédiatement. Attention : trop de mises à jour entraîneront un blocage temporaire par le serveur.",
+          "it": "Questo proverà ad aggiornare immediatamente lo stato di tutti i dispositivi. Attenzione: troppi aggiornamenti faranno sì che il server ti blocchi temporaneamente.",
+          "es": "Esto intentará actualizar el estado de todos los dispositivos de inmediato. Cuidado: demasiadas actualizaciones harán que el servidor te bloquee temporalmente.",
+          "pl": "Spowoduje to próbę natychmiastowej aktualizacji statusu wszystkich urządzeń. Uwaga: zbyt wiele aktualizacji spowoduje tymczasowe zablokowanie przez serwer.",
+          "sv": "Detta kommer att försöka uppdatera statusen för alla enheter omedelbart. Varning: för många uppdateringar gör att servern tillfälligt blockerar dig.",
+          "no": "Dette vil prøve å oppdatere statusen for alle enheter umiddelbart. Forsiktig: for mange oppdateringer vil føre til at serveren midlertidig blokkerer deg.",
+          "da": "Dette vil forsøge at opdatere status for alle enheder med det samme. Forsigtig: For mange opdateringer vil medføre, at serveren midlertidigt blokerer dig.",
+          "ru": "Это попытается немедленно обновить статус всех устройств. Осторожно: слишком много обновлений приведет к временной блокировке на сервере.",
+          "ko": "오늘의 장치 상태를 즉시 업데이트하도록 시도합니다. 주의: 업데이트가 너무 많으면 서버에서 일시적으로 차단될 수 있습니다.",
+          "ar": "سيحاول هذا تحديث حالة جميع الأجهزة على الفور. احذر: كثرة التحديثات ستؤدي إلى حظرك مؤقتًا من قبل الخادم."
+        },
+        "id": "force_poll"
+      },
+      {
+        "title": {
+          "en": "Set export limit",
+          "nl": "Stel terugleverlimiet in",
+          "de": "Einspeiselimit einstellen",
+          "fr": "Définir la limite d'injection",
+          "es": "Establecer límite de inyección",
+          "it": "Imposta limite di immissione",
+          "da": "Indstil leveringsgrænse",
+          "sv": "Ställ in inmatningsgräns",
+          "no": "Still inn innmatingsgrense",
+          "pl": "Ustaw limit oddawania do sieci",
+          "ru": "Установить предел отдачи в сеть",
+          "ar": "تعيين حد التصدير للشبكة",
+          "ko": "송전 한도 설정"
+        },
+        "titleFormatted": {
+          "en": "Set export limit to [[watts]] W",
+          "nl": "Stel terugleverlimiet in op [[watts]] W",
+          "de": "Einspeiselimit auf [[watts]] W einstellen",
+          "fr": "Définir la limite d'injection à [[watts]] W",
+          "es": "Establecer límite de inyección en [[watts]] W",
+          "it": "Imposta limite di immissione a [[watts]] W",
+          "da": "Indstil leveringsgrænse til [[watts]] W",
+          "sv": "Ställ in inmatningsgräns på [[watts]] W",
+          "no": "Still inn innmatingsgrense til [[watts]] W",
+          "pl": "Ustaw limit oddawania do sieci na [[watts]] W",
+          "ru": "Установить предел отдачи в сеть [[watts]] Вт",
+          "ar": "تعيين حد التصدير إلى [[watts]] واط",
+          "ko": "송전 한도를 [[watts]] W로 설정"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=inverter&capabilities=export_limit"
+          },
+          {
+            "type": "number",
+            "name": "watts",
+            "min": 0,
+            "max": 60000,
+            "step": 1,
+            "placeholder": {
+              "en": "0",
+              "nl": "0",
+              "de": "0",
+              "fr": "0",
+              "es": "0",
+              "it": "0",
+              "da": "0",
+              "sv": "0",
+              "no": "0",
+              "pl": "0",
+              "ru": "0",
+              "ar": "0",
+              "ko": "0"
+            },
+            "title": {
+              "en": "Limit",
+              "nl": "Limiet",
+              "de": "Limit",
+              "fr": "Limite",
+              "es": "Límite",
+              "it": "Limite",
+              "da": "Grænse",
+              "sv": "Gräns",
+              "no": "Grense",
+              "pl": "Limit",
+              "ru": "Предел",
+              "ar": "الحد",
+              "ko": "한도"
+            }
+          }
+        ],
+        "id": "set_export_limit"
+      },
+      {
+        "title": {
+          "en": "Set SoC limits",
+          "nl": "Stel SoC-grenzen in",
+          "de": "SoC-Grenzen einstellen",
+          "fr": "Définir les limites de SoC",
+          "es": "Establecer límites de SoC",
+          "it": "Imposta limiti di SoC",
+          "da": "Indstil SoC-grænser",
+          "sv": "Ställ in SoC-gränser",
+          "no": "Still inn SoC-grenser",
+          "pl": "Ustaw limity SoC",
+          "ru": "Установить пределы SoC",
+          "ar": "تعيين حدود الشحن",
+          "ko": "SoC 한도 설정"
+        },
+        "titleFormatted": {
+          "en": "Set SoC limits to [[min]]–[[max]]%, on grid [[ongrid]]%",
+          "nl": "Stel SoC-grenzen in op [[min]]–[[max]]%, op net [[ongrid]]%",
+          "de": "SoC-Grenzen auf [[min]]–[[max]] % einstellen, am Netz [[ongrid]] %",
+          "fr": "Définir les limites de SoC à [[min]]–[[max]] %, sur réseau [[ongrid]] %",
+          "es": "Establecer límites de SoC en [[min]]–[[max]] %, en red [[ongrid]] %",
+          "it": "Imposta limiti di SoC a [[min]]–[[max]]%, in rete [[ongrid]]%",
+          "da": "Indstil SoC-grænser til [[min]]–[[max]] %, på nettet [[ongrid]] %",
+          "sv": "Ställ in SoC-gränser på [[min]]–[[max]] %, mot nätet [[ongrid]] %",
+          "no": "Still inn SoC-grenser til [[min]]–[[max]] %, på nettet [[ongrid]] %",
+          "pl": "Ustaw limity SoC na [[min]]–[[max]]%, przy sieci [[ongrid]]%",
+          "ru": "Установить пределы SoC [[min]]–[[max]] %, от сети [[ongrid]] %",
+          "ar": "تعيين حدود الشحن إلى [[min]]–[[max]]%، مع الشبكة [[ongrid]]%",
+          "ko": "SoC 한도를 [[min]]–[[max]]%, 계통 연결 시 [[ongrid]]%로 설정"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=battery&capabilities=battery_min_soc"
+          },
+          {
+            "type": "range",
+            "name": "min",
+            "min": 10,
+            "max": 100,
+            "step": 1,
+            "label": "%",
+            "labelMultiplier": 1,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Minimum",
+              "nl": "Minimum",
+              "de": "Minimum",
+              "fr": "Minimum",
+              "es": "Mínimo",
+              "it": "Minimo",
+              "da": "Minimum",
+              "sv": "Minimum",
+              "no": "Minimum",
+              "pl": "Minimum",
+              "ru": "Минимум",
+              "ar": "الحد الأدنى",
+              "ko": "최소"
+            }
+          },
+          {
+            "type": "range",
+            "name": "max",
+            "min": 10,
+            "max": 100,
+            "step": 1,
+            "label": "%",
+            "labelMultiplier": 1,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Maximum",
+              "nl": "Maximum",
+              "de": "Maximum",
+              "fr": "Maximum",
+              "es": "Máximo",
+              "it": "Massimo",
+              "da": "Maksimum",
+              "sv": "Maximum",
+              "no": "Maksimum",
+              "pl": "Maksimum",
+              "ru": "Максимум",
+              "ar": "الحد الأقصى",
+              "ko": "최대"
+            }
+          },
+          {
+            "type": "range",
+            "name": "ongrid",
+            "min": 10,
+            "max": 100,
+            "step": 1,
+            "label": "%",
+            "labelMultiplier": 1,
+            "labelDecimals": 0,
+            "title": {
+              "en": "Minimum on grid",
+              "nl": "Minimum op net",
+              "de": "Minimum am Netz",
+              "fr": "Minimum sur réseau",
+              "es": "Mínimo en red",
+              "it": "Minimo in rete",
+              "da": "Minimum på nettet",
+              "sv": "Minimum mot nätet",
+              "no": "Minimum på nettet",
+              "pl": "Minimum przy sieci",
+              "ru": "Минимум от сети",
+              "ar": "الحد الأدنى مع الشبكة",
+              "ko": "계통 연결 시 최소"
+            }
+          }
+        ],
+        "id": "set_soc_limits"
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Battery",
+        "nl": "Batterij",
+        "de": "Batterie",
+        "fr": "Batterie",
+        "it": "Batteria",
+        "es": "Batería",
+        "pl": "Akumulator",
+        "sv": "Batteri",
+        "no": "Batteri",
+        "da": "Batteri",
+        "ru": "Батарея",
+        "ko": "배터리",
+        "ar": "بطارية"
+      },
+      "class": "battery",
+      "capabilities": [
+        "measure_power",
+        "measure_battery",
+        "measure_temperature",
+        "meter_power.charged",
+        "meter_power.discharged"
+      ],
+      "capabilitiesOptions": {
+        "meter_power.charged": {
+          "title": {
+            "en": "Charged Energy",
+            "nl": "Geladen energie",
+            "de": "Geladene Energie",
+            "fr": "Énergie chargée",
+            "it": "Energia caricata",
+            "es": "Energía cargada",
+            "pl": "Naładowana energia",
+            "sv": "Laddad energi",
+            "no": "Ladet energi",
+            "da": "Opladet energi",
+            "ru": "Заряженная энергия",
+            "ko": "충전된 에너지",
+            "ar": "الطاقة المشحونة"
+          }
+        },
+        "meter_power.discharged": {
+          "title": {
+            "en": "Discharged Energy",
+            "nl": "Ontladen energie",
+            "de": "Entladene Energie",
+            "fr": "Énergie déchargée",
+            "it": "Energia scaricata",
+            "es": "Energía descargada",
+            "pl": "Rozładowana energia",
+            "sv": "Urladdad energi",
+            "no": "Utladet energi",
+            "da": "Afladet energi",
+            "ru": "Разряженная энергия",
+            "ko": "방전된 에너지",
+            "ar": "الطاقة المفرغة"
+          }
+        },
+        "measure_voltage": {
+          "title": {
+            "en": "Battery voltage",
+            "nl": "Batterijspanning",
+            "de": "Batteriespannung",
+            "fr": "Tension batterie",
+            "es": "Voltaje de batería",
+            "it": "Tensione batteria",
+            "da": "Batterispænding",
+            "sv": "Batterispänning",
+            "no": "Batterispenning",
+            "pl": "Napięcie akumulatora",
+            "ru": "Напряжение батареи",
+            "ar": "جهد البطارية",
+            "ko": "배터리 전압"
+          }
+        },
+        "measure_current": {
+          "title": {
+            "en": "Battery current",
+            "nl": "Batterijstroom",
+            "de": "Batteriestrom",
+            "fr": "Courant batterie",
+            "es": "Corriente de batería",
+            "it": "Corrente batteria",
+            "da": "Batteristrøm",
+            "sv": "Batteriström",
+            "no": "Batteristrøm",
+            "pl": "Prąd akumulatora",
+            "ru": "Ток батареи",
+            "ar": "تيار البطارية",
+            "ko": "배터리 전류"
+          }
+        },
+        "meter_power.throughput": {
+          "title": {
+            "en": "Energy throughput",
+            "nl": "Energiedoorvoer",
+            "de": "Energiedurchsatz",
+            "fr": "Énergie échangée",
+            "es": "Energía procesada",
+            "it": "Energia scambiata",
+            "da": "Energigennemstrømning",
+            "sv": "Energigenomströmning",
+            "no": "Energigjennomstrømning",
+            "pl": "Przepływ energii",
+            "ru": "Пропущенная энергия",
+            "ar": "إجمالي الطاقة المتداولة",
+            "ko": "에너지 처리량"
+          },
+          "decimals": 1
+        },
+        "target_power_mode": {
+          "values": [
+            {
+              "id": "homey",
+              "title": {
+                "en": "Homey",
+                "nl": "Homey",
+                "de": "Homey",
+                "fr": "Homey",
+                "it": "Homey",
+                "es": "Homey",
+                "pl": "Homey",
+                "sv": "Homey",
+                "no": "Homey",
+                "da": "Homey",
+                "ru": "Homey",
+                "ko": "Homey",
+                "ar": "Homey"
+              }
+            },
+            {
+              "id": "self_use",
+              "title": {
+                "en": "Self-use",
+                "nl": "Eigen verbruik",
+                "de": "Eigenverbrauch",
+                "fr": "Autoconsommation",
+                "it": "Autoconsumo",
+                "es": "Autoconsumo",
+                "pl": "Autokonsumpcja",
+                "sv": "Egenanvändning",
+                "no": "Egetforbruk",
+                "da": "Eget forbrug",
+                "ru": "Собственное потребление",
+                "ko": "자가 소비",
+                "ar": "الاستهلاك الذاتي"
+              }
+            },
+            {
+              "id": "feed_in",
+              "title": {
+                "en": "Feed-in priority",
+                "nl": "Teruglevering eerst",
+                "de": "Einspeisung zuerst",
+                "fr": "Priorité injection",
+                "it": "Priorità immissione",
+                "es": "Prioridad de inyección",
+                "pl": "Priorytet oddawania do sieci",
+                "sv": "Inmatning först",
+                "no": "Innmating først",
+                "da": "Levering til nettet først",
+                "ru": "Приоритет отдачи в сеть",
+                "ko": "계통 송전 우선",
+                "ar": "أولوية التغذية للشبكة"
+              }
+            },
+            {
+              "id": "backup",
+              "title": {
+                "en": "Backup",
+                "nl": "Back-up",
+                "de": "Notstromreserve",
+                "fr": "Secours",
+                "it": "Backup",
+                "es": "Respaldo",
+                "pl": "Rezerwa",
+                "sv": "Reserv",
+                "no": "Reserve",
+                "da": "Backup",
+                "ru": "Резерв",
+                "ko": "백업",
+                "ar": "احتياطي"
+              }
+            },
+            {
+              "id": "peak_shaving",
+              "title": {
+                "en": "Peak shaving",
+                "nl": "Piekafvlakking",
+                "de": "Spitzenlastkappung",
+                "fr": "Écrêtement des pointes",
+                "it": "Riduzione dei picchi",
+                "es": "Recorte de picos",
+                "pl": "Ścinanie szczytów",
+                "sv": "Toppkapning",
+                "no": "Toppkutting",
+                "da": "Spidsbelastningsudjævning",
+                "ru": "Сглаживание пиков",
+                "ko": "피크 저감",
+                "ar": "خفض الذروة"
+              }
+            },
+            {
+              "id": "schedule",
+              "title": {
+                "en": "FoxCloud schedule",
+                "nl": "FoxCloud-schema",
+                "de": "FoxCloud-Zeitplan",
+                "fr": "Planning FoxCloud",
+                "it": "Programma FoxCloud",
+                "es": "Programación FoxCloud",
+                "pl": "Harmonogram FoxCloud",
+                "sv": "FoxCloud-schema",
+                "no": "FoxCloud-plan",
+                "da": "FoxCloud-plan",
+                "ru": "Расписание FoxCloud",
+                "ko": "FoxCloud 일정",
+                "ar": "جدول FoxCloud"
+              }
+            }
+          ]
+        },
+        "target_power": {
+          "min": -5000,
+          "max": 5000,
+          "step": 100
+        },
+        "alarm_generic.control": {
+          "title": {
+            "en": "Control overridden",
+            "nl": "Sturing overschreven",
+            "de": "Steuerung überschrieben",
+            "fr": "Pilotage écrasé",
+            "es": "Control anulado",
+            "it": "Controllo sovrascritto",
+            "da": "Styring overskrevet",
+            "sv": "Styrning överskriven",
+            "no": "Styring overstyrt",
+            "pl": "Sterowanie nadpisane",
+            "ru": "Управление перехвачено",
+            "ar": "تم تجاوز التحكم",
+            "ko": "제어 덮어씀"
+          }
+        }
+      },
+      "energy": {
+        "homeBattery": true,
+        "meterPowerImportedCapability": "meter_power.charged",
+        "meterPowerExportedCapability": "meter_power.discharged"
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/battery/assets/images/small.png",
+        "large": "/drivers/battery/assets/images/large.png",
+        "xlarge": "/drivers/battery/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login_apikey",
+          "navigation": {
+            "next": "list_devices"
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login_apikey"
+        }
+      ],
+      "id": "battery",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Meter information",
+            "nl": "Meter informatie",
+            "de": "Zählerinformationen",
+            "fr": "Informations du compteur",
+            "it": "Informazioni contatore",
+            "es": "Información del medidor",
+            "pl": "Informacje o liczniku",
+            "sv": "Mätarinformation",
+            "no": "Målerinformasjon",
+            "da": "Målerinformation",
+            "ru": "Информация о счетчике",
+            "ko": "계량기 정보",
+            "ar": "معلومات العداد"
+          },
+          "children": [
+            {
+              "id": "plantName",
+              "type": "label",
+              "label": {
+                "en": "Plant name",
+                "nl": "Plant naam",
+                "de": "Anlagenname",
+                "fr": "Nom de l'installation",
+                "it": "Nome impianto",
+                "es": "Nombre de la planta",
+                "pl": "Nazwa instalacji",
+                "sv": "Anläggningsnamn",
+                "no": "Anleggsnavn",
+                "da": "Anlægsnavn",
+                "ru": "Название станции",
+                "ko": "발전소 이름",
+                "ar": "اسم المحطة"
+              },
+              "value": ""
+            },
+            {
+              "id": "plantId",
+              "type": "label",
+              "label": {
+                "en": "Plant ID",
+                "nl": "Plant ID",
+                "de": "Anlagen-ID",
+                "fr": "ID de l'installation",
+                "it": "ID impianto",
+                "es": "ID de la planta",
+                "pl": "ID instalacji",
+                "sv": "Anläggnings-ID",
+                "no": "Anleggs-ID",
+                "da": "Anlægs-ID",
+                "ru": "ID станции",
+                "ko": "발전소 ID",
+                "ar": "معرف المحطة"
+              },
+              "value": ""
+            },
+            {
+              "id": "deviceName",
+              "type": "label",
+              "label": {
+                "en": "Device name",
+                "nl": "Apparaat naam",
+                "de": "Gerätename",
+                "fr": "Nom de l'appareil",
+                "it": "Nome dispositivo",
+                "es": "Nombre del dispositivo",
+                "pl": "Nazwa urządzenia",
+                "sv": "Enhetsnamn",
+                "no": "Enhetsnavn",
+                "da": "Enhedsnavn",
+                "ru": "Название устройства",
+                "ko": "장치 이름",
+                "ar": "اسم الجهاز"
+              },
+              "value": ""
+            },
+            {
+              "id": "deviceModelCode",
+              "type": "label",
+              "label": {
+                "en": "Model",
+                "nl": "Model",
+                "de": "Modell",
+                "fr": "Modèle",
+                "it": "Modello",
+                "es": "Modelo",
+                "pl": "Model",
+                "sv": "Modell",
+                "no": "Modell",
+                "da": "Model",
+                "ru": "Модель",
+                "ko": "모델",
+                "ar": "طراز"
+              },
+              "value": ""
+            },
+            {
+              "id": "deviceSn",
+              "type": "label",
+              "label": {
+                "en": "Serial number",
+                "nl": "Serienummer",
+                "de": "Seriennummer",
+                "fr": "Numéro de série",
+                "it": "Numero di serie",
+                "es": "Número de serie",
+                "pl": "Numer seryjny",
+                "sv": "Serienummer",
+                "no": "Serienummer",
+                "da": "Serienummer",
+                "ru": "Серийный номер",
+                "ko": "일련 번호",
+                "ar": "الرقم التسلسلي"
+              },
+              "value": ""
+            },
+            {
+              "id": "region",
+              "type": "label",
+              "label": {
+                "en": "Cloud region",
+                "nl": "Cloud-regio",
+                "de": "Cloud-Region",
+                "fr": "Région cloud",
+                "it": "Regione cloud",
+                "es": "Región de la nube",
+                "pl": "Region chmury",
+                "sv": "Molnregion",
+                "no": "Skyregion",
+                "da": "Cloud-region",
+                "ru": "Облачный регион",
+                "ko": "클라우드 지역",
+                "ar": "منطقة السحابة"
+              },
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Heat pump",
+        "nl": "Warmtepomp",
+        "de": "Wärmepumpe",
+        "fr": "Pompe à chaleur",
+        "it": "Pompa di calore",
+        "es": "Bomba de calor",
+        "pl": "Pompa ciepła",
+        "sv": "Värmepump",
+        "no": "Varmepumpe",
+        "da": "Varmepumpe",
+        "ru": "Тепловой насос",
+        "ko": "히트펌프",
+        "ar": "مضخة حرارية"
+      },
+      "class": "heatpump",
+      "capabilities": [
+        "thermostat_mode",
+        "onoff.dhw",
+        "target_temperature.dhw"
+      ],
+      "capabilitiesOptions": {
+        "onoff.dhw": {
+          "title": {
+            "en": "Hot water",
+            "nl": "Warm water",
+            "de": "Warmwasser",
+            "fr": "Eau chaude",
+            "it": "Acqua calda",
+            "es": "Agua caliente",
+            "pl": "Ciepła woda",
+            "sv": "Varmvatten",
+            "no": "Varmtvann",
+            "da": "Varmt vand",
+            "ru": "Горячая вода",
+            "ko": "온수",
+            "ar": "الماء الساخن"
+          },
+          "insightsTitleTrue": {
+            "en": "Hot water turned on",
+            "nl": "Warm water ingeschakeld",
+            "de": "Warmwasser eingeschaltet",
+            "fr": "Eau chaude activée",
+            "it": "Acqua calda attivata",
+            "es": "Agua caliente activada",
+            "pl": "Ciepła woda włączona",
+            "sv": "Varmvatten påslaget",
+            "no": "Varmtvann slått på",
+            "da": "Varmt vand tændt",
+            "ru": "Горячая вода включена",
+            "ko": "온수 켜짐",
+            "ar": "تم تشغيل الماء الساخن"
+          },
+          "insightsTitleFalse": {
+            "en": "Hot water turned off",
+            "nl": "Warm water uitgeschakeld",
+            "de": "Warmwasser ausgeschaltet",
+            "fr": "Eau chaude désactivée",
+            "it": "Acqua calda disattivata",
+            "es": "Agua caliente desactivada",
+            "pl": "Ciepła woda wyłączona",
+            "sv": "Varmvatten avstängt",
+            "no": "Varmtvann slått av",
+            "da": "Varmt vand slukket",
+            "ru": "Горячая вода выключена",
+            "ko": "온수 꺼짐",
+            "ar": "تم إيقاف الماء الساخن"
+          }
+        },
+        "target_temperature.dhw": {
+          "title": {
+            "en": "Hot water temperature",
+            "nl": "Warmwatertemperatuur",
+            "de": "Warmwassertemperatur",
+            "fr": "Température de l'eau chaude",
+            "it": "Temperatura acqua calda",
+            "es": "Temperatura del agua caliente",
+            "pl": "Temperatura ciepłej wody",
+            "sv": "Varmvattentemperatur",
+            "no": "Varmtvannstemperatur",
+            "da": "Varmtvandstemperatur",
+            "ru": "Температура горячей воды",
+            "ko": "온수 온도",
+            "ar": "درجة حرارة الماء الساخن"
+          },
+          "min": 30,
+          "max": 65,
+          "step": 0.5,
+          "decimals": 1
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/heatpump/assets/images/small.png",
+        "large": "/drivers/heatpump/assets/images/large.png",
+        "xlarge": "/drivers/heatpump/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login_apikey",
+          "navigation": {
+            "next": "list_devices"
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login_apikey"
+        }
+      ],
+      "id": "heatpump",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Heat pump information",
+            "nl": "Warmtepomp informatie",
+            "de": "Wärmepumpen-Informationen",
+            "fr": "Informations de la pompe à chaleur",
+            "it": "Informazioni pompa di calore",
+            "es": "Información de la bomba de calor",
+            "pl": "Informacje o pompie ciepła",
+            "sv": "Värmepumpsinformation",
+            "no": "Varmepumpeinformasjon",
+            "da": "Varmepumpeinformation",
+            "ru": "Информация о тепловом насосе",
+            "ko": "히트펌프 정보",
+            "ar": "معلومات المضخة الحرارية"
+          },
+          "children": [
+            {
+              "id": "productType",
+              "type": "label",
+              "label": {
+                "en": "Model",
+                "nl": "Model",
+                "de": "Modell",
+                "fr": "Modèle",
+                "it": "Modello",
+                "es": "Modelo",
+                "pl": "Model",
+                "sv": "Modell",
+                "no": "Modell",
+                "da": "Model",
+                "ru": "Модель",
+                "ko": "모델",
+                "ar": "طراز"
+              },
+              "value": ""
+            },
+            {
+              "id": "heatSn",
+              "type": "label",
+              "label": {
+                "en": "Outdoor unit serial number",
+                "nl": "Serienummer buitenunit",
+                "de": "Seriennummer Außeneinheit",
+                "fr": "Numéro de série de l'unité extérieure",
+                "it": "Numero di serie unità esterna",
+                "es": "Número de serie de la unidad exterior",
+                "pl": "Numer seryjny jednostki zewnętrznej",
+                "sv": "Serienummer utomhusenhet",
+                "no": "Serienummer utedel",
+                "da": "Serienummer udedel",
+                "ru": "Серийный номер наружного блока",
+                "ko": "실외기 일련 번호",
+                "ar": "الرقم التسلسلي للوحدة الخارجية"
+              },
+              "value": ""
+            },
+            {
+              "id": "moduleSn",
+              "type": "label",
+              "label": {
+                "en": "Module serial number",
+                "nl": "Serienummer module",
+                "de": "Seriennummer Modul",
+                "fr": "Numéro de série du module",
+                "it": "Numero di serie modulo",
+                "es": "Número de serie del módulo",
+                "pl": "Numer seryjny modułu",
+                "sv": "Serienummer modul",
+                "no": "Serienummer modul",
+                "da": "Serienummer modul",
+                "ru": "Серийный номер модуля",
+                "ko": "모듈 일련 번호",
+                "ar": "الرقم التسلسلي للوحدة"
+              },
+              "value": ""
+            },
+            {
+              "id": "masterVersion",
+              "type": "label",
+              "label": {
+                "en": "Firmware version",
+                "nl": "Firmwareversie",
+                "de": "Firmware-Version",
+                "fr": "Version du micrologiciel",
+                "it": "Versione firmware",
+                "es": "Versión del firmware",
+                "pl": "Wersja oprogramowania",
+                "sv": "Firmwareversion",
+                "no": "Fastvareversjon",
+                "da": "Firmwareversion",
+                "ru": "Версия прошивки",
+                "ko": "펌웨어 버전",
+                "ar": "إصدار البرنامج الثابت"
+              },
+              "value": ""
+            },
+            {
+              "id": "region",
+              "type": "label",
+              "label": {
+                "en": "Cloud region",
+                "nl": "Cloud-regio",
+                "de": "Cloud-Region",
+                "fr": "Région cloud",
+                "it": "Regione cloud",
+                "es": "Región de la nube",
+                "pl": "Region chmury",
+                "sv": "Molnregion",
+                "no": "Skyregion",
+                "da": "Cloud-region",
+                "ru": "Облачный регион",
+                "ko": "클라우드 지역",
+                "ar": "منطقة السحابة"
+              },
+              "value": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Solar inverter",
+        "nl": "PV omvormer",
+        "de": "Solar-Wechselrichter",
+        "fr": "Onduleur solaire",
+        "it": "Inverter solare",
+        "es": "Inversor solar",
+        "pl": "Inwerter fotowoltaiczny",
+        "sv": "Solcellsväxelriktare",
+        "no": "Solcellevekselretter",
+        "da": "Solcelleinverter",
+        "ru": "Солнечный инвертор",
+        "ko": "태양광 인버터",
+        "ar": "عاكس شمسي"
+      },
+      "class": "solarpanel",
+      "capabilities": [
+        "measure_power",
+        "meter_power",
+        "meter_power.today",
+        "measure_temperature"
+      ],
+      "capabilitiesOptions": {
+        "meter_power.month": {
+          "title": {
+            "en": "Energy this month",
+            "nl": "Energie deze maand",
+            "de": "Energie diesen Monat",
+            "fr": "Énergie du mois",
+            "it": "Energia di questo mese",
+            "es": "Energía de este mes",
+            "pl": "Energia w tym miesiącu",
+            "sv": "Energi denna månad",
+            "no": "Energi denne måneden",
+            "da": "Energi denne måned",
+            "ru": "Энергия за этот месяц",
+            "ko": "이번 달 에너지",
+            "ar": "طاقة هذا الشهر"
+          }
+        },
+        "meter_power.today": {
+          "title": {
+            "en": "Energy today",
+            "nl": "Energie vandaag",
+            "de": "Energie heute",
+            "fr": "Énergie du jour",
+            "it": "Energia di oggi",
+            "es": "Energía de hoy",
+            "pl": "Dzisiejsza energia",
+            "sv": "Energi idag",
+            "no": "Energi i dag",
+            "da": "Energi i dag",
+            "ru": "Энергия за сегодня",
+            "ko": "오늘의 에너지",
+            "ar": "طاقة اليوم"
+          }
+        },
+        "measure_power.ac_inverter": {
+          "title": {
+            "en": "Inverter power (AC)",
+            "nl": "Omvormer vermogen (AC)",
+            "de": "Inverterleistung (AC)",
+            "fr": "Puissance onduleur (CA)",
+            "es": "Potencia inversor (CA)",
+            "it": "Potenza inverter (CA)",
+            "da": "Inverter effekt (AC)",
+            "sv": "Växelriktareffekt (AC)",
+            "no": "Inverter effekt (AC)",
+            "pl": "Moc falownika (AC)",
+            "ru": "Мощность инвертора (AC)",
+            "ar": "قدرة العاكس (AC)",
+            "ko": "인버터 전력(AC)"
+          },
+          "decimals": 0
+        },
+        "meter_power.ac_inverter": {
+          "title": {
+            "en": "Inverter energy (AC)",
+            "nl": "Omvormeropbrengst (AC)",
+            "de": "Inverterertrag (AC)",
+            "fr": "Énergie onduleur (CA)",
+            "es": "Energía inversor (CA)",
+            "it": "Energia inverter (CA)",
+            "da": "Inverterproduktion (AC)",
+            "sv": "Växelriktarenergi (AC)",
+            "no": "Inverterproduksjon (AC)",
+            "pl": "Uzysk falownika (AC)",
+            "ru": "Энергия инвертора (AC)",
+            "ar": "إنتاج العاكس (AC)",
+            "ko": "인버터 발전량 (AC)"
+          },
+          "decimals": 2
+        },
+        "measure_power.pv1": {
+          "title": {
+            "en": "PV1 power",
+            "nl": "PV1 vermogen",
+            "de": "PV1 Leistung",
+            "fr": "Puissance PV1",
+            "es": "Potencia PV1",
+            "it": "Potenza PV1",
+            "da": "PV1 effekt",
+            "sv": "PV1 effekt",
+            "no": "PV1 effekt",
+            "pl": "Moc PV1",
+            "ru": "Мощность PV1",
+            "ar": "القدرة PV1",
+            "ko": "PV1 전력"
+          },
+          "decimals": 0
+        },
+        "measure_power.pv2": {
+          "title": {
+            "en": "PV2 power",
+            "nl": "PV2 vermogen",
+            "de": "PV2 Leistung",
+            "fr": "Puissance PV2",
+            "es": "Potencia PV2",
+            "it": "Potenza PV2",
+            "da": "PV2 effekt",
+            "sv": "PV2 effekt",
+            "no": "PV2 effekt",
+            "pl": "Moc PV2",
+            "ru": "Мощность PV2",
+            "ar": "القدرة PV2",
+            "ko": "PV2 전력"
+          },
+          "decimals": 0
+        },
+        "measure_power.pv3": {
+          "title": {
+            "en": "PV3 power",
+            "nl": "PV3 vermogen",
+            "de": "PV3 Leistung",
+            "fr": "Puissance PV3",
+            "es": "Potencia PV3",
+            "it": "Potenza PV3",
+            "da": "PV3 effekt",
+            "sv": "PV3 effekt",
+            "no": "PV3 effekt",
+            "pl": "Moc PV3",
+            "ru": "Мощность PV3",
+            "ar": "القدرة PV3",
+            "ko": "PV3 전력"
+          },
+          "decimals": 0
+        },
+        "measure_power.pv4": {
+          "title": {
+            "en": "PV4 power",
+            "nl": "PV4 vermogen",
+            "de": "PV4 Leistung",
+            "fr": "Puissance PV4",
+            "es": "Potencia PV4",
+            "it": "Potenza PV4",
+            "da": "PV4 effekt",
+            "sv": "PV4 effekt",
+            "no": "PV4 effekt",
+            "pl": "Moc PV4",
+            "ru": "Мощность PV4",
+            "ar": "القدرة PV4",
+            "ko": "PV4 전력"
+          },
+          "decimals": 0
+        },
+        "measure_voltage.pv1": {
+          "title": {
+            "en": "PV1 voltage",
+            "nl": "PV1 spanning",
+            "de": "PV1 Spannung",
+            "fr": "Tension PV1",
+            "es": "Voltaje PV1",
+            "it": "Tensione PV1",
+            "da": "PV1 spænding",
+            "sv": "PV1 spänning",
+            "no": "PV1 spenning",
+            "pl": "Napięcie PV1",
+            "ru": "Напряжение PV1",
+            "ar": "الجهد PV1",
+            "ko": "PV1 전압"
+          }
+        },
+        "measure_voltage.pv2": {
+          "title": {
+            "en": "PV2 voltage",
+            "nl": "PV2 spanning",
+            "de": "PV2 Spannung",
+            "fr": "Tension PV2",
+            "es": "Voltaje PV2",
+            "it": "Tensione PV2",
+            "da": "PV2 spænding",
+            "sv": "PV2 spänning",
+            "no": "PV2 spenning",
+            "pl": "Napięcie PV2",
+            "ru": "Напряжение PV2",
+            "ar": "الجهد PV2",
+            "ko": "PV2 전압"
+          }
+        },
+        "measure_voltage.pv3": {
+          "title": {
+            "en": "PV3 voltage",
+            "nl": "PV3 spanning",
+            "de": "PV3 Spannung",
+            "fr": "Tension PV3",
+            "es": "Voltaje PV3",
+            "it": "Tensione PV3",
+            "da": "PV3 spænding",
+            "sv": "PV3 spänning",
+            "no": "PV3 spenning",
+            "pl": "Napięcie PV3",
+            "ru": "Напряжение PV3",
+            "ar": "الجهد PV3",
+            "ko": "PV3 전압"
+          }
+        },
+        "measure_voltage.pv4": {
+          "title": {
+            "en": "PV4 voltage",
+            "nl": "PV4 spanning",
+            "de": "PV4 Spannung",
+            "fr": "Tension PV4",
+            "es": "Voltaje PV4",
+            "it": "Tensione PV4",
+            "da": "PV4 spænding",
+            "sv": "PV4 spänning",
+            "no": "PV4 spenning",
+            "pl": "Napięcie PV4",
+            "ru": "Напряжение PV4",
+            "ar": "الجهد PV4",
+            "ko": "PV4 전압"
+          }
+        },
+        "measure_current.pv1": {
+          "title": {
+            "en": "PV1 current",
+            "nl": "PV1 stroom",
+            "de": "PV1 Strom",
+            "fr": "Courant PV1",
+            "es": "Corriente PV1",
+            "it": "Corrente PV1",
+            "da": "PV1 strøm",
+            "sv": "PV1 ström",
+            "no": "PV1 strøm",
+            "pl": "Prąd PV1",
+            "ru": "Ток PV1",
+            "ar": "التيار PV1",
+            "ko": "PV1 전류"
+          }
+        },
+        "measure_current.pv2": {
+          "title": {
+            "en": "PV2 current",
+            "nl": "PV2 stroom",
+            "de": "PV2 Strom",
+            "fr": "Courant PV2",
+            "es": "Corriente PV2",
+            "it": "Corrente PV2",
+            "da": "PV2 strøm",
+            "sv": "PV2 ström",
+            "no": "PV2 strøm",
+            "pl": "Prąd PV2",
+            "ru": "Ток PV2",
+            "ar": "التيار PV2",
+            "ko": "PV2 전류"
+          }
+        },
+        "measure_current.pv3": {
+          "title": {
+            "en": "PV3 current",
+            "nl": "PV3 stroom",
+            "de": "PV3 Strom",
+            "fr": "Courant PV3",
+            "es": "Corriente PV3",
+            "it": "Corrente PV3",
+            "da": "PV3 strøm",
+            "sv": "PV3 ström",
+            "no": "PV3 strøm",
+            "pl": "Prąd PV3",
+            "ru": "Ток PV3",
+            "ar": "التيار PV3",
+            "ko": "PV3 전류"
+          }
+        },
+        "measure_current.pv4": {
+          "title": {
+            "en": "PV4 current",
+            "nl": "PV4 stroom",
+            "de": "PV4 Strom",
+            "fr": "Courant PV4",
+            "es": "Corriente PV4",
+            "it": "Corrente PV4",
+            "da": "PV4 strøm",
+            "sv": "PV4 ström",
+            "no": "PV4 strøm",
+            "pl": "Prąd PV4",
+            "ru": "Ток PV4",
+            "ar": "التيار PV4",
+            "ko": "PV4 전류"
+          }
+        },
+        "measure_power.1": {
+          "title": {
+            "en": "Power phase 1 (AC)",
+            "nl": "Vermogen fase 1 (AC)",
+            "de": "Leistung Phase 1 (AC)",
+            "fr": "Puissance phase 1 (CA)",
+            "es": "Potencia fase 1 (CA)",
+            "it": "Potenza fase 1 (CA)",
+            "da": "Effekt fase 1 (AC)",
+            "sv": "Effekt fas 1 (AC)",
+            "no": "Effekt fase 1 (AC)",
+            "pl": "Moc fazy 1 (AC)",
+            "ru": "Мощность фазы 1 (AC)",
+            "ar": "قدرة المرحلة 1 (AC)",
+            "ko": "전력 위상 1 (AC)"
+          },
+          "decimals": 0
+        },
+        "measure_power.2": {
+          "title": {
+            "en": "Power phase 2 (AC)",
+            "nl": "Vermogen fase 2 (AC)",
+            "de": "Leistung Phase 2 (AC)",
+            "fr": "Puissance phase 2 (CA)",
+            "es": "Potencia fase 2 (CA)",
+            "it": "Potenza fase 2 (CA)",
+            "da": "Effekt fase 2 (AC)",
+            "sv": "Effekt fas 2 (AC)",
+            "no": "Effekt fase 2 (AC)",
+            "pl": "Moc fazy 2 (AC)",
+            "ru": "Мощность фазы 2 (AC)",
+            "ar": "قدرة المرحلة 2 (AC)",
+            "ko": "전력 위상 2 (AC)"
+          },
+          "decimals": 0
+        },
+        "measure_power.3": {
+          "title": {
+            "en": "Power phase 3 (AC)",
+            "nl": "Vermogen fase 3 (AC)",
+            "de": "Leistung Phase 3 (AC)",
+            "fr": "Puissance phase 3 (CA)",
+            "es": "Potencia fase 3 (CA)",
+            "it": "Potenza fase 3 (CA)",
+            "da": "Effekt fase 3 (AC)",
+            "sv": "Effekt fas 3 (AC)",
+            "no": "Effekt fase 3 (AC)",
+            "pl": "Moc fazy 3 (AC)",
+            "ru": "Мощность фазы 3 (AC)",
+            "ar": "قدرة المرحلة 3 (AC)",
+            "ko": "전력 위상 3 (AC)"
+          },
+          "decimals": 0
+        },
+        "measure_current.1": {
+          "title": {
+            "en": "Current phase 1 (AC)",
+            "nl": "Stroom fase 1 (AC)",
+            "de": "Strom Phase 1 (AC)",
+            "fr": "Courant phase 1 (CA)",
+            "es": "Corriente fase 1 (CA)",
+            "it": "Corrente fase 1 (CA)",
+            "da": "Strøm fase 1 (AC)",
+            "sv": "Ström fas 1 (AC)",
+            "no": "Strøm fase 1 (AC)",
+            "pl": "Prąd fazy 1 (AC)",
+            "ru": "Ток фазы 1 (AC)",
+            "ar": "تيار المرحلة 1 (AC)",
+            "ko": "전류 위상 1 (AC)"
+          }
+        },
+        "measure_current.2": {
+          "title": {
+            "en": "Current phase 2 (AC)",
+            "nl": "Stroom fase 2 (AC)",
+            "de": "Strom Phase 2 (AC)",
+            "fr": "Courant phase 2 (CA)",
+            "es": "Corriente fase 2 (CA)",
+            "it": "Corrente fase 2 (CA)",
+            "da": "Strøm fase 2 (AC)",
+            "sv": "Ström fas 2 (AC)",
+            "no": "Strøm fase 2 (AC)",
+            "pl": "Prąd fazy 2 (AC)",
+            "ru": "Ток фазы 2 (AC)",
+            "ar": "تيار المرحلة 2 (AC)",
+            "ko": "전류 위상 2 (AC)"
+          }
+        },
+        "measure_current.3": {
+          "title": {
+            "en": "Current phase 3 (AC)",
+            "nl": "Stroom fase 3 (AC)",
+            "de": "Strom Phase 3 (AC)",
+            "fr": "Courant phase 3 (CA)",
+            "es": "Corriente fase 3 (CA)",
+            "it": "Corrente fase 3 (CA)",
+            "da": "Strøm fase 3 (AC)",
+            "sv": "Ström fas 3 (AC)",
+            "no": "Strøm fase 3 (AC)",
+            "pl": "Prąd fazy 3 (AC)",
+            "ru": "Ток фазы 3 (AC)",
+            "ar": "تيار المرحلة 3 (AC)",
+            "ko": "전류 위상 3 (AC)"
+          }
+        },
+        "measure_power.eps": {
+          "title": {
+            "en": "Backup power (EPS)",
+            "nl": "Noodstroom (EPS)",
+            "de": "Notstrom (EPS)",
+            "fr": "Alimentation de secours (EPS)",
+            "es": "Energía de respaldo (EPS)",
+            "it": "Alimentazione di backup (EPS)",
+            "da": "Nødstrøm (EPS)",
+            "sv": "Reservkraft (EPS)",
+            "no": "Nødstrøm (EPS)",
+            "pl": "Zasilanie awaryjne (EPS)",
+            "ru": "Резервное питание (EPS)",
+            "ar": "الطاقة الاحتياطية (EPS)",
+            "ko": "비상 전력 (EPS)"
+          },
+          "decimals": 0
+        },
+        "measure_power.external": {
+          "title": {
+            "en": "External generation (meter 2)",
+            "nl": "Externe opwek (meter 2)",
+            "de": "Externe Erzeugung (Zähler 2)",
+            "fr": "Production externe (compteur 2)",
+            "es": "Generación externa (medidor 2)",
+            "it": "Produzione esterna (contatore 2)",
+            "da": "Ekstern produktion (måler 2)",
+            "sv": "Extern produktion (mätare 2)",
+            "no": "Ekstern produksjon (måler 2)",
+            "pl": "Zewnętrzna produkcja (licznik 2)",
+            "ru": "Внешняя генерация (счётчик 2)",
+            "ar": "التوليد الخارجي (العداد 2)",
+            "ko": "외부 발전 (계량기 2)"
+          },
+          "decimals": 0
+        },
+        "meter_power.external": {
+          "title": {
+            "en": "External generation energy (meter 2)",
+            "nl": "Energie externe opwek (meter 2)",
+            "de": "Energie externe Erzeugung (Zähler 2)",
+            "fr": "Énergie production externe (compteur 2)",
+            "es": "Energía generación externa (medidor 2)",
+            "it": "Energia produzione esterna (contatore 2)",
+            "da": "Energi ekstern produktion (måler 2)",
+            "sv": "Energi extern produktion (mätare 2)",
+            "no": "Energi ekstern produksjon (måler 2)",
+            "pl": "Energia zewnętrznej produkcji (licznik 2)",
+            "ru": "Энергия внешней генерации (счётчик 2)",
+            "ar": "طاقة التوليد الخارجي (العداد 2)",
+            "ko": "외부 발전 에너지 (계량기 2)"
+          },
+          "decimals": 2
+        },
+        "alarm_generic.control": {
+          "title": {
+            "en": "Control overridden",
+            "nl": "Sturing overschreven",
+            "de": "Steuerung überschrieben",
+            "fr": "Pilotage écrasé",
+            "es": "Control anulado",
+            "it": "Controllo sovrascritto",
+            "da": "Styring overskrevet",
+            "sv": "Styrning överskriven",
+            "no": "Styring overstyrt",
+            "pl": "Sterowanie nadpisane",
+            "ru": "Управление перехвачено",
+            "ar": "تم تجاوز التحكم",
+            "ko": "제어 덮어씀"
+          }
+        }
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/inverter/assets/images/small.png",
+        "large": "/drivers/inverter/assets/images/large.png",
+        "xlarge": "/drivers/inverter/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login_apikey",
+          "navigation": {
+            "next": "list_devices"
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login_apikey"
+        }
+      ],
+      "id": "inverter",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Inverter information",
+            "nl": "Omvormer informatie",
+            "de": "Wechselrichterinformationen",
+            "fr": "Informations de l'onduleur",
+            "it": "Informazioni inverter",
+            "es": "Información del inversor",
+            "pl": "Informacje o inwerterze",
+            "sv": "Växelriktar-information",
+            "no": "Vekselretter-informasjon",
+            "da": "Inverterinformation",
+            "ru": "Информация об инверторе",
+            "ko": "인버터 정보",
+            "ar": "معلومات العاكس"
+          },
+          "children": [
+            {
+              "id": "plantName",
+              "type": "label",
+              "label": {
+                "en": "Plant name",
+                "nl": "Plant naam",
+                "de": "Anlagenname",
+                "fr": "Nom de l'installation",
+                "it": "Nome impianto",
+                "es": "Nombre de la planta",
+                "pl": "Nazwa instalacji",
+                "sv": "Anläggningsnamn",
+                "no": "Anleggsnavn",
+                "da": "Anlægsnavn",
+                "ru": "Название станции",
+                "ko": "발전소 이름",
+                "ar": "اسم المحطة"
+              },
+              "value": ""
+            },
+            {
+              "id": "plantId",
+              "type": "label",
+              "label": {
+                "en": "Plant ID",
+                "nl": "Plant ID",
+                "de": "Anlagen-ID",
+                "fr": "ID de l'installation",
+                "it": "ID impianto",
+                "es": "ID de la planta",
+                "pl": "ID instalacji",
+                "sv": "Anläggnings-ID",
+                "no": "Anleggs-ID",
+                "da": "Anlægs-ID",
+                "ru": "ID станции",
+                "ko": "발전소 ID",
+                "ar": "معرف المحطة"
+              },
+              "value": ""
+            },
+            {
+              "id": "deviceName",
+              "type": "label",
+              "label": {
+                "en": "Device name",
+                "nl": "Apparaat naam",
+                "de": "Gerätename",
+                "fr": "Nom de l'appareil",
+                "it": "Nome dispositivo",
+                "es": "Nombre del dispositivo",
+                "pl": "Nazwa urządzenia",
+                "sv": "Enhetsnamn",
+                "no": "Enhetsnavn",
+                "da": "Enhedsnavn",
+                "ru": "Название устройства",
+                "ko": "장치 이름",
+                "ar": "اسم الجهاز"
+              },
+              "value": ""
+            },
+            {
+              "id": "deviceModelCode",
+              "type": "label",
+              "label": {
+                "en": "Model",
+                "nl": "Model",
+                "de": "Modell",
+                "fr": "Modèle",
+                "it": "Modello",
+                "es": "Modelo",
+                "pl": "Model",
+                "sv": "Modell",
+                "no": "Modell",
+                "da": "Model",
+                "ru": "Модель",
+                "ko": "모델",
+                "ar": "طراز"
+              },
+              "value": ""
+            },
+            {
+              "id": "deviceSn",
+              "type": "label",
+              "label": {
+                "en": "Serial number",
+                "nl": "Serienummer",
+                "de": "Seriennummer",
+                "fr": "Numéro de série",
+                "it": "Numero di serie",
+                "es": "Número de serie",
+                "pl": "Numer seryjny",
+                "sv": "Serienummer",
+                "no": "Serienummer",
+                "da": "Serienummer",
+                "ru": "Серийный номер",
+                "ko": "일련 번호",
+                "ar": "الرقم التسلسلي"
+              },
+              "value": ""
+            },
+            {
+              "id": "region",
+              "type": "label",
+              "label": {
+                "en": "Cloud region",
+                "nl": "Cloud-regio",
+                "de": "Cloud-Region",
+                "fr": "Région cloud",
+                "it": "Regione cloud",
+                "es": "Región de la nube",
+                "pl": "Region chmury",
+                "sv": "Molnregion",
+                "no": "Skyregion",
+                "da": "Cloud-region",
+                "ru": "Облачный регион",
+                "ko": "클라우드 지역",
+                "ar": "منطقة السحابة"
+              },
+              "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Energy",
+            "nl": "Energie",
+            "de": "Energie",
+            "fr": "Énergie",
+            "es": "Energía",
+            "it": "Energia",
+            "da": "Energi",
+            "sv": "Energi",
+            "no": "Energi",
+            "pl": "Energia",
+            "ru": "Энергия",
+            "ar": "الطاقة",
+            "ko": "에너지"
+          },
+          "children": [
+            {
+              "id": "dailyEnergyHomeyTimezone",
+              "type": "checkbox",
+              "label": {
+                "en": "Homey timezone reset",
+                "nl": "Homey tijdzone reset",
+                "de": "Homey-Zeitzone-Reset",
+                "fr": "Reset horaire Homey",
+                "es": "Reinicio horario Homey",
+                "it": "Reset fuso orario Homey",
+                "da": "Homey-tidszone-reset",
+                "sv": "Homey-tidszon-reset",
+                "no": "Homey-tidssone-reset",
+                "pl": "Reset wg strefy Homey",
+                "ru": "Сброс по Homey-времени",
+                "ar": "إعادة ضبط بتوقيت Homey",
+                "ko": "Homey 시간대 리셋"
+              },
+              "hint": {
+                "en": "Use if 'Energy today' resets at the wrong time. Calculates it from the total instead, reset at Homey's local midnight.",
+                "nl": "Gebruik dit als 'Energie vandaag' op het verkeerde moment reset. Wordt dan berekend vanaf de totaalmeter, met reset om middernacht (Homey tijd).",
+                "de": "Verwenden, wenn 'Energie heute' zur falschen Zeit zurückgesetzt wird. Wird dann aus dem Gesamtwert berechnet, mit Reset um Mitternacht (Homey-Zeit).",
+                "fr": "À utiliser si 'Énergie du jour' se réinitialise au mauvais moment. Sera calculée à partir du total, avec réinitialisation à minuit (heure Homey).",
+                "es": "Úselo si 'Energía hoy' se reinicia a la hora incorrecta. Se calculará desde el total, con reinicio a medianoche (hora de Homey).",
+                "it": "Da usare se 'Energia oggi' si azzera al momento sbagliato. Verrà calcolata dal totale, con reset a mezzanotte (ora di Homey).",
+                "da": "Brug dette hvis 'Energi i dag' nulstilles på det forkerte tidspunkt. Beregnes da ud fra totalmåleren, med nulstilling ved midnat (Homey-tid).",
+                "sv": "Använd om 'Energi idag' återställs vid fel tidpunkt. Beräknas då från totalen, med återställning vid midnatt (Homey-tid).",
+                "no": "Bruk dette hvis 'Energi i dag' tilbakestilles på feil tidspunkt. Beregnes da fra totalen, med tilbakestilling ved midnatt (Homey-tid).",
+                "pl": "Użyj, jeśli 'Energia dzisiaj' resetuje się o złej porze. Zostanie obliczona z licznika całkowitego, z resetem o północy (czas Homey).",
+                "ru": "Используйте, если 'Энергия сегодня' сбрасывается в неправильное время. Будет рассчитываться из общего счётчика, со сбросом в полночь (время Homey).",
+                "ar": "استخدم هذا إذا كانت 'طاقة اليوم' تُعاد ضبطها في وقت خاطئ. سيتم احتسابها من الإجمالي، مع إعادة الضبط عند منتصف الليل (بتوقيت Homey).",
+                "ko": "'오늘의 에너지'가 잘못된 시간에 재설정되면 사용하세요. 누적 총량 기준으로 계산되며, Homey 자정에 재설정됩니다."
+              },
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Meter",
+        "nl": "Meter",
+        "de": "Zähler",
+        "fr": "Compteur",
+        "it": "Contatore",
+        "es": "Medidor",
+        "pl": "Licznik",
+        "sv": "Mätare",
+        "no": "Måler",
+        "da": "Måler",
+        "ru": "Счетчик",
+        "ko": "계량기",
+        "ar": "عداد"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_power",
+        "meter_power",
+        "measure_frequency",
+        "measure_voltage.1",
+        "measure_voltage.2",
+        "measure_voltage.3",
+        "meter_power.imported",
+        "meter_power.exported"
+      ],
+      "capabilitiesOptions": {
+        "measure_voltage.1": {
+          "title": {
+            "en": "Voltage phase 1",
+            "nl": "Voltage fase 1",
+            "de": "Spannung Phase 1",
+            "fr": "Tension phase 1",
+            "it": "Tensione fase 1",
+            "es": "Voltaje fase 1",
+            "pl": "Napięcie fazy 1",
+            "sv": "Spänning fas 1",
+            "no": "Spenning fase 1",
+            "da": "Spænding fase 1",
+            "ru": "Напряжение фазы 1",
+            "ko": "전압 위상 1",
+            "ar": "جهد المرحلة 1"
+          }
+        },
+        "measure_voltage.2": {
+          "title": {
+            "en": "Voltage phase 2",
+            "nl": "Voltage fase 2",
+            "de": "Spannung Phase 2",
+            "fr": "Tension phase 2",
+            "it": "Tensione fase 2",
+            "es": "Voltaje fase 2",
+            "pl": "Napięcie fazy 2",
+            "sv": "Spänning fas 2",
+            "no": "Spenning fase 2",
+            "da": "Spænding fase 2",
+            "ru": "Напряжение фазы 2",
+            "ko": "전압 위상 2",
+            "ar": "جهد المرحلة 2"
+          }
+        },
+        "measure_voltage.3": {
+          "title": {
+            "en": "Voltage phase 3",
+            "nl": "Voltage fase 3",
+            "de": "Spannung Phase 3",
+            "fr": "Tension phase 3",
+            "it": "Tensione fase 3",
+            "es": "Voltaje fase 3",
+            "pl": "Napięcie fazy 3",
+            "sv": "Spänning fas 3",
+            "no": "Spenning fase 3",
+            "da": "Spænding fase 3",
+            "ru": "Напряжение фазы 3",
+            "ko": "전압 위상 3",
+            "ar": "جهد المرحلة 3"
+          }
+        },
+        "meter_power.imported": {
+          "title": {
+            "en": "Imported energy",
+            "nl": "Energie import",
+            "de": "Importierte Energie",
+            "fr": "Énergie importée",
+            "it": "Energia importata",
+            "es": "Energía importada",
+            "pl": "Energia importowana",
+            "sv": "Importerad energi",
+            "no": "Importert energi",
+            "da": "Importeret energi",
+            "ru": "Импортированная энергия",
+            "ko": "가져온 에너지",
+            "ar": "الطاقة المستوردة"
+          },
+          "decimals": 2
+        },
+        "meter_power.exported": {
+          "title": {
+            "en": "Exported energy",
+            "nl": "Energie export",
+            "de": "Exportierte Energie",
+            "fr": "Énergie exportée",
+            "it": "Energia esportata",
+            "es": "Energía exportada",
+            "pl": "Energia eksportowana",
+            "sv": "Exporterad energi",
+            "no": "Eksportert energi",
+            "da": "Eksporteret energi",
+            "ru": "Экспортированная энергия",
+            "ko": "내보낸 에너지",
+            "ar": "الطاقة المصدرة"
+          },
+          "decimals": 2
+        },
+        "measure_power.1": {
+          "title": {
+            "en": "Power phase 1",
+            "nl": "Vermogen fase 1",
+            "de": "Leistung Phase 1",
+            "fr": "Puissance phase 1",
+            "es": "Potencia fase 1",
+            "it": "Potenza fase 1",
+            "da": "Effekt fase 1",
+            "sv": "Effekt fas 1",
+            "no": "Effekt fase 1",
+            "pl": "Moc fazy 1",
+            "ru": "Мощность фазы 1",
+            "ar": "قدرة المرحلة 1",
+            "ko": "전력 위상 1"
+          },
+          "decimals": 0
+        },
+        "measure_power.2": {
+          "title": {
+            "en": "Power phase 2",
+            "nl": "Vermogen fase 2",
+            "de": "Leistung Phase 2",
+            "fr": "Puissance phase 2",
+            "es": "Potencia fase 2",
+            "it": "Potenza fase 2",
+            "da": "Effekt fase 2",
+            "sv": "Effekt fas 2",
+            "no": "Effekt fase 2",
+            "pl": "Moc fazy 2",
+            "ru": "Мощность фазы 2",
+            "ar": "قدرة المرحلة 2",
+            "ko": "전력 위상 2"
+          },
+          "decimals": 0
+        },
+        "measure_power.3": {
+          "title": {
+            "en": "Power phase 3",
+            "nl": "Vermogen fase 3",
+            "de": "Leistung Phase 3",
+            "fr": "Puissance phase 3",
+            "es": "Potencia fase 3",
+            "it": "Potenza fase 3",
+            "da": "Effekt fase 3",
+            "sv": "Effekt fas 3",
+            "no": "Effekt fase 3",
+            "pl": "Moc fazy 3",
+            "ru": "Мощность фазы 3",
+            "ar": "قدرة المرحلة 3",
+            "ko": "전력 위상 3"
+          },
+          "decimals": 0
+        },
+        "measure_power.load": {
+          "title": {
+            "en": "Home consumption",
+            "nl": "Thuisverbruik",
+            "de": "Hausverbrauch",
+            "fr": "Consommation domestique",
+            "es": "Consumo doméstico",
+            "it": "Consumo domestico",
+            "da": "Husforbrug",
+            "sv": "Husförbrukning",
+            "no": "Husforbruk",
+            "pl": "Zużycie domowe",
+            "ru": "Домашнее потребление",
+            "ar": "استهلاك المنزل",
+            "ko": "가정 소비 전력"
+          },
+          "decimals": 0
+        }
+      },
+      "energy": {
+        "cumulative": true,
+        "cumulativeImportedCapability": "meter_power.imported",
+        "cumulativeExportedCapability": "meter_power.exported"
+      },
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/meter/assets/images/small.png",
+        "large": "/drivers/meter/assets/images/large.png",
+        "xlarge": "/drivers/meter/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login_apikey",
+          "navigation": {
+            "next": "list_devices"
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login_apikey"
+        }
+      ],
+      "id": "meter",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Meter information",
+            "nl": "Meter informatie",
+            "de": "Zählerinformationen",
+            "fr": "Informations du compteur",
+            "it": "Informazioni contatore",
+            "es": "Información del medidor",
+            "pl": "Informacje o liczniku",
+            "sv": "Mätarinformation",
+            "no": "Målerinformasjon",
+            "da": "Målerinformation",
+            "ru": "Информация о счетчике",
+            "ko": "계량기 정보",
+            "ar": "معلومات العداد"
+          },
+          "children": [
+            {
+              "id": "plantName",
+              "type": "label",
+              "label": {
+                "en": "Plant name",
+                "nl": "Plant naam",
+                "de": "Anlagenname",
+                "fr": "Nom de l'installation",
+                "it": "Nome impianto",
+                "es": "Nombre de la planta",
+                "pl": "Nazwa instalacji",
+                "sv": "Anläggningsnamn",
+                "no": "Anleggsnavn",
+                "da": "Anlægsnavn",
+                "ru": "Название станции",
+                "ko": "발전소 이름",
+                "ar": "اسم المحطة"
+              },
+              "value": ""
+            },
+            {
+              "id": "plantId",
+              "type": "label",
+              "label": {
+                "en": "Plant ID",
+                "nl": "Plant ID",
+                "de": "Anlagen-ID",
+                "fr": "ID de l'installation",
+                "it": "ID impianto",
+                "es": "ID de la planta",
+                "pl": "ID instalacji",
+                "sv": "Anläggnings-ID",
+                "no": "Anleggs-ID",
+                "da": "Anlægs-ID",
+                "ru": "ID станции",
+                "ko": "발전소 ID",
+                "ar": "معرف المحطة"
+              },
+              "value": ""
+            },
+            {
+              "id": "deviceName",
+              "type": "label",
+              "label": {
+                "en": "Device name",
+                "nl": "Apparaat naam",
+                "de": "Gerätename",
+                "fr": "Nom de l'appareil",
+                "it": "Nome dispositivo",
+                "es": "Nombre del dispositivo",
+                "pl": "Nazwa urządzenia",
+                "sv": "Enhetsnamn",
+                "no": "Enhetsnavn",
+                "da": "Enhedsnavn",
+                "ru": "Название устройства",
+                "ko": "장치 이름",
+                "ar": "اسم الجهاز"
+              },
+              "value": ""
+            },
+            {
+              "id": "deviceModelCode",
+              "type": "label",
+              "label": {
+                "en": "Model",
+                "nl": "Model",
+                "de": "Modell",
+                "fr": "Modèle",
+                "it": "Modello",
+                "es": "Modelo",
+                "pl": "Model",
+                "sv": "Modell",
+                "no": "Modell",
+                "da": "Model",
+                "ru": "Модель",
+                "ko": "모델",
+                "ar": "طراز"
+              },
+              "value": ""
+            },
+            {
+              "id": "deviceSn",
+              "type": "label",
+              "label": {
+                "en": "Serial number",
+                "nl": "Serienummer",
+                "de": "Seriennummer",
+                "fr": "Numéro de série",
+                "it": "Numero di serie",
+                "es": "Número de serie",
+                "pl": "Numer seryjny",
+                "sv": "Serienummer",
+                "no": "Serienummer",
+                "da": "Serienummer",
+                "ru": "Серийный номер",
+                "ko": "일련 번호",
+                "ar": "الرقم التسلسلي"
+              },
+              "value": ""
+            },
+            {
+              "id": "region",
+              "type": "label",
+              "label": {
+                "en": "Cloud region",
+                "nl": "Cloud-regio",
+                "de": "Cloud-Region",
+                "fr": "Région cloud",
+                "it": "Regione cloud",
+                "es": "Región de la nube",
+                "pl": "Region chmury",
+                "sv": "Molnregion",
+                "no": "Skyregion",
+                "da": "Cloud-region",
+                "ru": "Облачный регион",
+                "ko": "클라우드 지역",
+                "ar": "منطقة السحابة"
+              },
+              "value": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "capabilities": {
+    "battery_max_soc": {
+      "type": "number",
+      "title": {
+        "en": "Maximum SoC",
+        "nl": "Maximale SoC",
+        "de": "Maximaler SoC",
+        "fr": "SoC maximal",
+        "es": "SoC máximo",
+        "it": "SoC massimo",
+        "da": "Maksimum SoC",
+        "sv": "Högsta SoC",
+        "no": "Maksimum SoC",
+        "pl": "Maksymalny SoC",
+        "ru": "Максимальный SoC",
+        "ar": "الحد الأقصى للشحن",
+        "ko": "최대 SoC"
+      },
+      "units": {
+        "en": "%",
+        "nl": "%",
+        "de": "%",
+        "fr": "%",
+        "es": "%",
+        "it": "%",
+        "da": "%",
+        "sv": "%",
+        "no": "%",
+        "pl": "%",
+        "ru": "%",
+        "ar": "%",
+        "ko": "%"
+      },
+      "decimals": 0,
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "getable": true,
+      "setable": true,
+      "insights": false,
+      "uiComponent": "slider",
+      "icon": "./assets/battery_soc.svg"
+    },
+    "battery_min_soc": {
+      "type": "number",
+      "title": {
+        "en": "Minimum SoC",
+        "nl": "Minimale SoC",
+        "de": "Minimaler SoC",
+        "fr": "SoC minimal",
+        "es": "SoC mínimo",
+        "it": "SoC minimo",
+        "da": "Minimum SoC",
+        "sv": "Lägsta SoC",
+        "no": "Minimum SoC",
+        "pl": "Minimalny SoC",
+        "ru": "Минимальный SoC",
+        "ar": "الحد الأدنى للشحن",
+        "ko": "최소 SoC"
+      },
+      "units": {
+        "en": "%",
+        "nl": "%",
+        "de": "%",
+        "fr": "%",
+        "es": "%",
+        "it": "%",
+        "da": "%",
+        "sv": "%",
+        "no": "%",
+        "pl": "%",
+        "ru": "%",
+        "ar": "%",
+        "ko": "%"
+      },
+      "decimals": 0,
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "getable": true,
+      "setable": true,
+      "insights": false,
+      "uiComponent": "slider",
+      "icon": "./assets/battery_soc.svg"
+    },
+    "battery_min_soc_ongrid": {
+      "type": "number",
+      "title": {
+        "en": "Minimum SoC on grid",
+        "nl": "Minimale SoC op net",
+        "de": "Minimaler SoC am Netz",
+        "fr": "SoC minimal sur réseau",
+        "es": "SoC mínimo en red",
+        "it": "SoC minimo in rete",
+        "da": "Minimum SoC på nettet",
+        "sv": "Lägsta SoC mot nätet",
+        "no": "Minimum SoC på nettet",
+        "pl": "Minimalny SoC przy sieci",
+        "ru": "Минимальный SoC от сети",
+        "ar": "الحد الأدنى للشحن مع الشبكة",
+        "ko": "계통 연결 시 최소 SoC"
+      },
+      "units": {
+        "en": "%",
+        "nl": "%",
+        "de": "%",
+        "fr": "%",
+        "es": "%",
+        "it": "%",
+        "da": "%",
+        "sv": "%",
+        "no": "%",
+        "pl": "%",
+        "ru": "%",
+        "ar": "%",
+        "ko": "%"
+      },
+      "decimals": 0,
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "getable": true,
+      "setable": true,
+      "insights": false,
+      "uiComponent": "slider",
+      "icon": "./assets/battery_soc.svg"
+    },
+    "export_limit": {
+      "type": "number",
+      "title": {
+        "en": "Export limit",
+        "nl": "Terugleverlimiet",
+        "de": "Einspeiselimit",
+        "fr": "Limite d'injection",
+        "es": "Límite de inyección",
+        "it": "Limite di immissione",
+        "da": "Leveringsgrænse",
+        "sv": "Inmatningsgräns",
+        "no": "Innmatingsgrense",
+        "pl": "Limit oddawania do sieci",
+        "ru": "Предел отдачи в сеть",
+        "ar": "حد التصدير للشبكة",
+        "ko": "송전 한도"
+      },
+      "units": {
+        "en": "W",
+        "nl": "W",
+        "de": "W",
+        "fr": "W",
+        "es": "W",
+        "it": "W",
+        "da": "W",
+        "sv": "W",
+        "no": "W",
+        "pl": "W",
+        "ru": "W",
+        "ar": "W",
+        "ko": "W"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 8000,
+      "step": 100,
+      "getable": true,
+      "setable": true,
+      "insights": false,
+      "uiComponent": "slider",
+      "icon": "./assets/export_limit.svg"
+    },
+    "measure_battery_cycles": {
+      "type": "number",
+      "title": {
+        "en": "Charge cycles",
+        "nl": "Laadcycli",
+        "de": "Ladezyklen",
+        "fr": "Cycles de charge",
+        "es": "Ciclos de carga",
+        "it": "Cicli di carica",
+        "da": "Ladecyklusser",
+        "sv": "Laddcykler",
+        "no": "Ladesykluser",
+        "pl": "Cykle ładowania",
+        "ru": "Циклы заряда",
+        "ar": "دورات الشحن",
+        "ko": "충전 사이클"
+      },
+      "decimals": 0,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/measure_battery_cycles.svg"
+    },
+    "measure_residual_energy": {
+      "type": "number",
+      "title": {
+        "en": "Remaining energy",
+        "nl": "Resterende energie",
+        "de": "Restenergie",
+        "fr": "Énergie restante",
+        "es": "Energía restante",
+        "it": "Energia residua",
+        "da": "Resterende energi",
+        "sv": "Återstående energi",
+        "no": "Gjenværende energi",
+        "pl": "Pozostała energia",
+        "ru": "Оставшаяся энергия",
+        "ar": "الطاقة المتبقية",
+        "ko": "잔여 에너지"
+      },
+      "units": {
+        "en": "kWh",
+        "nl": "kWh",
+        "de": "kWh",
+        "fr": "kWh",
+        "es": "kWh",
+        "it": "kWh",
+        "da": "kWh",
+        "sv": "kWh",
+        "no": "kWh",
+        "pl": "kWh",
+        "ru": "kWh",
+        "ar": "kWh",
+        "ko": "kWh"
+      },
+      "decimals": 2,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/measure_residual_energy.svg"
+    },
+    "measure_soh": {
+      "type": "number",
+      "title": {
+        "en": "Battery health",
+        "nl": "Batterijgezondheid",
+        "de": "Batteriezustand",
+        "fr": "État de santé batterie",
+        "es": "Salud de la batería",
+        "it": "Stato di salute batteria",
+        "da": "Batteritilstand",
+        "sv": "Batterihälsa",
+        "no": "Batterihelse",
+        "pl": "Kondycja akumulatora",
+        "ru": "Состояние батареи",
+        "ar": "صحة البطارية",
+        "ko": "배터리 수명 상태"
+      },
+      "units": {
+        "en": "%",
+        "nl": "%",
+        "de": "%",
+        "fr": "%",
+        "es": "%",
+        "it": "%",
+        "da": "%",
+        "sv": "%",
+        "no": "%",
+        "pl": "%",
+        "ru": "%",
+        "ar": "%",
+        "ko": "%"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 100,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/measure_soh.svg"
+    },
+    "running_state": {
+      "type": "enum",
+      "title": {
+        "en": "Inverter status",
+        "nl": "Omvormerstatus",
+        "de": "Wechselrichterstatus",
+        "fr": "État de l'onduleur",
+        "es": "Estado del inversor",
+        "it": "Stato inverter",
+        "da": "Inverterstatus",
+        "sv": "Växelriktarstatus",
+        "no": "Vekselretterstatus",
+        "pl": "Stan inwertera",
+        "ru": "Состояние инвертора",
+        "ar": "حالة العاكس",
+        "ko": "인버터 상태"
+      },
+      "values": [
+        {
+          "id": "self_test",
+          "title": {
+            "en": "Self-test",
+            "nl": "Zelftest",
+            "de": "Selbsttest",
+            "fr": "Autotest",
+            "es": "Autoprueba",
+            "it": "Autotest",
+            "da": "Selvtest",
+            "sv": "Självtest",
+            "no": "Selvtest",
+            "pl": "Autotest",
+            "ru": "Самотестирование",
+            "ar": "اختبار ذاتي",
+            "ko": "자가 진단"
+          }
+        },
+        {
+          "id": "waiting",
+          "title": {
+            "en": "Waiting",
+            "nl": "Wachten",
+            "de": "Wartend",
+            "fr": "En attente",
+            "es": "Esperando",
+            "it": "In attesa",
+            "da": "Venter",
+            "sv": "Väntar",
+            "no": "Venter",
+            "pl": "Oczekiwanie",
+            "ru": "Ожидание",
+            "ar": "انتظار",
+            "ko": "대기 중"
+          }
+        },
+        {
+          "id": "checking",
+          "title": {
+            "en": "Checking",
+            "nl": "Controleren",
+            "de": "Prüfung",
+            "fr": "Vérification",
+            "es": "Comprobando",
+            "it": "Verifica",
+            "da": "Kontrollerer",
+            "sv": "Kontrollerar",
+            "no": "Kontrollerer",
+            "pl": "Sprawdzanie",
+            "ru": "Проверка",
+            "ar": "فحص",
+            "ko": "점검 중"
+          }
+        },
+        {
+          "id": "on_grid",
+          "title": {
+            "en": "On-grid",
+            "nl": "Netgekoppeld",
+            "de": "Netzbetrieb",
+            "fr": "Sur réseau",
+            "es": "Conectado a red",
+            "it": "In rete",
+            "da": "Nettilsluttet",
+            "sv": "Nätansluten",
+            "no": "Nettilkoblet",
+            "pl": "Praca sieciowa",
+            "ru": "Сетевой режим",
+            "ar": "متصل بالشبكة",
+            "ko": "계통 연계"
+          }
+        },
+        {
+          "id": "off_grid",
+          "title": {
+            "en": "Off-grid",
+            "nl": "Eilandbedrijf",
+            "de": "Inselbetrieb",
+            "fr": "Hors réseau",
+            "es": "Fuera de red",
+            "it": "Fuori rete",
+            "da": "Ø-drift",
+            "sv": "Ödrift",
+            "no": "Øydrift",
+            "pl": "Praca wyspowa",
+            "ru": "Автономный режим",
+            "ar": "خارج الشبكة",
+            "ko": "독립 운전"
+          }
+        },
+        {
+          "id": "fault",
+          "title": {
+            "en": "Fault",
+            "nl": "Storing",
+            "de": "Fehler",
+            "fr": "Défaut",
+            "es": "Fallo",
+            "it": "Guasto",
+            "da": "Fejl",
+            "sv": "Fel",
+            "no": "Feil",
+            "pl": "Usterka",
+            "ru": "Неисправность",
+            "ar": "عطل",
+            "ko": "고장"
+          }
+        },
+        {
+          "id": "permanent_fault",
+          "title": {
+            "en": "Permanent fault",
+            "nl": "Permanente storing",
+            "de": "Dauerhafter Fehler",
+            "fr": "Défaut permanent",
+            "es": "Fallo permanente",
+            "it": "Guasto permanente",
+            "da": "Permanent fejl",
+            "sv": "Permanent fel",
+            "no": "Permanent feil",
+            "pl": "Trwała usterka",
+            "ru": "Постоянная неисправность",
+            "ar": "عطل دائم",
+            "ko": "영구 고장"
+          }
+        },
+        {
+          "id": "standby",
+          "title": {
+            "en": "Standby",
+            "nl": "Stand-by",
+            "de": "Standby",
+            "fr": "Veille",
+            "es": "Reposo",
+            "it": "Standby",
+            "da": "Standby",
+            "sv": "Standby",
+            "no": "Standby",
+            "pl": "Czuwanie",
+            "ru": "Режим ожидания",
+            "ar": "وضع الاستعداد",
+            "ko": "대기 모드"
+          }
+        },
+        {
+          "id": "upgrading",
+          "title": {
+            "en": "Upgrading",
+            "nl": "Bijwerken",
+            "de": "Aktualisierung",
+            "fr": "Mise à jour",
+            "es": "Actualizando",
+            "it": "Aggiornamento",
+            "da": "Opdaterer",
+            "sv": "Uppdaterar",
+            "no": "Oppdaterer",
+            "pl": "Aktualizacja",
+            "ru": "Обновление",
+            "ar": "جارٍ التحديث",
+            "ko": "업데이트 중"
+          }
+        },
+        {
+          "id": "fct",
+          "title": {
+            "en": "FCT",
+            "nl": "FCT",
+            "de": "FCT",
+            "fr": "FCT",
+            "es": "FCT",
+            "it": "FCT",
+            "da": "FCT",
+            "sv": "FCT",
+            "no": "FCT",
+            "pl": "FCT",
+            "ru": "FCT",
+            "ar": "FCT",
+            "ko": "FCT"
+          }
+        },
+        {
+          "id": "illegal",
+          "title": {
+            "en": "Invalid state",
+            "nl": "Ongeldige status",
+            "de": "Ungültiger Zustand",
+            "fr": "État invalide",
+            "es": "Estado no válido",
+            "it": "Stato non valido",
+            "da": "Ugyldig tilstand",
+            "sv": "Ogiltigt läge",
+            "no": "Ugyldig tilstand",
+            "pl": "Nieprawidłowy stan",
+            "ru": "Недопустимое состояние",
+            "ar": "حالة غير صالحة",
+            "ko": "잘못된 상태"
+          }
+        },
+        {
+          "id": "unknown",
+          "title": {
+            "en": "Unknown",
+            "nl": "Onbekend",
+            "de": "Unbekannt",
+            "fr": "Inconnu",
+            "es": "Desconocido",
+            "it": "Sconosciuto",
+            "da": "Ukendt",
+            "sv": "Okänd",
+            "no": "Ukjent",
+            "pl": "Nieznany",
+            "ru": "Неизвестно",
+            "ar": "غير معروف",
+            "ko": "알 수 없음"
+          }
+        }
+      ],
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "./assets/running_state.svg"
+    }
+  }
+}

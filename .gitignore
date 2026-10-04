@@ -1,0 +1,11 @@
+/.homeybuild/
+/tmp
+env.json
+roadmap.txt
+tmp*
+zzz*
+.claude/
+.github/
+AGENTS.md
+/test/captures/*
+!/test/captures/README.md

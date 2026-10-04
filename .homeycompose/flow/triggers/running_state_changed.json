@@ -1,0 +1,46 @@
+{
+  "title": {
+    "en": "Inverter status changed",
+    "nl": "Omvormerstatus is veranderd",
+    "de": "Wechselrichterstatus geändert",
+    "fr": "État de l'onduleur modifié",
+    "es": "Estado del inversor cambiado",
+    "it": "Stato inverter modificato",
+    "da": "Inverterstatus ændret",
+    "sv": "Växelriktarstatus ändrad",
+    "no": "Vekselretterstatus endret",
+    "pl": "Stan inwertera zmienił się",
+    "ru": "Состояние инвертора изменилось",
+    "ar": "تغيرت حالة العاكس",
+    "ko": "인버터 상태가 변경됨"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=inverter&capabilities=running_state"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "running_state",
+      "type": "string",
+      "title": {
+        "en": "Inverter status",
+        "nl": "Omvormerstatus",
+        "de": "Wechselrichterstatus",
+        "fr": "État de l'onduleur",
+        "es": "Estado del inversor",
+        "it": "Stato inverter",
+        "da": "Inverterstatus",
+        "sv": "Växelriktarstatus",
+        "no": "Vekselretterstatus",
+        "pl": "Stan inwertera",
+        "ru": "Состояние инвертора",
+        "ar": "حالة العاكس",
+        "ko": "인버터 상태"
+      },
+      "example": "on_grid"
+    }
+  ]
+}

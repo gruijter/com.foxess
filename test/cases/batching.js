@@ -1,0 +1,62 @@
+'use strict';
+
+/*
+Request coalescing on /op/v1/device/real/query.
+
+Several Homey devices routinely sit on the SAME inverter serial - foxEssPointMap keys inverter,
+battery and meter entries all on 'inverter' - so before batching one physical inverter cost three
+identical calls per cycle. The aligned poll tick wakes them together; the client folds them into
+one request carrying every serial in an `sns` array, and hands each caller the shared reply. (The
+deprecated v0 no-SN "all devices" call returned result:null on live accounts, which is why v1 with
+an explicit `sns` is used.)
+*/
+
+const fixtures = require('../fixtures');
+
+module.exports = async (t) => {
+  const httpFor = (client) => client.calls.filter((c) => c.path === '/op/v1/device/real/query');
+
+  // three devices, two of them on one serial, all polling in the same tick
+  const client = fixtures.makeRoutedClient();
+  const [a, b, c] = await Promise.all([
+    client.getDeviceRealTimeData({ sn: 'SN-1', variables: ['pvPower'] }),
+    client.getDeviceRealTimeData({ sn: 'SN-1', variables: ['SoC', 'batTemperature'] }),
+    client.getDeviceRealTimeData({ sn: 'SN-2', variables: ['pvPower', 'feedin'] }),
+  ]);
+
+  const sent = httpFor(client);
+  t.eq(sent.length, 1, 'three device polls became one HTTP request');
+  t.eq([...sent[0].body.sns].sort().join(','), 'SN-1,SN-2', 'serials were unioned into one sns array');
+  t.eq([...sent[0].body.variables].sort().join(','), 'SoC,batTemperature,feedin,pvPower'.split(',').sort().join(','), 'variable sets were unioned');
+  t.ok(a === b && b === c, 'every caller got the same combined response');
+
+  // a later tick must not reuse the previous batch
+  await client.getDeviceRealTimeData({ sn: 'SN-1', variables: ['pvPower'] });
+  t.eq(httpFor(client).length, 2, 'the next tick issues its own request');
+
+  // a caller that arrives a few microtasks late - because it awaited something first - must still
+  // land in the same batch rather than opening a second request
+  const late = fixtures.makeRoutedClient();
+  await Promise.all([
+    late.getDeviceRealTimeData({ sn: 'SN-1', variables: ['pvPower'] }),
+    late.getDeviceRealTimeData({ sn: 'SN-2', variables: ['pvPower'] }),
+    (async () => {
+      await Promise.resolve();
+      await Promise.resolve();
+      return late.getDeviceRealTimeData({ sns: ['SN-3'], variables: ['todayYield'] });
+    })(),
+  ]);
+  t.eq(httpFor(late).length, 1, 'a late caller still joins the same batch');
+
+  // a failing batch must reject every waiter, not hang one of them
+  const broken = fixtures.makeClient({
+    post: async () => {
+      throw new Error('boom');
+    },
+  });
+  const results = await Promise.allSettled([
+    broken.getDeviceRealTimeData({ sn: 'SN-1', variables: ['pvPower'] }),
+    broken.getDeviceRealTimeData({ sn: 'SN-2', variables: ['pvPower'] }),
+  ]);
+  t.ok(results.every((r) => r.status === 'rejected'), 'a failed batch rejects all of its callers');
+};

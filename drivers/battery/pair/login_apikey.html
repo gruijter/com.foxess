@@ -1,0 +1,72 @@
+<script type="text/javascript">
+  function __ (key, fallback) {
+    var tr = Homey.__(key);
+    return (tr && tr !== key) ? tr : fallback;
+  }
+
+  // The two FoxESS cloud regions; `id` must stay in sync with lib/foxEssRegions.js.
+  var REGIONS = [
+    { id: 'eu', name: __('pair.regions.eu', 'Europe / Global') },
+    { id: 'us', name: __('pair.regions.us', 'North America') }
+  ];
+
+  // Shared by pairing and repair: the driver pre-fills the key and region (the ones used last, or
+  // the device's own on repair) and answers 'login' with { done } - true ends a repair, false
+  // moves pairing on to the device list. Same shape as com.gruijter.blemower's mqtt_settings view:
+  // a plain button, not a form submit, which would reload the view if anything threw first.
+  async function connect() {
+    try {
+      Homey.showLoadingOverlay();
+      var result = await Homey.emit('login', {
+        apiKey: document.getElementById('apiKey').value.trim(),
+        region: document.getElementById('region').value
+      });
+      Homey.hideLoadingOverlay();
+      if (result && result.done) return Homey.done();
+      Homey.showView('list_devices');
+    } catch (error) {
+      Homey.hideLoadingOverlay();
+      Homey.alert(error.message || error.toString(), 'error');
+    }
+  }
+
+  async function init() {
+    Homey.setTitle(__('pair.login.title', 'Fox ESS API key'));
+    document.getElementById('intro').innerText = __('pair.login.intro', 'Create an API key in FoxCloud: User Profile > API Management.');
+    document.getElementById('regionLabel').innerText = __('pair.login.region', 'Region');
+    document.getElementById('apiKeyLabel').innerText = __('pair.login.apiKey', 'API key');
+    document.getElementById('connect').innerText = __('pair.login.connect', 'Connect');
+
+    var select = document.getElementById('region');
+    REGIONS.forEach(function (region) {
+      var option = document.createElement('option');
+      option.value = region.id;
+      option.innerText = region.name;
+      select.appendChild(option);
+    });
+
+    try {
+      var credentials = await Homey.emit('get_credentials');
+      if (credentials && credentials.region) select.value = credentials.region;
+      if (credentials && credentials.apiKey) document.getElementById('apiKey').value = credentials.apiKey;
+    } catch (error) {
+      // nothing to pre-fill; the user types the key
+    }
+    Homey.ready();
+  }
+
+  init();
+</script>
+
+<div class="homey-form">
+  <p class="homey-text" id="intro"></p>
+  <div class="homey-form-group">
+    <label class="homey-form-label" for="region" id="regionLabel"></label>
+    <select class="homey-form-select" id="region"></select>
+  </div>
+  <div class="homey-form-group">
+    <label class="homey-form-label" for="apiKey" id="apiKeyLabel"></label>
+    <input class="homey-form-input" id="apiKey" type="password" autocomplete="off" spellcheck="false" />
+  </div>
+</div>
+<button class="homey-button-primary-full" id="connect" onclick="connect()" style="margin-top: 24px;"></button>

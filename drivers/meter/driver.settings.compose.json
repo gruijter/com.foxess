@@ -1,0 +1,142 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Meter information",
+      "nl": "Meter informatie",
+      "de": "Zählerinformationen",
+      "fr": "Informations du compteur",
+      "it": "Informazioni contatore",
+      "es": "Información del medidor",
+      "pl": "Informacje o liczniku",
+      "sv": "Mätarinformation",
+      "no": "Målerinformasjon",
+      "da": "Målerinformation",
+      "ru": "Информация о счетчике",
+      "ko": "계량기 정보",
+      "ar": "معلومات العداد"
+    },
+    "children": [
+      {
+        "id": "plantName",
+        "type": "label",
+        "label": {
+          "en": "Plant name",
+          "nl": "Plant naam",
+          "de": "Anlagenname",
+          "fr": "Nom de l'installation",
+          "it": "Nome impianto",
+          "es": "Nombre de la planta",
+          "pl": "Nazwa instalacji",
+          "sv": "Anläggningsnamn",
+          "no": "Anleggsnavn",
+          "da": "Anlægsnavn",
+          "ru": "Название станции",
+          "ko": "발전소 이름",
+          "ar": "اسم المحطة"
+        },
+        "value": ""
+      },
+      {
+        "id": "plantId",
+        "type": "label",
+        "label": {
+          "en": "Plant ID",
+          "nl": "Plant ID",
+          "de": "Anlagen-ID",
+          "fr": "ID de l'installation",
+          "it": "ID impianto",
+          "es": "ID de la planta",
+          "pl": "ID instalacji",
+          "sv": "Anläggnings-ID",
+          "no": "Anleggs-ID",
+          "da": "Anlægs-ID",
+          "ru": "ID станции",
+          "ko": "발전소 ID",
+          "ar": "معرف المحطة"
+        },
+        "value": ""
+      },
+      {
+        "id": "deviceName",
+        "type": "label",
+        "label": {
+          "en": "Device name",
+          "nl": "Apparaat naam",
+          "de": "Gerätename",
+          "fr": "Nom de l'appareil",
+          "it": "Nome dispositivo",
+          "es": "Nombre del dispositivo",
+          "pl": "Nazwa urządzenia",
+          "sv": "Enhetsnamn",
+          "no": "Enhetsnavn",
+          "da": "Enhedsnavn",
+          "ru": "Название устройства",
+          "ko": "장치 이름",
+          "ar": "اسم الجهاز"
+        },
+        "value": ""
+      },
+      {
+        "id": "deviceModelCode",
+        "type": "label",
+        "label": {
+          "en": "Model",
+          "nl": "Model",
+          "de": "Modell",
+          "fr": "Modèle",
+          "it": "Modello",
+          "es": "Modelo",
+          "pl": "Model",
+          "sv": "Modell",
+          "no": "Modell",
+          "da": "Model",
+          "ru": "Модель",
+          "ko": "모델",
+          "ar": "طراز"
+        },
+        "value": ""
+      },
+      {
+        "id": "deviceSn",
+        "type": "label",
+        "label": {
+          "en": "Serial number",
+          "nl": "Serienummer",
+          "de": "Seriennummer",
+          "fr": "Numéro de série",
+          "it": "Numero di serie",
+          "es": "Número de serie",
+          "pl": "Numer seryjny",
+          "sv": "Serienummer",
+          "no": "Serienummer",
+          "da": "Serienummer",
+          "ru": "Серийный номер",
+          "ko": "일련 번호",
+          "ar": "الرقم التسلسلي"
+        },
+        "value": ""
+      },
+      {
+        "id": "region",
+        "type": "label",
+        "label": {
+          "en": "Cloud region",
+          "nl": "Cloud-regio",
+          "de": "Cloud-Region",
+          "fr": "Région cloud",
+          "it": "Regione cloud",
+          "es": "Región de la nube",
+          "pl": "Region chmury",
+          "sv": "Molnregion",
+          "no": "Skyregion",
+          "da": "Cloud-region",
+          "ru": "Облачный регион",
+          "ko": "클라우드 지역",
+          "ar": "منطقة السحابة"
+        },
+        "value": ""
+      }
+    ]
+  }
+]

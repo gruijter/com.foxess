@@ -1,0 +1,2 @@
+Connetti il tuo inverter Fox ESS a Homey e ottieni informazioni dettagliate sulla tua produzione di energia solare e sull'uso della batteria.
+Monitora la tua potenza attuale, così come la tua produzione giornaliera, mensile, annuale e totale. Con l'app Fox ESS per Homey, puoi utilizzare questi dati per ottimizzare il tuo consumo energetico, creare Flow e tenere traccia delle prestazioni del tuo sistema, tutto in un unico posto.

@@ -1,0 +1,35 @@
+{
+  "Life by Sunshine.": "La vita grazie al sole.",
+  "This will try to update the status of all devices immediately. Careful: too many updates will cause the server to temporarily block you.": "Questo tenterà di aggiornare lo stato di tutti i dispositivi immediatamente. Attenzione: troppi aggiornamenti causeranno un blocco temporaneo da parte del server.",
+  "pair.regions.eu": "Europa / Global",
+  "pair.regions.us": "Nord America",
+  "pair": {
+    "regions": {
+      "eu": "Europa / Global",
+      "us": "Nord America"
+    },
+    "login": {
+      "title": "Chiave API Fox ESS",
+      "intro": "Crea una chiave API in FoxCloud: Profilo utente > Gestione API.",
+      "region": "Regione",
+      "apiKey": "Chiave API",
+      "connect": "Connetti"
+    }
+  },
+  "errors": {
+    "heatpumpSetFailed": "Impossibile modificare l'impostazione della pompa di calore.",
+    "noUpdates": "Nessun aggiornamento dal dispositivo",
+    "noApiKey": "Nessuna chiave API. Ripara questo dispositivo per inserirne una.",
+    "apiKeyRequired": "Inserisci la tua chiave API Fox ESS.",
+    "unknownRegion": "Regione sconosciuta:",
+    "loginFailed": "La chiave API non è stata accettata:",
+    "controlFailed": "Impossibile modificare il controllo della batteria:",
+    "noSchedule": "Nessun programma FoxCloud trovato. Creane prima uno in FoxCloud.",
+    "socRange": "I limiti di SoC devono essere 10–100%, con minimo ≤ minimo in rete ≤ massimo.",
+    "settingFailed": "Impossibile modificare l'impostazione:"
+  },
+  "notifications": {
+    "controlOverridden": "**__name__**: un'impostazione di Homey è stata modificata altrove, ad esempio in FoxCloud o da un fornitore di energia."
+  },
+  "migrating": "Migrazione del dispositivo in corso, attendere..."
+}

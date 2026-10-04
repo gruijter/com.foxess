@@ -1,0 +1,35 @@
+{
+  "Life by Sunshine.": "Жизнь благодаря солнцу.",
+  "This will try to update the status of all devices immediately. Careful: too many updates will cause the server to temporarily block you.": "Это попытается немедленно обновить статус всех устройств. Осторожно: слишком много обновлений приведет к временной блокировке сервером.",
+  "pair.regions.eu": "Европа / Global",
+  "pair.regions.us": "Северная Америка",
+  "pair": {
+    "regions": {
+      "eu": "Европа / Global",
+      "us": "Северная Америка"
+    },
+    "login": {
+      "title": "API-ключ Fox ESS",
+      "intro": "Создайте API-ключ в FoxCloud: Профиль пользователя > Управление API.",
+      "region": "Регион",
+      "apiKey": "API-ключ",
+      "connect": "Подключить"
+    }
+  },
+  "errors": {
+    "heatpumpSetFailed": "Не удалось изменить настройку теплового насоса.",
+    "noUpdates": "Нет обновлений от устройства",
+    "noApiKey": "Нет API-ключа. Восстановите устройство, чтобы ввести его.",
+    "apiKeyRequired": "Введите ваш API-ключ Fox ESS.",
+    "unknownRegion": "Неизвестный регион:",
+    "loginFailed": "API-ключ не принят:",
+    "controlFailed": "Не удалось изменить управление батареей:",
+    "noSchedule": "Расписание FoxCloud не найдено. Сначала создайте его в FoxCloud.",
+    "socRange": "Пределы SoC должны быть 10–100 %, причем минимум ≤ минимум от сети ≤ максимум.",
+    "settingFailed": "Не удалось изменить настройку:"
+  },
+  "notifications": {
+    "controlOverridden": "**__name__**: настройка, заданная Homey, была изменена в другом месте, например в FoxCloud или поставщиком энергии."
+  },
+  "migrating": "Миграция устройства, пожалуйста, подождите..."
+}
