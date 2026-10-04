@@ -25,7 +25,7 @@
     "loginFailed": "API-nøkkelen ble ikke godtatt:",
     "controlFailed": "Kunne ikke endre batteristyringen:",
     "noSchedule": "Fant ingen FoxCloud-plan. Opprett en i FoxCloud først.",
-    "socRange": "SoC-grenser må være 10–100 %, med minimum ≤ minimum på nettet ≤ maksimum.",
+    "socRange": "SoC-grenser må være 10–100 %, med minimum ≤ minimum på nettet.",
     "settingFailed": "Kunne ikke endre innstillingen:"
   },
   "notifications": {

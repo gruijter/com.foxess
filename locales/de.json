@@ -25,7 +25,7 @@
     "loginFailed": "Der API-Schlüssel wurde nicht akzeptiert:",
     "controlFailed": "Batteriesteuerung konnte nicht geändert werden:",
     "noSchedule": "Kein FoxCloud-Zeitplan gefunden. Richte zuerst einen in FoxCloud ein.",
-    "socRange": "SoC-Grenzen müssen 10–100 % sein, mit Minimum ≤ Minimum am Netz ≤ Maximum.",
+    "socRange": "SoC-Grenzen müssen 10–100 % sein, mit Minimum ≤ Minimum am Netz.",
     "settingFailed": "Die Einstellung konnte nicht geändert werden:"
   },
   "notifications": {

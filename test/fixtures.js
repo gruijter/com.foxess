@@ -451,9 +451,10 @@ fixtures.makeRoutedClient = (overrides = {}) => {
 };
 
 /** A driver instance with only the logging wired up, for testing driver-level logic. */
-fixtures.makeDriver = (driverId = 'inverter') => {
-  const CommonDriver = fixtures.app('lib/common_driver.js');
-  const driver = Object.create(CommonDriver.prototype);
+fixtures.makeDriver = (driverId = 'inverter', { own = false } = {}) => {
+  // own: the driver's own class (drivers/<id>/driver.js) instead of the common base
+  const Driver = fixtures.app(own ? `drivers/${driverId}/driver.js` : 'lib/common_driver.js');
+  const driver = Object.create(Driver.prototype);
   driver.id = driverId;
   driver.log = () => {};
   driver.error = () => {};

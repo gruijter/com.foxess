@@ -24,20 +24,8 @@ const { GENERATION_POLL_EVERY_N_TICKS } = require('../../lib/foxEssConstants');
 
 module.exports = class MyDevice extends CommonDevice {
 
-  /**
-   * Whether the inverter has an ExportLimit setting: supported once read, never withdrawn on a
-   * failure. Checked on every (re)start, one call.
-   */
-  async onClientReady() {
-    const value = await this.readExportLimit().catch((error) => {
-      this.error('export limit check failed:', error.message || error);
-      return undefined;
-    });
-    if (value !== undefined) await this.setStoreValue('exportLimitSupported', true);
-  }
-
-  extraCapabilities() {
-    return this.getStoreValue('exportLimitSupported') ? ['export_limit', 'alarm_generic.control'] : [];
+  onReadings({ exportLimit }) {
+    if (exportLimit !== undefined) this.exportLimit = exportLimit;
   }
 
   /**
@@ -112,17 +100,7 @@ module.exports = class MyDevice extends CommonDevice {
     }
     const due = options.force || ((this.pollTick || 1) - 1) % GENERATION_POLL_EVERY_N_TICKS === 0;
     if (!due) return common;
-    const response = await this.client.getDeviceGeneration({ sn: this.deviceSn }).catch((error) => {
-      this.error('device generation failed:', error.message || error);
-      return null;
-    });
-    const result = response?.result;
-    if (!result) return common;
-    return {
-      ...common,
-      generationToday: result.today,
-      generationMonth: result.month,
-    };
+    return { ...common, ...(await this.driver.generationFields({ client: this.client, deviceSn: this.deviceSn })) };
   }
 
 };

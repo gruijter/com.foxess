@@ -27,4 +27,35 @@ module.exports = class MyDevice extends CommonDriver {
     await super.onInit();
   }
 
+  /**
+   * Control needs the scheduler (the only way FoxESS offers to charge or discharge at a chosen
+   * power); SoC limits need a readable battery/soc/get. Read along the way: the scheduler switch
+   * and the limits themselves. A failed check reports nothing, so the store keeps its last answer.
+   */
+  async checkSupport({ client, deviceSn }) {
+    const support = {};
+    const readings = {};
+    const flag = await this.tryCall('scheduler support check', async () => (await client.getSchedulerFlag({ sn: deviceSn }))?.result);
+    if (flag) {
+      support.controlSupported = Boolean(flag.support);
+      readings.schedulerOn = Boolean(flag.enable);
+    }
+    const soc = await this.tryCall('SoC limits check', async () => (await client.getBatterySoc({ sn: deviceSn }))?.result);
+    const minSoc = Number(soc?.minSoc);
+    const minSocOnGrid = Number(soc?.minSocOnGrid);
+    if (Number.isFinite(minSoc) && Number.isFinite(minSocOnGrid)) {
+      // supported once read; like an optional capability, never withdrawn on a failure
+      support.socLimitsSupported = true;
+      readings.socLimits = { minSoc, minSocOnGrid };
+    }
+    return { support, readings };
+  }
+
+  extraCapabilities(store) {
+    const caps = store?.controlSupported ? ['target_power', 'target_power_mode'] : [];
+    if (store?.socLimitsSupported) caps.push('battery_min_soc', 'battery_min_soc_ongrid');
+    if (caps.length) caps.push('alarm_generic.control');
+    return caps;
+  }
+
 };

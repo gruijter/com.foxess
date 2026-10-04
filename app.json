@@ -279,9 +279,9 @@
   ],
   "permissions": [],
   "images": {
-    "small": "/assets/images/small.png",
-    "large": "/assets/images/large.png",
-    "xlarge": "/assets/images/xlarge.png"
+    "small": "/assets/images/small.jpg",
+    "large": "/assets/images/large.jpg",
+    "xlarge": "/assets/images/xlarge.jpg"
   },
   "author": {
     "name": "R.M. de Gruijter"
@@ -1035,19 +1035,19 @@
           "ko": "SoC 한도 설정"
         },
         "titleFormatted": {
-          "en": "Set SoC limits to [[min]]–[[max]]%, on grid [[ongrid]]%",
-          "nl": "Stel SoC-grenzen in op [[min]]–[[max]]%, op net [[ongrid]]%",
-          "de": "SoC-Grenzen auf [[min]]–[[max]] % einstellen, am Netz [[ongrid]] %",
-          "fr": "Définir les limites de SoC à [[min]]–[[max]] %, sur réseau [[ongrid]] %",
-          "es": "Establecer límites de SoC en [[min]]–[[max]] %, en red [[ongrid]] %",
-          "it": "Imposta limiti di SoC a [[min]]–[[max]]%, in rete [[ongrid]]%",
-          "da": "Indstil SoC-grænser til [[min]]–[[max]] %, på nettet [[ongrid]] %",
-          "sv": "Ställ in SoC-gränser på [[min]]–[[max]] %, mot nätet [[ongrid]] %",
-          "no": "Still inn SoC-grenser til [[min]]–[[max]] %, på nettet [[ongrid]] %",
-          "pl": "Ustaw limity SoC na [[min]]–[[max]]%, przy sieci [[ongrid]]%",
-          "ru": "Установить пределы SoC [[min]]–[[max]] %, от сети [[ongrid]] %",
-          "ar": "تعيين حدود الشحن إلى [[min]]–[[max]]%، مع الشبكة [[ongrid]]%",
-          "ko": "SoC 한도를 [[min]]–[[max]]%, 계통 연결 시 [[ongrid]]%로 설정"
+          "en": "Set SoC limits to minimum [[min]]%, on grid [[ongrid]]%",
+          "nl": "Stel SoC-grenzen in op minimum [[min]]%, op net [[ongrid]]%",
+          "de": "SoC-Grenzen auf Minimum [[min]] % einstellen, am Netz [[ongrid]] %",
+          "fr": "Définir les limites de SoC à minimum [[min]] %, sur réseau [[ongrid]] %",
+          "es": "Establecer límites de SoC en mínimo [[min]] %, en red [[ongrid]] %",
+          "it": "Imposta limiti di SoC a minimo [[min]]%, in rete [[ongrid]]%",
+          "da": "Indstil SoC-grænser til minimum [[min]] %, på nettet [[ongrid]] %",
+          "sv": "Ställ in SoC-gränser på minimum [[min]] %, mot nätet [[ongrid]] %",
+          "no": "Still inn SoC-grenser til minimum [[min]] %, på nettet [[ongrid]] %",
+          "pl": "Ustaw limity SoC na minimum [[min]]%, przy sieci [[ongrid]]%",
+          "ru": "Установить пределы SoC: минимум [[min]] %, от сети [[ongrid]] %",
+          "ar": "تعيين حدود الشحن إلى حد أدنى [[min]]%، مع الشبكة [[ongrid]]%",
+          "ko": "SoC 한도를 최소 [[min]]%, 계통 연결 시 [[ongrid]]%로 설정"
         },
         "args": [
           {
@@ -1078,31 +1078,6 @@
               "ru": "Минимум",
               "ar": "الحد الأدنى",
               "ko": "최소"
-            }
-          },
-          {
-            "type": "range",
-            "name": "max",
-            "min": 10,
-            "max": 100,
-            "step": 1,
-            "label": "%",
-            "labelMultiplier": 1,
-            "labelDecimals": 0,
-            "title": {
-              "en": "Maximum",
-              "nl": "Maximum",
-              "de": "Maximum",
-              "fr": "Maximum",
-              "es": "Máximo",
-              "it": "Massimo",
-              "da": "Maksimum",
-              "sv": "Maximum",
-              "no": "Maksimum",
-              "pl": "Maksimum",
-              "ru": "Максимум",
-              "ar": "الحد الأقصى",
-              "ko": "최대"
             }
           },
           {
@@ -1401,10 +1376,7 @@
       },
       "pair": [
         {
-          "id": "login_apikey",
-          "navigation": {
-            "next": "list_devices"
-          }
+          "id": "login_apikey"
         },
         {
           "id": "list_devices",
@@ -1673,10 +1645,7 @@
       },
       "pair": [
         {
-          "id": "login_apikey",
-          "navigation": {
-            "next": "list_devices"
-          }
+          "id": "login_apikey"
         },
         {
           "id": "list_devices",
@@ -2312,10 +2281,7 @@
       },
       "pair": [
         {
-          "id": "login_apikey",
-          "navigation": {
-            "next": "list_devices"
-          }
+          "id": "login_apikey"
         },
         {
           "id": "list_devices",
@@ -2740,10 +2706,7 @@
       },
       "pair": [
         {
-          "id": "login_apikey",
-          "navigation": {
-            "next": "list_devices"
-          }
+          "id": "login_apikey"
         },
         {
           "id": "list_devices",
@@ -2908,48 +2871,6 @@
     }
   ],
   "capabilities": {
-    "battery_max_soc": {
-      "type": "number",
-      "title": {
-        "en": "Maximum SoC",
-        "nl": "Maximale SoC",
-        "de": "Maximaler SoC",
-        "fr": "SoC maximal",
-        "es": "SoC máximo",
-        "it": "SoC massimo",
-        "da": "Maksimum SoC",
-        "sv": "Högsta SoC",
-        "no": "Maksimum SoC",
-        "pl": "Maksymalny SoC",
-        "ru": "Максимальный SoC",
-        "ar": "الحد الأقصى للشحن",
-        "ko": "최대 SoC"
-      },
-      "units": {
-        "en": "%",
-        "nl": "%",
-        "de": "%",
-        "fr": "%",
-        "es": "%",
-        "it": "%",
-        "da": "%",
-        "sv": "%",
-        "no": "%",
-        "pl": "%",
-        "ru": "%",
-        "ar": "%",
-        "ko": "%"
-      },
-      "decimals": 0,
-      "min": 10,
-      "max": 100,
-      "step": 1,
-      "getable": true,
-      "setable": true,
-      "insights": false,
-      "uiComponent": "slider",
-      "icon": "./assets/battery_soc.svg"
-    },
     "battery_min_soc": {
       "type": "number",
       "title": {

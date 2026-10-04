@@ -27,4 +27,32 @@ module.exports = class MyDevice extends CommonDriver {
     await super.onInit();
   }
 
+  /**
+   * Today's and this month's yield from /op/v0/device/generation, as flat payload fields.
+   * @returns {Promise<object>} { generationToday, generationMonth }, or {} when unavailable
+   */
+  async generationFields({ client, deviceSn }) {
+    const result = await this.tryCall('device generation', async () => (await client.getDeviceGeneration({ sn: deviceSn }))?.result);
+    return result ? { generationToday: result.today, generationMonth: result.month } : {};
+  }
+
+  /** On top of the device status: the yield, which feeds meter_power.month. */
+  async pairExtraData(args) {
+    return { ...(await super.pairExtraData(args)), ...(await this.generationFields(args)) };
+  }
+
+  /**
+   * The ExportLimit setting: supported once read (never withdrawn on a failure). Its value is in
+   * W per the document's own example ("13000"); the setting/get answer carries no unit.
+   */
+  async checkSupport({ client, deviceSn }) {
+    const value = await this.tryCall('export limit check', async () => Number((await client.getSetting({ sn: deviceSn, key: 'ExportLimit' }))?.result?.value));
+    if (!Number.isFinite(value)) return { support: {}, readings: {} };
+    return { support: { exportLimitSupported: true }, readings: { exportLimit: value } };
+  }
+
+  extraCapabilities(store) {
+    return store?.exportLimitSupported ? ['export_limit', 'alarm_generic.control'] : [];
+  }
+
 };

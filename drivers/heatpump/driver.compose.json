@@ -104,10 +104,7 @@
   },
   "pair": [
     {
-      "id": "login_apikey",
-      "navigation": {
-        "next": "list_devices"
-      }
+      "id": "login_apikey"
     },
     {
       "id": "list_devices",

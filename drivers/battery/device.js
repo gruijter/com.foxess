@@ -26,47 +26,18 @@ const { CONTROL_POLL_EVERY_N_TICKS } = require('../../lib/foxEssConstants');
 
 const CONTROL_CAPS = ['target_power', 'target_power_mode'];
 
-// SoC limit capability -> key in battery/soc/get and setting 'MaxSoc'
+// SoC limit capability -> key in battery/soc/get|set. No maximum SoC: setting 'MaxSoc' reads, but
+// writing it was accepted (errno 0) and ignored on De Brik (H3, 2026-10-04, watched for 5 min).
 const SOC_CAPS = {
   battery_min_soc: 'minSoc',
   battery_min_soc_ongrid: 'minSocOnGrid',
-  battery_max_soc: 'maxSoc',
 };
 
 module.exports = class MyDevice extends CommonDevice {
 
-  /**
-   * Whether this inverter can be controlled: it must support the scheduler, which is the only way
-   * FoxESS offers to charge or discharge at a chosen power. Checked on every (re)start, one call.
-   */
-  async onClientReady() {
-    const flag = await this.client.getSchedulerFlag({ sn: this.deviceSn })
-      .then((res) => res?.result)
-      .catch((error) => {
-        this.error('scheduler support check failed:', error.message || error);
-        return null;
-      });
-    // keep the last known answer when the check itself failed
-    if (flag) await this.setStoreValue('controlSupported', Boolean(flag.support));
-    this.schedulerOn = flag ? Boolean(flag.enable) : undefined;
-
-    // SoC limits: supported once read. Like optional capabilities, never withdrawn on a failure.
-    const limits = await this.readSocLimits().catch((error) => {
-      this.error('SoC limits check failed:', error.message || error);
-      return null;
-    });
-    if (limits) {
-      await this.setStoreValue('socLimitsSupported', true);
-      if (limits.maxSoc !== undefined) await this.setStoreValue('maxSocSupported', true);
-    }
-  }
-
-  extraCapabilities() {
-    const caps = this.getStoreValue('controlSupported') ? [...CONTROL_CAPS] : [];
-    if (this.getStoreValue('socLimitsSupported')) caps.push('battery_min_soc', 'battery_min_soc_ongrid');
-    if (this.getStoreValue('maxSocSupported')) caps.push('battery_max_soc');
-    if (caps.length) caps.push('alarm_generic.control');
-    return caps;
+  onReadings({ schedulerOn, socLimits }) {
+    this.schedulerOn = schedulerOn;
+    if (socLimits) this.socLimits = { ...socLimits, time: Date.now() };
   }
 
   /**
@@ -100,18 +71,14 @@ module.exports = class MyDevice extends CommonDevice {
   }
 
   /**
-   * The SoC limits, as { minSoc, minSocOnGrid, maxSoc } - maxSoc undefined when the inverter has
-   * no MaxSoc setting (errno 42015 "does not currently support this feature" on such a key).
+   * The SoC limits, as { minSoc, minSocOnGrid }.
    */
   async readSocLimits() {
     const soc = (await this.client.getBatterySoc({ sn: this.deviceSn }))?.result;
     const minSoc = Number(soc?.minSoc);
     const minSocOnGrid = Number(soc?.minSocOnGrid);
     if (!Number.isFinite(minSoc) || !Number.isFinite(minSocOnGrid)) throw new Error('no SoC limits in the answer');
-    const max = await this.client.getSetting({ sn: this.deviceSn, key: 'MaxSoc' })
-      .then((res) => Number(res?.result?.value))
-      .catch(() => NaN);
-    const limits = { minSoc, minSocOnGrid, maxSoc: Number.isFinite(max) ? max : undefined };
+    const limits = { minSoc, minSocOnGrid };
     this.socLimits = { ...limits, time: Date.now() };
     return limits;
   }
@@ -127,26 +94,13 @@ module.exports = class MyDevice extends CommonDevice {
    * @param {object} values the changed SoC limit capabilities
    */
   async onSocLimits(values) {
-    const current = {};
     const next = {};
-    for (const [cap, key] of Object.entries(SOC_CAPS)) {
-      if (!this.hasCapability(cap)) continue;
-      current[key] = this.getCapabilityValue(cap);
-      next[key] = values[cap] ?? current[key];
-    }
+    for (const [cap, key] of Object.entries(SOC_CAPS)) next[key] = values[cap] ?? this.getCapabilityValue(cap);
     this.log('SoC limits:', values, '->', next);
     if (!settings.socLimitsValid(next)) throw new Error(this.homey.__('errors.socRange'));
     try {
       await this.clearControlOverridden();
-      for (const step of settings.socWriteOrder(current, next)) {
-        if (step === 'maxSoc') {
-          // eslint-disable-next-line no-await-in-loop
-          await this.client.setSetting({ sn: this.deviceSn, key: 'MaxSoc', value: next.maxSoc });
-        } else {
-          // eslint-disable-next-line no-await-in-loop
-          await this.client.setBatterySoc({ sn: this.deviceSn, minSoc: next.minSoc, minSocOnGrid: next.minSocOnGrid });
-        }
-      }
+      await this.client.setBatterySoc({ sn: this.deviceSn, minSoc: next.minSoc, minSocOnGrid: next.minSocOnGrid });
       await this.noteWrites(next);
       // the slot's discharge floor follows minSocOnGrid
       this.socLimits = { ...next, time: Date.now() };
@@ -161,9 +115,8 @@ module.exports = class MyDevice extends CommonDevice {
   /**
    * The 'Set SoC limits' flow card: as if changed on the device page, shown right away.
    */
-  async setSocLimits({ min, max, ongrid }) {
+  async setSocLimits({ min, ongrid }) {
     const values = { battery_min_soc: min, battery_min_soc_ongrid: ongrid };
-    if (this.hasCapability('battery_max_soc')) values.battery_max_soc = max;
     await this.onSocLimits(values);
     for (const [cap, value] of Object.entries(values)) {
       // eslint-disable-next-line no-await-in-loop

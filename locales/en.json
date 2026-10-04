@@ -25,7 +25,7 @@
     "loginFailed": "The API key was not accepted:",
     "controlFailed": "Could not change the battery control:",
     "noSchedule": "No FoxCloud schedule found. Set one up in FoxCloud first.",
-    "socRange": "SoC limits must be 10–100%, with minimum ≤ minimum on grid ≤ maximum.",
+    "socRange": "SoC limits must be 10–100%, with minimum ≤ minimum on grid.",
     "settingFailed": "Could not change the setting:"
   },
   "notifications": {

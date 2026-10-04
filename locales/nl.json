@@ -25,7 +25,7 @@
     "loginFailed": "De API-sleutel werd niet geaccepteerd:",
     "controlFailed": "Kon de batterijsturing niet wijzigen:",
     "noSchedule": "Geen FoxCloud-schema gevonden. Stel er eerst een in via FoxCloud.",
-    "socRange": "SoC-grenzen moeten 10–100% zijn, met minimum ≤ minimum op net ≤ maximum.",
+    "socRange": "SoC-grenzen moeten 10–100% zijn, met minimum ≤ minimum op net.",
     "settingFailed": "Kon de instelling niet wijzigen:"
   },
   "notifications": {

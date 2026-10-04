@@ -25,7 +25,7 @@
     "loginFailed": "La chiave API non è stata accettata:",
     "controlFailed": "Impossibile modificare il controllo della batteria:",
     "noSchedule": "Nessun programma FoxCloud trovato. Creane prima uno in FoxCloud.",
-    "socRange": "I limiti di SoC devono essere 10–100%, con minimo ≤ minimo in rete ≤ massimo.",
+    "socRange": "I limiti di SoC devono essere 10–100%, con minimo ≤ minimo in rete.",
     "settingFailed": "Impossibile modificare l'impostazione:"
   },
   "notifications": {
