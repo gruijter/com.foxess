@@ -21,13 +21,16 @@ along with com.foxess.  If not, see <http://www.gnu.org/licenses/>.
 
 const CommonDriver = require('../../lib/common_driver');
 
-// The heat pump register list is the same response for every heat pump device, so cache it
-// briefly to keep one poll cycle at a single call instead of one call per paired device.
+// The heat pump register list is the same response for every heat pump device of an account, so
+// cache it briefly, per client (= API key), to keep one poll cycle at a single call per account
+// instead of one call per paired device.
 const STATUS_CACHE_MS = 60 * 1000;
 
 // registerStatus values, from register/status/change ("pending、approved、revoked").
-const APPROVED = 'approved';
+const PENDING = 'pending';
 const REVOKED = 'revoked';
+// Only these explain why nothing can be read; a missing or unknown status explains nothing.
+const UNAPPROVED = [PENDING, REVOKED];
 
 // At most this many module serials are tried as a heat pump gateway while pairing: each try is one
 // call on the same path, 1.1 s apart, and the whole list_devices handler must stay inside Homey's
@@ -51,7 +54,7 @@ module.exports = class MyDriver extends CommonDriver {
 
   async onInit() {
     await super.onInit();
-    this.statusCache = null;
+    this.statusCache = new WeakMap(); // client -> { time, list } or, while it is fetched, { pending }
   }
 
   /**
@@ -130,11 +133,24 @@ module.exports = class MyDriver extends CommonDriver {
    * @returns {Promise<object|null>} the register-list entry, or null when not listed
    */
   async getHeatPumpEntry({ client, heatSn, moduleSn }) {
-    if (!this.statusCache || (Date.now() - this.statusCache.time) > STATUS_CACHE_MS) {
-      const response = await client.getHeatPumpList();
-      this.statusCache = { time: Date.now(), list: listOf(response) };
+    if (!this.statusCache) this.statusCache = new WeakMap();
+    let cached = this.statusCache.get(client);
+    if (!cached || (!cached.pending && (Date.now() - cached.time) > STATUS_CACHE_MS)) {
+      // heat pumps polled on the same tick share the one call in flight
+      const pending = client.getHeatPumpList()
+        .then((response) => {
+          const list = listOf(response);
+          this.statusCache.set(client, { time: Date.now(), list });
+          return list;
+        }, (error) => {
+          this.statusCache.delete(client);
+          throw error;
+        });
+      cached = { pending };
+      this.statusCache.set(client, cached);
     }
-    return this.statusCache.list.find((hp) => (heatSn ? heatSnOf(hp) === heatSn : moduleSnOf(hp) === moduleSn)) || null;
+    const list = cached.pending ? await cached.pending : cached.list;
+    return list.find((hp) => (heatSn ? heatSnOf(hp) === heatSn : moduleSnOf(hp) === moduleSn)) || null;
   }
 
   /**
@@ -153,7 +169,7 @@ module.exports = class MyDriver extends CommonDriver {
       return undefined;
     });
     if (entry === null) this.log(`[HP] ${id}: not in the register list`);
-    const registerStatus = entry ? registerStatusOf(entry) : undefined;
+    const registerStatus = (entry && registerStatusOf(entry)) || undefined;
     const module = moduleSnOf(entry) || moduleSn;
     const flat = {
       registerStatus,
@@ -161,7 +177,7 @@ module.exports = class MyDriver extends CommonDriver {
       runningStatus: entry?.runningStatus,
       masterVersion: entry?.masterVersion,
     };
-    const explained = registerStatus !== undefined && registerStatus !== APPROVED;
+    const explained = UNAPPROVED.includes(registerStatus);
     if (!module) {
       if (explained) return flat;
       throw Error(`Heat pump ${id} has no module serial`);
@@ -188,4 +204,4 @@ module.exports = class MyDriver extends CommonDriver {
 
 };
 
-module.exports.APPROVED = APPROVED;
+module.exports.UNAPPROVED = UNAPPROVED;

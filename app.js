@@ -117,6 +117,13 @@ module.exports = class FoxEssApp extends Homey.App {
    * position changes (see lib/foxEssTiming.js).
    */
   noteSnapshot(sn, at) {
+    // Only paired devices count: a serial looked up while pairing but not added, or of a device
+    // since deleted, would otherwise hold its own snapshot moment in the spread for good.
+    const paired = this.pairedSerials();
+    for (const known of this.snapshots.keys()) {
+      if (!paired.has(known)) this.snapshots.delete(known);
+    }
+    if (!paired.has(sn)) return;
     const previous = this.snapshots.get(sn);
     this.snapshots.set(sn, at);
     // Judge the tick by the first answer after it: the old snapshot again means it came too early.
@@ -133,6 +140,17 @@ module.exports = class FoxEssApp extends Homey.App {
     this.tickPhaseMs = phase;
     this.log(`poll tick moved to ${Math.round(phase / 1000)}s after each ${PERIOD_MS / 60000}-minute mark, right after the cloud snapshot`);
     if (this._everyXminutesTimeoutId) this.scheduleNextTick();
+  }
+
+  /** The serials of every paired device, as CommonDevice resolves its deviceSn. */
+  pairedSerials() {
+    const serials = new Set();
+    for (const driver of Object.values(this.homey.drivers.getDrivers())) {
+      for (const device of driver.getDevices()) {
+        serials.add(device.getSettings().deviceSn || device.getData().id);
+      }
+    }
+    return serials;
   }
 
   /**

@@ -32,6 +32,11 @@ module.exports = async (t) => {
   t.eq(split.length, 2, 'a slot across midnight is split in two');
   t.eq(`${split[0].endHour}:${split[0].endMinute} ${split[1].startHour}:${split[1].startMinute}-${split[1].endHour}:${split[1].endMinute}`,
     '23:59 0:0-0:40', 'at 23:59 and on from 00:00');
+  const toMidnight = ctl.slotGroups({
+    now: { hour: 23, minute: 0 }, minutes: 60, workMode: 'ForceCharge', extraParam: {},
+  });
+  t.eq(toMidnight.map((g) => `${g.startHour}:${g.startMinute}-${g.endHour}:${g.endMinute}`).join(' '), '23:0-23:59',
+    'a slot ending at midnight exactly is one group, without an empty 00:00-00:00');
 
   // --- power -> slot, corrected for PV (fdPwr caps grid draw / total AC output, not the battery) ---
   const charge = ctl.slotForPower(2500, { minSocOnGrid: 15, pvW: 600 });

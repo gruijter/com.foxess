@@ -88,12 +88,28 @@ module.exports = async (t) => {
     t.eq(unlisted.registerStatus, undefined, 'a module paired without registration has no status');
     t.ok(unlisted.workMode !== undefined, 'and is still read');
 
+    const other = fixtures.makeRoutedClient({ [LIST]: listOf(entry('HP-B', 'pending', '')) });
+    const otherAccount = await driver.pollHeatPump({ client: other, heatSn: 'HP-B', moduleSn: '' });
+    t.eq(otherAccount.registerStatus, 'pending', 'another account (client) gets its own register list, not the cached one');
+
+    const together = fixtures.makeRoutedClient({ [LIST]: listOf(entry('HP-A', 'pending', ''), entry('HP-P', 'pending', '')) });
+    const fresh = makeDriver();
+    await Promise.all(['HP-A', 'HP-P'].map((heatSn) => fresh.pollHeatPump({ client: together, heatSn, moduleSn: '' })));
+    t.eq(together.calls.filter((c) => c.path === LIST).length, 1, 'heat pumps polled at the same moment share one register-list call');
+
     let failed = null;
     const broken = fixtures.makeRoutedClient({ [LIST]: listOf(), [HEATING]: NOT_A_HEAT_PUMP, [DHW]: NOT_A_HEAT_PUMP });
     await makeDriver().pollHeatPump({ client: broken, heatSn: '', moduleSn: 'MOD-X' }).catch((error) => {
       failed = error;
     });
     t.ok(failed, 'nothing readable and no registration to explain it is an error');
+
+    failed = null;
+    const noStatus = fixtures.makeRoutedClient({ [LIST]: listOf(entry('HP-N', undefined)), [HEATING]: NOT_A_HEAT_PUMP, [DHW]: NOT_A_HEAT_PUMP });
+    await makeDriver().pollHeatPump({ client: noStatus, heatSn: 'HP-N', moduleSn: '' }).catch((error) => {
+      failed = error;
+    });
+    t.ok(failed, 'an entry without a registerStatus explains nothing either: the failed read stays an error');
     t.eq(client.calls.filter(isWrite).length + broken.calls.filter(isWrite).length, 0, 'polling writes nothing');
   }
 

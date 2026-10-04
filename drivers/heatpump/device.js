@@ -21,7 +21,7 @@ along with com.foxess.  If not, see <http://www.gnu.org/licenses/>.
 
 const CommonDevice = require('../../lib/common_device');
 const { HEATPUMP_POLL_EVERY_N_TICKS } = require('../../lib/foxEssConstants');
-const { APPROVED } = require('./driver');
+const { UNAPPROVED } = require('./driver');
 
 module.exports = class MyDevice extends CommonDevice {
 
@@ -102,7 +102,7 @@ module.exports = class MyDevice extends CommonDevice {
     });
     const read = ['workMode', 'dhwEnable', 'dhwTemp'].some((key) => data[key] !== undefined);
     // Nothing read, and the registration says why: show that reason.
-    if (!read && data.registerStatus !== undefined && data.registerStatus !== APPROVED) {
+    if (!read && UNAPPROVED.includes(data.registerStatus)) {
       const key = data.registerStatus === 'revoked' ? 'errors.heatpumpRevoked' : 'errors.heatpumpPending';
       this.log(`[HP] ${this.getName()}: registration ${data.registerStatus}, settings not readable`);
       await this.setUnavailable(this.homey.__(key)).catch(this.error);

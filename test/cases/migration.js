@@ -119,6 +119,13 @@ module.exports = async (t) => {
     'only the dropped capability was touched');
   t.eq(dropped.state.meter_power, 52.6, 'the others keep their values');
 
+  // --- dropped near the top and one appended in the same migration: still nothing rebuilt ---
+  const both = fakeDevice([inverterBase[0], 'obsolete', ...inverterBase.slice(1)], { meter_power: 52.6 });
+  t.eq(await migrateCapabilities(both, [...inverterBase, 'alarm_problem'], opts), true, 'a drop plus an addition migrates');
+  t.eq(both.list.join(','), [...inverterBase, 'alarm_problem'].join(','), 'the list ends up as wanted');
+  t.eq(both.calls.filter((c) => c.startsWith('-') || c.startsWith('+')).join(','), '-obsolete,+alarm_problem',
+    'only the dropped and the added capability were touched');
+
   // --- two migrations at once run one after the other ---
   const busy = fakeDevice(inverterBase);
   const a = pointMap.deviceCapabilities('inverter', { 'measure_power.pv1': true });
