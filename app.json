@@ -24,26 +24,26 @@
     "ar": "Fox ESS"
   },
   "description": {
-    "en": "Life by Sunshine.",
-    "nl": "Leven op zonneschijn.",
-    "de": "Leben durch Sonnenschein.",
-    "fr": "La vie grâce au soleil.",
-    "it": "La vita grazie al sole.",
-    "es": "Vivir gracias al sol.",
-    "pl": "Życie dzięki słońcu.",
-    "sv": "Liv av solsken.",
-    "no": "Liv av solskinn.",
-    "da": "Liv af solskin.",
-    "ru": "Жизнь благодаря солнцу.",
-    "ko": "햇빛으로 사는 삶.",
-    "ar": "حياة بضوء الشمس."
+    "en": "Life by Sunshine",
+    "nl": "Life by Sunshine",
+    "de": "Life by Sunshine",
+    "fr": "Life by Sunshine",
+    "it": "Life by Sunshine",
+    "es": "Life by Sunshine",
+    "pl": "Life by Sunshine",
+    "sv": "Life by Sunshine",
+    "no": "Life by Sunshine",
+    "da": "Life by Sunshine",
+    "ru": "Life by Sunshine",
+    "ko": "Life by Sunshine",
+    "ar": "Life by Sunshine"
   },
   "brandColor": "#984EFF",
   "tags": {
     "en": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -61,7 +61,7 @@
     "nl": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -78,7 +78,7 @@
     "da": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -96,7 +96,7 @@
     "de": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -114,7 +114,7 @@
     "es": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -132,7 +132,7 @@
     "fr": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -150,7 +150,7 @@
     "it": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -168,7 +168,7 @@
     "no": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -186,7 +186,7 @@
     "sv": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -204,7 +204,7 @@
     "pl": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -222,7 +222,7 @@
     "ru": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -240,7 +240,7 @@
     "ko": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -258,7 +258,7 @@
     "ar": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -295,7 +295,7 @@
       {
         "title": {
           "en": "Voltage phase 1 changed",
-          "nl": "Voltage fase 1 is veranderd",
+          "nl": "Spanning fase 1 is veranderd",
           "de": "Spannung Phase 1 geändert",
           "fr": "Tension phase 1 modifiée",
           "it": "Tensione fase 1 modificata",
@@ -322,7 +322,7 @@
             "type": "number",
             "title": {
               "en": "Voltage phase 1",
-              "nl": "Voltage fase 1",
+              "nl": "Spanning fase 1",
               "de": "Spannung Phase 1",
               "fr": "Tension phase 1",
               "it": "Tensione fase 1",
@@ -343,7 +343,7 @@
       {
         "title": {
           "en": "Voltage phase 2 changed",
-          "nl": "Voltage fase 2 is veranderd",
+          "nl": "Spanning fase 2 is veranderd",
           "de": "Spannung Phase 2 geändert",
           "fr": "Tension phase 2 modifiée",
           "it": "Tensione fase 2 modificata",
@@ -370,7 +370,7 @@
             "type": "number",
             "title": {
               "en": "Voltage phase 2",
-              "nl": "Voltage fase 2",
+              "nl": "Spanning fase 2",
               "de": "Spannung Phase 2",
               "fr": "Tension phase 2",
               "it": "Tensione fase 2",
@@ -391,7 +391,7 @@
       {
         "title": {
           "en": "Voltage phase 3 changed",
-          "nl": "Voltage fase 3 is veranderd",
+          "nl": "Spanning fase 3 is veranderd",
           "de": "Spannung Phase 3 geändert",
           "fr": "Tension phase 3 modifiée",
           "it": "Tensione fase 3 modificata",
@@ -418,7 +418,7 @@
             "type": "number",
             "title": {
               "en": "Voltage phase 3",
-              "nl": "Voltage fase 3",
+              "nl": "Spanning fase 3",
               "de": "Spannung Phase 3",
               "fr": "Tension phase 3",
               "it": "Tensione fase 3",
@@ -439,8 +439,8 @@
       {
         "title": {
           "en": "Exported energy changed",
-          "nl": "Energie export is veranderd",
-          "de": "Exportierte Energie geändert",
+          "nl": "Teruggeleverde energie is veranderd",
+          "de": "Eingespeiste Energie geändert",
           "fr": "Énergie exportée modifiée",
           "it": "Energia esportata modificata",
           "es": "Energía exportada cambiada",
@@ -466,8 +466,8 @@
             "type": "number",
             "title": {
               "en": "Exported energy",
-              "nl": "Energie export",
-              "de": "Exportierte Energie",
+              "nl": "Teruggeleverde energie",
+              "de": "Eingespeiste Energie",
               "fr": "Énergie exportée",
               "it": "Energia esportata",
               "es": "Energía exportada",
@@ -487,8 +487,8 @@
       {
         "title": {
           "en": "Imported energy changed",
-          "nl": "Energie import is veranderd",
-          "de": "Importierte Energie geändert",
+          "nl": "Afgenomen energie is veranderd",
+          "de": "Bezogene Energie geändert",
           "fr": "Énergie importée modifiée",
           "it": "Energia importata modificata",
           "es": "Energía importada cambiada",
@@ -514,8 +514,8 @@
             "type": "number",
             "title": {
               "en": "Imported energy",
-              "nl": "Energie import",
-              "de": "Importierte Energie",
+              "nl": "Afgenomen energie",
+              "de": "Bezogene Energie",
               "fr": "Énergie importée",
               "it": "Energia importata",
               "es": "Energía importada",
@@ -536,7 +536,7 @@
         "title": {
           "en": "Energy today changed",
           "nl": "Energie vandaag is veranderd",
-          "de": "Heutige Energie geändert",
+          "de": "Energie heute geändert",
           "fr": "Énergie du jour modifiée",
           "it": "Energia di oggi modificata",
           "es": "Energía de hoy cambiada",
@@ -631,19 +631,19 @@
     "conditions": [
       {
         "title": {
-          "en": "Inverter status is ...",
-          "nl": "Omvormerstatus is ...",
-          "de": "Wechselrichterstatus ist ...",
-          "fr": "L'état de l'onduleur est ...",
-          "es": "El estado del inversor es ...",
-          "it": "Lo stato dell'inverter è ...",
-          "da": "Inverterstatus er ...",
-          "sv": "Växelriktarstatus är ...",
-          "no": "Vekselretterstatus er ...",
-          "pl": "Stan inwertera to ...",
-          "ru": "Состояние инвертора ...",
-          "ar": "حالة العاكس هي ...",
-          "ko": "인버터 상태는 ..."
+          "en": "Inverter status is…",
+          "nl": "Omvormerstatus is…",
+          "de": "Wechselrichterstatus ist…",
+          "fr": "L'état de l'onduleur est…",
+          "es": "El estado del inversor es…",
+          "it": "Lo stato dell'inverter è…",
+          "da": "Inverterstatus er…",
+          "sv": "Växelriktarstatus är…",
+          "no": "Vekselretterstatus er…",
+          "pl": "Stan inwertera to…",
+          "ru": "Состояние инвертора…",
+          "ar": "حالة العاكس هي…",
+          "ko": "인버터 상태는…"
         },
         "titleFormatted": {
           "en": "Inverter status !{{is|is not}} [[status]]",
@@ -850,19 +850,19 @@
               {
                 "id": "fct",
                 "label": {
-                  "en": "FCT",
-                  "nl": "FCT",
-                  "de": "FCT",
-                  "fr": "FCT",
-                  "es": "FCT",
-                  "it": "FCT",
-                  "da": "FCT",
-                  "sv": "FCT",
-                  "no": "FCT",
-                  "pl": "FCT",
-                  "ru": "FCT",
-                  "ar": "FCT",
-                  "ko": "FCT"
+                  "en": "Factory test",
+                  "nl": "Fabriekstest",
+                  "de": "Werkstest",
+                  "fr": "Test d'usine",
+                  "it": "Test di fabbrica",
+                  "es": "Prueba de fábrica",
+                  "pl": "Test fabryczny",
+                  "sv": "Fabrikstest",
+                  "no": "Fabrikktest",
+                  "da": "Fabrikstest",
+                  "ru": "Заводской тест",
+                  "ko": "공장 테스트",
+                  "ar": "اختبار المصنع"
                 }
               },
               {
@@ -911,7 +911,7 @@
       {
         "title": {
           "en": "Get status update",
-          "nl": "Haal status update op",
+          "nl": "Vraag een statusupdate op",
           "de": "Status-Update anfordern",
           "fr": "Obtenir la mise à jour du statut",
           "it": "Ottieni aggiornamento di stato",
@@ -925,19 +925,19 @@
           "ar": "الحصول على تحديث الحالة"
         },
         "hint": {
-          "en": "This will try to update the status of all devices immediately. Careful: too many updates will cause the server to temporarily block you.",
-          "nl": "Dit zal proberen de status van alle apparaten onmiddellijk bij te werken. Let op: te veel updates zullen ervoor zorgen dat de server je tijdelijk blokkeert.",
-          "de": "Dies versucht, den Status aller Geräte sofort zu aktualisieren. Achtung: Zu viele Updates führen dazu, dass der Server Sie vorübergehend blockiert.",
-          "fr": "Cela tentera de mettre à jour le statut de tous les appareils immédiatement. Attention : trop de mises à jour entraîneront un blocage temporaire par le serveur.",
-          "it": "Questo proverà ad aggiornare immediatamente lo stato di tutti i dispositivi. Attenzione: troppi aggiornamenti faranno sì che il server ti blocchi temporaneamente.",
-          "es": "Esto intentará actualizar el estado de todos los dispositivos de inmediato. Cuidado: demasiadas actualizaciones harán que el servidor te bloquee temporalmente.",
-          "pl": "Spowoduje to próbę natychmiastowej aktualizacji statusu wszystkich urządzeń. Uwaga: zbyt wiele aktualizacji spowoduje tymczasowe zablokowanie przez serwer.",
-          "sv": "Detta kommer att försöka uppdatera statusen för alla enheter omedelbart. Varning: för många uppdateringar gör att servern tillfälligt blockerar dig.",
-          "no": "Dette vil prøve å oppdatere statusen for alle enheter umiddelbart. Forsiktig: for mange oppdateringer vil føre til at serveren midlertidig blokkerer deg.",
-          "da": "Dette vil forsøge at opdatere status for alle enheder med det samme. Forsigtig: For mange opdateringer vil medføre, at serveren midlertidigt blokerer dig.",
-          "ru": "Это попытается немедленно обновить статус всех устройств. Осторожно: слишком много обновлений приведет к временной блокировке на сервере.",
-          "ko": "오늘의 장치 상태를 즉시 업데이트하도록 시도합니다. 주의: 업데이트가 너무 많으면 서버에서 일시적으로 차단될 수 있습니다.",
-          "ar": "سيحاول هذا تحديث حالة جميع الأجهزة على الفور. احذر: كثرة التحديثات ستؤدي إلى حظرك مؤقتًا من قبل الخادم."
+          "en": "Updates all devices now. Used too often, FoxCloud blocks the API key for a while.",
+          "nl": "Werkt alle apparaten nu bij. Te vaak gebruikt blokkeert FoxCloud de API-sleutel een tijdje.",
+          "de": "Aktualisiert jetzt alle Geräte. Zu oft verwendet, sperrt FoxCloud den API-Schlüssel eine Weile.",
+          "fr": "Met à jour tous les appareils maintenant. Trop utilisé, FoxCloud bloque la clé API pendant un moment.",
+          "it": "Aggiorna ora tutti i dispositivi. Se usato troppo spesso, FoxCloud blocca la chiave API per un po'.",
+          "es": "Actualiza ahora todos los dispositivos. Si se usa demasiado, FoxCloud bloquea la clave API durante un tiempo.",
+          "pl": "Aktualizuje teraz wszystkie urządzenia. Używane zbyt często powoduje, że FoxCloud na jakiś czas blokuje klucz API.",
+          "sv": "Uppdaterar alla enheter nu. Används det för ofta blockerar FoxCloud API-nyckeln en stund.",
+          "no": "Oppdaterer alle enheter nå. Brukes det for ofte, blokkerer FoxCloud API-nøkkelen en stund.",
+          "da": "Opdaterer alle enheder nu. Bruges det for ofte, blokerer FoxCloud API-nøglen et stykke tid.",
+          "ru": "Обновляет все устройства сейчас. При слишком частом использовании FoxCloud временно блокирует ключ API.",
+          "ko": "지금 모든 기기를 업데이트합니다. 너무 자주 사용하면 FoxCloud가 API 키를 잠시 차단합니다.",
+          "ar": "يحدّث جميع الأجهزة الآن. عند الإفراط في الاستخدام يحظر FoxCloud مفتاح API لفترة."
         },
         "id": "force_poll"
       },
@@ -1138,7 +1138,7 @@
       "capabilitiesOptions": {
         "meter_power.charged": {
           "title": {
-            "en": "Charged Energy",
+            "en": "Charged energy",
             "nl": "Geladen energie",
             "de": "Geladene Energie",
             "fr": "Énergie chargée",
@@ -1155,7 +1155,7 @@
         },
         "meter_power.discharged": {
           "title": {
-            "en": "Discharged Energy",
+            "en": "Discharged energy",
             "nl": "Ontladen energie",
             "de": "Entladene Energie",
             "fr": "Énergie déchargée",
@@ -1358,19 +1358,19 @@
         },
         "measure_power.target": {
           "title": {
-            "en": "Target power",
-            "nl": "Doelvermogen",
-            "de": "Zielleistung",
-            "fr": "Puissance cible",
-            "es": "Potencia objetivo",
-            "it": "Potenza obiettivo",
-            "da": "Måleffekt",
-            "sv": "Måleffekt",
-            "no": "Måleffekt",
-            "pl": "Moc docelowa",
-            "ru": "Целевая мощность",
-            "ar": "القدرة المستهدفة",
-            "ko": "목표 전력"
+            "en": "Active target power",
+            "nl": "Actief doelvermogen",
+            "de": "Aktive Zielleistung",
+            "fr": "Puissance cible active",
+            "it": "Potenza obiettivo attiva",
+            "es": "Potencia objetivo activa",
+            "pl": "Aktywna moc docelowa",
+            "sv": "Aktiv måleffekt",
+            "no": "Aktiv måleffekt",
+            "da": "Aktiv måleffekt",
+            "ru": "Активная целевая мощность",
+            "ko": "활성 목표 전력",
+            "ar": "القدرة المستهدفة النشطة"
           },
           "decimals": 0
         }
@@ -1418,19 +1418,19 @@
         {
           "type": "group",
           "label": {
-            "en": "Meter information",
-            "nl": "Meter informatie",
-            "de": "Zählerinformationen",
-            "fr": "Informations du compteur",
-            "it": "Informazioni contatore",
-            "es": "Información del medidor",
-            "pl": "Informacje o liczniku",
-            "sv": "Mätarinformation",
-            "no": "Målerinformasjon",
-            "da": "Målerinformation",
-            "ru": "Информация о счетчике",
-            "ko": "계량기 정보",
-            "ar": "معلومات العداد"
+            "en": "Battery information",
+            "nl": "Batterij-informatie",
+            "de": "Batterieinformationen",
+            "fr": "Informations de la batterie",
+            "it": "Informazioni batteria",
+            "es": "Información de la batería",
+            "pl": "Informacje o akumulatorze",
+            "sv": "Batteriinformation",
+            "no": "Batteriinformasjon",
+            "da": "Batteriinformation",
+            "ru": "Информация о батарее",
+            "ko": "배터리 정보",
+            "ar": "معلومات البطارية"
           },
           "children": [
             {
@@ -1438,7 +1438,7 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Plant naam",
+                "nl": "Installatienaam",
                 "de": "Anlagenname",
                 "fr": "Nom de l'installation",
                 "it": "Nome impianto",
@@ -1458,7 +1458,7 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Plant ID",
+                "nl": "Installatie-ID",
                 "de": "Anlagen-ID",
                 "fr": "ID de l'installation",
                 "it": "ID impianto",
@@ -1478,7 +1478,7 @@
               "type": "label",
               "label": {
                 "en": "Device name",
-                "nl": "Apparaat naam",
+                "nl": "Apparaatnaam",
                 "de": "Gerätename",
                 "fr": "Nom de l'appareil",
                 "it": "Nome dispositivo",
@@ -1688,8 +1688,8 @@
           "type": "group",
           "label": {
             "en": "Heat pump information",
-            "nl": "Warmtepomp informatie",
-            "de": "Wärmepumpen-Informationen",
+            "nl": "Warmtepompinformatie",
+            "de": "Wärmepumpeninformationen",
             "fr": "Informations de la pompe à chaleur",
             "it": "Informazioni pompa di calore",
             "es": "Información de la bomba de calor",
@@ -1809,7 +1809,7 @@
     {
       "name": {
         "en": "Solar inverter",
-        "nl": "PV omvormer",
+        "nl": "PV-omvormer",
         "de": "Solar-Wechselrichter",
         "fr": "Onduleur solaire",
         "it": "Inverter solare",
@@ -1867,8 +1867,8 @@
         "measure_power.ac_inverter": {
           "title": {
             "en": "Inverter power (AC)",
-            "nl": "Omvormer vermogen (AC)",
-            "de": "Inverterleistung (AC)",
+            "nl": "Omvormervermogen (AC)",
+            "de": "Wechselrichterleistung (AC)",
             "fr": "Puissance onduleur (CA)",
             "es": "Potencia inversor (CA)",
             "it": "Potenza inverter (CA)",
@@ -1886,7 +1886,7 @@
           "title": {
             "en": "Inverter energy (AC)",
             "nl": "Omvormeropbrengst (AC)",
-            "de": "Inverterertrag (AC)",
+            "de": "Wechselrichterertrag (AC)",
             "fr": "Énergie onduleur (CA)",
             "es": "Energía inversor (CA)",
             "it": "Energia inverter (CA)",
@@ -1903,8 +1903,8 @@
         "measure_power.pv1": {
           "title": {
             "en": "PV1 power",
-            "nl": "PV1 vermogen",
-            "de": "PV1 Leistung",
+            "nl": "PV1-vermogen",
+            "de": "PV1-Leistung",
             "fr": "Puissance PV1",
             "es": "Potencia PV1",
             "it": "Potenza PV1",
@@ -1921,8 +1921,8 @@
         "measure_power.pv2": {
           "title": {
             "en": "PV2 power",
-            "nl": "PV2 vermogen",
-            "de": "PV2 Leistung",
+            "nl": "PV2-vermogen",
+            "de": "PV2-Leistung",
             "fr": "Puissance PV2",
             "es": "Potencia PV2",
             "it": "Potenza PV2",
@@ -1939,8 +1939,8 @@
         "measure_power.pv3": {
           "title": {
             "en": "PV3 power",
-            "nl": "PV3 vermogen",
-            "de": "PV3 Leistung",
+            "nl": "PV3-vermogen",
+            "de": "PV3-Leistung",
             "fr": "Puissance PV3",
             "es": "Potencia PV3",
             "it": "Potenza PV3",
@@ -1957,8 +1957,8 @@
         "measure_power.pv4": {
           "title": {
             "en": "PV4 power",
-            "nl": "PV4 vermogen",
-            "de": "PV4 Leistung",
+            "nl": "PV4-vermogen",
+            "de": "PV4-Leistung",
             "fr": "Puissance PV4",
             "es": "Potencia PV4",
             "it": "Potenza PV4",
@@ -1975,8 +1975,8 @@
         "measure_voltage.pv1": {
           "title": {
             "en": "PV1 voltage",
-            "nl": "PV1 spanning",
-            "de": "PV1 Spannung",
+            "nl": "PV1-spanning",
+            "de": "PV1-Spannung",
             "fr": "Tension PV1",
             "es": "Voltaje PV1",
             "it": "Tensione PV1",
@@ -1992,8 +1992,8 @@
         "measure_voltage.pv2": {
           "title": {
             "en": "PV2 voltage",
-            "nl": "PV2 spanning",
-            "de": "PV2 Spannung",
+            "nl": "PV2-spanning",
+            "de": "PV2-Spannung",
             "fr": "Tension PV2",
             "es": "Voltaje PV2",
             "it": "Tensione PV2",
@@ -2009,8 +2009,8 @@
         "measure_voltage.pv3": {
           "title": {
             "en": "PV3 voltage",
-            "nl": "PV3 spanning",
-            "de": "PV3 Spannung",
+            "nl": "PV3-spanning",
+            "de": "PV3-Spannung",
             "fr": "Tension PV3",
             "es": "Voltaje PV3",
             "it": "Tensione PV3",
@@ -2026,8 +2026,8 @@
         "measure_voltage.pv4": {
           "title": {
             "en": "PV4 voltage",
-            "nl": "PV4 spanning",
-            "de": "PV4 Spannung",
+            "nl": "PV4-spanning",
+            "de": "PV4-Spannung",
             "fr": "Tension PV4",
             "es": "Voltaje PV4",
             "it": "Tensione PV4",
@@ -2043,8 +2043,8 @@
         "measure_current.pv1": {
           "title": {
             "en": "PV1 current",
-            "nl": "PV1 stroom",
-            "de": "PV1 Strom",
+            "nl": "PV1-stroom",
+            "de": "PV1-Strom",
             "fr": "Courant PV1",
             "es": "Corriente PV1",
             "it": "Corrente PV1",
@@ -2060,8 +2060,8 @@
         "measure_current.pv2": {
           "title": {
             "en": "PV2 current",
-            "nl": "PV2 stroom",
-            "de": "PV2 Strom",
+            "nl": "PV2-stroom",
+            "de": "PV2-Strom",
             "fr": "Courant PV2",
             "es": "Corriente PV2",
             "it": "Corrente PV2",
@@ -2077,8 +2077,8 @@
         "measure_current.pv3": {
           "title": {
             "en": "PV3 current",
-            "nl": "PV3 stroom",
-            "de": "PV3 Strom",
+            "nl": "PV3-stroom",
+            "de": "PV3-Strom",
             "fr": "Courant PV3",
             "es": "Corriente PV3",
             "it": "Corrente PV3",
@@ -2094,8 +2094,8 @@
         "measure_current.pv4": {
           "title": {
             "en": "PV4 current",
-            "nl": "PV4 stroom",
-            "de": "PV4 Strom",
+            "nl": "PV4-stroom",
+            "de": "PV4-Strom",
             "fr": "Courant PV4",
             "es": "Corriente PV4",
             "it": "Corrente PV4",
@@ -2324,7 +2324,7 @@
           "type": "group",
           "label": {
             "en": "Inverter information",
-            "nl": "Omvormer informatie",
+            "nl": "Omvormerinformatie",
             "de": "Wechselrichterinformationen",
             "fr": "Informations de l'onduleur",
             "it": "Informazioni inverter",
@@ -2343,7 +2343,7 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Plant naam",
+                "nl": "Installatienaam",
                 "de": "Anlagenname",
                 "fr": "Nom de l'installation",
                 "it": "Nome impianto",
@@ -2363,7 +2363,7 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Plant ID",
+                "nl": "Installatie-ID",
                 "de": "Anlagen-ID",
                 "fr": "ID de l'installation",
                 "it": "ID impianto",
@@ -2383,7 +2383,7 @@
               "type": "label",
               "label": {
                 "en": "Device name",
-                "nl": "Apparaat naam",
+                "nl": "Apparaatnaam",
                 "de": "Gerätename",
                 "fr": "Nom de l'appareil",
                 "it": "Nome dispositivo",
@@ -2483,7 +2483,7 @@
               "type": "checkbox",
               "label": {
                 "en": "Homey timezone reset",
-                "nl": "Homey tijdzone reset",
+                "nl": "Dagreset in Homey-tijdzone",
                 "de": "Homey-Zeitzone-Reset",
                 "fr": "Reset horaire Homey",
                 "es": "Reinicio horario Homey",
@@ -2498,7 +2498,7 @@
               },
               "hint": {
                 "en": "Use if 'Energy today' resets at the wrong time. Calculates it from the total instead, reset at Homey's local midnight.",
-                "nl": "Gebruik dit als 'Energie vandaag' op het verkeerde moment reset. Wordt dan berekend vanaf de totaalmeter, met reset om middernacht (Homey tijd).",
+                "nl": "Gebruik dit als 'Energie vandaag' op het verkeerde moment reset. Wordt dan berekend uit de totaalmeter, met reset om middernacht (Homey-tijd).",
                 "de": "Verwenden, wenn 'Energie heute' zur falschen Zeit zurückgesetzt wird. Wird dann aus dem Gesamtwert berechnet, mit Reset um Mitternacht (Homey-Zeit).",
                 "fr": "À utiliser si 'Énergie du jour' se réinitialise au mauvais moment. Sera calculée à partir du total, avec réinitialisation à minuit (heure Homey).",
                 "es": "Úselo si 'Energía hoy' se reinicia a la hora incorrecta. Se calculará desde el total, con reinicio a medianoche (hora de Homey).",
@@ -2548,7 +2548,7 @@
         "measure_voltage.1": {
           "title": {
             "en": "Voltage phase 1",
-            "nl": "Voltage fase 1",
+            "nl": "Spanning fase 1",
             "de": "Spannung Phase 1",
             "fr": "Tension phase 1",
             "it": "Tensione fase 1",
@@ -2565,7 +2565,7 @@
         "measure_voltage.2": {
           "title": {
             "en": "Voltage phase 2",
-            "nl": "Voltage fase 2",
+            "nl": "Spanning fase 2",
             "de": "Spannung Phase 2",
             "fr": "Tension phase 2",
             "it": "Tensione fase 2",
@@ -2582,7 +2582,7 @@
         "measure_voltage.3": {
           "title": {
             "en": "Voltage phase 3",
-            "nl": "Voltage fase 3",
+            "nl": "Spanning fase 3",
             "de": "Spannung Phase 3",
             "fr": "Tension phase 3",
             "it": "Tensione fase 3",
@@ -2599,8 +2599,8 @@
         "meter_power.imported": {
           "title": {
             "en": "Imported energy",
-            "nl": "Energie import",
-            "de": "Importierte Energie",
+            "nl": "Afgenomen energie",
+            "de": "Bezogene Energie",
             "fr": "Énergie importée",
             "it": "Energia importata",
             "es": "Energía importada",
@@ -2617,8 +2617,8 @@
         "meter_power.exported": {
           "title": {
             "en": "Exported energy",
-            "nl": "Energie export",
-            "de": "Exportierte Energie",
+            "nl": "Teruggeleverde energie",
+            "de": "Eingespeiste Energie",
             "fr": "Énergie exportée",
             "it": "Energia esportata",
             "es": "Energía exportada",
@@ -2749,7 +2749,7 @@
           "type": "group",
           "label": {
             "en": "Meter information",
-            "nl": "Meter informatie",
+            "nl": "Meterinformatie",
             "de": "Zählerinformationen",
             "fr": "Informations du compteur",
             "it": "Informazioni contatore",
@@ -2768,7 +2768,7 @@
               "type": "label",
               "label": {
                 "en": "Plant name",
-                "nl": "Plant naam",
+                "nl": "Installatienaam",
                 "de": "Anlagenname",
                 "fr": "Nom de l'installation",
                 "it": "Nome impianto",
@@ -2788,7 +2788,7 @@
               "type": "label",
               "label": {
                 "en": "Plant ID",
-                "nl": "Plant ID",
+                "nl": "Installatie-ID",
                 "de": "Anlagen-ID",
                 "fr": "ID de l'installation",
                 "it": "ID impianto",
@@ -2808,7 +2808,7 @@
               "type": "label",
               "label": {
                 "en": "Device name",
-                "nl": "Apparaat naam",
+                "nl": "Apparaatnaam",
                 "de": "Gerätename",
                 "fr": "Nom de l'appareil",
                 "it": "Nome dispositivo",
@@ -3302,19 +3302,19 @@
         {
           "id": "fct",
           "title": {
-            "en": "FCT",
-            "nl": "FCT",
-            "de": "FCT",
-            "fr": "FCT",
-            "es": "FCT",
-            "it": "FCT",
-            "da": "FCT",
-            "sv": "FCT",
-            "no": "FCT",
-            "pl": "FCT",
-            "ru": "FCT",
-            "ar": "FCT",
-            "ko": "FCT"
+            "en": "Factory test",
+            "nl": "Fabriekstest",
+            "de": "Werkstest",
+            "fr": "Test d'usine",
+            "it": "Test di fabbrica",
+            "es": "Prueba de fábrica",
+            "pl": "Test fabryczny",
+            "sv": "Fabrikstest",
+            "no": "Fabrikktest",
+            "da": "Fabrikstest",
+            "ru": "Заводской тест",
+            "ko": "공장 테스트",
+            "ar": "اختبار المصنع"
           }
         },
         {

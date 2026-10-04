@@ -25,7 +25,7 @@
   "capabilitiesOptions": {
     "meter_power.charged": {
       "title": {
-        "en": "Charged Energy",
+        "en": "Charged energy",
         "nl": "Geladen energie",
         "de": "Geladene Energie",
         "fr": "Énergie chargée",
@@ -42,7 +42,7 @@
     },
     "meter_power.discharged": {
       "title": {
-        "en": "Discharged Energy",
+        "en": "Discharged energy",
         "nl": "Ontladen energie",
         "de": "Entladene Energie",
         "fr": "Énergie déchargée",
@@ -245,19 +245,19 @@
     },
     "measure_power.target": {
       "title": {
-        "en": "Target power",
-        "nl": "Doelvermogen",
-        "de": "Zielleistung",
-        "fr": "Puissance cible",
-        "es": "Potencia objetivo",
-        "it": "Potenza obiettivo",
-        "da": "Måleffekt",
-        "sv": "Måleffekt",
-        "no": "Måleffekt",
-        "pl": "Moc docelowa",
-        "ru": "Целевая мощность",
-        "ar": "القدرة المستهدفة",
-        "ko": "목표 전력"
+        "en": "Active target power",
+        "nl": "Actief doelvermogen",
+        "de": "Aktive Zielleistung",
+        "fr": "Puissance cible active",
+        "it": "Potenza obiettivo attiva",
+        "es": "Potencia objetivo activa",
+        "pl": "Aktywna moc docelowa",
+        "sv": "Aktiv måleffekt",
+        "no": "Aktiv måleffekt",
+        "da": "Aktiv måleffekt",
+        "ru": "Активная целевая мощность",
+        "ko": "활성 목표 전력",
+        "ar": "القدرة المستهدفة النشطة"
       },
       "decimals": 0
     }

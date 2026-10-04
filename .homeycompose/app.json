@@ -23,26 +23,26 @@
     "ar": "Fox ESS"
   },
   "description": {
-    "en": "Life by Sunshine.",
-    "nl": "Leven op zonneschijn.",
-    "de": "Leben durch Sonnenschein.",
-    "fr": "La vie grâce au soleil.",
-    "it": "La vita grazie al sole.",
-    "es": "Vivir gracias al sol.",
-    "pl": "Życie dzięki słońcu.",
-    "sv": "Liv av solsken.",
-    "no": "Liv av solskinn.",
-    "da": "Liv af solskin.",
-    "ru": "Жизнь благодаря солнцу.",
-    "ko": "햇빛으로 사는 삶.",
-    "ar": "حياة بضوء الشمس."
+    "en": "Life by Sunshine",
+    "nl": "Life by Sunshine",
+    "de": "Life by Sunshine",
+    "fr": "Life by Sunshine",
+    "it": "Life by Sunshine",
+    "es": "Life by Sunshine",
+    "pl": "Life by Sunshine",
+    "sv": "Life by Sunshine",
+    "no": "Life by Sunshine",
+    "da": "Life by Sunshine",
+    "ru": "Life by Sunshine",
+    "ko": "Life by Sunshine",
+    "ar": "Life by Sunshine"
   },
   "brandColor": "#984EFF",
   "tags": {
     "en": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -60,7 +60,7 @@
     "nl": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -77,7 +77,7 @@
     "da": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -95,7 +95,7 @@
     "de": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -113,7 +113,7 @@
     "es": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -131,7 +131,7 @@
     "fr": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -149,7 +149,7 @@
     "it": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -167,7 +167,7 @@
     "no": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -185,7 +185,7 @@
     "sv": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -203,7 +203,7 @@
     "pl": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -221,7 +221,7 @@
     "ru": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -239,7 +239,7 @@
     "ko": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",
@@ -257,7 +257,7 @@
     "ar": [
       "FoxESS",
       "Fox ESS",
-      "foxcloud",
+      "FoxCloud",
       "Solarwatt",
       "1KOMMA5",
       "Energizer",

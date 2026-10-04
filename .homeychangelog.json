@@ -1,5 +1,17 @@
 {
   "1.0.0": {
-    "en": "Initial release"
+    "en": "Initial release",
+    "nl": "Eerste versie",
+    "de": "Erste Version",
+    "fr": "Première version",
+    "it": "Prima versione",
+    "es": "Primera versión",
+    "pl": "Pierwsza wersja",
+    "sv": "Första versionen",
+    "no": "Første versjon",
+    "da": "Første version",
+    "ru": "Первый выпуск",
+    "ko": "첫 릴리스",
+    "ar": "الإصدار الأول"
   }
 }

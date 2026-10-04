@@ -1,8 +1,8 @@
 {
   "title": {
     "en": "Imported energy changed",
-    "nl": "Energie import is veranderd",
-    "de": "Importierte Energie geändert",
+    "nl": "Afgenomen energie is veranderd",
+    "de": "Bezogene Energie geändert",
     "fr": "Énergie importée modifiée",
     "it": "Energia importata modificata",
     "es": "Energía importada cambiada",
@@ -28,8 +28,8 @@
       "type": "number",
       "title": {
         "en": "Imported energy",
-        "nl": "Energie import",
-        "de": "Importierte Energie",
+        "nl": "Afgenomen energie",
+        "de": "Bezogene Energie",
         "fr": "Énergie importée",
         "it": "Energia importata",
         "es": "Energía importada",

@@ -1,2 +1,3 @@
-Conecte su inversor Fox ESS a Homey y obtenga información detallada sobre su producción de energía solar y uso de la batería.
-Monitoree su salida de energía actual, así como su generación diaria, mensual, anual y total. Con la aplicación Fox ESS para Homey, puede utilizar estos datos para optimizar su uso de energía, crear Flows y realizar un seguimiento del rendimiento de su sistema, todo en un solo lugar.
+Lleva tu inversor Fox ESS, tu batería doméstica y tu medidor de energía a Homey a través de FoxCloud. Sigue la producción solar, la carga de la batería y la importación y exportación a la red, consulta el estado y las alarmas del inversor y úsalo todo en Flows. FoxCloud se actualiza cada cinco minutos.
+
+Homey también puede gestionar la batería: elegir su modo de trabajo, cargarla o descargarla a una potencia fijada y cambiar su carga mínima y el límite de inyección. Para conectar, crea una clave API en FoxCloud en Perfil de usuario > Gestión de API.

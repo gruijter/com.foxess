@@ -29,7 +29,7 @@
     "measure_voltage.1": {
       "title": {
         "en": "Voltage phase 1",
-        "nl": "Voltage fase 1",
+        "nl": "Spanning fase 1",
         "de": "Spannung Phase 1",
         "fr": "Tension phase 1",
         "it": "Tensione fase 1",
@@ -46,7 +46,7 @@
     "measure_voltage.2": {
       "title": {
         "en": "Voltage phase 2",
-        "nl": "Voltage fase 2",
+        "nl": "Spanning fase 2",
         "de": "Spannung Phase 2",
         "fr": "Tension phase 2",
         "it": "Tensione fase 2",
@@ -63,7 +63,7 @@
     "measure_voltage.3": {
       "title": {
         "en": "Voltage phase 3",
-        "nl": "Voltage fase 3",
+        "nl": "Spanning fase 3",
         "de": "Spannung Phase 3",
         "fr": "Tension phase 3",
         "it": "Tensione fase 3",
@@ -80,8 +80,8 @@
     "meter_power.imported": {
       "title": {
         "en": "Imported energy",
-        "nl": "Energie import",
-        "de": "Importierte Energie",
+        "nl": "Afgenomen energie",
+        "de": "Bezogene Energie",
         "fr": "Énergie importée",
         "it": "Energia importata",
         "es": "Energía importada",
@@ -98,8 +98,8 @@
     "meter_power.exported": {
       "title": {
         "en": "Exported energy",
-        "nl": "Energie export",
-        "de": "Exportierte Energie",
+        "nl": "Teruggeleverde energie",
+        "de": "Eingespeiste Energie",
         "fr": "Énergie exportée",
         "it": "Energia esportata",
         "es": "Energía exportada",

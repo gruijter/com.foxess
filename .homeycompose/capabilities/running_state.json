@@ -181,19 +181,19 @@
     {
       "id": "fct",
       "title": {
-        "en": "FCT",
-        "nl": "FCT",
-        "de": "FCT",
-        "fr": "FCT",
-        "es": "FCT",
-        "it": "FCT",
-        "da": "FCT",
-        "sv": "FCT",
-        "no": "FCT",
-        "pl": "FCT",
-        "ru": "FCT",
-        "ar": "FCT",
-        "ko": "FCT"
+        "en": "Factory test",
+        "nl": "Fabriekstest",
+        "de": "Werkstest",
+        "fr": "Test d'usine",
+        "it": "Test di fabbrica",
+        "es": "Prueba de fábrica",
+        "pl": "Test fabryczny",
+        "sv": "Fabrikstest",
+        "no": "Fabrikktest",
+        "da": "Fabrikstest",
+        "ru": "Заводской тест",
+        "ko": "공장 테스트",
+        "ar": "اختبار المصنع"
       }
     },
     {

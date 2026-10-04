@@ -1,2 +1,3 @@
-Koble din Fox ESS vekselretter til Homey og få detaljert innsikt i din solenergiproduksjon og batteribruk.
-Overvåk din nåværende strømproduksjon, samt din daglige, månedlige, årlige og totale produksjon. Med Fox ESS-appen for Homey kan du bruke disse dataene til å optimalisere energibruken din, opprette Flows og holde oversikt over systemets ytelse – alt på ett sted.
+Koble Fox ESS-vekselretteren, hjemmebatteriet og energimåleren til Homey via FoxCloud. Følg solproduksjonen, batteriets lading og kjøp fra og innmating til strømnettet, se vekselretterens status og alarmer, og bruk alt i Flows. FoxCloud oppdateres hvert femte minutt.
+
+Homey kan også styre batteriet: velge driftsmodus, lade eller utlade med en valgt effekt og endre minste lading og innmatingsgrensen. Opprett en API-nøkkel i FoxCloud under Brukerprofil > API-administrasjon for å koble til.

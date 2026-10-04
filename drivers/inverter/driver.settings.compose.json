@@ -3,7 +3,7 @@
     "type": "group",
     "label": {
       "en": "Inverter information",
-      "nl": "Omvormer informatie",
+      "nl": "Omvormerinformatie",
       "de": "Wechselrichterinformationen",
       "fr": "Informations de l'onduleur",
       "it": "Informazioni inverter",
@@ -22,7 +22,7 @@
         "type": "label",
         "label": {
           "en": "Plant name",
-          "nl": "Plant naam",
+          "nl": "Installatienaam",
           "de": "Anlagenname",
           "fr": "Nom de l'installation",
           "it": "Nome impianto",
@@ -42,7 +42,7 @@
         "type": "label",
         "label": {
           "en": "Plant ID",
-          "nl": "Plant ID",
+          "nl": "Installatie-ID",
           "de": "Anlagen-ID",
           "fr": "ID de l'installation",
           "it": "ID impianto",
@@ -62,7 +62,7 @@
         "type": "label",
         "label": {
           "en": "Device name",
-          "nl": "Apparaat naam",
+          "nl": "Apparaatnaam",
           "de": "Gerätename",
           "fr": "Nom de l'appareil",
           "it": "Nome dispositivo",
@@ -162,7 +162,7 @@
         "type": "checkbox",
         "label": {
           "en": "Homey timezone reset",
-          "nl": "Homey tijdzone reset",
+          "nl": "Dagreset in Homey-tijdzone",
           "de": "Homey-Zeitzone-Reset",
           "fr": "Reset horaire Homey",
           "es": "Reinicio horario Homey",
@@ -177,7 +177,7 @@
         },
         "hint": {
           "en": "Use if 'Energy today' resets at the wrong time. Calculates it from the total instead, reset at Homey's local midnight.",
-          "nl": "Gebruik dit als 'Energie vandaag' op het verkeerde moment reset. Wordt dan berekend vanaf de totaalmeter, met reset om middernacht (Homey tijd).",
+          "nl": "Gebruik dit als 'Energie vandaag' op het verkeerde moment reset. Wordt dan berekend uit de totaalmeter, met reset om middernacht (Homey-tijd).",
           "de": "Verwenden, wenn 'Energie heute' zur falschen Zeit zurückgesetzt wird. Wird dann aus dem Gesamtwert berechnet, mit Reset um Mitternacht (Homey-Zeit).",
           "fr": "À utiliser si 'Énergie du jour' se réinitialise au mauvais moment. Sera calculée à partir du total, avec réinitialisation à minuit (heure Homey).",
           "es": "Úselo si 'Energía hoy' se reinicia a la hora incorrecta. Se calculará desde el total, con reinicio a medianoche (hora de Homey).",

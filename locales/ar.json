@@ -1,8 +1,4 @@
 {
-  "Life by Sunshine.": "حياة بضوء الشمس.",
-  "This will try to update the status of all devices immediately. Careful: too many updates will cause the server to temporarily block you.": "سيحاول هذا تحديث حالة جميع الأجهزة فورًا. تنبيه: تؤدي التحديثات الكثيرة جدًا إلى حظرك مؤقتًا بواسطة الخادم.",
-  "pair.regions.eu": "أوروبا / Global",
-  "pair.regions.us": "أمريكا الشمالية",
   "pair": {
     "regions": {
       "eu": "أوروبا / Global",

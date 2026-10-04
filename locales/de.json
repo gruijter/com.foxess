@@ -1,8 +1,4 @@
 {
-  "Life by Sunshine.": "Leben durch Sonnenschein.",
-  "This will try to update the status of all devices immediately. Careful: too many updates will cause the server to temporarily block you.": "Dies versucht den Status aller Geräte sofort zu aktualisieren. Achtung: Zu viele Updates führen zu einer vorübergehenden Sperre durch den Server.",
-  "pair.regions.eu": "Europa / Global",
-  "pair.regions.us": "Nordamerika",
   "pair": {
     "regions": {
       "eu": "Europa / Global",
@@ -31,5 +27,5 @@
   "notifications": {
     "controlOverridden": "**__name__**: Eine Einstellung von Homey wurde anderswo geändert, zum Beispiel in FoxCloud oder von einem Energieversorger."
   },
-  "migrating": "Gerät wird migriert, bitte warten..."
+  "migrating": "Gerät wird aktualisiert, bitte warten…"
 }

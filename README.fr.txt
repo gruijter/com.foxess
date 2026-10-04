@@ -1,2 +1,3 @@
-Connectez votre onduleur Fox ESS à Homey et obtenez des informations détaillées sur votre production d'énergie solaire et l'utilisation de votre batterie.
-Suivez votre puissance de sortie actuelle, ainsi que vos productions quotidiennes, mensuelles, annuelles et totales. Avec l'application Fox ESS pour Homey, vous pouvez utiliser ces données pour optimiser votre consommation d'énergie, créer des Flows et suivre les performances de votre système, le tout au même endroit.
+Intégrez votre onduleur Fox ESS, votre batterie domestique et votre compteur d'énergie à Homey via FoxCloud. Suivez la production solaire, la charge de la batterie ainsi que le soutirage et l'injection sur le réseau, consultez l'état et les alarmes de l'onduleur et utilisez le tout dans vos Flows. FoxCloud se met à jour toutes les cinq minutes.
+
+Homey peut aussi piloter la batterie : choisir son mode de fonctionnement, la charger ou la décharger à une puissance donnée, et modifier sa charge minimale ainsi que la limite d'injection. Pour vous connecter, créez une clé API dans FoxCloud sous Profil utilisateur > Gestion des API.

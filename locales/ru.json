@@ -1,8 +1,4 @@
 {
-  "Life by Sunshine.": "Жизнь благодаря солнцу.",
-  "This will try to update the status of all devices immediately. Careful: too many updates will cause the server to temporarily block you.": "Это попытается немедленно обновить статус всех устройств. Осторожно: слишком много обновлений приведет к временной блокировке сервером.",
-  "pair.regions.eu": "Европа / Global",
-  "pair.regions.us": "Северная Америка",
   "pair": {
     "regions": {
       "eu": "Европа / Global",

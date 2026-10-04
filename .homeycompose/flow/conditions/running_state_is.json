@@ -1,18 +1,18 @@
 {
   "title": {
-    "en": "Inverter status is ...",
-    "nl": "Omvormerstatus is ...",
-    "de": "Wechselrichterstatus ist ...",
-    "fr": "L'état de l'onduleur est ...",
-    "es": "El estado del inversor es ...",
-    "it": "Lo stato dell'inverter è ...",
-    "da": "Inverterstatus er ...",
-    "sv": "Växelriktarstatus är ...",
-    "no": "Vekselretterstatus er ...",
-    "pl": "Stan inwertera to ...",
-    "ru": "Состояние инвертора ...",
-    "ar": "حالة العاكس هي ...",
-    "ko": "인버터 상태는 ..."
+    "en": "Inverter status is…",
+    "nl": "Omvormerstatus is…",
+    "de": "Wechselrichterstatus ist…",
+    "fr": "L'état de l'onduleur est…",
+    "es": "El estado del inversor es…",
+    "it": "Lo stato dell'inverter è…",
+    "da": "Inverterstatus er…",
+    "sv": "Växelriktarstatus är…",
+    "no": "Vekselretterstatus er…",
+    "pl": "Stan inwertera to…",
+    "ru": "Состояние инвертора…",
+    "ar": "حالة العاكس هي…",
+    "ko": "인버터 상태는…"
   },
   "titleFormatted": {
     "en": "Inverter status !{{is|is not}} [[status]]",
@@ -219,19 +219,19 @@
         {
           "id": "fct",
           "label": {
-            "en": "FCT",
-            "nl": "FCT",
-            "de": "FCT",
-            "fr": "FCT",
-            "es": "FCT",
-            "it": "FCT",
-            "da": "FCT",
-            "sv": "FCT",
-            "no": "FCT",
-            "pl": "FCT",
-            "ru": "FCT",
-            "ar": "FCT",
-            "ko": "FCT"
+            "en": "Factory test",
+            "nl": "Fabriekstest",
+            "de": "Werkstest",
+            "fr": "Test d'usine",
+            "it": "Test di fabbrica",
+            "es": "Prueba de fábrica",
+            "pl": "Test fabryczny",
+            "sv": "Fabrikstest",
+            "no": "Fabrikktest",
+            "da": "Fabrikstest",
+            "ru": "Заводской тест",
+            "ko": "공장 테스트",
+            "ar": "اختبار المصنع"
           }
         },
         {

@@ -1,2 +1,3 @@
-Podłącz swój falownik Fox ESS do Homey i uzyskaj szczegółowe informacje na temat produkcji energii słonecznej oraz zużycia baterii.
-Monitoruj bieżącą moc wyjściową, a także generację dzienną, miesięczną, roczną i całkowitą. Dzięki aplikacji Fox ESS dla Homey możesz wykorzystać te dane do optymalizacji zużycia energii, tworzenia przepływów (Flows) i śledzenia wydajności swojego systemu – wszystko w jednym miejscu.
+Połącz falownik Fox ESS, magazyn energii i licznik energii z Homey przez FoxCloud. Śledź produkcję energii słonecznej, naładowanie akumulatora oraz pobór z sieci i oddawanie do sieci, sprawdzaj stan i alarmy falownika i korzystaj z tego wszystkiego we Flow. FoxCloud aktualizuje dane co pięć minut.
+
+Homey może też sterować akumulatorem: wybrać tryb pracy, ładować lub rozładowywać go z ustaloną mocą oraz zmieniać minimalny poziom naładowania i limit oddawania do sieci. Aby się połączyć, utwórz klucz API w FoxCloud w Profil użytkownika > Zarządzanie API.

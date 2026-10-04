@@ -1,7 +1,7 @@
 {
   "title": {
     "en": "Voltage phase 3 changed",
-    "nl": "Voltage fase 3 is veranderd",
+    "nl": "Spanning fase 3 is veranderd",
     "de": "Spannung Phase 3 geändert",
     "fr": "Tension phase 3 modifiée",
     "it": "Tensione fase 3 modificata",
@@ -28,7 +28,7 @@
       "type": "number",
       "title": {
         "en": "Voltage phase 3",
-        "nl": "Voltage fase 3",
+        "nl": "Spanning fase 3",
         "de": "Spannung Phase 3",
         "fr": "Tension phase 3",
         "it": "Tensione fase 3",

@@ -2,19 +2,19 @@
   {
     "type": "group",
     "label": {
-      "en": "Meter information",
-      "nl": "Meter informatie",
-      "de": "Zählerinformationen",
-      "fr": "Informations du compteur",
-      "it": "Informazioni contatore",
-      "es": "Información del medidor",
-      "pl": "Informacje o liczniku",
-      "sv": "Mätarinformation",
-      "no": "Målerinformasjon",
-      "da": "Målerinformation",
-      "ru": "Информация о счетчике",
-      "ko": "계량기 정보",
-      "ar": "معلومات العداد"
+      "en": "Battery information",
+      "nl": "Batterij-informatie",
+      "de": "Batterieinformationen",
+      "fr": "Informations de la batterie",
+      "it": "Informazioni batteria",
+      "es": "Información de la batería",
+      "pl": "Informacje o akumulatorze",
+      "sv": "Batteriinformation",
+      "no": "Batteriinformasjon",
+      "da": "Batteriinformation",
+      "ru": "Информация о батарее",
+      "ko": "배터리 정보",
+      "ar": "معلومات البطارية"
     },
     "children": [
       {
@@ -22,7 +22,7 @@
         "type": "label",
         "label": {
           "en": "Plant name",
-          "nl": "Plant naam",
+          "nl": "Installatienaam",
           "de": "Anlagenname",
           "fr": "Nom de l'installation",
           "it": "Nome impianto",
@@ -42,7 +42,7 @@
         "type": "label",
         "label": {
           "en": "Plant ID",
-          "nl": "Plant ID",
+          "nl": "Installatie-ID",
           "de": "Anlagen-ID",
           "fr": "ID de l'installation",
           "it": "ID impianto",
@@ -62,7 +62,7 @@
         "type": "label",
         "label": {
           "en": "Device name",
-          "nl": "Apparaat naam",
+          "nl": "Apparaatnaam",
           "de": "Gerätename",
           "fr": "Nom de l'appareil",
           "it": "Nome dispositivo",

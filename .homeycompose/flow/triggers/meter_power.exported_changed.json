@@ -1,8 +1,8 @@
 {
   "title": {
     "en": "Exported energy changed",
-    "nl": "Energie export is veranderd",
-    "de": "Exportierte Energie geändert",
+    "nl": "Teruggeleverde energie is veranderd",
+    "de": "Eingespeiste Energie geändert",
     "fr": "Énergie exportée modifiée",
     "it": "Energia esportata modificata",
     "es": "Energía exportada cambiada",
@@ -28,8 +28,8 @@
       "type": "number",
       "title": {
         "en": "Exported energy",
-        "nl": "Energie export",
-        "de": "Exportierte Energie",
+        "nl": "Teruggeleverde energie",
+        "de": "Eingespeiste Energie",
         "fr": "Énergie exportée",
         "it": "Energia esportata",
         "es": "Energía exportada",

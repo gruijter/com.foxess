@@ -1,7 +1,7 @@
 {
   "title": {
     "en": "Voltage phase 1 changed",
-    "nl": "Voltage fase 1 is veranderd",
+    "nl": "Spanning fase 1 is veranderd",
     "de": "Spannung Phase 1 geändert",
     "fr": "Tension phase 1 modifiée",
     "it": "Tensione fase 1 modificata",
@@ -28,7 +28,7 @@
       "type": "number",
       "title": {
         "en": "Voltage phase 1",
-        "nl": "Voltage fase 1",
+        "nl": "Spanning fase 1",
         "de": "Spannung Phase 1",
         "fr": "Tension phase 1",
         "it": "Tensione fase 1",

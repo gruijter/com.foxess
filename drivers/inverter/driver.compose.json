@@ -1,7 +1,7 @@
 {
   "name": {
     "en": "Solar inverter",
-    "nl": "PV omvormer",
+    "nl": "PV-omvormer",
     "de": "Solar-Wechselrichter",
     "fr": "Onduleur solaire",
     "it": "Inverter solare",
@@ -59,8 +59,8 @@
     "measure_power.ac_inverter": {
       "title": {
         "en": "Inverter power (AC)",
-        "nl": "Omvormer vermogen (AC)",
-        "de": "Inverterleistung (AC)",
+        "nl": "Omvormervermogen (AC)",
+        "de": "Wechselrichterleistung (AC)",
         "fr": "Puissance onduleur (CA)",
         "es": "Potencia inversor (CA)",
         "it": "Potenza inverter (CA)",
@@ -78,7 +78,7 @@
       "title": {
         "en": "Inverter energy (AC)",
         "nl": "Omvormeropbrengst (AC)",
-        "de": "Inverterertrag (AC)",
+        "de": "Wechselrichterertrag (AC)",
         "fr": "Énergie onduleur (CA)",
         "es": "Energía inversor (CA)",
         "it": "Energia inverter (CA)",
@@ -95,8 +95,8 @@
     "measure_power.pv1": {
       "title": {
         "en": "PV1 power",
-        "nl": "PV1 vermogen",
-        "de": "PV1 Leistung",
+        "nl": "PV1-vermogen",
+        "de": "PV1-Leistung",
         "fr": "Puissance PV1",
         "es": "Potencia PV1",
         "it": "Potenza PV1",
@@ -113,8 +113,8 @@
     "measure_power.pv2": {
       "title": {
         "en": "PV2 power",
-        "nl": "PV2 vermogen",
-        "de": "PV2 Leistung",
+        "nl": "PV2-vermogen",
+        "de": "PV2-Leistung",
         "fr": "Puissance PV2",
         "es": "Potencia PV2",
         "it": "Potenza PV2",
@@ -131,8 +131,8 @@
     "measure_power.pv3": {
       "title": {
         "en": "PV3 power",
-        "nl": "PV3 vermogen",
-        "de": "PV3 Leistung",
+        "nl": "PV3-vermogen",
+        "de": "PV3-Leistung",
         "fr": "Puissance PV3",
         "es": "Potencia PV3",
         "it": "Potenza PV3",
@@ -149,8 +149,8 @@
     "measure_power.pv4": {
       "title": {
         "en": "PV4 power",
-        "nl": "PV4 vermogen",
-        "de": "PV4 Leistung",
+        "nl": "PV4-vermogen",
+        "de": "PV4-Leistung",
         "fr": "Puissance PV4",
         "es": "Potencia PV4",
         "it": "Potenza PV4",
@@ -167,8 +167,8 @@
     "measure_voltage.pv1": {
       "title": {
         "en": "PV1 voltage",
-        "nl": "PV1 spanning",
-        "de": "PV1 Spannung",
+        "nl": "PV1-spanning",
+        "de": "PV1-Spannung",
         "fr": "Tension PV1",
         "es": "Voltaje PV1",
         "it": "Tensione PV1",
@@ -184,8 +184,8 @@
     "measure_voltage.pv2": {
       "title": {
         "en": "PV2 voltage",
-        "nl": "PV2 spanning",
-        "de": "PV2 Spannung",
+        "nl": "PV2-spanning",
+        "de": "PV2-Spannung",
         "fr": "Tension PV2",
         "es": "Voltaje PV2",
         "it": "Tensione PV2",
@@ -201,8 +201,8 @@
     "measure_voltage.pv3": {
       "title": {
         "en": "PV3 voltage",
-        "nl": "PV3 spanning",
-        "de": "PV3 Spannung",
+        "nl": "PV3-spanning",
+        "de": "PV3-Spannung",
         "fr": "Tension PV3",
         "es": "Voltaje PV3",
         "it": "Tensione PV3",
@@ -218,8 +218,8 @@
     "measure_voltage.pv4": {
       "title": {
         "en": "PV4 voltage",
-        "nl": "PV4 spanning",
-        "de": "PV4 Spannung",
+        "nl": "PV4-spanning",
+        "de": "PV4-Spannung",
         "fr": "Tension PV4",
         "es": "Voltaje PV4",
         "it": "Tensione PV4",
@@ -235,8 +235,8 @@
     "measure_current.pv1": {
       "title": {
         "en": "PV1 current",
-        "nl": "PV1 stroom",
-        "de": "PV1 Strom",
+        "nl": "PV1-stroom",
+        "de": "PV1-Strom",
         "fr": "Courant PV1",
         "es": "Corriente PV1",
         "it": "Corrente PV1",
@@ -252,8 +252,8 @@
     "measure_current.pv2": {
       "title": {
         "en": "PV2 current",
-        "nl": "PV2 stroom",
-        "de": "PV2 Strom",
+        "nl": "PV2-stroom",
+        "de": "PV2-Strom",
         "fr": "Courant PV2",
         "es": "Corriente PV2",
         "it": "Corrente PV2",
@@ -269,8 +269,8 @@
     "measure_current.pv3": {
       "title": {
         "en": "PV3 current",
-        "nl": "PV3 stroom",
-        "de": "PV3 Strom",
+        "nl": "PV3-stroom",
+        "de": "PV3-Strom",
         "fr": "Courant PV3",
         "es": "Corriente PV3",
         "it": "Corrente PV3",
@@ -286,8 +286,8 @@
     "measure_current.pv4": {
       "title": {
         "en": "PV4 current",
-        "nl": "PV4 stroom",
-        "de": "PV4 Strom",
+        "nl": "PV4-stroom",
+        "de": "PV4-Strom",
         "fr": "Courant PV4",
         "es": "Corriente PV4",
         "it": "Corrente PV4",
