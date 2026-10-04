@@ -1,0 +1,20 @@
+{
+  "id": "plantId",
+  "type": "label",
+  "label": {
+    "en": "Plant ID",
+    "nl": "Installatie-ID",
+    "de": "Anlagen-ID",
+    "fr": "ID de l'installation",
+    "it": "ID impianto",
+    "es": "ID de la planta",
+    "pl": "ID instalacji",
+    "sv": "Anläggnings-ID",
+    "no": "Anleggs-ID",
+    "da": "Anlægs-ID",
+    "ru": "ID станции",
+    "ko": "발전소 ID",
+    "ar": "معرف المحطة"
+  },
+  "value": ""
+}

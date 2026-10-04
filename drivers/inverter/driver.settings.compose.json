@@ -2,140 +2,41 @@
   {
     "type": "group",
     "label": {
-      "en": "Inverter information",
-      "nl": "Omvormerinformatie",
-      "de": "Wechselrichterinformationen",
-      "fr": "Informations de l'onduleur",
-      "it": "Informazioni inverter",
-      "es": "Información del inversor",
-      "pl": "Informacje o inwerterze",
-      "sv": "Växelriktar-information",
-      "no": "Vekselretter-informasjon",
-      "da": "Inverterinformation",
-      "ru": "Информация об инверторе",
-      "ko": "인버터 정보",
-      "ar": "معلومات العاكس"
+      "en": "Device information",
+      "nl": "Apparaatinformatie",
+      "de": "Geräteinformationen",
+      "fr": "Informations de l'appareil",
+      "es": "Información del dispositivo",
+      "it": "Informazioni dispositivo",
+      "da": "Enhedsinformation",
+      "sv": "Enhetsinformation",
+      "no": "Enhetsinformasjon",
+      "pl": "Informacje o urządzeniu",
+      "ru": "Информация об устройстве",
+      "ar": "معلومات الجهاز",
+      "ko": "장치 정보"
     },
     "children": [
       {
-        "id": "plantName",
-        "type": "label",
-        "label": {
-          "en": "Plant name",
-          "nl": "Installatienaam",
-          "de": "Anlagenname",
-          "fr": "Nom de l'installation",
-          "it": "Nome impianto",
-          "es": "Nombre de la planta",
-          "pl": "Nazwa instalacji",
-          "sv": "Anläggningsnamn",
-          "no": "Anleggsnavn",
-          "da": "Anlægsnavn",
-          "ru": "Название станции",
-          "ko": "발전소 이름",
-          "ar": "اسم المحطة"
-        },
-        "value": ""
+        "$extends": "plantName"
       },
       {
-        "id": "plantId",
-        "type": "label",
-        "label": {
-          "en": "Plant ID",
-          "nl": "Installatie-ID",
-          "de": "Anlagen-ID",
-          "fr": "ID de l'installation",
-          "it": "ID impianto",
-          "es": "ID de la planta",
-          "pl": "ID instalacji",
-          "sv": "Anläggnings-ID",
-          "no": "Anleggs-ID",
-          "da": "Anlægs-ID",
-          "ru": "ID станции",
-          "ko": "발전소 ID",
-          "ar": "معرف المحطة"
-        },
-        "value": ""
+        "$extends": "plantId"
       },
       {
-        "id": "deviceName",
-        "type": "label",
-        "label": {
-          "en": "Device name",
-          "nl": "Apparaatnaam",
-          "de": "Gerätename",
-          "fr": "Nom de l'appareil",
-          "it": "Nome dispositivo",
-          "es": "Nombre del dispositivo",
-          "pl": "Nazwa urządzenia",
-          "sv": "Enhetsnamn",
-          "no": "Enhetsnavn",
-          "da": "Enhedsnavn",
-          "ru": "Название устройства",
-          "ko": "장치 이름",
-          "ar": "اسم الجهاز"
-        },
-        "value": ""
+        "$extends": "deviceModel"
       },
       {
-        "id": "deviceModelCode",
-        "type": "label",
-        "label": {
-          "en": "Model",
-          "nl": "Model",
-          "de": "Modell",
-          "fr": "Modèle",
-          "it": "Modello",
-          "es": "Modelo",
-          "pl": "Model",
-          "sv": "Modell",
-          "no": "Modell",
-          "da": "Model",
-          "ru": "Модель",
-          "ko": "모델",
-          "ar": "طراز"
-        },
-        "value": ""
+        "$extends": "deviceSn"
       },
       {
-        "id": "deviceSn",
-        "type": "label",
-        "label": {
-          "en": "Serial number",
-          "nl": "Serienummer",
-          "de": "Seriennummer",
-          "fr": "Numéro de série",
-          "it": "Numero di serie",
-          "es": "Número de serie",
-          "pl": "Numer seryjny",
-          "sv": "Serienummer",
-          "no": "Serienummer",
-          "da": "Serienummer",
-          "ru": "Серийный номер",
-          "ko": "일련 번호",
-          "ar": "الرقم التسلسلي"
-        },
-        "value": ""
+        "$extends": "firmware"
       },
       {
-        "id": "region",
-        "type": "label",
-        "label": {
-          "en": "Cloud region",
-          "nl": "Cloud-regio",
-          "de": "Cloud-Region",
-          "fr": "Région cloud",
-          "it": "Regione cloud",
-          "es": "Región de la nube",
-          "pl": "Region chmury",
-          "sv": "Molnregion",
-          "no": "Skyregion",
-          "da": "Cloud-region",
-          "ru": "Облачный регион",
-          "ko": "클라우드 지역",
-          "ar": "منطقة السحابة"
-        },
-        "value": ""
+        "$extends": "ratedPower"
+      },
+      {
+        "$extends": "region"
       }
     ]
   },

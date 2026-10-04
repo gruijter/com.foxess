@@ -1418,19 +1418,19 @@
         {
           "type": "group",
           "label": {
-            "en": "Battery information",
-            "nl": "Batterij-informatie",
-            "de": "Batterieinformationen",
-            "fr": "Informations de la batterie",
-            "it": "Informazioni batteria",
-            "es": "Información de la batería",
-            "pl": "Informacje o akumulatorze",
-            "sv": "Batteriinformation",
-            "no": "Batteriinformasjon",
-            "da": "Batteriinformation",
-            "ru": "Информация о батарее",
-            "ko": "배터리 정보",
-            "ar": "معلومات البطارية"
+            "en": "Device information",
+            "nl": "Apparaatinformatie",
+            "de": "Geräteinformationen",
+            "fr": "Informations de l'appareil",
+            "es": "Información del dispositivo",
+            "it": "Informazioni dispositivo",
+            "da": "Enhedsinformation",
+            "sv": "Enhetsinformation",
+            "no": "Enhetsinformasjon",
+            "pl": "Informacje o urządzeniu",
+            "ru": "Информация об устройстве",
+            "ar": "معلومات الجهاز",
+            "ko": "장치 정보"
           },
           "children": [
             {
@@ -1474,64 +1474,79 @@
               "value": ""
             },
             {
-              "id": "deviceName",
-              "type": "label",
-              "label": {
-                "en": "Device name",
-                "nl": "Apparaatnaam",
-                "de": "Gerätename",
-                "fr": "Nom de l'appareil",
-                "it": "Nome dispositivo",
-                "es": "Nombre del dispositivo",
-                "pl": "Nazwa urządzenia",
-                "sv": "Enhetsnamn",
-                "no": "Enhetsnavn",
-                "da": "Enhedsnavn",
-                "ru": "Название устройства",
-                "ko": "장치 이름",
-                "ar": "اسم الجهاز"
-              },
-              "value": ""
-            },
-            {
               "id": "deviceModelCode",
               "type": "label",
+              "value": "",
               "label": {
                 "en": "Model",
                 "nl": "Model",
                 "de": "Modell",
                 "fr": "Modèle",
-                "it": "Modello",
                 "es": "Modelo",
-                "pl": "Model",
+                "it": "Modello",
+                "da": "Model",
                 "sv": "Modell",
                 "no": "Modell",
-                "da": "Model",
+                "pl": "Model",
                 "ru": "Модель",
-                "ko": "모델",
-                "ar": "طراز"
-              },
-              "value": ""
+                "ar": "طراز",
+                "ko": "모델"
+              }
             },
             {
               "id": "deviceSn",
               "type": "label",
+              "value": "",
               "label": {
-                "en": "Serial number",
-                "nl": "Serienummer",
-                "de": "Seriennummer",
-                "fr": "Numéro de série",
-                "it": "Numero di serie",
-                "es": "Número de serie",
-                "pl": "Numer seryjny",
-                "sv": "Serienummer",
-                "no": "Serienummer",
-                "da": "Serienummer",
-                "ru": "Серийный номер",
-                "ko": "일련 번호",
-                "ar": "الرقم التسلسلي"
+                "en": "Inverter",
+                "nl": "Omvormer",
+                "de": "Wechselrichter",
+                "fr": "Onduleur",
+                "es": "Inversor",
+                "it": "Inverter",
+                "da": "Inverter",
+                "sv": "Växelriktare",
+                "no": "Vekselretter",
+                "pl": "Falownik",
+                "ru": "Инвертор",
+                "ar": "العاكس",
+                "ko": "인버터"
               },
-              "value": ""
+              "hint": {
+                "en": "The inverter this device is read through.",
+                "nl": "De omvormer waarlangs dit apparaat wordt uitgelezen.",
+                "de": "Der Wechselrichter, über den dieses Gerät ausgelesen wird.",
+                "fr": "L'onduleur par lequel cet appareil est lu.",
+                "es": "El inversor a través del cual se lee este dispositivo.",
+                "it": "L'inverter tramite cui viene letto questo dispositivo.",
+                "da": "Inverteren, som denne enhed aflæses via.",
+                "sv": "Växelriktaren som enheten läses av via.",
+                "no": "Vekselretteren denne enheten leses av via.",
+                "pl": "Falownik, przez który odczytywane jest to urządzenie.",
+                "ru": "Инвертор, через который опрашивается это устройство.",
+                "ar": "العاكس الذي تتم قراءة هذا الجهاز من خلاله.",
+                "ko": "이 장치를 읽어오는 인버터입니다."
+              }
+            },
+            {
+              "id": "firmware",
+              "type": "label",
+              "value": "",
+              "label": {
+                "en": "Firmware version",
+                "nl": "Firmwareversie",
+                "de": "Firmware-Version",
+                "fr": "Version du firmware",
+                "es": "Versión de firmware",
+                "it": "Versione firmware",
+                "da": "Firmwareversion",
+                "sv": "Firmwareversion",
+                "no": "Firmwareversjon",
+                "pl": "Wersja firmware",
+                "ru": "Версия прошивки",
+                "ar": "إصدار البرنامج الثابت",
+                "ko": "펌웨어 버전"
+              }
             },
             {
               "id": "region",
@@ -1552,6 +1567,101 @@
                 "ar": "منطقة السحابة"
               },
               "value": ""
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Battery",
+            "nl": "Batterij",
+            "de": "Batterie",
+            "fr": "Batterie",
+            "es": "Batería",
+            "it": "Batteria",
+            "da": "Batteri",
+            "sv": "Batteri",
+            "no": "Batteri",
+            "pl": "Akumulator",
+            "ru": "Батарея",
+            "ar": "البطارية",
+            "ko": "배터리"
+          },
+          "children": [
+            {
+              "id": "batteryModules",
+              "type": "label",
+              "value": "",
+              "label": {
+                "en": "Number of modules",
+                "nl": "Aantal modules",
+                "de": "Anzahl Module",
+                "fr": "Nombre de modules",
+                "es": "Número de módulos",
+                "it": "Numero di moduli",
+                "da": "Antal moduler",
+                "sv": "Antal moduler",
+                "no": "Antall moduler",
+                "pl": "Liczba modułów",
+                "ru": "Количество модулей",
+                "ar": "عدد الوحدات",
+                "ko": "모듈 수"
+              }
+            },
+            {
+              "id": "batteryModuleList",
+              "type": "label",
+              "value": "",
+              "label": {
+                "en": "Modules",
+                "nl": "Modules",
+                "de": "Module",
+                "fr": "Modules",
+                "es": "Módulos",
+                "it": "Moduli",
+                "da": "Moduler",
+                "sv": "Moduler",
+                "no": "Moduler",
+                "pl": "Moduły",
+                "ru": "Модули",
+                "ar": "الوحدات",
+                "ko": "모듈"
+              },
+              "hint": {
+                "en": "Serial number and firmware version of each module.",
+                "nl": "Serienummer en firmwareversie van elke module.",
+                "de": "Seriennummer und Firmware-Version jedes Moduls.",
+                "fr": "Numéro de série et version du firmware de chaque module.",
+                "es": "Número de serie y versión de firmware de cada módulo.",
+                "it": "Numero di serie e versione firmware di ogni modulo.",
+                "da": "Serienummer og firmwareversion for hvert modul.",
+                "sv": "Serienummer och firmwareversion för varje modul.",
+                "no": "Serienummer og fastvareversjon for hver modul.",
+                "pl": "Numer seryjny i wersja oprogramowania każdego modułu.",
+                "ru": "Серийный номер и версия прошивки каждого модуля.",
+                "ar": "الرقم التسلسلي وإصدار البرنامج الثابت لكل وحدة.",
+                "ko": "각 모듈의 일련 번호와 펌웨어 버전입니다."
+              }
+            },
+            {
+              "id": "batteryDesignEnergy",
+              "type": "label",
+              "value": "",
+              "label": {
+                "en": "Design capacity",
+                "nl": "Ontwerpcapaciteit",
+                "de": "Nennkapazität",
+                "fr": "Capacité nominale",
+                "es": "Capacidad nominal",
+                "it": "Capacità nominale",
+                "da": "Nominel kapacitet",
+                "sv": "Nominell kapacitet",
+                "no": "Nominell kapasitet",
+                "pl": "Pojemność nominalna",
+                "ru": "Номинальная емкость",
+                "ar": "السعة الاسمية",
+                "ko": "설계 용량"
+              }
             }
           ]
         }
@@ -2323,19 +2433,19 @@
         {
           "type": "group",
           "label": {
-            "en": "Inverter information",
-            "nl": "Omvormerinformatie",
-            "de": "Wechselrichterinformationen",
-            "fr": "Informations de l'onduleur",
-            "it": "Informazioni inverter",
-            "es": "Información del inversor",
-            "pl": "Informacje o inwerterze",
-            "sv": "Växelriktar-information",
-            "no": "Vekselretter-informasjon",
-            "da": "Inverterinformation",
-            "ru": "Информация об инверторе",
-            "ko": "인버터 정보",
-            "ar": "معلومات العاكس"
+            "en": "Device information",
+            "nl": "Apparaatinformatie",
+            "de": "Geräteinformationen",
+            "fr": "Informations de l'appareil",
+            "es": "Información del dispositivo",
+            "it": "Informazioni dispositivo",
+            "da": "Enhedsinformation",
+            "sv": "Enhetsinformation",
+            "no": "Enhetsinformasjon",
+            "pl": "Informacje o urządzeniu",
+            "ru": "Информация об устройстве",
+            "ar": "معلومات الجهاز",
+            "ko": "장치 정보"
           },
           "children": [
             {
@@ -2379,44 +2489,24 @@
               "value": ""
             },
             {
-              "id": "deviceName",
-              "type": "label",
-              "label": {
-                "en": "Device name",
-                "nl": "Apparaatnaam",
-                "de": "Gerätename",
-                "fr": "Nom de l'appareil",
-                "it": "Nome dispositivo",
-                "es": "Nombre del dispositivo",
-                "pl": "Nazwa urządzenia",
-                "sv": "Enhetsnamn",
-                "no": "Enhetsnavn",
-                "da": "Enhedsnavn",
-                "ru": "Название устройства",
-                "ko": "장치 이름",
-                "ar": "اسم الجهاز"
-              },
-              "value": ""
-            },
-            {
               "id": "deviceModelCode",
               "type": "label",
+              "value": "",
               "label": {
                 "en": "Model",
                 "nl": "Model",
                 "de": "Modell",
                 "fr": "Modèle",
-                "it": "Modello",
                 "es": "Modelo",
-                "pl": "Model",
+                "it": "Modello",
+                "da": "Model",
                 "sv": "Modell",
                 "no": "Modell",
-                "da": "Model",
+                "pl": "Model",
                 "ru": "Модель",
-                "ko": "모델",
-                "ar": "طراز"
-              },
-              "value": ""
+                "ar": "طراز",
+                "ko": "모델"
+              }
             },
             {
               "id": "deviceSn",
@@ -2437,6 +2527,46 @@
                 "ar": "الرقم التسلسلي"
               },
               "value": ""
+            },
+            {
+              "id": "firmware",
+              "type": "label",
+              "value": "",
+              "label": {
+                "en": "Firmware version",
+                "nl": "Firmwareversie",
+                "de": "Firmware-Version",
+                "fr": "Version du firmware",
+                "es": "Versión de firmware",
+                "it": "Versione firmware",
+                "da": "Firmwareversion",
+                "sv": "Firmwareversion",
+                "no": "Firmwareversjon",
+                "pl": "Wersja firmware",
+                "ru": "Версия прошивки",
+                "ar": "إصدار البرنامج الثابت",
+                "ko": "펌웨어 버전"
+              }
+            },
+            {
+              "id": "ratedPower",
+              "type": "label",
+              "value": "",
+              "label": {
+                "en": "Rated power",
+                "nl": "Nominaal vermogen",
+                "de": "Nennleistung",
+                "fr": "Puissance nominale",
+                "es": "Potencia nominal",
+                "it": "Potenza nominale",
+                "da": "Nominel effekt",
+                "sv": "Märkeffekt",
+                "no": "Nominell effekt",
+                "pl": "Moc znamionowa",
+                "ru": "Номинальная мощность",
+                "ar": "القدرة الاسمية",
+                "ko": "정격 출력"
+              }
             },
             {
               "id": "region",
@@ -2748,19 +2878,19 @@
         {
           "type": "group",
           "label": {
-            "en": "Meter information",
-            "nl": "Meterinformatie",
-            "de": "Zählerinformationen",
-            "fr": "Informations du compteur",
-            "it": "Informazioni contatore",
-            "es": "Información del medidor",
-            "pl": "Informacje o liczniku",
-            "sv": "Mätarinformation",
-            "no": "Målerinformasjon",
-            "da": "Målerinformation",
-            "ru": "Информация о счетчике",
-            "ko": "계량기 정보",
-            "ar": "معلومات العداد"
+            "en": "Device information",
+            "nl": "Apparaatinformatie",
+            "de": "Geräteinformationen",
+            "fr": "Informations de l'appareil",
+            "es": "Información del dispositivo",
+            "it": "Informazioni dispositivo",
+            "da": "Enhedsinformation",
+            "sv": "Enhetsinformation",
+            "no": "Enhetsinformasjon",
+            "pl": "Informacje o urządzeniu",
+            "ru": "Информация об устройстве",
+            "ar": "معلومات الجهاز",
+            "ko": "장치 정보"
           },
           "children": [
             {
@@ -2804,64 +2934,39 @@
               "value": ""
             },
             {
-              "id": "deviceName",
-              "type": "label",
-              "label": {
-                "en": "Device name",
-                "nl": "Apparaatnaam",
-                "de": "Gerätename",
-                "fr": "Nom de l'appareil",
-                "it": "Nome dispositivo",
-                "es": "Nombre del dispositivo",
-                "pl": "Nazwa urządzenia",
-                "sv": "Enhetsnamn",
-                "no": "Enhetsnavn",
-                "da": "Enhedsnavn",
-                "ru": "Название устройства",
-                "ko": "장치 이름",
-                "ar": "اسم الجهاز"
-              },
-              "value": ""
-            },
-            {
-              "id": "deviceModelCode",
-              "type": "label",
-              "label": {
-                "en": "Model",
-                "nl": "Model",
-                "de": "Modell",
-                "fr": "Modèle",
-                "it": "Modello",
-                "es": "Modelo",
-                "pl": "Model",
-                "sv": "Modell",
-                "no": "Modell",
-                "da": "Model",
-                "ru": "Модель",
-                "ko": "모델",
-                "ar": "طراز"
-              },
-              "value": ""
-            },
-            {
               "id": "deviceSn",
               "type": "label",
+              "value": "",
               "label": {
-                "en": "Serial number",
-                "nl": "Serienummer",
-                "de": "Seriennummer",
-                "fr": "Numéro de série",
-                "it": "Numero di serie",
-                "es": "Número de serie",
-                "pl": "Numer seryjny",
-                "sv": "Serienummer",
-                "no": "Serienummer",
-                "da": "Serienummer",
-                "ru": "Серийный номер",
-                "ko": "일련 번호",
-                "ar": "الرقم التسلسلي"
+                "en": "Inverter",
+                "nl": "Omvormer",
+                "de": "Wechselrichter",
+                "fr": "Onduleur",
+                "es": "Inversor",
+                "it": "Inverter",
+                "da": "Inverter",
+                "sv": "Växelriktare",
+                "no": "Vekselretter",
+                "pl": "Falownik",
+                "ru": "Инвертор",
+                "ar": "العاكس",
+                "ko": "인버터"
               },
-              "value": ""
+              "hint": {
+                "en": "The inverter this device is read through.",
+                "nl": "De omvormer waarlangs dit apparaat wordt uitgelezen.",
+                "de": "Der Wechselrichter, über den dieses Gerät ausgelesen wird.",
+                "fr": "L'onduleur par lequel cet appareil est lu.",
+                "es": "El inversor a través del cual se lee este dispositivo.",
+                "it": "L'inverter tramite cui viene letto questo dispositivo.",
+                "da": "Inverteren, som denne enhed aflæses via.",
+                "sv": "Växelriktaren som enheten läses av via.",
+                "no": "Vekselretteren denne enheten leses av via.",
+                "pl": "Falownik, przez który odczytywane jest to urządzenie.",
+                "ru": "Инвертор, через который опрашивается это устройство.",
+                "ar": "العاكس الذي تتم قراءة هذا الجهاز من خلاله.",
+                "ko": "이 장치를 읽어오는 인버터입니다."
+              }
             },
             {
               "id": "region",

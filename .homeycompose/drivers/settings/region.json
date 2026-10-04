@@ -1,0 +1,20 @@
+{
+  "id": "region",
+  "type": "label",
+  "label": {
+    "en": "Cloud region",
+    "nl": "Cloud-regio",
+    "de": "Cloud-Region",
+    "fr": "Région cloud",
+    "it": "Regione cloud",
+    "es": "Región de la nube",
+    "pl": "Region chmury",
+    "sv": "Molnregion",
+    "no": "Skyregion",
+    "da": "Cloud-region",
+    "ru": "Облачный регион",
+    "ko": "클라우드 지역",
+    "ar": "منطقة السحابة"
+  },
+  "value": ""
+}

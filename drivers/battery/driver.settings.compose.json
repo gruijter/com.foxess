@@ -2,140 +2,133 @@
   {
     "type": "group",
     "label": {
-      "en": "Battery information",
-      "nl": "Batterij-informatie",
-      "de": "Batterieinformationen",
-      "fr": "Informations de la batterie",
-      "it": "Informazioni batteria",
-      "es": "Información de la batería",
-      "pl": "Informacje o akumulatorze",
-      "sv": "Batteriinformation",
-      "no": "Batteriinformasjon",
-      "da": "Batteriinformation",
-      "ru": "Информация о батарее",
-      "ko": "배터리 정보",
-      "ar": "معلومات البطارية"
+      "en": "Device information",
+      "nl": "Apparaatinformatie",
+      "de": "Geräteinformationen",
+      "fr": "Informations de l'appareil",
+      "es": "Información del dispositivo",
+      "it": "Informazioni dispositivo",
+      "da": "Enhedsinformation",
+      "sv": "Enhetsinformation",
+      "no": "Enhetsinformasjon",
+      "pl": "Informacje o urządzeniu",
+      "ru": "Информация об устройстве",
+      "ar": "معلومات الجهاز",
+      "ko": "장치 정보"
     },
     "children": [
       {
-        "id": "plantName",
-        "type": "label",
-        "label": {
-          "en": "Plant name",
-          "nl": "Installatienaam",
-          "de": "Anlagenname",
-          "fr": "Nom de l'installation",
-          "it": "Nome impianto",
-          "es": "Nombre de la planta",
-          "pl": "Nazwa instalacji",
-          "sv": "Anläggningsnamn",
-          "no": "Anleggsnavn",
-          "da": "Anlægsnavn",
-          "ru": "Название станции",
-          "ko": "발전소 이름",
-          "ar": "اسم المحطة"
-        },
-        "value": ""
+        "$extends": "plantName"
       },
       {
-        "id": "plantId",
-        "type": "label",
-        "label": {
-          "en": "Plant ID",
-          "nl": "Installatie-ID",
-          "de": "Anlagen-ID",
-          "fr": "ID de l'installation",
-          "it": "ID impianto",
-          "es": "ID de la planta",
-          "pl": "ID instalacji",
-          "sv": "Anläggnings-ID",
-          "no": "Anleggs-ID",
-          "da": "Anlægs-ID",
-          "ru": "ID станции",
-          "ko": "발전소 ID",
-          "ar": "معرف المحطة"
-        },
-        "value": ""
+        "$extends": "plantId"
       },
       {
-        "id": "deviceName",
-        "type": "label",
-        "label": {
-          "en": "Device name",
-          "nl": "Apparaatnaam",
-          "de": "Gerätename",
-          "fr": "Nom de l'appareil",
-          "it": "Nome dispositivo",
-          "es": "Nombre del dispositivo",
-          "pl": "Nazwa urządzenia",
-          "sv": "Enhetsnamn",
-          "no": "Enhetsnavn",
-          "da": "Enhedsnavn",
-          "ru": "Название устройства",
-          "ko": "장치 이름",
-          "ar": "اسم الجهاز"
-        },
-        "value": ""
+        "$extends": "deviceModel"
       },
       {
-        "id": "deviceModelCode",
-        "type": "label",
-        "label": {
-          "en": "Model",
-          "nl": "Model",
-          "de": "Modell",
-          "fr": "Modèle",
-          "it": "Modello",
-          "es": "Modelo",
-          "pl": "Model",
-          "sv": "Modell",
-          "no": "Modell",
-          "da": "Model",
-          "ru": "Модель",
-          "ko": "모델",
-          "ar": "طراز"
-        },
-        "value": ""
+        "$extends": "inverterSn"
       },
       {
-        "id": "deviceSn",
-        "type": "label",
-        "label": {
-          "en": "Serial number",
-          "nl": "Serienummer",
-          "de": "Seriennummer",
-          "fr": "Numéro de série",
-          "it": "Numero di serie",
-          "es": "Número de serie",
-          "pl": "Numer seryjny",
-          "sv": "Serienummer",
-          "no": "Serienummer",
-          "da": "Serienummer",
-          "ru": "Серийный номер",
-          "ko": "일련 번호",
-          "ar": "الرقم التسلسلي"
-        },
-        "value": ""
+        "$extends": "firmware"
       },
       {
-        "id": "region",
+        "$extends": "region"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Battery",
+      "nl": "Batterij",
+      "de": "Batterie",
+      "fr": "Batterie",
+      "es": "Batería",
+      "it": "Batteria",
+      "da": "Batteri",
+      "sv": "Batteri",
+      "no": "Batteri",
+      "pl": "Akumulator",
+      "ru": "Батарея",
+      "ar": "البطارية",
+      "ko": "배터리"
+    },
+    "children": [
+      {
+        "id": "batteryModules",
         "type": "label",
+        "value": "",
         "label": {
-          "en": "Cloud region",
-          "nl": "Cloud-regio",
-          "de": "Cloud-Region",
-          "fr": "Région cloud",
-          "it": "Regione cloud",
-          "es": "Región de la nube",
-          "pl": "Region chmury",
-          "sv": "Molnregion",
-          "no": "Skyregion",
-          "da": "Cloud-region",
-          "ru": "Облачный регион",
-          "ko": "클라우드 지역",
-          "ar": "منطقة السحابة"
+          "en": "Number of modules",
+          "nl": "Aantal modules",
+          "de": "Anzahl Module",
+          "fr": "Nombre de modules",
+          "es": "Número de módulos",
+          "it": "Numero di moduli",
+          "da": "Antal moduler",
+          "sv": "Antal moduler",
+          "no": "Antall moduler",
+          "pl": "Liczba modułów",
+          "ru": "Количество модулей",
+          "ar": "عدد الوحدات",
+          "ko": "모듈 수"
+        }
+      },
+      {
+        "id": "batteryModuleList",
+        "type": "label",
+        "value": "",
+        "label": {
+          "en": "Modules",
+          "nl": "Modules",
+          "de": "Module",
+          "fr": "Modules",
+          "es": "Módulos",
+          "it": "Moduli",
+          "da": "Moduler",
+          "sv": "Moduler",
+          "no": "Moduler",
+          "pl": "Moduły",
+          "ru": "Модули",
+          "ar": "الوحدات",
+          "ko": "모듈"
         },
-        "value": ""
+        "hint": {
+          "en": "Serial number and firmware version of each module.",
+          "nl": "Serienummer en firmwareversie van elke module.",
+          "de": "Seriennummer und Firmware-Version jedes Moduls.",
+          "fr": "Numéro de série et version du firmware de chaque module.",
+          "es": "Número de serie y versión de firmware de cada módulo.",
+          "it": "Numero di serie e versione firmware di ogni modulo.",
+          "da": "Serienummer og firmwareversion for hvert modul.",
+          "sv": "Serienummer och firmwareversion för varje modul.",
+          "no": "Serienummer og fastvareversjon for hver modul.",
+          "pl": "Numer seryjny i wersja oprogramowania każdego modułu.",
+          "ru": "Серийный номер и версия прошивки каждого модуля.",
+          "ar": "الرقم التسلسلي وإصدار البرنامج الثابت لكل وحدة.",
+          "ko": "각 모듈의 일련 번호와 펌웨어 버전입니다."
+        }
+      },
+      {
+        "id": "batteryDesignEnergy",
+        "type": "label",
+        "value": "",
+        "label": {
+          "en": "Design capacity",
+          "nl": "Ontwerpcapaciteit",
+          "de": "Nennkapazität",
+          "fr": "Capacité nominale",
+          "es": "Capacidad nominal",
+          "it": "Capacità nominale",
+          "da": "Nominel kapacitet",
+          "sv": "Nominell kapacitet",
+          "no": "Nominell kapasitet",
+          "pl": "Pojemność nominalna",
+          "ru": "Номинальная емкость",
+          "ar": "السعة الاسمية",
+          "ko": "설계 용량"
+        }
       }
     ]
   }
