@@ -150,4 +150,33 @@ module.exports = async (t) => {
 
   t.eq(pointMap.batteryMap.battery.measure_current({ invBatCurrent: 2.5 }), -2.5,
     'battery current is negated: the API reports discharge positive, the device charge positive');
+
+  // --- meter phases 2 and 3 moved from base to optional (2026-10-04) ---
+  t.ok(!pointMap.baseCapabilities('meter').includes('measure_voltage.2'), 'meter voltage 2 is no longer a base capability');
+  const onePhase = pointMap.seenInPayload('meter', { RVolt: 231, SVolt: 0, TVolt: 0 });
+  t.ok(!onePhase['measure_voltage.2'] && !onePhase['measure_voltage.3'], 'a single-phase payload gives no phase 2/3 voltage');
+  const threePhase = pointMap.seenInPayload('meter', { RVolt: 231, SVolt: 230, TVolt: 229 });
+  t.ok(threePhase['measure_voltage.2'] && threePhase['measure_voltage.3'], 'a three-phase payload adds both');
+
+  // an existing device: what it already shows a value for is carried over, so nothing is removed
+  const CommonDevice = fixtures.app('lib/common_device.js');
+  const existing = (values) => {
+    const dev = Object.assign(Object.create(CommonDevice.prototype), fakeDevice(Object.keys(values), values));
+    const store = { seenCaps: {} };
+    dev.driver = { id: 'meter' };
+    dev.getStoreValue = (key) => store[key];
+    dev.setStoreValue = async (key, value) => {
+      store[key] = value;
+    };
+    return { dev, store };
+  };
+  const three = existing({ 'measure_voltage.2': 230.4, 'measure_voltage.3': 229.9 });
+  await three.dev.carrySeenCaps();
+  t.ok(three.store.seenCaps['measure_voltage.2'] && three.store.seenCaps['measure_voltage.3'], 'a three-phase meter keeps its phase 2/3 voltages');
+  const single = existing({ 'measure_voltage.2': null, 'measure_voltage.3': 0 });
+  await single.dev.carrySeenCaps();
+  t.ok(!single.store.seenCaps['measure_voltage.2'] && !single.store.seenCaps['measure_voltage.3'], 'on a single-phase meter the empty tiles are not carried over');
+  const keep = pointMap.deviceCapabilities('meter', three.store.seenCaps);
+  t.ok(keep.includes('measure_voltage.2') && keep.indexOf('measure_voltage.2') < keep.indexOf('measure_frequency'),
+    'a carried phase voltage stays in its tile position');
 };
