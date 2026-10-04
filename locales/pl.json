@@ -10,6 +10,13 @@
       "region": "Region",
       "apiKey": "Klucz API",
       "connect": "Połącz"
+    },
+    "heatpump": {
+      "title": "Zarejestruj pompę ciepła",
+      "intro": "Wpisz numer seryjny jednostki zewnętrznej, aby zarejestrować nową pompę ciepła. Zostaw puste, aby pokazać już zarejestrowane pompy ciepła.",
+      "serial": "Numer seryjny jednostki zewnętrznej",
+      "next": "Dalej",
+      "pending": "Pompa ciepła jest zarejestrowana. Będzie dostępna w Homey po zatwierdzeniu rejestracji."
     }
   },
   "errors": {
@@ -22,7 +29,10 @@
     "controlFailed": "Nie można zmienić sterowania baterią:",
     "noSchedule": "Nie znaleziono harmonogramu FoxCloud. Najpierw utwórz go w FoxCloud.",
     "socRange": "Limity SoC muszą wynosić 10–100%, przy czym minimum ≤ minimum przy sieci.",
-    "settingFailed": "Nie udało się zmienić ustawienia:"
+    "settingFailed": "Nie udało się zmienić ustawienia:",
+    "heatpumpRegisterFailed": "Nie udało się zarejestrować pompy ciepła:",
+    "heatpumpPending": "Rejestracja pompy ciepła nie została jeszcze zatwierdzona.",
+    "heatpumpRevoked": "Rejestracja pompy ciepła została cofnięta."
   },
   "notifications": {
     "controlOverridden": "**__name__**: ustawienie wprowadzone przez Homey zostało zmienione gdzie indziej, na przykład w FoxCloud lub przez dostawcę energii."

@@ -10,6 +10,13 @@
       "region": "Region",
       "apiKey": "API-nyckel",
       "connect": "Anslut"
+    },
+    "heatpump": {
+      "title": "Registrera värmepump",
+      "intro": "Ange utomhusenhetens serienummer för att registrera en ny värmepump. Lämna tomt för att visa värmepumpar som redan är registrerade.",
+      "serial": "Serienummer utomhusenhet",
+      "next": "Nästa",
+      "pending": "Värmepumpen är registrerad. Den kan användas i Homey när registreringen har godkänts."
     }
   },
   "errors": {
@@ -22,7 +29,10 @@
     "controlFailed": "Kunde inte ändra batteristyrningen:",
     "noSchedule": "Inget FoxCloud-schema hittades. Skapa ett i FoxCloud först.",
     "socRange": "SoC-gränser måste vara 10–100 %, med minimum ≤ minimum mot nätet.",
-    "settingFailed": "Kunde inte ändra inställningen:"
+    "settingFailed": "Kunde inte ändra inställningen:",
+    "heatpumpRegisterFailed": "Kunde inte registrera värmepumpen:",
+    "heatpumpPending": "Värmepumpens registrering är inte godkänd än.",
+    "heatpumpRevoked": "Värmepumpens registrering har återkallats."
   },
   "notifications": {
     "controlOverridden": "**__name__**: en inställning från Homey ändrades någon annanstans, till exempel i FoxCloud eller av ett energibolag."

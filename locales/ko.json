@@ -10,6 +10,13 @@
       "region": "지역",
       "apiKey": "API 키",
       "connect": "연결"
+    },
+    "heatpump": {
+      "title": "히트 펌프 등록",
+      "intro": "새 히트 펌프를 등록하려면 실외기 일련 번호를 입력하세요. 이미 등록된 히트 펌프를 보려면 비워 두세요.",
+      "serial": "실외기 일련 번호",
+      "next": "다음",
+      "pending": "히트 펌프가 등록되었습니다. 등록이 승인되면 Homey에서 사용할 수 있습니다."
     }
   },
   "errors": {
@@ -22,7 +29,10 @@
     "controlFailed": "배터리 제어를 변경할 수 없습니다:",
     "noSchedule": "FoxCloud 일정이 없습니다. 먼저 FoxCloud에서 설정하세요.",
     "socRange": "SoC 한도는 10–100%이며 최소 ≤ 계통 연결 시 최소여야 합니다.",
-    "settingFailed": "설정을 변경할 수 없습니다:"
+    "settingFailed": "설정을 변경할 수 없습니다:",
+    "heatpumpRegisterFailed": "히트 펌프를 등록할 수 없습니다:",
+    "heatpumpPending": "히트 펌프 등록이 아직 승인되지 않았습니다.",
+    "heatpumpRevoked": "히트 펌프 등록이 취소되었습니다."
   },
   "notifications": {
     "controlOverridden": "**__name__**: Homey가 지정한 설정이 다른 곳에서 변경되었습니다(예: FoxCloud 또는 에너지 공급업체)."

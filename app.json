@@ -1776,6 +1776,9 @@
           "id": "login_apikey"
         },
         {
+          "id": "register_heatpump"
+        },
+        {
           "id": "list_devices",
           "template": "list_devices",
           "navigation": {
@@ -1869,6 +1872,26 @@
                 "ru": "Серийный номер модуля",
                 "ko": "모듈 일련 번호",
                 "ar": "الرقم التسلسلي للوحدة"
+              },
+              "value": ""
+            },
+            {
+              "id": "registerStatus",
+              "type": "label",
+              "label": {
+                "en": "API registration",
+                "nl": "API-registratie",
+                "de": "API-Registrierung",
+                "fr": "Enregistrement API",
+                "it": "Registrazione API",
+                "es": "Registro API",
+                "pl": "Rejestracja API",
+                "sv": "API-registrering",
+                "no": "API-registrering",
+                "da": "API-registrering",
+                "ru": "Регистрация API",
+                "ko": "API 등록",
+                "ar": "التسجيل في API"
               },
               "value": ""
             },

@@ -98,9 +98,7 @@ module.exports = class FoxEssApp extends Homey.App {
       .registerRunListener(async ({ device, status }) => device.getCapabilityValue('running_state') === status);
 
     this.homey.flow.getActionCard('set_soc_limits')
-      .registerRunListener(({
-        device, min, max, ongrid,
-      }) => device.setSocLimits({ min, max, ongrid }));
+      .registerRunListener(({ device, min, ongrid }) => device.setSocLimits({ min, ongrid }));
 
     this.homey.flow.getActionCard('set_export_limit')
       .registerRunListener(({ device, watts }) => device.setExportLimit(watts));

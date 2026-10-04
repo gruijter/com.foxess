@@ -12,7 +12,7 @@
 
   // Shared by pairing and repair: the driver pre-fills the key and region (the ones used last, or
   // the device's own on repair) and answers 'login' with { done } - true ends a repair, false
-  // moves pairing on to the device list. Same shape as com.gruijter.blemower's mqtt_settings view:
+  // moves pairing on to the next view (the device list, or the heat pump's registration). Same shape as com.gruijter.blemower's mqtt_settings view:
   // a plain button, not a form submit, which would reload the view if anything threw first.
   async function connect() {
     try {
@@ -23,7 +23,7 @@
       });
       Homey.hideLoadingOverlay();
       if (result && result.done) return Homey.done();
-      Homey.showView('list_devices');
+      Homey.nextView();
     } catch (error) {
       Homey.hideLoadingOverlay();
       Homey.alert(error.message || error.toString(), 'error');

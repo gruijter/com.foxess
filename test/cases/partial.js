@@ -56,6 +56,9 @@ module.exports = async (t) => {
   t.eq(maps['battery.inverter'].measure_power({ batChargePower: 1.2 }), 1200, 'charging with no discharge field still reads');
   t.eq(maps['battery.inverter'].measure_power({ batDischargePower: 0.8 }), -800, 'discharging with no charge field still reads');
   t.eq(maps['meter.inverter'].measure_power({ feedinPower: 2 }), -2000, 'export with no import field still reads');
+  // meterPower is already net (positive on import): only a fallback, never one side of import - export
+  t.eq(maps['meter.inverter'].measure_power({ meterPower: -0.588, feedinPower: 0.588 }), -588, 'export with meterPower is not counted twice');
+  t.eq(maps['meter.inverter'].measure_power({ meterPower: 0.4 }), 400, 'meterPower alone reads as the net grid power');
 
   // 4. a complete payload is unaffected by any of this
   const full = fixtures.get('deviceRealQuery').result[0];

@@ -10,6 +10,13 @@
       "region": "Region",
       "apiKey": "API-Schlüssel",
       "connect": "Verbinden"
+    },
+    "heatpump": {
+      "title": "Wärmepumpe registrieren",
+      "intro": "Gib die Seriennummer der Außeneinheit ein, um eine neue Wärmepumpe zu registrieren. Leer lassen, um die bereits registrierten Wärmepumpen anzuzeigen.",
+      "serial": "Seriennummer Außeneinheit",
+      "next": "Weiter",
+      "pending": "Die Wärmepumpe ist registriert. Sie kann in Homey verwendet werden, sobald die Registrierung genehmigt ist."
     }
   },
   "errors": {
@@ -22,7 +29,10 @@
     "controlFailed": "Batteriesteuerung konnte nicht geändert werden:",
     "noSchedule": "Kein FoxCloud-Zeitplan gefunden. Richte zuerst einen in FoxCloud ein.",
     "socRange": "SoC-Grenzen müssen 10–100 % sein, mit Minimum ≤ Minimum am Netz.",
-    "settingFailed": "Die Einstellung konnte nicht geändert werden:"
+    "settingFailed": "Die Einstellung konnte nicht geändert werden:",
+    "heatpumpRegisterFailed": "Wärmepumpe konnte nicht registriert werden:",
+    "heatpumpPending": "Registrierung der Wärmepumpe noch nicht genehmigt.",
+    "heatpumpRevoked": "Registrierung der Wärmepumpe widerrufen."
   },
   "notifications": {
     "controlOverridden": "**__name__**: Eine Einstellung von Homey wurde anderswo geändert, zum Beispiel in FoxCloud oder von einem Energieversorger."

@@ -62,8 +62,8 @@ module.exports = async (t) => {
   t.ok(!('Authorization' in opts.headers), 'no Authorization header is sent alongside it');
   t.eq(opts.headers.signature, md5(`${urlPath}\r\ntest-api-key\r\n${opts.headers.timestamp}`),
     'the signature is md5(path, key, timestamp)');
-  const withQuery = client.buildRequest({ method: 'GET', path: '/op/v0/device/detail', query: { sn: 'SN 1' } });
-  t.eq(withQuery.url, 'https://example.invalid/op/v0/device/detail?sn=SN+1', 'the query string is appended, not signed');
+  const withQuery = client.buildRequest({ method: 'GET', path: '/op/v1/device/detail', query: { sn: 'SN 1' } });
+  t.eq(withQuery.url, 'https://example.invalid/op/v1/device/detail?sn=SN+1', 'the query string is appended, not signed');
 
   // --- error envelopes ---
   let rejected = null;

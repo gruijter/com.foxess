@@ -68,4 +68,7 @@ module.exports = async (t) => {
   if (noMeter) {
     t.ok(!meter.some((d) => d.settings.deviceSn === noMeter.deviceSN), 'an inverter reporting no meter variables is not offered as a meter');
   }
+
+  // the inverter's own grid side (document section "Grid") is no evidence of a meter
+  ['RFreq', 'RVolt', 'SVolt', 'TVolt'].forEach((v) => t.ok(!meterVars.has(v), `${v} does not prove a meter`));
 };

@@ -59,4 +59,19 @@ module.exports = async (t) => {
     broken.getDeviceRealTimeData({ sn: 'SN-2', variables: ['pvPower'] }),
   ]);
   t.ok(results.every((r) => r.status === 'rejected'), 'a failed batch rejects all of its callers');
+
+  // v1 takes at most 50 serials per request: a larger batch is asked in chunks and joined
+  const Client = fixtures.app('lib/FoxEssClient.js');
+  const many = Array.from({ length: Client.MAX_SNS_PER_QUERY + 5 }, (_, i) => `SN-${i}`);
+  const chunked = fixtures.makeClient({
+    post: async ({ body }) => ({
+      errno: 0,
+      result: JSON.parse(body).sns.map((deviceSN) => ({ deviceSN, datas: [] })),
+    }),
+  });
+  const joined = await Promise.all(many.map((sn) => chunked.getDeviceRealTimeData({ sn, variables: ['pvPower'] })));
+  const requests = httpFor(chunked);
+  t.eq(requests.length, 2, `${many.length} serials are asked in two requests`);
+  t.ok(requests.every((r) => r.body.sns.length <= Client.MAX_SNS_PER_QUERY), 'no request carries more than 50 serials');
+  t.eq(joined[0].result.length, many.length, 'every caller gets the answers of all chunks');
 };

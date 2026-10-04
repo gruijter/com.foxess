@@ -22,6 +22,7 @@ along with com.foxess.  If not, see <http://www.gnu.org/licenses/>.
 const CommonDevice = require('../../lib/common_device');
 const { HEATING_WORK_MODES } = require('../../lib/foxEssPointMap');
 const { HEATPUMP_POLL_EVERY_N_TICKS } = require('../../lib/foxEssConstants');
+const { APPROVED } = require('./driver');
 
 const WORK_MODE_IDS = Object.entries(HEATING_WORK_MODES)
   .reduce((acc, [id, mode]) => ({ ...acc, [mode]: Number(id) }), {});
@@ -49,19 +50,42 @@ module.exports = class MyDevice extends CommonDevice {
     this.listenersSet = true;
   }
 
-  async handleData(data) {
+  /** The register list and, once approved, the settings - see the driver's pollHeatPump(). */
+  pollData() {
+    return this.driver.pollHeatPump({
+      client: this.client,
+      heatSn: this.getSettings().heatSn || '',
+      moduleSn: this.moduleSn,
+    });
+  }
+
+  // The gateway module the heat controls key on: known from pairing, or once the registration
+  // was approved.
+  get moduleSn() {
+    return this.getSettings().moduleSn || this.deviceSn || '';
+  }
+
+  async handleData(data, options) {
+    if (data?.registerStatus !== undefined) {
+      await this.setChangedSettings({ registerStatus: data.registerStatus, masterVersion: data.masterVersion });
+    }
+    // The module can only be known once the registration was approved; the controls key on it.
+    if (data?.moduleSn) await this.setChangedSettings({ moduleSn: data.moduleSn });
+    // A heat pump that is not (or no longer) approved cannot be read or controlled.
+    if (data?.registerStatus !== undefined && data.registerStatus !== APPROVED) {
+      const key = data.registerStatus === 'revoked' ? 'errors.heatpumpRevoked' : 'errors.heatpumpPending';
+      await this.setUnavailable(this.homey.__(key)).catch(this.error);
+      this.lastPoll = Date.now(); // the cloud answered; this is not the 'no updates' case
+      return;
+    }
+
     // keep the raw settings objects so a write can merge into them rather than replace them
     if (data?.heatingControls) this.heatingControls = data.heatingControls;
     if (data?.dhwControls) this.dhwControls = data.dhwControls;
 
     // A fault or offline runningStatus raises alarm_problem / alarm_connectivity (foxEssPointMap)
     // instead of making the device unavailable: an unavailable device cannot trigger a flow.
-    await super.handleData(data);
-  }
-
-  // Heat pumps are not in /op/v0/device/list - runningStatus from the register list stands in.
-  async pollExtra() {
-    return {};
+    await super.handleData(data, options);
   }
 
   /**
@@ -75,8 +99,8 @@ module.exports = class MyDevice extends CommonDevice {
    * @param {object} changes the fields to change
    */
   async writeControls(which, changes) {
-    const moduleSn = this.deviceSn;
-    const { client } = this;
+    const { client, moduleSn } = this;
+    if (!moduleSn) throw Error(this.homey.__('errors.heatpumpPending'));
     try {
       const response = which === 'heating'
         ? await client.getHeatHeatingControls({ moduleSn })

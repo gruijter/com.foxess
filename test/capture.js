@@ -118,7 +118,7 @@ const save = (name, data) => {
     .map((d) => d.deviceSN || d.sn || d.device_sn)
     .filter(Boolean);
   if (sns.length) {
-    save('deviceDetail', await call('GET', '/op/v0/device/detail', { query: { sn: sns[0] } }));
+    save('deviceDetail', await call('GET', '/op/v1/device/detail', { query: { sn: sns[0] } }));
     await sleep(SPACING_MS);
     save('deviceRealQuery', await call('POST', '/op/v1/device/real/query', { body: { sns } }));
     await sleep(SPACING_MS);
@@ -126,7 +126,7 @@ const save = (name, data) => {
     console.log('  skipped  deviceDetail + deviceRealQuery (no device serials on this account)');
   }
 
-  const heatList = save('heatPumpList', await call('POST', '/op/v0/register/heat/list', { body: { currentPage: 1, pageSize: 100 } }));
+  const heatList = save('heatPumpList', await call('POST', '/op/v0/register/heat/list', { body: { currentPage: 1, pageSize: 100, sn: '' } }));
   const heatModule = (heatList?.result?.data || [])[0]?.moduleSN;
   if (heatModule) {
     await sleep(SPACING_MS);

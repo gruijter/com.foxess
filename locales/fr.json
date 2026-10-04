@@ -10,6 +10,13 @@
       "region": "Région",
       "apiKey": "Clé API",
       "connect": "Connecter"
+    },
+    "heatpump": {
+      "title": "Enregistrer la pompe à chaleur",
+      "intro": "Saisissez le numéro de série de l'unité extérieure pour enregistrer une nouvelle pompe à chaleur. Laissez vide pour afficher les pompes à chaleur déjà enregistrées.",
+      "serial": "Numéro de série de l'unité extérieure",
+      "next": "Suivant",
+      "pending": "La pompe à chaleur est enregistrée. Elle pourra être utilisée dans Homey dès que l'enregistrement sera approuvé."
     }
   },
   "errors": {
@@ -22,7 +29,10 @@
     "controlFailed": "Impossible de modifier le pilotage de la batterie :",
     "noSchedule": "Aucun planning FoxCloud trouvé. Créez-en d'abord un dans FoxCloud.",
     "socRange": "Les limites de SoC doivent être de 10 à 100 %, avec minimum ≤ minimum sur réseau.",
-    "settingFailed": "Impossible de modifier le réglage :"
+    "settingFailed": "Impossible de modifier le réglage :",
+    "heatpumpRegisterFailed": "Impossible d'enregistrer la pompe à chaleur :",
+    "heatpumpPending": "Enregistrement de la pompe à chaleur pas encore approuvé.",
+    "heatpumpRevoked": "Enregistrement de la pompe à chaleur révoqué."
   },
   "notifications": {
     "controlOverridden": "**__name__** : un réglage fait par Homey a été modifié ailleurs, par exemple dans FoxCloud ou par un fournisseur d'énergie."

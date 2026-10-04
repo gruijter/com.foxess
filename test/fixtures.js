@@ -424,7 +424,7 @@ const ROUTES = {
   '/op/v0/plant/list': 'plantList',
   '/op/v0/plant/detail': 'plantDetail',
   '/op/v0/device/list': 'deviceList',
-  '/op/v0/device/detail': 'deviceDetail',
+  '/op/v1/device/detail': 'deviceDetail',
   '/op/v0/device/real/query': 'deviceRealQuery',
   '/op/v1/device/real/query': 'deviceRealQuery',
   '/op/v0/register/heat/list': 'heatPumpList',
@@ -432,6 +432,7 @@ const ROUTES = {
   '/op/v0/heat/dhwControls/get': 'heatDhwControls',
   '/op/v0/heat/heatingControls/set': null,
   '/op/v0/heat/dhwControls/set': null,
+  '/op/v0/heat/register': null,
 };
 
 /** A client that answers every known endpoint from the fixture source. */

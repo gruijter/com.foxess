@@ -10,6 +10,13 @@
       "region": "Region",
       "apiKey": "API key",
       "connect": "Connect"
+    },
+    "heatpump": {
+      "title": "Register heat pump",
+      "intro": "Enter the serial number of the outdoor unit to register a new heat pump. Leave it empty to show the heat pumps already registered.",
+      "serial": "Outdoor unit serial number",
+      "next": "Next",
+      "pending": "The heat pump is registered. It can be used in Homey once the registration is approved."
     }
   },
   "errors": {
@@ -22,7 +29,10 @@
     "controlFailed": "Could not change the battery control:",
     "noSchedule": "No FoxCloud schedule found. Set one up in FoxCloud first.",
     "socRange": "SoC limits must be 10–100%, with minimum ≤ minimum on grid.",
-    "settingFailed": "Could not change the setting:"
+    "settingFailed": "Could not change the setting:",
+    "heatpumpRegisterFailed": "Could not register the heat pump:",
+    "heatpumpPending": "Heat pump registration not approved yet.",
+    "heatpumpRevoked": "Heat pump registration revoked."
   },
   "notifications": {
     "controlOverridden": "**__name__**: a setting Homey made was changed elsewhere, for example in FoxCloud or by an energy provider."

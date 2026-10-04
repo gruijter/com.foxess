@@ -78,6 +78,26 @@
         "value": ""
       },
       {
+        "id": "registerStatus",
+        "type": "label",
+        "label": {
+          "en": "API registration",
+          "nl": "API-registratie",
+          "de": "API-Registrierung",
+          "fr": "Enregistrement API",
+          "it": "Registrazione API",
+          "es": "Registro API",
+          "pl": "Rejestracja API",
+          "sv": "API-registrering",
+          "no": "API-registrering",
+          "da": "API-registrering",
+          "ru": "Регистрация API",
+          "ko": "API 등록",
+          "ar": "التسجيل في API"
+        },
+        "value": ""
+      },
+      {
         "id": "masterVersion",
         "type": "label",
         "label": {

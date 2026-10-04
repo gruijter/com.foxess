@@ -10,6 +10,13 @@
       "region": "Region",
       "apiKey": "API-nøgle",
       "connect": "Forbind"
+    },
+    "heatpump": {
+      "title": "Registrer varmepumpe",
+      "intro": "Indtast udedelens serienummer for at registrere en ny varmepumpe. Lad feltet stå tomt for at vise de varmepumper, der allerede er registreret.",
+      "serial": "Serienummer udedel",
+      "next": "Næste",
+      "pending": "Varmepumpen er registreret. Den kan bruges i Homey, når registreringen er godkendt."
     }
   },
   "errors": {
@@ -22,7 +29,10 @@
     "controlFailed": "Kunne ikke ændre batteristyringen:",
     "noSchedule": "Ingen FoxCloud-plan fundet. Opret en i FoxCloud først.",
     "socRange": "SoC-grænser skal være 10–100 %, med minimum ≤ minimum på nettet.",
-    "settingFailed": "Kunne ikke ændre indstillingen:"
+    "settingFailed": "Kunne ikke ændre indstillingen:",
+    "heatpumpRegisterFailed": "Kunne ikke registrere varmepumpen:",
+    "heatpumpPending": "Registreringen af varmepumpen er endnu ikke godkendt.",
+    "heatpumpRevoked": "Registreringen af varmepumpen er tilbagekaldt."
   },
   "notifications": {
     "controlOverridden": "**__name__**: en indstilling fra Homey blev ændret et andet sted, for eksempel i FoxCloud eller af en energileverandør."

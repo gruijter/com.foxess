@@ -84,6 +84,8 @@ module.exports = async (t) => {
   t.eq(ctl.activeSlotPower(slots('ForceCharge', 1500), now), 1500, 'ForceCharge shows +fdPwr');
   t.eq(ctl.activeSlotPower(slots('ForceDischarge', 2650), now), -2650, 'ForceDischarge shows -fdPwr');
   t.eq(ctl.activeSlotPower(slots('Backup', 0), now), 0, 'a Backup hold shows 0');
+  t.eq(ctl.activeSlotPower(slots('ForceCharge(BAT)', 1200), now), 1200, 'ForceCharge(BAT) (undocumented, seen live) shows +fdPwr');
+  t.eq(ctl.activeSlotPower(slots('ForceDischarge(BAT)', 700), now), -700, 'ForceDischarge(BAT) shows -fdPwr');
   t.eq(ctl.activeSlotPower(slots('SelfUse', 0), now), null, 'another slot mode has no setpoint');
   t.eq(ctl.activeSlotPower(slots('ForceCharge', 1500), { hour: 14, minute: 0 }), null, 'no slot running now, no setpoint');
   t.eq(ctl.activeSlotPower(slots('ForceCharge', 1500), null), undefined, 'unknown inverter time leaves the tile alone');

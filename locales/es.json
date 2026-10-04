@@ -10,6 +10,13 @@
       "region": "Región",
       "apiKey": "Clave API",
       "connect": "Conectar"
+    },
+    "heatpump": {
+      "title": "Registrar bomba de calor",
+      "intro": "Introduce el número de serie de la unidad exterior para registrar una nueva bomba de calor. Déjalo vacío para mostrar las bombas de calor ya registradas.",
+      "serial": "Número de serie de la unidad exterior",
+      "next": "Siguiente",
+      "pending": "La bomba de calor está registrada. Podrá usarse en Homey cuando se apruebe el registro."
     }
   },
   "errors": {
@@ -22,7 +29,10 @@
     "controlFailed": "No se pudo cambiar el control de la batería:",
     "noSchedule": "No se encontró ninguna programación de FoxCloud. Crea una primero en FoxCloud.",
     "socRange": "Los límites de SoC deben ser 10–100 %, con mínimo ≤ mínimo en red.",
-    "settingFailed": "No se pudo cambiar el ajuste:"
+    "settingFailed": "No se pudo cambiar el ajuste:",
+    "heatpumpRegisterFailed": "No se pudo registrar la bomba de calor:",
+    "heatpumpPending": "Registro de la bomba de calor aún no aprobado.",
+    "heatpumpRevoked": "Registro de la bomba de calor revocado."
   },
   "notifications": {
     "controlOverridden": "**__name__**: un ajuste hecho por Homey se cambió en otro lugar, por ejemplo en FoxCloud o por un proveedor de energía."
