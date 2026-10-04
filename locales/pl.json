@@ -10,17 +10,9 @@
       "region": "Region",
       "apiKey": "Klucz API",
       "connect": "Połącz"
-    },
-    "heatpump": {
-      "title": "Zarejestruj pompę ciepła",
-      "intro": "Wpisz numer seryjny jednostki zewnętrznej, aby zarejestrować nową pompę ciepła. Zostaw puste, aby pokazać już zarejestrowane pompy ciepła.",
-      "serial": "Numer seryjny jednostki zewnętrznej",
-      "next": "Dalej",
-      "pending": "Pompa ciepła jest zarejestrowana. Będzie dostępna w Homey po zatwierdzeniu rejestracji."
     }
   },
   "errors": {
-    "heatpumpSetFailed": "Nie udało się zmienić ustawienia pompy ciepła.",
     "noUpdates": "Brak aktualizacji z urządzenia",
     "noApiKey": "Brak klucza API. Napraw to urządzenie, aby go wprowadzić.",
     "apiKeyRequired": "Wprowadź swój klucz API Fox ESS.",
@@ -30,7 +22,7 @@
     "noSchedule": "Nie znaleziono harmonogramu FoxCloud. Najpierw utwórz go w FoxCloud.",
     "socRange": "Limity SoC muszą wynosić 10–100%, przy czym minimum ≤ minimum przy sieci.",
     "settingFailed": "Nie udało się zmienić ustawienia:",
-    "heatpumpRegisterFailed": "Nie udało się zarejestrować pompy ciepła:",
+    "heatpumpReadOnly": "W tej becie tylko do odczytu. Zmień to w aplikacji FoxESS.",
     "heatpumpPending": "Rejestracja pompy ciepła nie została jeszcze zatwierdzona.",
     "heatpumpRevoked": "Rejestracja pompy ciepła została cofnięta."
   },

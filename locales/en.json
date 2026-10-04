@@ -10,17 +10,9 @@
       "region": "Region",
       "apiKey": "API key",
       "connect": "Connect"
-    },
-    "heatpump": {
-      "title": "Register heat pump",
-      "intro": "Enter the serial number of the outdoor unit to register a new heat pump. Leave it empty to show the heat pumps already registered.",
-      "serial": "Outdoor unit serial number",
-      "next": "Next",
-      "pending": "The heat pump is registered. It can be used in Homey once the registration is approved."
     }
   },
   "errors": {
-    "heatpumpSetFailed": "Could not change the heat pump setting.",
     "noUpdates": "No updates from device",
     "noApiKey": "No API key. Repair this device to enter one.",
     "apiKeyRequired": "Enter your Fox ESS API key.",
@@ -30,7 +22,7 @@
     "noSchedule": "No FoxCloud schedule found. Set one up in FoxCloud first.",
     "socRange": "SoC limits must be 10–100%, with minimum ≤ minimum on grid.",
     "settingFailed": "Could not change the setting:",
-    "heatpumpRegisterFailed": "Could not register the heat pump:",
+    "heatpumpReadOnly": "Read-only in this beta. Change it in the FoxESS app.",
     "heatpumpPending": "Heat pump registration not approved yet.",
     "heatpumpRevoked": "Heat pump registration revoked."
   },

@@ -83,7 +83,7 @@ module.exports = class MyDevice extends CommonDriver {
   }
 
   /**
-   * Which side - AC or DC - each solar capability shows, decided here for good (see
+   * Which side - AC or DC - each solar capability shows, decided here first (see
    * foxEssPointMap.inverterSolarSides): from the battery flag of the device list (or detail) and
    * whether the inverter reports its AC output.
    */

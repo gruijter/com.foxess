@@ -111,6 +111,14 @@ module.exports = async (t) => {
   t.eq(shuffled.state['meter_power.today'], 3.6, 'a re-added capability gets its value back');
   t.eq(shuffled.state.meter_power, 52.6, 'every re-added capability gets its value back');
 
+  // --- a capability dropped near the top: only that one is removed, nothing is rebuilt ---
+  const dropped = fakeDevice([inverterBase[0], 'obsolete', ...inverterBase.slice(1)], { meter_power: 52.6 });
+  t.eq(await migrateCapabilities(dropped, inverterBase, opts), true, 'a dropped capability migrates');
+  t.eq(dropped.list.join(','), inverterBase.join(','), 'the list ends up as wanted');
+  t.eq(dropped.calls.filter((c) => c.startsWith('-') || c.startsWith('+')).join(','), '-obsolete',
+    'only the dropped capability was touched');
+  t.eq(dropped.state.meter_power, 52.6, 'the others keep their values');
+
   // --- two migrations at once run one after the other ---
   const busy = fakeDevice(inverterBase);
   const a = pointMap.deviceCapabilities('inverter', { 'measure_power.pv1': true });

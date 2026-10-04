@@ -10,17 +10,9 @@
       "region": "Region",
       "apiKey": "API-nyckel",
       "connect": "Anslut"
-    },
-    "heatpump": {
-      "title": "Registrera värmepump",
-      "intro": "Ange utomhusenhetens serienummer för att registrera en ny värmepump. Lämna tomt för att visa värmepumpar som redan är registrerade.",
-      "serial": "Serienummer utomhusenhet",
-      "next": "Nästa",
-      "pending": "Värmepumpen är registrerad. Den kan användas i Homey när registreringen har godkänts."
     }
   },
   "errors": {
-    "heatpumpSetFailed": "Det gick inte att ändra värmepumpens inställning.",
     "noUpdates": "Inga uppdateringar från enheten",
     "noApiKey": "Ingen API-nyckel. Reparera enheten för att ange en.",
     "apiKeyRequired": "Ange din Fox ESS API-nyckel.",
@@ -30,7 +22,7 @@
     "noSchedule": "Inget FoxCloud-schema hittades. Skapa ett i FoxCloud först.",
     "socRange": "SoC-gränser måste vara 10–100 %, med minimum ≤ minimum mot nätet.",
     "settingFailed": "Kunde inte ändra inställningen:",
-    "heatpumpRegisterFailed": "Kunde inte registrera värmepumpen:",
+    "heatpumpReadOnly": "Skrivskyddad i denna beta. Ändra det i FoxESS-appen.",
     "heatpumpPending": "Värmepumpens registrering är inte godkänd än.",
     "heatpumpRevoked": "Värmepumpens registrering har återkallats."
   },

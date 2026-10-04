@@ -20,13 +20,14 @@ along with com.foxess.  If not, see <http://www.gnu.org/licenses/>.
 'use strict';
 
 const CommonDevice = require('../../lib/common_device');
+const DeviceMigrator = require('../../lib/DeviceMigrator');
 const foxEssPointMap = require('../../lib/foxEssPointMap');
 const { solarTitle } = require('../../lib/foxEssSolarTitles');
 const { GENERATION_POLL_EVERY_N_TICKS } = require('../../lib/foxEssConstants');
 
 // The solar capabilities show the AC side; one that can only show the DC side (see
-// foxEssPointMap.inverterSolarSides) gets its '(DC)' title here - the '(AC)' ones are the
-// manifest's. Titles as com.growatt has them, see lib/foxEssSolarTitles.js.
+// foxEssPointMap.inverterSolarSides) gets its '(DC)' title from capabilityOptions() - the '(AC)'
+// ones are the manifest's. Titles as com.growatt has them, see lib/foxEssSolarTitles.js.
 module.exports = class MyDevice extends CommonDevice {
 
   onReadings({ exportLimit }) {
@@ -41,57 +42,50 @@ module.exports = class MyDevice extends CommonDevice {
   capabilityOptions() {
     const max = Math.max(this.maxPowerW, Math.ceil((this.exportLimit || 0) / 100) * 100);
     const options = { export_limit: { min: 0, max, step: 100 } };
-    // so a capability that is rebuilt keeps its (DC) title
+    // every solar capability titled with its side, so a rebuilt one keeps it and a switch shows
     for (const [cap, side] of Object.entries(this.getStoreValue('solarSides') || {})) {
-      if (side === 'dc') options[cap] = { title: solarTitle(cap, 'dc') };
+      options[cap] = { title: solarTitle(cap, side) };
     }
     return options;
   }
 
   /**
-   * Which side - AC or DC - each solar capability shows is decided once, at pairing (see the
-   * driver's pairStore), and kept in the store for good: a capability always shows the same
-   * quantity. A device paired before that has no decision yet; it gets one, the same way, from its
-   * first full payload, and keeps that from then on.
+   * Which side - AC or DC - each solar capability shows. Decided at pairing (see the driver's
+   * pairStore) and again once per (re)start - a repair restarts the device too - from the
+   * facts known then: the battery flag of the device detail onInit just refreshed, and whether
+   * this first full payload carries the AC output. A battery added later moves the energy to DC,
+   * where `generation` would count its discharge as yield. A fact unknown this time keeps the
+   * stored side (see foxEssPointMap.inverterSolarSides).
    * @param {object} data a full payload
    */
-  async ensureSolarSides(data) {
-    if (this.getStoreValue('solarSides')) return;
+  async decideSolarSides(data) {
+    if (this.solarSidesDecided) return;
+    this.solarSidesDecided = true;
+    const previous = this.getStoreValue('solarSides');
     const hasBattery = this.getStoreValue('deviceDetail')?.hasBattery ?? this.getStoreValue('hasBattery');
     const sides = foxEssPointMap.inverterSolarSides({
       hasBattery: typeof hasBattery === 'boolean' ? hasBattery : undefined,
       acPower: data.generationPower !== undefined && data.generationPower !== null,
-    });
-    this.log('solar sides decided:', JSON.stringify(sides));
-    await this.setStoreValue('solarSides', sides);
-  }
-
-  /**
-   * Title the DC-side capabilities '(DC)', once. A capability added later gets its title from
-   * capabilityOptions(), which the migrator applies when it adds one.
-   */
-  async applySolarTitles() {
-    if (this.getStoreValue('solarTitled')) return;
-    for (const [cap, side] of Object.entries(this.getStoreValue('solarSides') || {})) {
-      if (side !== 'dc' || !this.hasCapability(cap)) continue;
-      const manifest = this.driver.manifest?.capabilitiesOptions?.[cap] || {};
-      // eslint-disable-next-line no-await-in-loop
-      await this.setCapabilityOptions(cap, { ...manifest, title: solarTitle(cap, 'dc') }).catch((error) => this.error(error));
+    }, previous || {});
+    if (!previous || Object.keys(sides).some((cap) => sides[cap] !== previous[cap])) {
+      this.log('solar sides decided:', JSON.stringify(previous || {}), '->', JSON.stringify(sides));
+      await this.setStoreValue('solarSides', sides);
     }
-    await this.setStoreValue('solarTitled', true);
+    // the titles to match - no write when they already do
+    await DeviceMigrator.syncCapabilityOptions(this, this.capabilityOptions());
   }
 
   async handleData(data, options = {}) {
     if (!data) return super.handleData(data, options);
     if (data.snapshotTime) this.snapshotTime = data.snapshotTime;
-    if (!options.partial) await this.ensureSolarSides(data).catch((error) => this.error(error));
+    if (!options.partial) await this.decideSolarSides(data).catch((error) => this.error(error));
     const solarSides = this.getStoreValue('solarSides');
-    if (solarSides) await this.applySolarTitles().catch((error) => this.error(error));
     // no decision yet (an old device whose real-time query failed): show no solar values at all
     return super.handleData({ ...data, solarSides: solarSides || {} }, options);
   }
 
   async onInit() {
+    this.solarSidesDecided = false; // onInit runs again on every restartDevice(), a repair's too
     await super.onInit();
     if (!this.hasCapability('export_limit')) return;
     if (this.exportLimit !== undefined) await this.setCapability('export_limit', this.exportLimit);

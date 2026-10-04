@@ -10,17 +10,9 @@
       "region": "Region",
       "apiKey": "API-nøkkel",
       "connect": "Koble til"
-    },
-    "heatpump": {
-      "title": "Registrer varmepumpe",
-      "intro": "Skriv inn serienummeret til utedelen for å registrere en ny varmepumpe. La feltet stå tomt for å vise varmepumper som allerede er registrert.",
-      "serial": "Serienummer utedel",
-      "next": "Neste",
-      "pending": "Varmepumpen er registrert. Den kan brukes i Homey når registreringen er godkjent."
     }
   },
   "errors": {
-    "heatpumpSetFailed": "Kunne ikke endre innstillingen til varmepumpen.",
     "noUpdates": "Ingen oppdateringer fra enheten",
     "noApiKey": "Ingen API-nøkkel. Reparer enheten for å legge inn en.",
     "apiKeyRequired": "Skriv inn Fox ESS API-nøkkelen din.",
@@ -30,7 +22,7 @@
     "noSchedule": "Fant ingen FoxCloud-plan. Opprett en i FoxCloud først.",
     "socRange": "SoC-grenser må være 10–100 %, med minimum ≤ minimum på nettet.",
     "settingFailed": "Kunne ikke endre innstillingen:",
-    "heatpumpRegisterFailed": "Kunne ikke registrere varmepumpen:",
+    "heatpumpReadOnly": "Kun lesing i denne betaen. Endre det i FoxESS-appen.",
     "heatpumpPending": "Registreringen av varmepumpen er ikke godkjent ennå.",
     "heatpumpRevoked": "Registreringen av varmepumpen er trukket tilbake."
   },

@@ -35,8 +35,10 @@ Field names and nesting come from the OpenAPI document:
                                         hasPV, hasBattery, deviceType, productType }
   device/real/query -> result[]       { deviceSN, datas[] { variable, unit, name, value, time } }
   plant/detail      -> result         { stationName, ..., capacity, modules[], batteries[] }
-  register/heat/list-> result.data[]  { heatSN, moduleSN, registerStatus, runningStatus,
-                                        masterVersion, deviceType }
+  heat/register/list-> result.data[]  { heatSN, moduleSN, registerStatus, runningStatus,
+                                        masterVersion, deviceType }  (the doc's path
+                                        register/heat/list is 404 live)
+  module/list       -> result.data[]  { moduleSN, stationID, status, signal, ... }
 
 The one thing observed from a live response rather than the doc is the shape of an OEM-rebadged
 inverter: deviceType carries the vendor's model name ("VSN THREE 8KW" for a Solarwatt-badged unit)
@@ -202,6 +204,18 @@ const docStubs = {
       total: 1,
       data: [{
         heatSN: 'HEATSN00000001', moduleSN: 'HEATMOD0000001', registerStatus: 'approved', runningStatus: 1, masterVersion: '1.0.0', deviceType: 'Heat Pump',
+      }],
+    },
+  },
+
+  moduleList: {
+    errno: 0,
+    result: {
+      currentPage: 1,
+      pageSize: 100,
+      total: 1,
+      data: [{
+        moduleSN: 'HEATMOD0000001', stationID: PLANT_A, status: 1, signal: 100, webVersion: '--', softVersion: '2.11',
       }],
     },
   },
@@ -427,12 +441,10 @@ const ROUTES = {
   '/op/v1/device/detail': 'deviceDetail',
   '/op/v0/device/real/query': 'deviceRealQuery',
   '/op/v1/device/real/query': 'deviceRealQuery',
-  '/op/v0/register/heat/list': 'heatPumpList',
-  '/op/v0/heat/heatingControls/get': 'heatHeatingControls',
-  '/op/v0/heat/dhwControls/get': 'heatDhwControls',
-  '/op/v0/heat/heatingControls/set': null,
-  '/op/v0/heat/dhwControls/set': null,
-  '/op/v0/heat/register': null,
+  '/op/v0/heat/register/list': 'heatPumpList',
+  '/op/v0/module/list': 'moduleList',
+  '/op/v0/heat/heatingControls': 'heatHeatingControls',
+  '/op/v0/heat/dhwControls': 'heatDhwControls',
 };
 
 /** A client that answers every known endpoint from the fixture source. */

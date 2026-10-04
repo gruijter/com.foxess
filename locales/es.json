@@ -10,17 +10,9 @@
       "region": "Región",
       "apiKey": "Clave API",
       "connect": "Conectar"
-    },
-    "heatpump": {
-      "title": "Registrar bomba de calor",
-      "intro": "Introduce el número de serie de la unidad exterior para registrar una nueva bomba de calor. Déjalo vacío para mostrar las bombas de calor ya registradas.",
-      "serial": "Número de serie de la unidad exterior",
-      "next": "Siguiente",
-      "pending": "La bomba de calor está registrada. Podrá usarse en Homey cuando se apruebe el registro."
     }
   },
   "errors": {
-    "heatpumpSetFailed": "No se pudo cambiar el ajuste de la bomba de calor.",
     "noUpdates": "Sin actualizaciones del dispositivo",
     "noApiKey": "No hay clave API. Repara este dispositivo para introducir una.",
     "apiKeyRequired": "Introduce tu clave API de Fox ESS.",
@@ -30,7 +22,7 @@
     "noSchedule": "No se encontró ninguna programación de FoxCloud. Crea una primero en FoxCloud.",
     "socRange": "Los límites de SoC deben ser 10–100 %, con mínimo ≤ mínimo en red.",
     "settingFailed": "No se pudo cambiar el ajuste:",
-    "heatpumpRegisterFailed": "No se pudo registrar la bomba de calor:",
+    "heatpumpReadOnly": "Solo lectura en esta beta. Cámbialo en la app de FoxESS.",
     "heatpumpPending": "Registro de la bomba de calor aún no aprobado.",
     "heatpumpRevoked": "Registro de la bomba de calor revocado."
   },

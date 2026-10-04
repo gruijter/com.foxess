@@ -107,9 +107,6 @@
       "id": "login_apikey"
     },
     {
-      "id": "register_heatpump"
-    },
-    {
       "id": "list_devices",
       "template": "list_devices",
       "navigation": {

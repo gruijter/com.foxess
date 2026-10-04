@@ -67,6 +67,12 @@ module.exports = async (t) => {
   t.eq(sides({ hasBattery: true }).meter_power, 'dc', 'a battery: generation is no solar yield, so DC');
   t.eq(sides({}).meter_power, 'dc', 'an unknown battery counts as a battery');
   t.eq(sides({ hasBattery: false })['meter_power.month'], 'ac', 'today and the month follow the same rule');
+  // re-decided per (re)start: a known fact decides, an unknown one keeps the stored side
+  const storedAc = sides({ hasBattery: false, acPower: true });
+  t.eq(sides({ hasBattery: true, acPower: true }, storedAc).meter_power, 'dc', 'a battery added later moves the energy to DC');
+  t.eq(sides({}, storedAc).meter_power, 'ac', 'a battery flag missing this time keeps the stored side');
+  t.eq(sides({ acPower: false }, storedAc).measure_power, 'ac', 'a payload without the AC output keeps AC power');
+  t.eq(sides({ hasBattery: false }, sides({ hasBattery: true })).meter_power, 'ac', 'a battery removed moves it back to AC');
   const fixedAc = { solarSides: sides({ hasBattery: false, acPower: true }) };
   const fixedDc = { solarSides: sides({ hasBattery: true, acPower: true }) };
   t.eq(inv.meter_power({ ...fixedDc, generation: 220, PVEnergyTotal: 194 }), 194, 'a fixed DC side shows PVEnergyTotal');
@@ -134,6 +140,8 @@ module.exports = async (t) => {
       setStoreValue: async (key, value) => {
         store[key] = value;
       },
+      // as Homey: the options last set, else the manifest's
+      getCapabilityOptions: (cap) => options[cap] || dev.driver.manifest.capabilitiesOptions?.[cap] || {},
       setCapabilityOptions: async (cap, value) => {
         options[cap] = value;
       },
@@ -164,14 +172,21 @@ module.exports = async (t) => {
     t.eq(shown[0].meter_power, 194, 'and shows the DC counter');
 
     const calls = Object.keys(paired.options).length;
+    const dcTitle = paired.options.meter_power;
     paired.options.meter_power = null;
     await paired.dev.handleData({ pvPower: 1.3, PVEnergyTotal: 195, generation: 221 });
     t.eq(paired.options.meter_power, null, 'titles are set once, not on every poll');
+    paired.options.meter_power = dcTitle;
     t.eq(shown[1].measure_power, undefined, 'a poll without the AC output leaves the power tile alone');
     paired.store.deviceDetail = { hasBattery: false };
     await paired.dev.handleData({ generationPower: 1, PVEnergyTotal: 196, generation: 222 });
-    t.eq(shown[2].meter_power, 196, 'a changed battery fact never changes what a tile shows');
+    t.eq(shown[2].meter_power, 196, 'a changed battery fact changes nothing until the next (re)start');
     t.eq(Object.keys(paired.options).length, calls, 'and costs no call');
+    paired.dev.solarSidesDecided = false; // what onInit does on a restart - a repair's too
+    await paired.dev.handleData({ generationPower: 1, PVEnergyTotal: 197, generation: 223 });
+    t.eq(paired.store.solarSides.meter_power, 'ac', 'then the battery gone moves the yield to AC');
+    t.eq(shown[3].meter_power, 223, 'which shows the AC counter');
+    t.eq(paired.options.meter_power?.title?.en, 'Solar energy (AC)', 'under its AC title');
 
     // a device paired before the decision moved to pairing: decided once, then kept
     const legacy = makeDevice(['measure_power', 'meter_power'], { deviceDetail: { hasBattery: false } });
@@ -183,7 +198,12 @@ module.exports = async (t) => {
     t.eq(Object.keys(legacy.options).length, 0, 'an all-AC inverter needs no titles');
     legacy.store.deviceDetail = { hasBattery: true };
     await legacy.dev.handleData({ pvPower: 1, generation: 221, PVEnergyTotal: 191 });
-    t.eq(legacy.store.solarSides.meter_power, 'ac', 'and keeps it from then on');
+    t.eq(legacy.store.solarSides.meter_power, 'ac', 'and keeps it for the rest of this start');
+    legacy.dev.solarSidesDecided = false;
+    legacy.store.deviceDetail = {}; // the detail call failed this time
+    await legacy.dev.handleData({ pvPower: 1, generation: 222, PVEnergyTotal: 192 });
+    t.eq(legacy.store.solarSides.meter_power, 'ac', 'a restart without the battery flag keeps the stored side');
+    t.eq(legacy.store.solarSides.measure_power, 'ac', 'as does one without the AC output');
   } finally {
     CommonDevice.prototype.handleData = commonHandleData;
   }

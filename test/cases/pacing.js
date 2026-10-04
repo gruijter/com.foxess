@@ -20,7 +20,7 @@ module.exports = async (t) => {
     '/op/v0/device/battery/soc/set', '/op/v0/heat/dhwControls/set', '/op/v0/heat/register']
     .forEach((path) => t.ok(write(path), `${path} is an update`));
   ['/op/v1/device/real/query', '/op/v0/device/setting/get', '/op/v1/device/scheduler/get/flag',
-    '/op/v0/register/heat/list', '/op/v1/device/detail', '/op/v0/device/battery/soc/get']
+    '/op/v0/heat/register/list', '/op/v0/heat/heatingControls', '/op/v1/device/detail', '/op/v0/device/battery/soc/get']
     .forEach((path) => t.ok(!write(path), `${path} is a query`));
 
   const saved = { query: Client.QUERY_SPACING_MS, write: Client.WRITE_SPACING_MS, fetch: global.fetch };
