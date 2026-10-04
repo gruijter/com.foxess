@@ -116,7 +116,7 @@ module.exports = async (t) => {
     Date.now = realNow;
   }
 
-  // --- decided at pairing, kept for good ---
+  // --- decided at pairing, kept until a repair ---
   const pairDriver = fixtures.makeDriver('inverter', { own: true });
   t.eq(JSON.stringify(pairDriver.pairStore({ dev: { hasBattery: true }, payload: { generationPower: 0.2 }, detail: null }).solarSides),
     JSON.stringify({
@@ -139,6 +139,9 @@ module.exports = async (t) => {
       getStoreValue: (key) => store[key],
       setStoreValue: async (key, value) => {
         store[key] = value;
+      },
+      unsetStoreValue: async (key) => {
+        delete store[key];
       },
       // as Homey: the options last set, else the manifest's
       getCapabilityOptions: (cap) => options[cap] || dev.driver.manifest.capabilitiesOptions?.[cap] || {},
@@ -182,11 +185,23 @@ module.exports = async (t) => {
     await paired.dev.handleData({ generationPower: 1, PVEnergyTotal: 196, generation: 222 });
     t.eq(shown[2].meter_power, 196, 'a changed battery fact changes nothing until the next (re)start');
     t.eq(Object.keys(paired.options).length, calls, 'and costs no call');
-    paired.dev.solarSidesDecided = false; // what onInit does on a restart - a repair's too
+    paired.dev.solarSidesDecided = false; // what onInit does on a restart
     await paired.dev.handleData({ generationPower: 1, PVEnergyTotal: 197, generation: 223 });
-    t.eq(paired.store.solarSides.meter_power, 'ac', 'then the battery gone moves the yield to AC');
-    t.eq(shown[3].meter_power, 223, 'which shows the AC counter');
+    t.eq(paired.store.solarSides.meter_power, 'dc', 'nor does a restart: the side stays as paired');
+    t.eq(shown[3].meter_power, 197, 'still the DC counter');
+    paired.store['todayBaseline_meter_power.today'] = { date: '2026-10-04', total: 190 };
+    await paired.dev.onRepaired();
+    paired.dev.solarSidesDecided = false; // the restart a repair ends with
+    await paired.dev.handleData({ generationPower: 1, PVEnergyTotal: 198, generation: 224 });
+    t.eq(paired.store.solarSides.meter_power, 'ac', 'a repair decides again: the battery gone moves the yield to AC');
+    t.eq(shown[4].meter_power, 224, 'which shows the AC counter');
     t.eq(paired.options.meter_power?.title?.en, 'Solar energy (AC)', 'under its AC title');
+    t.eq(paired.store['todayBaseline_meter_power.today'], undefined, 'and a Homey-timezone today starts again from that counter');
+    t.eq(paired.store.redecideSolarSides, false, 'once');
+    paired.store.deviceDetail = { hasBattery: true };
+    paired.dev.solarSidesDecided = false;
+    await paired.dev.handleData({ generationPower: 1, PVEnergyTotal: 199, generation: 225 });
+    t.eq(paired.store.solarSides.meter_power, 'ac', 'after which a restart keeps it again');
 
     // a device paired before the decision moved to pairing: decided once, then kept
     const legacy = makeDevice(['measure_power', 'meter_power'], { deviceDetail: { hasBattery: false } });
@@ -200,9 +215,13 @@ module.exports = async (t) => {
     await legacy.dev.handleData({ pvPower: 1, generation: 221, PVEnergyTotal: 191 });
     t.eq(legacy.store.solarSides.meter_power, 'ac', 'and keeps it for the rest of this start');
     legacy.dev.solarSidesDecided = false;
-    legacy.store.deviceDetail = {}; // the detail call failed this time
     await legacy.dev.handleData({ pvPower: 1, generation: 222, PVEnergyTotal: 192 });
-    t.eq(legacy.store.solarSides.meter_power, 'ac', 'a restart without the battery flag keeps the stored side');
+    t.eq(legacy.store.solarSides.meter_power, 'ac', 'and across a restart');
+    await legacy.dev.onRepaired();
+    legacy.dev.solarSidesDecided = false;
+    legacy.store.deviceDetail = {}; // the detail call failed this time
+    await legacy.dev.handleData({ pvPower: 1, generation: 223, PVEnergyTotal: 193 });
+    t.eq(legacy.store.solarSides.meter_power, 'ac', 'a repair without the battery flag keeps the stored side');
     t.eq(legacy.store.solarSides.measure_power, 'ac', 'as does one without the AC output');
   } finally {
     CommonDevice.prototype.handleData = commonHandleData;

@@ -49,27 +49,40 @@ module.exports = class MyDevice extends CommonDevice {
     return options;
   }
 
+  /** A repair is the moment to look at the battery again: the next full payload re-decides the sides. */
+  async onRepaired() {
+    await this.setStoreValue('redecideSolarSides', true);
+  }
+
   /**
    * Which side - AC or DC - each solar capability shows. Decided at pairing (see the driver's
-   * pairStore) and again once per (re)start - a repair restarts the device too - from the
-   * facts known then: the battery flag of the device detail onInit just refreshed, and whether
-   * this first full payload carries the AC output. A battery added later moves the energy to DC,
-   * where `generation` would count its discharge as yield. A fact unknown this time keeps the
-   * stored side (see foxEssPointMap.inverterSolarSides).
+   * pairStore) and then kept: a capability always shows the same quantity. Only a repair decides
+   * again - a battery added later moves the energy to DC, where `generation` would count its
+   * discharge as yield - from the facts known then: the battery flag of the device detail onInit
+   * just refreshed, and whether this first full payload carries the AC output. A fact unknown
+   * then keeps the stored side (see foxEssPointMap.inverterSolarSides). A device paired before
+   * the decision moved to pairing gets one the same way, from its first full payload.
    * @param {object} data a full payload
    */
   async decideSolarSides(data) {
     if (this.solarSidesDecided) return;
     this.solarSidesDecided = true;
     const previous = this.getStoreValue('solarSides');
-    const hasBattery = this.getStoreValue('deviceDetail')?.hasBattery ?? this.getStoreValue('hasBattery');
-    const sides = foxEssPointMap.inverterSolarSides({
-      hasBattery: typeof hasBattery === 'boolean' ? hasBattery : undefined,
-      acPower: data.generationPower !== undefined && data.generationPower !== null,
-    }, previous || {});
-    if (!previous || Object.keys(sides).some((cap) => sides[cap] !== previous[cap])) {
-      this.log('solar sides decided:', JSON.stringify(previous || {}), '->', JSON.stringify(sides));
-      await this.setStoreValue('solarSides', sides);
+    if (!previous || this.getStoreValue('redecideSolarSides')) {
+      const hasBattery = this.getStoreValue('deviceDetail')?.hasBattery ?? this.getStoreValue('hasBattery');
+      const sides = foxEssPointMap.inverterSolarSides({
+        hasBattery: typeof hasBattery === 'boolean' ? hasBattery : undefined,
+        acPower: data.generationPower !== undefined && data.generationPower !== null,
+      }, previous || {});
+      if (!previous || Object.keys(sides).some((cap) => sides[cap] !== previous[cap])) {
+        this.log('solar sides decided:', JSON.stringify(previous || {}), '->', JSON.stringify(sides));
+        await this.setStoreValue('solarSides', sides);
+        // another counter: a Homey-timezone 'today' starts again from it rather than across both
+        if (previous && sides.meter_power !== previous.meter_power) {
+          await this.unsetStoreValue('todayBaseline_meter_power.today').catch((error) => this.error(error));
+        }
+      }
+      await this.setStoreValue('redecideSolarSides', false);
     }
     // the titles to match - no write when they already do
     await DeviceMigrator.syncCapabilityOptions(this, this.capabilityOptions());

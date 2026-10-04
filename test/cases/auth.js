@@ -139,7 +139,11 @@ module.exports = async (t) => {
   // --- repair: a device paired over OAuth gets a key ---
   const store = { OAuth2SessionId: 'old', OAuth2ConfigId: 'us' };
   let restarted = false;
+  let repaired = false;
   const device = {
+    onRepaired: async () => {
+      repaired = !restarted;
+    },
     getStore: () => ({ ...store }),
     setStoreValue: async (k, v) => {
       store[k] = v;
@@ -158,5 +162,6 @@ module.exports = async (t) => {
   t.eq(repairResult.done, true, 'repair ends after login');
   t.eq(store.apiKey, 'new-key', 'the device stores the new key');
   t.eq(store.region, 'us', 'and its region');
+  t.ok(repaired, 'tells the device it was repaired, before the restart');
   t.ok(restarted, 'and restarts to use it');
 };
