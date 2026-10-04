@@ -152,6 +152,32 @@ module.exports = async (t) => {
   t.eq(pointMap.batteryMap.battery.measure_current({ invBatCurrent: 2.5 }), -2.5,
     'battery current is negated: the API reports discharge positive, the device charge positive');
 
+  // --- option sync: an equal title object is no change (=== rewrote it on every start) ---
+  {
+    const { syncCapabilityOptions } = fixtures.app('lib/DeviceMigrator.js');
+    const options = {};
+    let writes = 0;
+    const dev = {
+      driver: { manifest: { capabilitiesOptions: {} } },
+      log: () => {},
+      error: () => {},
+      hasCapability: () => true,
+      getCapabilityOptions: (cap) => {
+        if (!options[cap]) throw Error(`Invalid Capability: ${cap}`);
+        return options[cap];
+      },
+      setCapabilityOptions: async (cap, value) => {
+        writes += 1;
+        options[cap] = value;
+      },
+    };
+    await syncCapabilityOptions(dev, { meter_power: { title: { en: 'Solar energy (DC)', nl: 'Zonopbrengst (DC)' } } });
+    await syncCapabilityOptions(dev, { meter_power: { title: { nl: 'Zonopbrengst (DC)', en: 'Solar energy (DC)' } } });
+    t.eq(writes, 1, 'a title equal to the stored one is not written again');
+    await syncCapabilityOptions(dev, { meter_power: { title: { en: 'Solar energy (AC)', nl: 'Zonopbrengst (AC)' } } });
+    t.eq(writes, 2, 'a different title is');
+  }
+
   // --- meter phases 2 and 3 moved from base to optional (2026-10-04) ---
   t.ok(!pointMap.baseCapabilities('meter').includes('measure_voltage.2'), 'meter voltage 2 is no longer a base capability');
   const onePhase = pointMap.seenInPayload('meter', { RVolt: 231, SVolt: 0, TVolt: 0 });
