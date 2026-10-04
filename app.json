@@ -1388,9 +1388,9 @@
         "cloud"
       ],
       "images": {
-        "small": "/drivers/battery/assets/images/small.png",
-        "large": "/drivers/battery/assets/images/large.png",
-        "xlarge": "/drivers/battery/assets/images/xlarge.png"
+        "small": "/drivers/battery/assets/images/small.jpg",
+        "large": "/drivers/battery/assets/images/large.jpg",
+        "xlarge": "/drivers/battery/assets/images/xlarge.jpg"
       },
       "pair": [
         {
@@ -1657,9 +1657,9 @@
         "cloud"
       ],
       "images": {
-        "small": "/drivers/heatpump/assets/images/small.png",
-        "large": "/drivers/heatpump/assets/images/large.png",
-        "xlarge": "/drivers/heatpump/assets/images/xlarge.png"
+        "small": "/drivers/heatpump/assets/images/small.jpg",
+        "large": "/drivers/heatpump/assets/images/large.jpg",
+        "xlarge": "/drivers/heatpump/assets/images/xlarge.jpg"
       },
       "pair": [
         {
@@ -2293,9 +2293,9 @@
         "cloud"
       ],
       "images": {
-        "small": "/drivers/inverter/assets/images/small.png",
-        "large": "/drivers/inverter/assets/images/large.png",
-        "xlarge": "/drivers/inverter/assets/images/xlarge.png"
+        "small": "/drivers/inverter/assets/images/small.jpg",
+        "large": "/drivers/inverter/assets/images/large.jpg",
+        "xlarge": "/drivers/inverter/assets/images/xlarge.jpg"
       },
       "pair": [
         {
@@ -2718,9 +2718,9 @@
         "cloud"
       ],
       "images": {
-        "small": "/drivers/meter/assets/images/small.png",
-        "large": "/drivers/meter/assets/images/large.png",
-        "xlarge": "/drivers/meter/assets/images/xlarge.png"
+        "small": "/drivers/meter/assets/images/small.jpg",
+        "large": "/drivers/meter/assets/images/large.jpg",
+        "xlarge": "/drivers/meter/assets/images/xlarge.jpg"
       },
       "pair": [
         {
