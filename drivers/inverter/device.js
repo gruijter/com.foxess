@@ -20,8 +20,13 @@ along with com.foxess.  If not, see <http://www.gnu.org/licenses/>.
 'use strict';
 
 const CommonDevice = require('../../lib/common_device');
+const foxEssPointMap = require('../../lib/foxEssPointMap');
+const { solarTitle } = require('../../lib/foxEssSolarTitles');
 const { GENERATION_POLL_EVERY_N_TICKS } = require('../../lib/foxEssConstants');
 
+// The solar capabilities show the AC side; one that can only show the DC side (see
+// foxEssPointMap.inverterSolarSides) gets its '(DC)' title here - the '(AC)' ones are the
+// manifest's. Titles as com.growatt has them, see lib/foxEssSolarTitles.js.
 module.exports = class MyDevice extends CommonDevice {
 
   onReadings({ exportLimit }) {
@@ -35,7 +40,55 @@ module.exports = class MyDevice extends CommonDevice {
    */
   capabilityOptions() {
     const max = Math.max(this.maxPowerW, Math.ceil((this.exportLimit || 0) / 100) * 100);
-    return { export_limit: { min: 0, max, step: 100 } };
+    const options = { export_limit: { min: 0, max, step: 100 } };
+    // so a capability that is rebuilt keeps its (DC) title
+    for (const [cap, side] of Object.entries(this.getStoreValue('solarSides') || {})) {
+      if (side === 'dc') options[cap] = { title: solarTitle(cap, 'dc') };
+    }
+    return options;
+  }
+
+  /**
+   * Which side - AC or DC - each solar capability shows is decided once, at pairing (see the
+   * driver's pairStore), and kept in the store for good: a capability always shows the same
+   * quantity. A device paired before that has no decision yet; it gets one, the same way, from its
+   * first full payload, and keeps that from then on.
+   * @param {object} data a full payload
+   */
+  async ensureSolarSides(data) {
+    if (this.getStoreValue('solarSides')) return;
+    const hasBattery = this.getStoreValue('deviceDetail')?.hasBattery ?? this.getStoreValue('hasBattery');
+    const sides = foxEssPointMap.inverterSolarSides({
+      hasBattery: typeof hasBattery === 'boolean' ? hasBattery : undefined,
+      acPower: data.generationPower !== undefined && data.generationPower !== null,
+    });
+    this.log('solar sides decided:', JSON.stringify(sides));
+    await this.setStoreValue('solarSides', sides);
+  }
+
+  /**
+   * Title the DC-side capabilities '(DC)', once. A capability added later gets its title from
+   * capabilityOptions(), which the migrator applies when it adds one.
+   */
+  async applySolarTitles() {
+    if (this.getStoreValue('solarTitled')) return;
+    for (const [cap, side] of Object.entries(this.getStoreValue('solarSides') || {})) {
+      if (side !== 'dc' || !this.hasCapability(cap)) continue;
+      const manifest = this.driver.manifest?.capabilitiesOptions?.[cap] || {};
+      // eslint-disable-next-line no-await-in-loop
+      await this.setCapabilityOptions(cap, { ...manifest, title: solarTitle(cap, 'dc') }).catch((error) => this.error(error));
+    }
+    await this.setStoreValue('solarTitled', true);
+  }
+
+  async handleData(data, options = {}) {
+    if (!data) return super.handleData(data, options);
+    if (data.snapshotTime) this.snapshotTime = data.snapshotTime;
+    if (!options.partial) await this.ensureSolarSides(data).catch((error) => this.error(error));
+    const solarSides = this.getStoreValue('solarSides');
+    if (solarSides) await this.applySolarTitles().catch((error) => this.error(error));
+    // no decision yet (an old device whose real-time query failed): show no solar values at all
+    return super.handleData({ ...data, solarSides: solarSides || {} }, options);
   }
 
   async onInit() {
@@ -80,10 +133,10 @@ module.exports = class MyDevice extends CommonDevice {
   }
 
   /**
-   * Today's and this month's yield from /op/v0/device/generation. Every Nth tick only (one call
-   * per inverter), always on a forced poll. Between fetches the capabilities keep their value:
-   * the fields are simply absent, and setCapability() skips undefined.
-   * @returns {Promise<object>} the common extra fields, plus { generationToday, generationMonth }
+   * Today's and this month's yield (see the driver's energyFields). Every Nth tick
+   * only (one call per inverter), always on a forced poll. Between fetches the capabilities keep
+   * their value: the fields are simply absent, and setCapability() skips undefined.
+   * @returns {Promise<object>} the common extra fields, plus { pvToday, pvMonth, acToday, acMonth }
    */
   async pollExtra(options = {}) {
     const common = await super.pollExtra(options);
@@ -100,7 +153,10 @@ module.exports = class MyDevice extends CommonDevice {
     }
     const due = options.force || ((this.pollTick || 1) - 1) % GENERATION_POLL_EVERY_N_TICKS === 0;
     if (!due) return common;
-    return { ...common, ...(await this.driver.generationFields({ client: this.client, deviceSn: this.deviceSn })) };
+    return {
+      ...common,
+      ...(await this.driver.energyFields({ client: this.client, deviceSn: this.deviceSn, snapshotTime: this.snapshotTime })),
+    };
   }
 
 };

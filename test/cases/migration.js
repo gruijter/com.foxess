@@ -136,11 +136,12 @@ module.exports = async (t) => {
   t.eq(state({ runningState: 999 }), 'unknown', 'an unlisted runningState is unknown');
   t.ok(enumIds.has('unknown'), "running_state enum has 'unknown'");
   t.eq(state({}), undefined, 'no runningState, no status');
-  t.eq(pointMap.inverterMap.inverter['meter_power.today']({ generationToday: 8.5, todayYield: 3 }), 8.5,
-    'energy today prefers /device/generation over todayYield');
-  t.eq(pointMap.inverterMap.inverter['meter_power.today']({ generationToday: 2.0999999999999943 }), 2.1,
-    'float noise from /device/generation is rounded away (seen live)');
-  t.eq(pointMap.inverterMap.inverter['meter_power.month']({ generationMonth: 73.2 }), 73.2, 'energy this month from /device/generation');
+  const today = pointMap.inverterMap.inverter['meter_power.today'];
+  t.eq(today({ hasBattery: false, acToday: 8.5, pvToday: 9 }), 8.5, 'energy today without a battery: the AC solar yield');
+  t.eq(today({ hasBattery: true, acToday: 8.5, pvToday: 9 }), 9, 'with a battery: the DC side');
+  t.eq(today({ todayYield: 3 }), 3, 'todayYield as the DC fallback');
+  t.eq(today({ pvToday: 3.8000000000000114 }), 3.8, 'float noise from the report is rounded away (seen live)');
+  t.eq(pointMap.inverterMap.inverter['meter_power.month']({ pvMonth: 73.2 }), 73.2, 'energy this month from the report');
 
   const ext = pointMap.inverterMap.inverter['measure_power.external'];
   t.eq(ext({ meterPower2: -1.2 }), 1200, 'meter 2 generation (negative) shows as positive external generation');

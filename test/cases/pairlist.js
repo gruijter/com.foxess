@@ -15,7 +15,14 @@ module.exports = async (t) => {
     '/op/v1/device/scheduler/get/flag': { errno: 0, result: { support: true, enable: false } },
     '/op/v0/device/battery/soc/get': { errno: 0, result: { minSoc: 10, minSocOnGrid: 10 } },
     '/op/v0/device/setting/get': { errno: 0, result: { value: '17000' } },
-    '/op/v0/device/generation': { errno: 0, result: { today: 3.2, month: 41.5, cumulative: 219 } },
+    // the energy report of this month: PV and AC per day (today is whichever day it is)
+    '/op/v0/device/report/query': {
+      errno: 0,
+      result: [
+        { variable: 'PVEnergyTotal', unit: 'kWh', values: Array(31).fill(3.2) },
+        { variable: 'generation', unit: 'kWh', values: Array(31).fill(2.5) },
+      ],
+    },
   });
   const listing = fixtures.get('deviceList').result.data;
   const real = new Map((fixtures.get('deviceRealQuery').result || []).map((dev) => [dev.deviceSN,
@@ -29,7 +36,13 @@ module.exports = async (t) => {
       // what the device itself would conclude at start and after its first poll
       const entry = listing.find((d) => d.deviceSN === sn) || {};
       const poll = {
-        ...real.get(sn), deviceStatus: Number(entry.status), generationToday: 3.2, generationMonth: 41.5,
+        ...real.get(sn),
+        deviceStatus: Number(entry.status),
+        ...(typeof entry.hasBattery === 'boolean' ? { hasBattery: entry.hasBattery } : {}),
+        pvToday: 3.2,
+        pvMonth: 41.5,
+        acToday: 2.5,
+        acMonth: 38,
       };
       const seen = { ...dev.store.seenCaps, ...pointMap.seenInPayload(id, poll) };
       const wanted = pointMap.deviceCapabilities(id, seen, driver.extraCapabilities(dev.store));
@@ -43,9 +56,9 @@ module.exports = async (t) => {
   t.ok(seenBat({ invBatCurrent: 0, batVolt: 380 }), 'an idle battery (0 A) with a voltage shows its current');
   t.ok(!seenBat({ invBatCurrent: 0 }), 'a current without a battery voltage does not');
   t.ok(!seenBat({ batVolt: 380 }), 'a voltage without a reported current does not');
-  t.ok(pointMap.seenInPayload('inverter', { generationToday: 0, generationMonth: 0 })['meter_power.month'],
+  t.ok(pointMap.seenInPayload('inverter', { pvToday: 0, pvMonth: 0 })['meter_power.month'],
     'a reported month yield counts on the first of the month too (0 kWh)');
-  t.ok(!pointMap.seenInPayload('inverter', {})['meter_power.month'], 'no generation answer, no month');
+  t.ok(!pointMap.seenInPayload('inverter', {})['meter_power.month'], 'no energy report, no month');
 
   // the extras themselves come from the support checks
   const [bat] = await fixtures.makeDriver('battery', { own: true }).onPairListDevices({ client });
