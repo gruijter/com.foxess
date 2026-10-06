@@ -21,20 +21,15 @@ along with com.foxess.  If not, see <http://www.gnu.org/licenses/>.
 
 const CommonDriver = require('../../lib/common_driver');
 
-// The heat pump register list is the same response for every heat pump device of an account, so
-// cache it briefly, per client (= API key), to keep one poll cycle at a single call per account
-// instead of one call per paired device.
+// register list cache per client: one call per account per poll tick
 const STATUS_CACHE_MS = 60 * 1000;
 
-// registerStatus values, from register/status/change ("pending、approved、revoked").
+// registerStatus values (register/status/change: "pending、approved、revoked")
 const PENDING = 'pending';
 const REVOKED = 'revoked';
-// Only these explain why nothing can be read; a missing or unknown status explains nothing.
 const UNAPPROVED = [PENDING, REVOKED];
 
-// At most this many module serials are tried as a heat pump gateway while pairing: each try is one
-// call on the same path, 1.1 s apart, and the whole list_devices handler must stay inside Homey's
-// 30 s pair timeout.
+// one call each, 1.1 s apart: stays inside Homey's 30 s pairing timeout
 const MAX_PROBED_MODULES = 8;
 
 const listOf = (response) => response?.result?.data || response?.result?.pageList || response?.data || [];
@@ -45,25 +40,19 @@ const resultOf = (response) => response?.result || response?.data || null;
 const reasonOf = (error) => String(error?.message || error);
 
 /*
-Beta: read-only. Pairing and polling only call query endpoints; nothing is registered (heat/register)
-or written (the settings set endpoints), because what those do to an owner's heat pump has not been
-seen live. Every call and its outcome is logged with a [HP] prefix, so a diagnostics report from a
-beta tester shows which endpoints answer and how; the response bodies are captured (foxEssCapture).
+Beta, read-only: only query endpoints are called (no heat/register, no set endpoints), as their
+effect has not been seen live. Calls are logged with [HP] for diagnostics reports.
 */
 module.exports = class MyDriver extends CommonDriver {
 
   async onInit() {
     await super.onInit();
-    this.statusCache = new WeakMap(); // client -> { time, list } or, while it is fetched, { pending }
+    this.statusCache = new WeakMap(); // client -> { time, list } or { pending }
   }
 
   /**
-   * Heat pumps are not returned by /op/v0/device/list, so this replaces the plant/device walk in
-   * CommonDriver entirely. Two read-only routes:
-   * - the register list: heat pumps registered on the account, with their module serial;
-   * - the account's modules (data loggers): a module whose heating controls can be read is a heat
-   *   pump gateway, also when the register list does not have it.
-   * Revoked heat pumps are not offered.
+   * Heat pumps are not in device/list. Offered: register-list entries (not revoked), and modules
+   * whose heating controls can be read.
    * @param {object} args
    * @param {object} args.client
    * @returns {Promise<object[]>} the devices to show in the pair list
@@ -114,7 +103,7 @@ module.exports = class MyDriver extends CommonDriver {
           settings: {
             heatSn,
             moduleSn,
-            deviceSn: moduleSn, // the heat controls key on the gateway module
+            deviceSn: moduleSn,
             deviceType: 'heatpump',
             productType: String(entry?.deviceType || ''),
             masterVersion: String(entry?.masterVersion || ''),
@@ -128,15 +117,13 @@ module.exports = class MyDriver extends CommonDriver {
   }
 
   /**
-   * One heat pump's entry in the shared (briefly cached) register list: by its outdoor unit
-   * serial, or by its module serial for a device that has no outdoor serial.
+   * A heat pump's entry in the cached register list, by heat SN or else module SN.
    * @returns {Promise<object|null>} the register-list entry, or null when not listed
    */
   async getHeatPumpEntry({ client, heatSn, moduleSn }) {
     if (!this.statusCache) this.statusCache = new WeakMap();
     let cached = this.statusCache.get(client);
     if (!cached || (!cached.pending && (Date.now() - cached.time) > STATUS_CACHE_MS)) {
-      // heat pumps polled on the same tick share the one call in flight
       const pending = client.getHeatPumpList()
         .then((response) => {
           const list = listOf(response);
@@ -154,12 +141,8 @@ module.exports = class MyDriver extends CommonDriver {
   }
 
   /**
-   * Heat pumps have no real/query support, so the register list and the heating and DHW settings
-   * are merged into the flat object that CommonDevice.handleData() expects.
-   *
-   * The settings are read whenever a module is known, whatever the registration says: a read
-   * cannot harm, and whether a pending heat pump can be read is exactly what the beta must show.
-   * Throws when nothing could be read and no registration explains why.
+   * Register-list entry plus heating and DHW settings as one flat payload. Settings are read
+   * whatever the registration status; throws when nothing was read and no status explains why.
    * @returns {Promise<object>} flat data for foxEssPointMap.heatpumpMap
    */
   async pollHeatPump({ client, heatSn, moduleSn }) {

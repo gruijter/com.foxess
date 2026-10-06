@@ -7,17 +7,9 @@ Capture real API responses into test/captures/, so the suite stops guessing.
 
     host defaults to www.foxesscloud.com; use portal.foxesscloud.us for a US account.
 
-The API key is the same personal key the app pairs with (FoxCloud: User Profile -> API
-Management), sent in the `token` header like lib/FoxEssClient.js does.
-
-The files it writes have exactly the names test/fixtures.js looks for, so the whole suite switches
-from doc-derived stubs to real data the moment they exist - no case needs changing.
-
-Captures contain real serial numbers and plant names, which is why test/captures/ is gitignored.
-
-Requests are spaced out deliberately. FoxESS throttles with errno 40400 and advertises no recovery
-time, and a third-party HA integration reports a ceiling of 1440 calls/day per key, so a capture
-run is not something to repeat in a loop.
+The API key is the one the app pairs with. Captures hold real serials and plant names, hence
+gitignored. Requests are spaced out: the document allows 1440 calls per inverter per day, and
+throttling (errno 40400) gives no recovery time.
 */
 
 const crypto = require('node:crypto');
@@ -37,8 +29,7 @@ if (!token) {
   process.exit(1);
 }
 
-// Captures are stored one subfolder per site: test/captures/<site>/*.json. The site is taken from
-// the plant name (fall back to stationID); pass --site to name it yourself.
+// test/captures/<site>/*.json; site from the plant name (else stationID) or --site
 const slug = (s) => String(s)
   .toLowerCase()
   .trim()
@@ -90,7 +81,6 @@ const save = (name, data) => {
 (async () => {
   console.log(`Capturing from ${host}\n`);
 
-  // Fetch the plant list first, name the site folder from it, then save everything under it.
   const plantListData = await call('POST', '/op/v0/plant/list', { body: { currentPage: 1, pageSize: 100 } });
   const firstPlantEntry = plantListData?.result?.data?.[0];
   const site = siteArg ? slug(siteArg) : (slug(firstPlantEntry?.name || firstPlantEntry?.stationID || 'site') || 'site');
@@ -111,9 +101,7 @@ const save = (name, data) => {
   const deviceList = save('deviceList', await call('POST', '/op/v0/device/list', { body: { currentPage: 1, pageSize: 100 } }));
   await sleep(SPACING_MS);
 
-  // v1 real/query with an explicit `sns` array, which is the call the app actually makes. The
-  // deprecated v0 no-SN "all devices" call answers errno 0 with result:null on live accounts, so
-  // the serials have to be passed. Take them from the device list just captured.
+  // v1 real/query with the serials from the device list, as the app does
   const sns = (deviceList?.result?.data || [])
     .map((d) => d.deviceSN || d.sn || d.device_sn)
     .filter(Boolean);

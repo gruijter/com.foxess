@@ -9,12 +9,8 @@ Two sources, one shape:
   - otherwise, stubs built from the FoxESS OpenAPI document's documented response schemas
     (https://www.foxesscloud.com/public/i18n/en/OpenApiDocument.html).
 
-A case never has to know which it got. That is the whole point: the cases derive their
-expectations FROM the fixture rather than hard-coding numbers, so the day real captures land they
-keep working and start protecting against the thing stubs cannot catch - the API not matching its
-own documentation.
-
-Nothing here touches the network, and no credential appears anywhere in the suite.
+Cases derive their expectations from the fixture rather than hard-coding numbers, so they run
+against either. No network, no credentials.
 */
 
 const fs = require('node:fs');
@@ -40,19 +36,9 @@ Field names and nesting come from the OpenAPI document:
                                         register/heat/list is 404 live)
   module/list       -> result.data[]  { moduleSN, stationID, status, signal, ... }
 
-The one thing observed from a live response rather than the doc is the shape of an OEM-rebadged
-inverter: deviceType carries the vendor's model name ("VSN THREE 8KW" for a Solarwatt-badged unit)
-while productType carries the FoxESS series ("H3 Smart"). Serial numbers below are invented.
-
-Two details are cross-checked against a shipping third-party client
-(SoftXperience/home-assistant-foxess-api, custom_components/foxess_api/fox_ess_cloud_api.py),
-which reads the same endpoint against real accounts:
-
-  - each device object carries its own `time`, formatted "%Y-%m-%d %H:%M:%S %Z%z" - NOT the ISO
-    string the doc's per-variable `time` column suggests. That client reads device["time"] and
-    warns when it cannot be parsed, so it is load-bearing for somebody.
-  - a `datas` entry may arrive with no `value` key at all; that client guards with
-    `if "value" in dataset`. See the `deviceRealQueryPartial` fixture.
+Not from the doc: an OEM-rebadged inverter has the vendor's model in deviceType ("VSN THREE 8KW")
+and the FoxESS series in productType ("H3 Smart"); each real/query device object has its own
+`time` as "%Y-%m-%d %H:%M:%S %Z%z". Serial numbers are invented.
 */
 
 const PLANT_A = '52ed930c-0000-4000-8000-00000000000a';
@@ -81,8 +67,7 @@ const docStubs = {
     },
   },
 
-  // Account-wide on purpose: the endpoint documents no plantID parameter, so the suite must
-  // exercise the client-side stationID filtering rather than assume a pre-filtered list.
+  // account-wide, as documented: exercises the stationID filter
   deviceList: {
     errno: 0,
     result: {
@@ -161,9 +146,7 @@ const docStubs = {
     },
   },
 
-  // Per-device detail (GET device/detail?sn=). Shape observed live: firmware versions, rated
-  // capacity, hasPV/hasBattery, a `function` object, and a batteryList with one entry per BMS
-  // role (bcu/bmu/ivu) - two distinct batterySNs here means two physical battery modules.
+  // shape as observed live; two batterySNs = two battery modules
   deviceDetail: {
     errno: 0,
     result: {
@@ -239,9 +222,7 @@ const docStubs = {
     },
   },
 
-  // Same call, but the inverter reports two variables with no `value` key. Real: the reference
-  // client guards for exactly this. Our mappers that do `Number(x || 0)` turn such a gap into a
-  // fabricated 0 rather than leaving the tile empty.
+  // two variables without a `value` key: must stay empty, not become 0
   deviceRealQueryPartial: {
     errno: 0,
     result: [{
@@ -261,8 +242,7 @@ const docStubs = {
     }],
   },
 
-  // HTTP 200 with the failure in the body - measured against the live endpoint, not documented
-  // as a status code anywhere.
+  // sent with HTTP 200 (live)
   rateLimited: { errno: 40400, msg: 'The number of requests is too frequent' },
 };
 
@@ -282,10 +262,7 @@ const readCaptureDir = (dir) => {
   return out;
 };
 
-// Captures live one subfolder per site: test/captures/<site>/*.json, so the suite can hold real
-// data from several installations at once and run every case against each of them. Loose *.json
-// left directly in test/captures (the pre-subfolder layout, or a report written before a site name
-// was known) are read as a site called 'default', so nothing breaks on the way over.
+// test/captures/<site>/*.json; loose *.json directly in test/captures count as site 'default'
 const readSites = () => {
   const out = {};
   if (!fs.existsSync(CAPTURE_DIR)) return out;
@@ -301,8 +278,7 @@ const readSites = () => {
 
 const sites = readSites();
 const siteNames = Object.keys(sites).sort();
-// The active site the case-facing helpers resolve against. The runner switches it per site; when
-// there are no captures it stays null and everything falls back to the doc stubs.
+// the site the helpers resolve against; null = doc stubs
 let activeSite = siteNames[0] || null;
 const activeCaptures = () => (activeSite ? sites[activeSite] : {});
 
@@ -399,12 +375,7 @@ fixtures.app = (relative) => {
   return require(path.join(APP, relative));
 };
 
-/**
- * A FoxEssClient with the HTTP layer replaced.
- *
- * Everything above the wire is the shipped code: request coalescing, the rate-limit cooldown,
- * the plant logic, the errno check. `calls` records what would have gone out.
- */
+/** A FoxEssClient with only the HTTP layer replaced; `calls` records the requests. */
 fixtures.makeClient = ({ post, get } = {}) => {
   const stub = fixtures.installHomeyStub();
   const Client = fixtures.app('lib/FoxEssClient.js');
@@ -432,8 +403,7 @@ fixtures.makeClient = ({ post, get } = {}) => {
   return client;
 };
 
-// Endpoint -> fixture name. Keeps every case on one source of truth, so swapping in real
-// captures changes what the whole suite runs against without touching a single case.
+// endpoint -> fixture name
 const ROUTES = {
   '/op/v0/plant/list': 'plantList',
   '/op/v0/plant/detail': 'plantDetail',

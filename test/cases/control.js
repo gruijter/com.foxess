@@ -2,11 +2,6 @@
 
 /*
 Battery control: target_power_mode <-> FoxESS state, and the Homey scheduler slot.
-
-FoxESS has no power setpoint, only a WorkMode and a scheduler of time slots (ForceCharge /
-ForceDischarge carry a power). The Homey slot is written in inverter local time, taken from the
-real-time snapshot's own time ("... CEST+0200"), and split at midnight because a slot cannot run
-past 23:59.
 */
 
 const fixtures = require('../fixtures');

@@ -1,18 +1,8 @@
 'use strict';
 
 /*
-Incomplete payloads.
-
-Two ways a mapper used to invent a number:
-
-1. A `datas` entry can arrive with no `value` key at all. A shipping third-party client
-   (SoftXperience/home-assistant-foxess-api) guards for exactly that, so it happens in the field.
-   `Number(x || 0)` turned the gap into "0 W" or "0% state of charge" - a plausible-looking
-   reading that is simply untrue.
-2. The same `||` chains mis-read a genuine zero. With `data.pvPower || data.generationPower`, an
-   inverter honestly reporting 0 kW at night fell through and published a different field's value.
-
-Both are silent in Homey: a wrong number looks exactly like a right one.
+Incomplete payloads: a missing `value` stays empty, a genuine 0 does not fall through to
+another field.
 */
 
 const fixtures = require('../fixtures');
@@ -34,7 +24,7 @@ module.exports = async (t) => {
     }
   }
 
-  // ... including through the real poll path, on the fixture that mirrors the reference client
+  // ... also through the real poll path
   const client = fixtures.makeClient({ post: async () => fixtures.get('deviceRealQueryPartial') });
   const flat = await fixtures.makeDriver('battery').pollDeviceType({
     client, deviceSn: fixtures.get('deviceRealQueryPartial').result[0].deviceSN, variables: [],

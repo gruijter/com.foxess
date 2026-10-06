@@ -1,13 +1,7 @@
 'use strict';
 
 /*
-Two ways a battery or inverter reading is recovered when the aggregate variable is not usable.
-
-1. Per-pack copies (batVolt_1, SoC_2, ...) are a fallback only. The aggregate wins whenever it has
-   a non-zero value; the copies are used when it is absent or 0 (live on an H3-G2: batVolt 0,
-   batVolt_1 402.9), averaged when there is more than one pack.
-2. 'Energy today' is derived from the lifetime total when the API sends no todayYield (an H3-G2
-   never does), with the baseline reset at local midnight in Homey's timezone.
+Per-pack fallback for battery variables, and 'Energy today' from the lifetime total.
 */
 
 const fixtures = require('../fixtures');

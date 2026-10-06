@@ -1,8 +1,7 @@
 'use strict';
 
 /*
-SoC limits, the export limit and 'control overridden' (lib/foxEssSettings.js): which SoC targets
-are accepted, and when a read counts as someone else's change.
+SoC limits, the export limit and 'control overridden' (lib/foxEssSettings.js).
 */
 
 const fixtures = require('../fixtures');

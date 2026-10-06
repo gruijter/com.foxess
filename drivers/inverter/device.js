@@ -25,9 +25,6 @@ const foxEssPointMap = require('../../lib/foxEssPointMap');
 const { solarTitle } = require('../../lib/foxEssSolarTitles');
 const { GENERATION_POLL_EVERY_N_TICKS } = require('../../lib/foxEssConstants');
 
-// The solar capabilities show the AC side; one that can only show the DC side (see
-// foxEssPointMap.inverterSolarSides) gets its '(DC)' title from capabilityOptions() - the '(AC)'
-// ones are the manifest's. Titles as com.growatt has them, see lib/foxEssSolarTitles.js.
 module.exports = class MyDevice extends CommonDevice {
 
   onReadings({ exportLimit }) {
@@ -35,35 +32,26 @@ module.exports = class MyDevice extends CommonDevice {
   }
 
   /**
-   * export_limit up to the rated power - or higher when the inverter itself reports more: De Brik
-   * (P3-10.0-SH, 10 kW) reads 17000. That the value is in W is the document's own example
-   * ("13000"); the setting/get answer carries no unit.
+   * export_limit (W, per the document's example) up to the rated power, or the reported value when
+   * higher (a 10 kW P3 read 17000). Solar capabilities get the title of their side.
    */
   capabilityOptions() {
     const max = Math.max(this.maxPowerW, Math.ceil((this.exportLimit || 0) / 100) * 100);
     const options = { export_limit: { min: 0, max, step: 100 } };
-    // every solar capability titled with its side, so a rebuilt one keeps it and a switch shows
     for (const [cap, side] of Object.entries(this.getStoreValue('solarSides') || {})) {
       options[cap] = { title: solarTitle(cap, side) };
     }
     return options;
   }
 
-  /** A repair is the moment to look at the battery again: the next full payload re-decides the sides. */
+  /** A repair re-decides the solar sides (e.g. a battery added later). */
   async onRepaired() {
     await this.setStoreValue('redecideSolarSides', true);
   }
 
   /**
-   * Which side - AC or DC - each solar capability shows. Decided at pairing (see the driver's
-   * pairStore) and then kept: a capability always shows the same quantity. Only a repair decides
-   * again - a battery added later moves the energy to DC, where `generation` would count its
-   * discharge as yield - from the facts known then: the battery flag of the device detail onInit
-   * just refreshed, and whether this first full payload carries the AC output. A fact unknown
-   * then keeps the stored side (see foxEssPointMap.inverterSolarSides). A device paired before
-   * the decision moved to pairing gets one the same way, from its first full payload. Power with
-   * no side yet is decided by the first payload that carries real-time data at all; until then
-   * this runs again on every poll.
+   * The solar sides are decided at pairing and kept, so a capability always shows the same
+   * quantity. Decided here only after a repair, for older devices, or while power is undecided.
    * @param {object} data a full payload
    */
   async decideSolarSides(data) {
@@ -79,17 +67,15 @@ module.exports = class MyDevice extends CommonDevice {
       if (!previous || [...caps].some((cap) => sides[cap] !== previous[cap])) {
         this.log('solar sides decided:', JSON.stringify(previous || {}), '->', JSON.stringify(sides));
         await this.setStoreValue('solarSides', sides);
-        // another counter: a Homey-timezone 'today' starts again from it rather than across both
+        // another counter: rebase the Homey-timezone 'today'
         if (previous && sides.meter_power !== previous.meter_power) {
           await this.unsetStoreValue('todayBaseline_meter_power.today').catch((error) => this.error(error));
         }
       }
-      // undecided power: try again with the next payload
-      if (!sides.measure_power) return;
+      if (!sides.measure_power) return; // retry with the next payload
       await this.setStoreValue('redecideSolarSides', false);
     }
     this.solarSidesDecided = true;
-    // the titles to match - no write when they already do
     await DeviceMigrator.syncCapabilityOptions(this, this.capabilityOptions());
   }
 
@@ -98,16 +84,16 @@ module.exports = class MyDevice extends CommonDevice {
     if (data.snapshotTime) this.snapshotTime = data.snapshotTime;
     if (!options.partial) await this.decideSolarSides(data).catch((error) => this.error(error));
     const solarSides = this.getStoreValue('solarSides');
-    // no decision yet (an old device whose real-time query failed): show no solar values at all
+    // no decision yet: no solar values
     return super.handleData({ ...data, solarSides: solarSides || {} }, options);
   }
 
   async onInit() {
-    this.solarSidesDecided = false; // onInit runs again on every restartDevice(), a repair's too
+    this.solarSidesDecided = false;
     await super.onInit();
     if (!this.hasCapability('export_limit')) return;
     if (this.exportLimit !== undefined) await this.showExportLimit(this.exportLimit);
-    if (this.exportListenerSet) return; // onInit runs again on every restartDevice()
+    if (this.exportListenerSet) return; // restartDevice() reruns onInit
     this.registerCapabilityListener('export_limit', (watts) => this.onExportLimit(watts));
     this.exportListenerSet = true;
   }
@@ -120,10 +106,7 @@ module.exports = class MyDevice extends CommonDevice {
     return value;
   }
 
-  /**
-   * The export limit, and whether it holds the inverter below its rated power - as com.solarwatt's
-   * inverter_limit_active does for its export limit.
-   */
+  /** The export limit, and whether it is below the rated power (as com.solarwatt). */
   async showExportLimit(watts) {
     await this.setCapability('export_limit', watts);
     if (typeof watts === 'number') await this.setCapability('inverter_limit_active', watts < this.maxPowerW);
@@ -145,18 +128,14 @@ module.exports = class MyDevice extends CommonDevice {
     }
   }
 
-  /**
-   * The 'Set export limit' flow card: as if changed on the device page, shown right away.
-   */
+  /** The 'Set export limit' flow card. */
   async setExportLimit(watts) {
     await this.onExportLimit(watts);
     await this.showExportLimit(Math.max(0, Math.round(Number(watts))));
   }
 
   /**
-   * Today's and this month's yield (see the driver's energyFields). Every Nth tick
-   * only (one call per inverter), always on a forced poll. Between fetches the capabilities keep
-   * their value: the fields are simply absent, and setCapability() skips undefined.
+   * Adds the export limit, and every Nth tick the energy report (absent fields keep their value).
    * @returns {Promise<object>} the common extra fields, plus { pvToday, pvMonth, acToday, acMonth }
    */
   async pollExtra(options = {}) {

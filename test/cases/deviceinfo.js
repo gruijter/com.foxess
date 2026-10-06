@@ -1,8 +1,7 @@
 'use strict';
 
 /*
-The device information on the settings page (lib/foxEssDeviceInfo.js), from device/detail.
-Model was empty on every device: pairing never filled deviceModelCode.
+The device info settings (lib/foxEssDeviceInfo.js) from device/detail.
 */
 
 const fs = require('node:fs');

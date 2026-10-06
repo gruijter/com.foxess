@@ -1,12 +1,8 @@
 'use strict';
 
 /*
-Capability migration (lib/DeviceMigrator.js) and the capability lists it is driven by.
-
-Two promises are checked. First, the base capabilities in foxEssPointMap are exactly what each
-driver.compose.json declares, in the same order - otherwise every existing device would be
-migrated (capabilities removed and re-added, flows broken) on the next app start. Second, adding an
-optional capability only ever appends: the capabilities a user already has are left alone.
+Capability migration (lib/DeviceMigrator.js) and the capability lists that drive it: base
+capabilities as in driver.compose.json, and appending leaves existing capabilities alone.
 */
 
 const fs = require('node:fs');
@@ -139,8 +135,7 @@ module.exports = async (t) => {
   const seen = pointMap.seenInPayload('inverter', { pv1Power: 1.1, pv1Volt: 402, RCurrent: 1.6 });
   t.ok(seen['measure_power.pv1'] && seen['measure_voltage.pv1'] && seen['measure_current.1'], 'reported values count as evidence');
   t.eq(pointMap.inverterMap.inverter['measure_power.pv1']({ pv1Power: 1.1 }), 1100, 'PV string power converts kW to W');
-  // runningState: every code in the document's appendix has a value in the capability, and an
-  // unlisted code is kept as 'unknown' rather than dropped
+  // runningState: every appendix code has a capability value; an unlisted code is 'unknown'
   const statusCap = JSON.parse(fs.readFileSync(path.join(APP, '.homeycompose', 'capabilities', 'running_state.json'), 'utf8'));
   const enumIds = new Set(statusCap.values.map((v) => v.id));
   const state = pointMap.inverterMap.inverter.running_state;

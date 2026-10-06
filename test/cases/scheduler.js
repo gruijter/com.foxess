@@ -1,12 +1,7 @@
 'use strict';
 
 /*
-Poll cadence.
-
-The app emits one tick for every device. A device can opt out of some ticks - the heat pump does,
-because its two calls read settings that only change on request - but 'Get status update' must
-always get through, and the event name must stay one shared constant: app.js emitting 'poll' while
-common_device listened for 'everyXminutes' is exactly how periodic polling came to never fire.
+Poll cadence: per-device pollEveryNTicks, and 'Get status update' always polls.
 */
 
 const fixtures = require('../fixtures');

@@ -1,14 +1,7 @@
 'use strict';
 
 /*
-Request coalescing on /op/v1/device/real/query.
-
-Several Homey devices routinely sit on the SAME inverter serial - foxEssPointMap keys inverter,
-battery and meter entries all on 'inverter' - so before batching one physical inverter cost three
-identical calls per cycle. The aligned poll tick wakes them together; the client folds them into
-one request carrying every serial in an `sns` array, and hands each caller the shared reply. (The
-deprecated v0 no-SN "all devices" call returned result:null on live accounts, which is why v1 with
-an explicit `sns` is used.)
+Request coalescing on v1 real/query: one request with all serials per tick.
 */
 
 const fixtures = require('../fixtures');

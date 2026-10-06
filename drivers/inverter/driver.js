@@ -30,14 +30,8 @@ module.exports = class MyDevice extends CommonDriver {
   }
 
   /**
-   * Today's and this month's yield, as flat payload fields: { pvToday, pvMonth } (PV panel side, DC)
-   * and { acToday, acMonth } (the inverter's AC output), whichever are available; {} when none.
-   * foxEssPointMap decides which one to show (AC solar for an inverter without a battery, else DC).
-   *
-   * /op/v0/device/report/query gives the daily PVEnergyTotal and generation of this month in the
-   * plant's time zone - today is today's entry, the month their sum. When the report fails,
-   * /op/v0/device/generation stands in for the AC side: its cumulative equals `generation`
-   * (measured on De Brik 2026-10-04: today 3.0 / month 28.3 kWh against report PV 3.8 / 32.7 kWh).
+   * Today's and this month's yield: { pvToday, pvMonth } (DC) and { acToday, acMonth } (AC), from
+   * the month report in plant time; device/generation (AC, equals `generation`) when it fails.
    * @param {object} args
    * @param {object} args.client
    * @param {string} args.deviceSn
@@ -69,10 +63,7 @@ module.exports = class MyDevice extends CommonDriver {
     };
   }
 
-  /**
-   * On top of the device status: whether the inverter has a battery (it decides between AC and DC
-   * yield, see foxEssPointMap) and the yield, which feeds meter_power.month.
-   */
+  /** Adds hasBattery (decides the solar sides) and the yield. */
   async pairExtraData(args) {
     const hasBattery = args.dev?.hasBattery ?? args.dev?.hasbattery;
     return {
@@ -82,26 +73,18 @@ module.exports = class MyDevice extends CommonDriver {
     };
   }
 
-  /**
-   * Which side - AC or DC - each solar capability shows, decided here first (see
-   * foxEssPointMap.inverterSolarSides): from the battery flag of the device list (or detail) and
-   * whether the inverter reports its AC output.
-   */
+  /** The solar sides, decided at pairing (foxEssPointMap.inverterSolarSides). */
   pairStore({ dev, payload, detail }) {
     const hasBattery = dev?.hasBattery ?? detail?.hasBattery;
     return {
       solarSides: foxEssPointMap.inverterSolarSides({
         hasBattery: typeof hasBattery === 'boolean' ? hasBattery : undefined,
-        // a failed real-time lookup leaves power undecided rather than DC (see acPowerReported)
         acPower: foxEssPointMap.acPowerReported(payload),
       }),
     };
   }
 
-  /**
-   * The ExportLimit setting: supported once read (never withdrawn on a failure). Its value is in
-   * W per the document's own example ("13000"); the setting/get answer carries no unit.
-   */
+  /** Export limit support: the ExportLimit setting is readable. */
   async checkSupport({ client, deviceSn }) {
     const value = await this.tryCall('export limit check', async () => Number((await client.getSetting({ sn: deviceSn, key: 'ExportLimit' }))?.result?.value));
     if (!Number.isFinite(value)) return { support: {}, readings: {} };

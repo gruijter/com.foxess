@@ -1,10 +1,8 @@
 'use strict';
 
 /*
-A freshly paired device starts with its final capability list: the device's first start and first
-poll must find nothing to add, so it is never migrated (capabilities removed and re-added) right
-after pairing. Pairing therefore works the list out the same way the device does - real-time
-evidence, the device status and the yield that pollExtra adds, and the driver's support checks.
+A freshly paired device starts with its final capability list, so it is not migrated right after
+pairing.
 */
 
 const fixtures = require('../fixtures');

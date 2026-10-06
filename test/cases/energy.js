@@ -1,17 +1,8 @@
 'use strict';
 
 /*
-The inverter shows its solar yield on the AC side, as com.growatt does; where only the DC side can
-be shown, the capability's title says '(DC)'.
-
-- Power: generationPower (AC output) + (charge - discharge) * n, capped at pvPower * n. Measured on
-  De Brik 2026-10-04: generationPower equalled RPower+SPower+TPower and pvPower - charge + discharge
-  to within 1 W, and went negative while the battery charged from the grid.
-- Energy: no AC solar counter exists for an inverter with a battery (generation also counts
-  battery discharge), so: no battery -> generation (AC), battery or unknown -> PVEnergyTotal (DC).
-- Today and this month come from /op/v0/device/report/query (dimension month), PV and AC both,
-  with /op/v0/device/generation standing in for the AC side when the report fails.
-- The day is the plant's own: from the UTC offset of the latest snapshot, else Homey's zone.
+Solar on the AC side, DC where only that is possible (see lib/foxEssPointMap.js): AC solar
+power, the side decisions, and today/month from the energy report in plant time.
 */
 
 const fixtures = require('../fixtures');

@@ -1,18 +1,8 @@
 'use strict';
 
 /*
-Device discovery: which physical units each driver offers, and the plant-ownership rule.
-
-/op/v0/device/list returns only inverters. A battery or meter is not its own device - it lives
-inside an inverter - and FoxESS exposes no hasMeter flag and no meter endpoint. So the driver has
-to work out what a given inverter actually has:
-
-  inverter -> every device/list entry (one Homey device per physical unit, no plant aggregate)
-  battery  -> entries whose inverter reports a battery (the hasBattery flag)
-  meter    -> entries whose inverter reports grid-meter variables in its real-time payload
-
-Plant ownership: device/list is account-wide (no plantID parameter), so the plant a device belongs
-to must come from its own stationID, and no device may be attached to more than one plant.
+Device discovery per driver (inverter: every entry; battery: hasBattery; meter: meter variables
+in the real-time payload) and plant ownership by stationID.
 */
 
 const fixtures = require('../fixtures');

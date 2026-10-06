@@ -1,11 +1,7 @@
 'use strict';
 
 /*
-The document's access frequency limit: a query endpoint at most once per second, an update endpoint
-at most once per 2 seconds, "each interface is calculated separately". FoxEssClient.request() makes
-every call wait its turn per path (pace()); different paths never wait for each other.
-
-Runs the shipped request() against a stubbed fetch, with the spacings shortened so the case is fast.
+Per-path request spacing (the document's access frequency limit), with shortened spacings.
 */
 
 const fixtures = require('../fixtures');

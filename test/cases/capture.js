@@ -1,11 +1,7 @@
 'use strict';
 
 /*
-The diagnostics-report capture path, end to end.
-
-A user restarts the app, creates a diagnostics report, and that report has to be turnable back
-into working fixtures. The chain has three links - arming, logging, parsing - and a break in any
-of them is invisible until someone actually tries it months later, so it is pinned here.
+The diagnostics-report capture path end to end: arm, log, parse back.
 */
 
 const fixtures = require('../fixtures');
@@ -13,8 +9,7 @@ const fixtures = require('../fixtures');
 module.exports = async (t) => {
   const capture = fixtures.app('lib/foxEssCapture.js');
 
-  // 1. Capture is generic: ANY endpoint the app calls is recorded when armed, not a fixed
-  // allowlist, so a future feature's new call lands in a report with nothing to add here.
+  // 1. any endpoint is captured when armed, not only the named ones
   const genericLines = [];
   capture.arm('generic', { force: true });
   capture.record('/op/v0/device/setting/get', { errno: 0, result: { values: { operation_mode: 'SelfUse' } } }, (l) => genericLines.push(l));
@@ -22,7 +17,7 @@ module.exports = async (t) => {
   t.ok(generic.captures.deviceSettingGet, 'an endpoint with no canonical name is still captured (deviceSettingGet)');
   t.eq(capture.CAPTURE_NAMES['/op/v1/device/real/query'], 'deviceRealQuery', 'canonical endpoints keep their stable fixture name');
 
-  // 2. Nothing is logged until something arms it - a poll every 5 minutes must not fill the log.
+  // 2. nothing is logged until armed
   const quiet = [];
   capture.arm('reset', { force: true });
   capture.record('/op/v0/device/list', fixtures.get('deviceList'), (l) => quiet.push(l));
@@ -53,8 +48,7 @@ module.exports = async (t) => {
     t.ok(captures[name], `${name} came back out of the log`);
   }
 
-  // The contract is byte-identical EXCEPT for the fields redaction deliberately replaces, so
-  // compare against the original with those same fields blanked out.
+  // identical except for the redacted fields
   const PII = new Set(['email', 'phone', 'address', 'postcode', 'city', 'country']);
   const blank = (value, inContact = false) => {
     if (Array.isArray(value)) return value.map((v) => blank(v, inContact));
@@ -79,7 +73,6 @@ module.exports = async (t) => {
     if (!parsed) {
       t.ok(false, `${name} survived the wrapped report`); continue;
     }
-    // deviceSN / stationID / variables must all be byte-identical, or a capture is worthless
     t.eq(JSON.stringify(parsed), JSON.stringify(blank(original)),
       `${name} round-trips byte-identically apart from redacted fields`);
   }

@@ -1,12 +1,7 @@
 'use strict';
 
 /*
-Rate limiting and request timeouts.
-
-FoxESS answers a throttled call with HTTP 200 and errno 40400 in the body - no 429, and no
-x-ratelimit-reset or Retry-After to read a recovery time from (measured against the live
-endpoint). So the library's own status-code check never sees it, and there is nothing to base a
-retry delay on: the client goes quiet for a cooldown instead and lets the next tick pick up.
+Rate limiting (errno 40400 with HTTP 200, cooldown) and request timeouts.
 */
 
 const fixtures = require('../fixtures');
@@ -32,7 +27,7 @@ module.exports = async (t) => {
   t.ok(remaining <= Client.RATE_LIMIT_COOLDOWN + Client.RATE_LIMIT_JITTER, 'the cooldown stays within its bound');
   t.ok(remaining > Client.RATE_LIMIT_COOLDOWN - 1000, 'the cooldown is at least the base delay');
 
-  // while cooling down nothing may even be built, so the quota stops being spent
+  // during the cooldown no request is built
   let blocked = null;
   try {
     client.buildRequest({ method: 'POST', path: '/op/v1/device/real/query' });
@@ -48,7 +43,7 @@ module.exports = async (t) => {
   const passed = fresh.handleResult(ok);
   t.ok(passed === ok, 'a normal response passes straight through');
 
-  // every request carries an abort signal, because fetch has no default timeout
+  // every request carries an abort signal
   const built = fresh.buildRequest({ method: 'POST', path: '/op/v1/device/real/query', body: '{}' });
   t.ok(built.opts.signal instanceof AbortSignal, 'an AbortSignal is attached');
   t.ok(Client.REQUEST_TIMEOUT > 0 && Client.REQUEST_TIMEOUT < 30000, 'the timeout fits inside Homey\'s 30s pair budget');

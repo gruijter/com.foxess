@@ -1,15 +1,8 @@
 'use strict';
 
 /*
-API-key authentication, and the pair/repair flow around it.
-
-FoxESS takes a personal API key in a `token` header (the OAuth form, `Authorization: Bearer`, must
-not be sent alongside it) and signs every call as md5(path + "\r\n" + key + "\r\n" + timestamp).
-An unknown key is answered with HTTP 401 (verified live), other failures with a non-zero errno in
-an HTTP 200 body; the client throws on both, which is what pairing relies on to reject a key.
-
-Pairing pre-fills the key and region used last, so a second device (another driver on the same
-inverter) needs no retyping; every device gets the key in its store, and repair replaces it.
+API-key authentication (token header, md5 signature, HTTP 401 / errno errors) and the pair/repair
+flow: pre-filled credentials, the key in every device's store.
 */
 
 const crypto = require('node:crypto');

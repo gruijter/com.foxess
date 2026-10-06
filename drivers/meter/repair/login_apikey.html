@@ -4,16 +4,14 @@
     return (tr && tr !== key) ? tr : fallback;
   }
 
-  // The two FoxESS cloud regions; `id` must stay in sync with lib/foxEssRegions.js.
+  // `id` as in lib/foxEssRegions.js
   var REGIONS = [
     { id: 'eu', name: __('pair.regions.eu', 'Europe / Global') },
     { id: 'us', name: __('pair.regions.us', 'North America') }
   ];
 
-  // Shared by pairing and repair: the driver pre-fills the key and region (the ones used last, or
-  // the device's own on repair) and answers 'login' with { done } - true ends a repair, false
-  // moves pairing on to the next view (the device list, or the heat pump's registration). Same shape as com.gruijter.blemower's mqtt_settings view:
-  // a plain button, not a form submit, which would reload the view if anything threw first.
+  // Pair and repair: 'login' answers { done }, true ends a repair, false moves on to the device
+  // list. A plain button, not a form submit, which would reload the view on an error.
   async function connect() {
     try {
       Homey.showLoadingOverlay();

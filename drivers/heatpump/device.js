@@ -25,7 +25,6 @@ const { UNAPPROVED } = require('./driver');
 
 module.exports = class MyDevice extends CommonDevice {
 
-  // Settings-only device: two calls per poll for values that only change on request.
   get pollEveryNTicks() {
     return HEATPUMP_POLL_EVERY_N_TICKS;
   }
@@ -36,12 +35,10 @@ module.exports = class MyDevice extends CommonDevice {
     if (this.client) this.logControls().catch((error) => this.error(error));
   }
 
-  // Beta: read-only. The write paths are not verified - the document's .../set paths are wrong for
-  // the reads (see FoxEssClient), and a set endpoint takes the whole settings object, timers
-  // included - so a change from Homey is refused instead of risking an owner's heating schedule.
-  // Each attempt is logged, so a diagnostics report shows what testers try to control.
+  // Beta, read-only: the write paths are unverified, and a set endpoint takes the whole settings
+  // object (timers included), so changes are refused and logged.
   registerListeners() {
-    // onInit runs again on every restartDevice(), so only register once
+    // restartDevice() reruns onInit: register once
     if (this.listenersSet) return;
     const refuse = (cap) => async (value) => {
       this.log(`[HP] ${this.getName()}: ${cap} -> ${JSON.stringify(value)} refused (read-only beta)`);
@@ -52,11 +49,7 @@ module.exports = class MyDevice extends CommonDevice {
     this.listenersSet = true;
   }
 
-  /**
-   * Once per (re)start, read every settings group the document lists and log what came back, so a
-   * diagnostics report carries the real shape of each (the bodies themselves are captured by
-   * foxEssCapture). Only reads; the outcome never affects the device.
-   */
+  /** Once per (re)start: read and log every settings group, for diagnostics reports. */
   async logControls() {
     const { moduleSn } = this;
     if (!moduleSn) {
@@ -74,7 +67,6 @@ module.exports = class MyDevice extends CommonDevice {
     }
   }
 
-  /** The register list and the settings - see the driver's pollHeatPump(). */
   pollData() {
     return this.driver.pollHeatPump({
       client: this.client,
@@ -83,12 +75,12 @@ module.exports = class MyDevice extends CommonDevice {
     });
   }
 
-  // A heat pump is not in the device list, so there is no device status to read.
+  // not in device/list: no device status
   async pollExtra() {
     return {};
   }
 
-  // The gateway module the heat controls key on: known from pairing, or from the register list.
+  // the gateway module the heat controls are read by
   get moduleSn() {
     return this.getSettings().moduleSn || this.deviceSn || '';
   }
@@ -101,18 +93,15 @@ module.exports = class MyDevice extends CommonDevice {
       moduleSn: data.moduleSn,
     });
     const read = ['workMode', 'dhwEnable', 'dhwTemp'].some((key) => data[key] !== undefined);
-    // Nothing read, and the registration says why: show that reason.
+    // nothing read, and the registration says why
     if (!read && UNAPPROVED.includes(data.registerStatus)) {
       const key = data.registerStatus === 'revoked' ? 'errors.heatpumpRevoked' : 'errors.heatpumpPending';
       this.log(`[HP] ${this.getName()}: registration ${data.registerStatus}, settings not readable`);
       await this.setUnavailable(this.homey.__(key)).catch(this.error);
-      this.lastPoll = Date.now(); // the cloud answered; this is not the 'no updates' case
+      this.lastPoll = Date.now(); // the cloud did answer
       return;
     }
     this.log(`[HP] ${this.getName()}:`, JSON.stringify(data));
-
-    // A fault or offline runningStatus raises alarm_problem / alarm_connectivity (foxEssPointMap)
-    // instead of making the device unavailable: an unavailable device cannot trigger a flow.
     await super.handleData(data, options);
   }
 

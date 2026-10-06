@@ -1,12 +1,7 @@
 'use strict';
 
 /*
-Poll timing: tick right after FoxESS publishes a snapshot, not on the period boundary.
-
-Measured on De Brik (2026-09-19): one snapshot per 5 minutes, always at the same second (12:05:24,
-12:10:24, ...), readable within seconds, with every variable replaced at once. The real-time answer
-carries that moment in its `time`; the app learns it and ticks MARGIN_MS later. Inverters of one
-account too far apart to share a tick fall back to the plain boundary.
+Poll timing: tick a margin after the snapshot moment (lib/foxEssTiming.js).
 */
 
 const fixtures = require('../fixtures');

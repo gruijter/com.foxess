@@ -1,9 +1,8 @@
 'use strict';
 
 /*
-Every user-facing text in all 13 languages: each translation object in the compose files
-(.homeycompose, driver.compose.json, driver.settings.compose.json), and every key of
-locales/en.json in each other locale file. Ported from com.solarwatt/test/check-manifests.js.
+Every user-facing text in all 13 languages: compose translation objects and locales/*.json.
+Ported from com.solarwatt/test/check-manifests.js.
 */
 
 const fs = require('node:fs');

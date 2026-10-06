@@ -35,21 +35,16 @@ module.exports = class FoxEssApp extends Homey.App {
   async onInit() {
     this.clients = new Map();
     this.snapshots = new Map(); // inverter SN -> epoch ms of its latest cloud snapshot
-    this.tickPhaseMs = 0; // position of the poll tick within the period; see lib/foxEssTiming.js
-    this.tickMarginMs = MARGIN_MS; // how long after the snapshot the tick fires; adapts per tick
+    this.tickPhaseMs = 0; // poll tick position within the period (lib/foxEssTiming.js)
+    this.tickMarginMs = MARGIN_MS;
     this.registerFlowListeners();
-    // Arm an API capture for the diagnostics report; see lib/foxEssCapture.js
     capture.arm('app start', { force: true });
     this.startPolling();
     this.log('FoxESS app initialized');
   }
 
   /**
-   * The API client for one key in one region, created on first use and shared from then on.
-   *
-   * Sharing is not an optimisation but a requirement: FoxESS rate-limits per key, and the
-   * real-time batching, the device-list cache and the rate-limit cooldown in FoxEssClient only
-   * cover the devices that go through the same instance.
+   * The shared API client per key and region; required, as FoxESS rate-limits per key.
    * @returns {FoxEssClient}
    */
   getClient({ apiKey, region }) {
@@ -70,7 +65,7 @@ module.exports = class FoxEssApp extends Homey.App {
   }
 
   /**
-   * The API key and region last used successfully, to pre-fill the next pairing with.
+   * The API key and region last used, to pre-fill pairing.
    * @returns {{ apiKey: string, region: string }}
    */
   getSavedCredentials() {
@@ -86,19 +81,11 @@ module.exports = class FoxEssApp extends Homey.App {
     this.homey.settings.set('region', region);
   }
 
-  /**
-   * The app-level flow card listeners: the 'Inverter status is ...' condition, and the
-   * 'Get status update' action, which polls every device immediately.
-   *
-   * The card is declared in .homeycompose/flow/actions/force_poll.json but had no run listener,
-   * so running the flow did nothing at all.
-   */
   registerFlowListeners() {
     this.homey.flow.getConditionCard('running_state_is')
       .registerRunListener(async ({ device, status }) => device.getCapabilityValue('running_state') === status);
 
-    // Boolean sub- and custom capabilities get no "is on" condition from Homey; their
-    // `<capability>_true`/`_false` triggers Homey runs itself (as in com.solarwatt).
+    // Homey makes no "is on" condition for boolean sub- and custom capabilities
     for (const capability of ['alarm_generic.control', 'inverter_limit_active']) {
       this.homey.flow.getConditionCard(`${capability}_is`)
         .registerRunListener(async ({ device }) => device.getCapabilityValue(capability) === true);
@@ -113,19 +100,14 @@ module.exports = class FoxEssApp extends Homey.App {
     this.homey.flow.getActionCard('force_poll')
       .registerRunListener(async () => {
         this.log('force_poll: requesting an immediate update of all devices');
-        // force bypasses per-device poll cadence (see CommonDevice.isPollDue)
         this.homey.emit(POLL_EVENT, { force: true });
         return true;
       });
   }
 
-  /**
-   * Remember an inverter's latest cloud snapshot moment, and move the poll tick when the learned
-   * position changes (see lib/foxEssTiming.js).
-   */
+  /** Remember an inverter's latest snapshot moment and move the poll tick to follow it. */
   noteSnapshot(sn, at) {
-    // Only paired devices count: a serial looked up while pairing but not added, or of a device
-    // since deleted, would otherwise hold its own snapshot moment in the spread for good.
+    // only paired devices (not serials seen during pairing, or deleted ones)
     const paired = this.pairedSerials();
     for (const known of this.snapshots.keys()) {
       if (!paired.has(known)) this.snapshots.delete(known);
@@ -133,7 +115,7 @@ module.exports = class FoxEssApp extends Homey.App {
     if (!paired.has(sn)) return;
     const previous = this.snapshots.get(sn);
     this.snapshots.set(sn, at);
-    // Judge the tick by the first answer after it: the old snapshot again means it came too early.
+    // the old snapshot again after a tick means the tick came too early
     if (this.tickJudgePending && previous) {
       this.tickJudgePending = false;
       const margin = adaptMargin(this.tickMarginMs, at > previous);
@@ -161,21 +143,13 @@ module.exports = class FoxEssApp extends Homey.App {
   }
 
   /**
-   * Poll tick, every PERIOD_MS, placed just after FoxESS has published a new snapshot.
-   *
-   * A plain setInterval drifts and, worse, spreads the devices out over time. Firing them all on
-   * the same instant is what lets the client fold their calls into one request (see
-   * FoxEssClient.getDeviceRealTimeData) - the com.sungrowpower scheme. Unlike there, the instant is
-   * not the period boundary but the learned snapshot moment plus a margin, so every poll reads the
-   * newest data instead of a nearly 5-minute-old snapshot.
+   * One app-wide poll tick per PERIOD_MS, just after the snapshot, so all devices poll at the same
+   * instant and their calls fold into one request.
    */
   scheduleNextTick() {
     if (this._everyXminutesTimeoutId) this.homey.clearTimeout(this._everyXminutesTimeoutId);
     this._everyXminutesTimeoutId = this.homey.setTimeout(() => {
-      // Arm a capture once, on the first aligned tick. Unlike the staggered device inits at app
-      // start - which split across several batches, so a multi-device account only ever captured
-      // whichever batch happened to land first - this tick wakes every device on the same
-      // instant, so their calls fold into one request and the capture covers all of them.
+      // the first tick polls all devices in one batch, so one capture covers them all
       if (!this._armedFullTick) {
         this._armedFullTick = true;
         capture.arm('first aligned poll', { force: true });

@@ -1,14 +1,7 @@
 'use strict';
 
 /*
-The heat pump driver, read-only (beta). Paths as answered live on De Brik (2026-10-04, no heat
-pump on that account): heat/register/list (errno 0, empty), GET heat/<x>Controls?moduleSn=
-(41930 for a module that is not a heat pump). The document's register/heat/list and
-heat/<x>Controls/get are 404.
-
-Pairing offers registered heat pumps (not revoked ones) and modules whose heating controls can be
-read; it never registers or writes. A poll reads the controls whenever a module is known, and a
-change from Homey is refused.
+The read-only (beta) heat pump driver: pairing, polling, refused writes.
 */
 
 const fixtures = require('../fixtures');

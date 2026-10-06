@@ -8,17 +8,8 @@ Turn a user's diagnostics report into test fixtures.
     node test/from-logs.js <report.txt> --force      overwrite captures that already exist
     node test/from-logs.js <report.txt> --site name  put them under test/captures/name/
 
-Captures are stored one subfolder per site, so the suite can hold real data from several
-installations at once. The site folder is derived from the plant name in the report (fall back to
-its stationID); pass --site to name it yourself.
-
-The app writes each API response into its log as a ===FOXESS-CAPTURE-START ...=== block whenever
-it is armed (app start, device restart, pair, repair - see lib/foxEssCapture.js). A diagnostics
-report carries that log, so this reads the blocks back out and writes them under the exact names
-test/fixtures.js looks for. After that, `npm test` runs against the user's real account data.
-
-Paste the report to a file first; it does not matter what wraps the lines - timestamps, log
-prefixes - the parser anchors on the markers.
+The site folder defaults to the plant name (else stationID). Reads the capture blocks written by
+lib/foxEssCapture.js.
 */
 
 const fs = require('node:fs');
@@ -42,16 +33,14 @@ if (!fs.existsSync(file)) {
   process.exit(1);
 }
 
-// A filesystem-safe folder name for a site. Prefers the plant name from the captured plantList,
-// falls back to its stationID, then to 'site'.
+// filesystem-safe site folder: plant name, else stationID, else 'site'
 const slug = (s) => String(s)
   .toLowerCase()
   .trim()
   .replace(/[^a-z0-9]+/g, '-')
   .replace(/^-+|-+$/g, '');
 const siteFromCaptures = (caps) => {
-  // A report may hold only some endpoints (an app-start report has device detail + real-time but
-  // no plant/device list, which come from pairing), so try them all before giving up.
+  // a report may lack the plant/device list (those come from pairing)
   const fromList = caps.plantList?.result?.data?.[0] || caps.deviceList?.result?.data?.[0] || {};
   const detail = caps.deviceDetail?.result || {};
   const rt = caps.deviceRealQuery?.result?.[0] || {};
@@ -86,8 +75,7 @@ for (const name of names) {
   const errno = Number(payload.errno ?? payload.code ?? 0);
   const size = JSON.stringify(payload).length;
 
-  // A capture of a failed call is worse than no capture: the suite would treat the error body as
-  // the response shape and quietly assert nothing.
+  // skip failed calls: an error body would pass as the response shape
   if (errno !== 0) {
     console.log(`  skip   ${name}  (errno ${errno}: ${payload.msg || 'failed call'})`);
     skipped += 1;

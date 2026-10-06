@@ -1,11 +1,8 @@
 'use strict';
 
 /*
-Every driver's capability map, run over the fixture's real-time payload.
-
-The failure this protects against is silent: a FoxESS variable that changes name turns a mapper
-into NaN or undefined, and Homey renders that as an empty tile rather than an error. With real
-captures in place it also catches the API drifting away from the document.
+Every driver's capability map over the fixture's real-time payload, so a renamed variable is
+caught instead of showing as an empty tile.
 */
 
 const fixtures = require('../fixtures');
@@ -25,10 +22,7 @@ module.exports = async (t) => {
     const points = pointMap[`${driverId}Points`].inverter;
     const flat = await driver.pollDeviceType({ client, deviceSn: sn, variables: points });
 
-    // A real capture only carries the variables the drivers paired at capture time asked for, so
-    // an inverter-only account yields no battery or meter variables at all. That is a fixture the
-    // case genuinely cannot exercise - skip it rather than fail. A capture that DOES carry the
-    // driver's variables still has to map at least one, so a rename is still caught.
+    // a capture without this driver's variables (e.g. no battery) is skipped
     const present = new Set(Object.keys(flat));
     if (!points.some((p) => present.has(p))) {
       t.skip(`${driverId}: real-time fixture carries none of this driver's variables (pair a ${driverId} device before capturing to cover it)`);
@@ -51,8 +45,7 @@ module.exports = async (t) => {
     t.ok(mapped > 0, `${driverId} mapped at least one capability from ${sn}`);
   }
 
-  // A mapper must never invent a zero: an absent field stays undefined so setCapability() skips
-  // it, while a genuine zero is still reported.
+  // an absent field stays undefined, a genuine zero is reported
   const { inverter } = pointMap.inverterMap;
   t.eq(inverter.measure_power({}), undefined, 'measure_power is undefined when nothing reported it');
   t.eq(inverter.measure_power({ pvPower: 0 }), 0, 'measure_power still reports a genuine zero');

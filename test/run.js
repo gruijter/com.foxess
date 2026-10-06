@@ -1,8 +1,7 @@
 'use strict';
 
-/* A runner with no dependencies: every case file exports async (t) => {} and uses t.ok/t.eq.
-   Run everything with `node test/run.js`, or one file with `node test/run.js mapping`.
-   Same shape as com.growatt/test/run.js, plus a banner naming the fixture source. */
+/* Dependency-free runner: each case file exports async (t) => {} using t.ok/t.eq.
+   `node test/run.js` runs all, `node test/run.js mapping` one file. */
 
 const fs = require('node:fs');
 const path = require('node:path');
@@ -49,8 +48,7 @@ function makeT(file) {
       console.log(`\n${label ? `[${label}] ` : ''}${file}`);
       const t = makeT(label ? `${label}/${file}` : file);
       try {
-        // Each case pulls its data through require('../fixtures'), so re-requiring the file per
-        // site re-runs it against whichever site is active now.
+        // re-required per site, so the case reads the active site's fixtures
         // eslint-disable-next-line import/no-dynamic-require, global-require
         await require(path.join(DIR, file))(t);
       } catch (e) {
@@ -61,8 +59,7 @@ function makeT(file) {
     }
   };
 
-  // Run every case against each site's captures in turn (more sites = more real-world coverage);
-  // with no captures at all, run once against the doc stubs.
+  // every case runs per captured site, or once against the doc stubs
   if (fixtures.sites.length) {
     for (const site of fixtures.sites) {
       fixtures.useSite(site);

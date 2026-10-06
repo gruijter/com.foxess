@@ -26,9 +26,7 @@ const { CONTROL_POLL_EVERY_N_TICKS } = require('../../lib/foxEssConstants');
 
 const CONTROL_CAPS = ['target_power', 'target_power_mode'];
 
-// SoC limit capability -> key in battery/soc/get|set. The maximum SoC is shown only: setting 'MaxSoc'
-// reads, but writing it was accepted (errno 0) and ignored on De Brik (H3, 2026-10-04, watched for
-// 5 min), so battery_max_soc is not setable.
+// capability -> battery/soc key. battery_max_soc is read-only: a MaxSoc write was ignored (2026-10-04).
 const SOC_CAPS = {
   battery_min_soc: 'minSoc',
   battery_min_soc_ongrid: 'minSocOnGrid',
@@ -42,9 +40,6 @@ module.exports = class MyDevice extends CommonDevice {
     this.maxSoc = maxSoc;
   }
 
-  /**
-   * target_power spans the inverter's rated power both ways.
-   */
   capabilityOptions() {
     const max = this.maxPowerW;
     return { target_power: { min: -max, max, step: 100 } };
@@ -58,24 +53,21 @@ module.exports = class MyDevice extends CommonDevice {
   }
 
   registerControlListeners() {
-    // onInit runs again on every restartDevice(), so only register once
+    // restartDevice() reruns onInit: register once
     if (!this.controlListenerSet && this.hasCapability('target_power')) {
-      // One listener for both: the 'Set target power' flow card changes the power and switches the
-      // mode to homey in one go, and they must not become two writes.
+      // one listener, so power + mode from one flow card become one write
       this.registerMultipleCapabilityListener(CONTROL_CAPS, (values) => this.onControl(values), 500);
       this.controlListenerSet = true;
     }
     if (!this.socListenerSet && this.hasCapability('battery_min_soc')) {
-      // One listener for the set: a target that only holds as a whole must be written as one.
+      // the SoC limits are written as a pair
       const caps = Object.keys(SOC_CAPS).filter((cap) => this.hasCapability(cap));
       this.registerMultipleCapabilityListener(caps, (values) => this.onSocLimits(values), 500);
       this.socListenerSet = true;
     }
   }
 
-  /**
-   * The SoC limits, as { minSoc, minSocOnGrid }.
-   */
+  /** The SoC limits, as { minSoc, minSocOnGrid }. */
   async readSocLimits() {
     const soc = (await this.client.getBatterySoc({ sn: this.deviceSn }))?.result;
     const minSoc = Number(soc?.minSoc);
@@ -121,9 +113,7 @@ module.exports = class MyDevice extends CommonDevice {
     }
   }
 
-  /**
-   * The 'Set SoC limits' flow card: as if changed on the device page, shown right away.
-   */
+  /** The 'Set SoC limits' flow card. */
   async setSocLimits({ min, ongrid }) {
     const values = { battery_min_soc: min, battery_min_soc_ongrid: ongrid };
     await this.onSocLimits(values);
@@ -161,9 +151,7 @@ module.exports = class MyDevice extends CommonDevice {
     }
   }
 
-  /**
-   * Keep a copy of the owner's own schedule before Homey overwrites it.
-   */
+  /** Keep a copy of the owner's schedule before Homey overwrites it. */
   async saveOwnerSchedule() {
     if (this.getCapabilityValue('target_power_mode') !== ctl.MODE_SCHEDULE) return;
     const groups = (await this.client.getScheduler({ sn: this.deviceSn }))?.result?.groups;
@@ -179,9 +167,7 @@ module.exports = class MyDevice extends CommonDevice {
     this.schedulerOn = on;
   }
 
-  /**
-   * The inverter's local time, from the last real-time snapshot, or from the device when unknown.
-   */
+  /** The inverter's local time, from the last snapshot, else from the device. */
   async inverterNow() {
     const fromSnapshot = ctl.inverterNow(this.snapshotTime);
     if (fromSnapshot) return fromSnapshot;
@@ -197,9 +183,6 @@ module.exports = class MyDevice extends CommonDevice {
     return value;
   }
 
-  /**
-   * The slot for a battery power now: corrected for the latest PV reading, capped at rated power.
-   */
   async slotFor(watts) {
     return ctl.slotForPower(watts, {
       minSocOnGrid: await this.minSocOnGrid(),
@@ -208,10 +191,7 @@ module.exports = class MyDevice extends CommonDevice {
     });
   }
 
-  /**
-   * Homey mode: one scheduler slot from now - ForceCharge (> 0 W), ForceDischarge (< 0 W) or
-   * Backup (0 W, hold).
-   */
+  /** Homey mode: one scheduler slot from now. */
   async applyHomey(watts, slot) {
     await this.saveOwnerSchedule();
     const next = slot || await this.slotFor(watts);
@@ -224,9 +204,7 @@ module.exports = class MyDevice extends CommonDevice {
     this.log(`homey ${watts} W: ${next.workMode} fdPwr ${next.extraParam.fdPwr ?? '-'} W (PV ${this.pvW ?? '?'} W) until ${end.endHour}:${String(end.endMinute).padStart(2, '0')}`);
   }
 
-  /**
-   * Schedule mode: the owner's own FoxCloud slots, as last seen.
-   */
+  /** Schedule mode: restore the owner's slots as last seen. */
   async applySchedule() {
     const groups = this.getStoreValue('ownerSchedule');
     if (!Array.isArray(groups) || !groups.length) throw new Error(this.homey.__('errors.noSchedule'));
@@ -234,9 +212,7 @@ module.exports = class MyDevice extends CommonDevice {
     await this.ensureScheduler(true);
   }
 
-  /**
-   * One of the FoxESS work modes: scheduler off, WorkMode set.
-   */
+  /** A FoxESS work mode: scheduler off, WorkMode set. */
   async applyWorkMode(mode) {
     const workMode = ctl.WORK_MODES[mode];
     if (!workMode) throw new Error(`unknown mode ${mode}`);
@@ -254,10 +230,7 @@ module.exports = class MyDevice extends CommonDevice {
     return super.handleData(data, options);
   }
 
-  /**
-   * On top of the common extras: the control state, read back into target_power_mode, and the
-   * renewal of a Homey slot before it runs out.
-   */
+  /** Adds SoC limits, control state and Homey slot renewal. */
   async pollExtra(options = {}) {
     const common = await super.pollExtra(options);
     if (this.hasCapability('battery_min_soc') && this.settingsDue(options)) {
@@ -288,10 +261,7 @@ module.exports = class MyDevice extends CommonDevice {
     return common;
   }
 
-  /**
-   * In homey mode, on every tick: renew the slot before it runs out, and re-write it when the PV
-   * correction moved (the slot power depends on PV, see foxEssBatteryControl).
-   */
+  /** Homey mode, every tick: renew the slot before it ends, re-write it when PV moved. */
   async keepHomeySlot() {
     const [current] = this.getStoreValue('homeyHistory') || [];
     const watts = this.getStoreValue('homeyTarget') ?? 0;
@@ -319,7 +289,7 @@ module.exports = class MyDevice extends CommonDevice {
     });
     if (mode === ctl.MODE_SCHEDULE && groups.length) await this.setStoreValue('ownerSchedule', groups);
     if (mode) await this.setCapability('target_power_mode', mode);
-    // the slot running now, as the inverter has it: no scheduler, no setpoint
+    // no scheduler, no setpoint
     await this.setCapability('measure_power.target', this.schedulerOn
       ? ctl.activeSlotPower(groups, ctl.inverterNow(this.snapshotTime)) : null);
     await this.checkOverride({ mode }, startedAt);

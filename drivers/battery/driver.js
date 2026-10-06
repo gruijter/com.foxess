@@ -27,11 +27,7 @@ module.exports = class MyDevice extends CommonDriver {
     await super.onInit();
   }
 
-  /**
-   * Control needs the scheduler (the only way FoxESS offers to charge or discharge at a chosen
-   * power); SoC limits need a readable battery/soc/get. Read along the way: the scheduler switch
-   * and the limits themselves. A failed check reports nothing, so the store keeps its last answer.
-   */
+  /** Control needs scheduler support; SoC limits a readable battery/soc/get. */
   async checkSupport({ client, deviceSn }) {
     const support = {};
     const readings = {};
@@ -44,11 +40,9 @@ module.exports = class MyDevice extends CommonDriver {
     const minSoc = Number(soc?.minSoc);
     const minSocOnGrid = Number(soc?.minSocOnGrid);
     if (Number.isFinite(minSoc) && Number.isFinite(minSocOnGrid)) {
-      // supported once read; like an optional capability, never withdrawn on a failure
       support.socLimitsSupported = true;
       readings.socLimits = { minSoc, minSocOnGrid };
     }
-    // shown, not set: a MaxSoc write is accepted and ignored (see drivers/battery/device.js)
     const rawMaxSoc = await this.tryCall('max SoC check', async () => (await client.getSetting({ sn: deviceSn, key: 'MaxSoc' }))?.result?.value);
     const maxSoc = rawMaxSoc === null || rawMaxSoc === undefined || rawMaxSoc === '' ? NaN : Number(rawMaxSoc);
     if (Number.isFinite(maxSoc)) {

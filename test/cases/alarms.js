@@ -1,15 +1,7 @@
 'use strict';
 
 /*
-Alarms, all from what the installation reports itself.
-
-- The fault classification (lib/foxEssFaults.js) on texts from the live FoxESS fault table: heat vs
-  sensor/low/under, battery vs everything else.
-- currentFault parsing: "" means no fault; codes are looked up; an unknown code or plain text still
-  counts as a fault.
-- The alarm mappers per driver: alarm_problem as the catch-all, alarm_heat split between inverter
-  and battery, alarm_battery for battery/BMS faults only (a low SoC is normal operation), and
-  alarm_connectivity from the device list.
+Alarms: fault classification (lib/foxEssFaults.js), currentFault parsing and the alarm mappers.
 */
 
 const fixtures = require('../fixtures');
