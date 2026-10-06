@@ -92,7 +92,8 @@ module.exports = class MyDevice extends CommonDriver {
     return {
       solarSides: foxEssPointMap.inverterSolarSides({
         hasBattery: typeof hasBattery === 'boolean' ? hasBattery : undefined,
-        acPower: payload?.generationPower !== undefined && payload?.generationPower !== null,
+        // a failed real-time lookup leaves power undecided rather than DC (see acPowerReported)
+        acPower: foxEssPointMap.acPowerReported(payload),
       }),
     };
   }

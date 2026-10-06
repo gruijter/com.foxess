@@ -73,6 +73,14 @@ module.exports = async (t) => {
   t.eq(sides({}, storedAc).meter_power, 'ac', 'a battery flag missing this time keeps the stored side');
   t.eq(sides({ acPower: false }, storedAc).measure_power, 'ac', 'a payload without the AC output keeps AC power');
   t.eq(sides({ hasBattery: false }, sides({ hasBattery: true })).meter_power, 'ac', 'a battery removed moves it back to AC');
+  // no real-time data says nothing about the AC output: power stays undecided, never fixed to DC
+  const reported = pointMap.acPowerReported;
+  t.eq(reported({}), undefined, 'an empty reading (result:null) does not tell');
+  t.eq(reported({ deviceStatus: 1, pvToday: 3.8, hasBattery: true }), undefined, 'nor do fields from other endpoints');
+  t.eq(reported({ pvPower: 1.2 }), false, 'real-time data without generationPower: no AC output');
+  t.eq(reported({ pvPower: 0, generationPower: 0 }), true, 'a genuine 0 kW AC output counts');
+  t.eq(sides({ acPower: undefined }).measure_power, undefined, 'no reading and no stored side: power undecided');
+  t.eq(sides({ acPower: undefined }, storedAc).measure_power, 'ac', 'no reading keeps a stored side');
   const fixedAc = { solarSides: sides({ hasBattery: false, acPower: true }) };
   const fixedDc = { solarSides: sides({ hasBattery: true, acPower: true }) };
   t.eq(inv.meter_power({ ...fixedDc, generation: 220, PVEnergyTotal: 194 }), 194, 'a fixed DC side shows PVEnergyTotal');

@@ -61,20 +61,22 @@ module.exports = class MyDevice extends CommonDevice {
    * discharge as yield - from the facts known then: the battery flag of the device detail onInit
    * just refreshed, and whether this first full payload carries the AC output. A fact unknown
    * then keeps the stored side (see foxEssPointMap.inverterSolarSides). A device paired before
-   * the decision moved to pairing gets one the same way, from its first full payload.
+   * the decision moved to pairing gets one the same way, from its first full payload. Power with
+   * no side yet is decided by the first payload that carries real-time data at all; until then
+   * this runs again on every poll.
    * @param {object} data a full payload
    */
   async decideSolarSides(data) {
     if (this.solarSidesDecided) return;
-    this.solarSidesDecided = true;
     const previous = this.getStoreValue('solarSides');
-    if (!previous || this.getStoreValue('redecideSolarSides')) {
+    if (!previous || !previous.measure_power || this.getStoreValue('redecideSolarSides')) {
       const hasBattery = this.getStoreValue('deviceDetail')?.hasBattery ?? this.getStoreValue('hasBattery');
       const sides = foxEssPointMap.inverterSolarSides({
         hasBattery: typeof hasBattery === 'boolean' ? hasBattery : undefined,
-        acPower: data.generationPower !== undefined && data.generationPower !== null,
+        acPower: foxEssPointMap.acPowerReported(data),
       }, previous || {});
-      if (!previous || Object.keys(sides).some((cap) => sides[cap] !== previous[cap])) {
+      const caps = new Set([...Object.keys(sides), ...Object.keys(previous || {})]);
+      if (!previous || [...caps].some((cap) => sides[cap] !== previous[cap])) {
         this.log('solar sides decided:', JSON.stringify(previous || {}), '->', JSON.stringify(sides));
         await this.setStoreValue('solarSides', sides);
         // another counter: a Homey-timezone 'today' starts again from it rather than across both
@@ -82,8 +84,11 @@ module.exports = class MyDevice extends CommonDevice {
           await this.unsetStoreValue('todayBaseline_meter_power.today').catch((error) => this.error(error));
         }
       }
+      // undecided power: try again with the next payload
+      if (!sides.measure_power) return;
       await this.setStoreValue('redecideSolarSides', false);
     }
+    this.solarSidesDecided = true;
     // the titles to match - no write when they already do
     await DeviceMigrator.syncCapabilityOptions(this, this.capabilityOptions());
   }
