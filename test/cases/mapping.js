@@ -64,9 +64,6 @@ module.exports = async (t) => {
   t.eq(battery.battery_charging_state({ batChargePower: 0, batDischargePower: 0.5 }), 'discharging', 'discharging below the idle band');
   t.eq(battery.battery_charging_state({ batChargePower: 0.005, batDischargePower: 0 }), 'idle', 'idle within 10 W');
   t.eq(battery.battery_charging_state({}), undefined, 'no state without battery power');
-  t.eq(battery['measure_power.charge_limit']({ maxChargeCurrent: 25, batVolt: 400 }), 10000, 'charge limit is A x V');
-  t.eq(battery['measure_power.discharge_limit']({ maxDischargeCurrent: -25, batVolt: 0, batVolt_1: 400 }), 10000, 'discharge limit uses the pack voltage, unsigned');
-  t.eq(battery['measure_power.charge_limit']({ maxChargeCurrent: 25 }), undefined, 'no limit without a voltage');
   t.eq(inverter.active_faults({ faultTexts: [] }), null, 'no active fault clears the tile');
   t.eq(inverter.active_faults({ faultTexts: ['Grid lost', 'Fault 7'] }), 'Grid lost, Fault 7', 'active faults joined');
   t.eq(inverter.active_faults({}), undefined, 'faults not reported, tile untouched');

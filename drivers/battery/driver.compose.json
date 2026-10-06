@@ -276,42 +276,6 @@
         "ar": "القدرة المستهدفة النشطة"
       },
       "decimals": 0
-    },
-    "measure_power.charge_limit": {
-      "title": {
-        "en": "Max charge power",
-        "nl": "Max laadvermogen",
-        "de": "Max. Ladeleistung",
-        "fr": "Puissance de charge max",
-        "es": "Potencia de carga máx.",
-        "it": "Potenza di carica max",
-        "da": "Maks. ladeeffekt",
-        "sv": "Max laddeffekt",
-        "no": "Maks ladeeffekt",
-        "pl": "Maks. moc ładowania",
-        "ru": "Макс. мощность заряда",
-        "ar": "أقصى قدرة شحن",
-        "ko": "최대 충전 전력"
-      },
-      "decimals": 0
-    },
-    "measure_power.discharge_limit": {
-      "title": {
-        "en": "Max discharge power",
-        "nl": "Max ontlaadvermogen",
-        "de": "Max. Entladeleistung",
-        "fr": "Puissance de décharge max",
-        "es": "Potencia de descarga máx.",
-        "it": "Potenza di scarica max",
-        "da": "Maks. afladeeffekt",
-        "sv": "Max urladdningseffekt",
-        "no": "Maks utladingseffekt",
-        "pl": "Maks. moc rozładowania",
-        "ru": "Макс. мощность разряда",
-        "ar": "أقصى قدرة تفريغ",
-        "ko": "최대 방전 전력"
-      },
-      "decimals": 0
     }
   },
   "energy": {
