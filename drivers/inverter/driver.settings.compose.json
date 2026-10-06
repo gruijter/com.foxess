@@ -37,6 +37,9 @@
       },
       {
         "$extends": "region"
+      },
+      {
+        "$extends": "energyManager"
       }
     ]
   },

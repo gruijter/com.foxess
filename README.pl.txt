@@ -1,3 +1,11 @@
-Połącz falownik Fox ESS, magazyn energii i licznik energii z Homey przez FoxCloud. Śledź produkcję energii słonecznej, naładowanie akumulatora oraz pobór z sieci i oddawanie do sieci, sprawdzaj stan i alarmy falownika i korzystaj z tego wszystkiego we Flow. FoxCloud aktualizuje dane co pięć minut.
+Połącz urządzenia Fox ESS z Homey przez FoxCloud. FoxCloud aktualizuje dane co pięć minut.
 
-Homey może też sterować akumulatorem: wybrać tryb pracy, ładować lub rozładowywać go z ustaloną mocą oraz zmieniać minimalny poziom naładowania i limit oddawania do sieci. Aby się połączyć, utwórz klucz API w FoxCloud w Profil użytkownika > Zarządzanie API.
+Obsługiwane urządzenia:
+- Falownik: moc i produkcja energii słonecznej, moc falownika, moc zasilania awaryjnego (EPS), stan i aktywne usterki. Możesz ustawić limit oddawania do sieci.
+- Akumulator: poziom naładowania i stan zdrowia, moc, energia naładowana i rozładowana, temperatura i cykle. Homey może ładować i rozładowywać akumulator z ustaloną mocą, a Ty możesz ustawić tryb pracy i limity SoC.
+- Licznik sieciowy: moc na fazę, energia pobrana i oddana, napięcie, częstotliwość i zużycie domu.
+- Pompa ciepła (beta): tryb pracy i ustawienia ciepłej wody, na razie tylko do odczytu.
+
+Wymagania: Twoja instalacja musi być na koncie FoxCloud. Utwórz klucz API w FoxCloud w Profil użytkownika > Zarządzanie API i wpisz go podczas dodawania urządzenia.
+
+⚠️ Inne systemy zarządzania energią: FoxCloud, instalator, dostawca energii (VPP) lub inna aplikacja mogą przejąć od Homey sterowanie akumulatorem i limitem oddawania do sieci. Homey pokazuje wtedy „Sterowanie nadpisane” i pozostawia im sterowanie, dopóki sam ponownie czegoś nie ustawisz. Aby sterować akumulatorem z Homey, upewnij się, że nic innego nim nie steruje (zapytaj instalatora lub dostawcę energii).

@@ -1,3 +1,11 @@
-Forbind din Fox ESS-inverter, dit hjemmebatteri og din energimåler med Homey via FoxCloud. Følg solproduktionen, batteriets opladning samt køb fra og levering til elnettet, se inverterens status og alarmer, og brug det hele i Flows. FoxCloud opdateres hvert femte minut.
+Forbind dine Fox ESS-enheder med Homey via FoxCloud. FoxCloud opdateres hvert femte minut.
 
-Homey kan også styre batteriet: vælge driftstilstand, oplade eller aflade med en valgt effekt og ændre minimumsopladningen og leveringsgrænsen. Opret en API-nøgle i FoxCloud under Brugerprofil > API-administration for at forbinde.
+Understøttede enheder:
+- Inverter: soleffekt og -produktion, invertereffekt, nødstrømseffekt (EPS), status og aktive fejl. Du kan indstille leveringsgrænsen til elnettet.
+- Batteri: opladningsniveau og tilstand, effekt, opladet og afladet energi, temperatur og cyklusser. Homey kan oplade og aflade batteriet med en valgt effekt, og du kan indstille driftstilstand og SoC-grænser.
+- Netmåler: effekt pr. fase, købt og leveret energi, spænding, frekvens og husets forbrug.
+- Varmepumpe (beta): driftstilstand og varmtvandsindstillinger, indtil videre kun læsning.
+
+Krav: dit anlæg skal være i en FoxCloud-konto. Opret en API-nøgle i FoxCloud under Brugerprofil > API-administration, og indtast den, når du tilføjer en enhed.
+
+⚠️ Andre energistyringer: FoxCloud, din installatør, en energileverandør (VPP) eller en anden app kan tage styringen af batteriet og leveringsgrænsen tilbage fra Homey. Homey viser så 'Styring overskrevet' og overlader styringen til dem, indtil du selv ændrer en indstilling igen. Vil du styre batteriet fra Homey, skal du sørge for, at intet andet styrer det (spørg din installatør eller energileverandør).
