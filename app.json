@@ -289,7 +289,8 @@
   "copyright": "R.M. de Gruijter (rmdegruijter@gmail.com)",
   "license": "GPL-3.0-or-later",
   "homeyCommunityTopicId": 159666,
-  "support": "https://github.com/gruijter/com.foxess/issues",
+  "support": "https://community.homey.app/t/159666",
+  "source": "https://github.com/gruijter/com.foxess",
   "flow": {
     "triggers": [
       {
