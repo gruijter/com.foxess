@@ -294,6 +294,110 @@
     "triggers": [
       {
         "title": {
+          "en": "Control override cleared",
+          "nl": "Overschreven sturing opgeheven",
+          "de": "Überschriebene Steuerung aufgehoben",
+          "fr": "Écrasement du pilotage levé",
+          "es": "Anulación del control eliminada",
+          "it": "Sovrascrittura del controllo annullata",
+          "da": "Overskrevet styring ophævet",
+          "sv": "Överskriven styrning upphävd",
+          "no": "Overstyrt styring opphevet",
+          "pl": "Nadpisanie sterowania anulowane",
+          "ru": "Перехват управления снят",
+          "ar": "تم إلغاء تجاوز التحكم",
+          "ko": "제어 덮어쓰기 해제됨"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=battery|inverter&capabilities=alarm_generic.control"
+          }
+        ],
+        "id": "alarm_generic.control_false"
+      },
+      {
+        "title": {
+          "en": "Control was overridden",
+          "nl": "Sturing werd overschreven",
+          "de": "Steuerung wurde überschrieben",
+          "fr": "Le pilotage a été écrasé",
+          "es": "El control fue anulado",
+          "it": "Il controllo è stato sovrascritto",
+          "da": "Styringen blev overskrevet",
+          "sv": "Styrningen skrevs över",
+          "no": "Styringen ble overstyrt",
+          "pl": "Sterowanie zostało nadpisane",
+          "ru": "Управление перехвачено",
+          "ar": "تم تجاوز التحكم",
+          "ko": "제어가 덮어써짐"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=battery|inverter&capabilities=alarm_generic.control"
+          }
+        ],
+        "id": "alarm_generic.control_true"
+      },
+      {
+        "title": {
+          "en": "Inverter limit turned off",
+          "nl": "Omvormerlimiet ging uit",
+          "de": "Wechselrichtergrenze wurde inaktiv",
+          "fr": "La limite de l'onduleur s'est désactivée",
+          "es": "El límite del inversor se desactivó",
+          "it": "Il limite dell'inverter si è disattivato",
+          "da": "Invertergrænsen blev inaktiv",
+          "sv": "Växelriktargränsen blev inaktiv",
+          "no": "Invertergrensen ble inaktiv",
+          "pl": "Limit falownika wyłączył się",
+          "ru": "Ограничение инвертора выключилось",
+          "ar": "تم تعطيل حد العاكس",
+          "ko": "인버터 제한이 꺼짐"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=inverter&capabilities=inverter_limit_active"
+          }
+        ],
+        "id": "inverter_limit_active_false"
+      },
+      {
+        "title": {
+          "en": "Inverter limit turned on",
+          "nl": "Omvormerlimiet ging aan",
+          "de": "Wechselrichtergrenze wurde aktiv",
+          "fr": "La limite de l'onduleur s'est activée",
+          "es": "El límite del inversor se activó",
+          "it": "Il limite dell'inverter si è attivato",
+          "da": "Invertergrænsen blev aktiv",
+          "sv": "Växelriktargränsen blev aktiv",
+          "no": "Invertergrensen ble aktiv",
+          "pl": "Limit falownika włączył się",
+          "ru": "Ограничение инвертора включилось",
+          "ar": "تم تفعيل حد العاكس",
+          "ko": "인버터 제한이 켜짐"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=inverter&capabilities=inverter_limit_active"
+          }
+        ],
+        "id": "inverter_limit_active_true"
+      },
+      {
+        "title": {
           "en": "Voltage phase 1 changed",
           "nl": "Spanning fase 1 is veranderd",
           "de": "Spannung Phase 1 geändert",
@@ -629,6 +733,86 @@
       }
     ],
     "conditions": [
+      {
+        "title": {
+          "en": "Control is overridden",
+          "nl": "Sturing is overschreven",
+          "de": "Steuerung ist überschrieben",
+          "fr": "Le pilotage est écrasé",
+          "es": "El control está anulado",
+          "it": "Il controllo è sovrascritto",
+          "da": "Styringen er overskrevet",
+          "sv": "Styrningen är överskriven",
+          "no": "Styringen er overstyrt",
+          "pl": "Sterowanie jest nadpisane",
+          "ru": "Управление перехвачено",
+          "ar": "التحكم متجاوز",
+          "ko": "제어가 덮어써진 상태"
+        },
+        "titleFormatted": {
+          "en": "Control !{{is|is not}} overridden",
+          "nl": "Sturing !{{is|is niet}} overschreven",
+          "de": "Steuerung !{{ist|ist nicht}} überschrieben",
+          "fr": "Le pilotage !{{est|n'est pas}} écrasé",
+          "es": "El control !{{está|no está}} anulado",
+          "it": "Il controllo !{{è|non è}} sovrascritto",
+          "da": "Styringen !{{er|er ikke}} overskrevet",
+          "sv": "Styrningen !{{är|är inte}} överskriven",
+          "no": "Styringen !{{er|er ikke}} overstyrt",
+          "pl": "Sterowanie !{{jest|nie jest}} nadpisane",
+          "ru": "Управление !{{перехвачено|не перехвачено}}",
+          "ar": "التحكم !{{متجاوز|غير متجاوز}}",
+          "ko": "제어가 덮어써진 상태!{{이다|가 아니다}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=battery|inverter&capabilities=alarm_generic.control"
+          }
+        ],
+        "id": "alarm_generic.control_is"
+      },
+      {
+        "title": {
+          "en": "Inverter limit is active",
+          "nl": "Omvormerlimiet is actief",
+          "de": "Wechselrichtergrenze ist aktiv",
+          "fr": "La limite de l'onduleur est active",
+          "es": "El límite del inversor está activo",
+          "it": "Il limite dell'inverter è attivo",
+          "da": "Invertergrænsen er aktiv",
+          "sv": "Växelriktargränsen är aktiv",
+          "no": "Invertergrensen er aktiv",
+          "pl": "Limit falownika jest aktywny",
+          "ru": "Ограничение инвертора активно",
+          "ar": "حد العاكس نشط",
+          "ko": "인버터 제한 활성 상태"
+        },
+        "titleFormatted": {
+          "en": "Inverter limit !{{is|is not}} active",
+          "nl": "Omvormerlimiet !{{is|is niet}} actief",
+          "de": "Wechselrichtergrenze !{{ist|ist nicht}} aktiv",
+          "fr": "La limite de l'onduleur !{{est|n'est pas}} active",
+          "es": "El límite del inversor !{{está|no está}} activo",
+          "it": "Il limite dell'inverter !{{è|non è}} attivo",
+          "da": "Invertergrænsen !{{er|er ikke}} aktiv",
+          "sv": "Växelriktargränsen !{{är|är inte}} aktiv",
+          "no": "Invertergrensen !{{er|er ikke}} aktiv",
+          "pl": "Limit falownika !{{jest|nie jest}} aktywny",
+          "ru": "Ограничение инвертора !{{активно|не активно}}",
+          "ar": "حد العاكس !{{نشط|غير نشط}}",
+          "ko": "인버터 제한이 활성 상태!{{이다|가 아니다}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=inverter&capabilities=inverter_limit_active"
+          }
+        ],
+        "id": "inverter_limit_active_is"
+      },
       {
         "title": {
           "en": "Inverter status is…",
@@ -1131,6 +1315,7 @@
       "capabilities": [
         "measure_power",
         "measure_battery",
+        "battery_charging_state",
         "meter_power.charged",
         "meter_power.discharged",
         "measure_temperature"
@@ -1223,6 +1408,21 @@
           "decimals": 1
         },
         "target_power_mode": {
+          "title": {
+            "en": "Mode",
+            "nl": "Modus",
+            "de": "Modus",
+            "fr": "Mode",
+            "es": "Modo",
+            "it": "Modalità",
+            "da": "Tilstand",
+            "sv": "Läge",
+            "no": "Modus",
+            "pl": "Tryb",
+            "ru": "Режим",
+            "ar": "الوضع",
+            "ko": "모드"
+          },
           "values": [
             {
               "id": "homey",
@@ -1371,6 +1571,42 @@
             "ru": "Активная целевая мощность",
             "ko": "활성 목표 전력",
             "ar": "القدرة المستهدفة النشطة"
+          },
+          "decimals": 0
+        },
+        "measure_power.charge_limit": {
+          "title": {
+            "en": "Max charge power",
+            "nl": "Max laadvermogen",
+            "de": "Max. Ladeleistung",
+            "fr": "Puissance de charge max",
+            "es": "Potencia de carga máx.",
+            "it": "Potenza di carica max",
+            "da": "Maks. ladeeffekt",
+            "sv": "Max laddeffekt",
+            "no": "Maks ladeeffekt",
+            "pl": "Maks. moc ładowania",
+            "ru": "Макс. мощность заряда",
+            "ar": "أقصى قدرة شحن",
+            "ko": "최대 충전 전력"
+          },
+          "decimals": 0
+        },
+        "measure_power.discharge_limit": {
+          "title": {
+            "en": "Max discharge power",
+            "nl": "Max ontlaadvermogen",
+            "de": "Max. Entladeleistung",
+            "fr": "Puissance de décharge max",
+            "es": "Potencia de descarga máx.",
+            "it": "Potenza di scarica max",
+            "da": "Maks. afladeeffekt",
+            "sv": "Max urladdningseffekt",
+            "no": "Maks utladingseffekt",
+            "pl": "Maks. moc rozładowania",
+            "ru": "Макс. мощность разряда",
+            "ar": "أقصى قدرة تفريغ",
+            "ko": "최대 방전 전력"
           },
           "decimals": 0
         }
@@ -2885,6 +3121,42 @@
             "ko": "가정 소비 전력"
           },
           "decimals": 0
+        },
+        "meter_power.load": {
+          "title": {
+            "en": "Home consumption total",
+            "nl": "Thuisverbruik totaal",
+            "de": "Hausverbrauch gesamt",
+            "fr": "Consommation domestique totale",
+            "es": "Consumo doméstico total",
+            "it": "Consumo domestico totale",
+            "da": "Husforbrug i alt",
+            "sv": "Husförbrukning totalt",
+            "no": "Husforbruk totalt",
+            "pl": "Zużycie domowe łącznie",
+            "ru": "Домашнее потребление всего",
+            "ar": "إجمالي استهلاك المنزل",
+            "ko": "가정 소비 총량"
+          },
+          "decimals": 2
+        },
+        "meter_power.load_today": {
+          "title": {
+            "en": "Home consumption today",
+            "nl": "Thuisverbruik vandaag",
+            "de": "Hausverbrauch heute",
+            "fr": "Consommation domestique du jour",
+            "es": "Consumo doméstico hoy",
+            "it": "Consumo domestico oggi",
+            "da": "Husforbrug i dag",
+            "sv": "Husförbrukning idag",
+            "no": "Husforbruk i dag",
+            "pl": "Zużycie domowe dziś",
+            "ru": "Домашнее потребление за сегодня",
+            "ar": "استهلاك المنزل اليوم",
+            "ko": "오늘 가정 소비"
+          },
+          "decimals": 2
         }
       },
       "energy": {
@@ -3046,6 +3318,68 @@
     }
   ],
   "capabilities": {
+    "active_faults": {
+      "type": "string",
+      "title": {
+        "en": "Active faults",
+        "nl": "Actieve storingen",
+        "de": "Aktive Störungen",
+        "fr": "Défauts actifs",
+        "es": "Fallos activos",
+        "it": "Guasti attivi",
+        "da": "Aktive fejl",
+        "sv": "Aktiva fel",
+        "no": "Aktive feil",
+        "pl": "Aktywne usterki",
+        "ru": "Активные неисправности",
+        "ar": "الأعطال النشطة",
+        "ko": "활성 고장"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": false,
+      "icon": "./assets/active_faults.svg"
+    },
+    "battery_max_soc": {
+      "type": "number",
+      "title": {
+        "en": "Maximum SoC",
+        "nl": "Maximale SoC",
+        "de": "Maximaler SoC",
+        "fr": "SoC maximal",
+        "es": "SoC máximo",
+        "it": "SoC massimo",
+        "da": "Maksimum SoC",
+        "sv": "Högsta SoC",
+        "no": "Maksimum SoC",
+        "pl": "Maksymalny SoC",
+        "ru": "Максимальный SoC",
+        "ar": "الحد الأقصى للشحن",
+        "ko": "최대 SoC"
+      },
+      "units": {
+        "en": "%",
+        "nl": "%",
+        "de": "%",
+        "fr": "%",
+        "es": "%",
+        "it": "%",
+        "da": "%",
+        "sv": "%",
+        "no": "%",
+        "pl": "%",
+        "ru": "%",
+        "ar": "%",
+        "ko": "%"
+      },
+      "decimals": 0,
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "uiComponent": "sensor",
+      "icon": "./assets/battery_soc.svg"
+    },
     "battery_min_soc": {
       "type": "number",
       "title": {
@@ -3172,6 +3506,128 @@
       "uiComponent": "slider",
       "icon": "./assets/export_limit.svg"
     },
+    "inverter_limit_active": {
+      "type": "boolean",
+      "title": {
+        "en": "Inverter limit active",
+        "nl": "Omvormerlimiet actief",
+        "de": "Wechselrichtergrenze aktiv",
+        "fr": "Limite de l'onduleur active",
+        "es": "Límite del inversor activo",
+        "it": "Limite dell'inverter attivo",
+        "da": "Invertergrænse aktiv",
+        "sv": "Växelriktargräns aktiv",
+        "no": "Invertergrense aktiv",
+        "pl": "Limit falownika aktywny",
+        "ru": "Ограничение инвертора активно",
+        "ar": "حد العاكس نشط",
+        "ko": "인버터 제한 활성"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "titleTrue": {
+        "en": "Yes",
+        "nl": "Ja",
+        "de": "Ja",
+        "fr": "Oui",
+        "es": "Sí",
+        "it": "Sì",
+        "da": "Ja",
+        "sv": "Ja",
+        "no": "Ja",
+        "pl": "Tak",
+        "ru": "Да",
+        "ar": "نعم",
+        "ko": "예"
+      },
+      "titleFalse": {
+        "en": "No",
+        "nl": "Nee",
+        "de": "Nein",
+        "fr": "Non",
+        "es": "No",
+        "it": "No",
+        "da": "Nej",
+        "sv": "Nej",
+        "no": "Nei",
+        "pl": "Nie",
+        "ru": "Нет",
+        "ar": "لا",
+        "ko": "아니요"
+      },
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Inverter limit on",
+        "nl": "Omvormerlimiet aan",
+        "de": "Wechselrichtergrenze an",
+        "fr": "Limite de l'onduleur activée",
+        "es": "Límite del inversor activado",
+        "it": "Limite dell'inverter attivato",
+        "da": "Invertergrænse til",
+        "sv": "Växelriktargräns på",
+        "no": "Invertergrense på",
+        "pl": "Limit falownika włączony",
+        "ru": "Ограничение инвертора вкл.",
+        "ar": "حد العاكس مفعّل",
+        "ko": "인버터 제한 켜짐"
+      },
+      "insightsTitleFalse": {
+        "en": "Inverter limit off",
+        "nl": "Omvormerlimiet uit",
+        "de": "Wechselrichtergrenze aus",
+        "fr": "Limite de l'onduleur désactivée",
+        "es": "Límite del inversor desactivado",
+        "it": "Limite dell'inverter disattivato",
+        "da": "Invertergrænse fra",
+        "sv": "Växelriktargräns av",
+        "no": "Invertergrense av",
+        "pl": "Limit falownika wyłączony",
+        "ru": "Ограничение инвертора выкл.",
+        "ar": "حد العاكس معطّل",
+        "ko": "인버터 제한 꺼짐"
+      },
+      "icon": "./assets/export_limit.svg"
+    },
+    "measure_apparent_power": {
+      "type": "number",
+      "title": {
+        "en": "Apparent power",
+        "nl": "Schijnbaar vermogen",
+        "de": "Scheinleistung",
+        "fr": "Puissance apparente",
+        "es": "Potencia aparente",
+        "it": "Potenza apparente",
+        "da": "Tilsyneladende effekt",
+        "sv": "Skenbar effekt",
+        "no": "Tilsynelatende effekt",
+        "pl": "Moc pozorna",
+        "ru": "Полная мощность",
+        "ar": "القدرة الظاهرية",
+        "ko": "피상 전력"
+      },
+      "units": {
+        "en": "VA",
+        "nl": "VA",
+        "de": "VA",
+        "fr": "VA",
+        "es": "VA",
+        "it": "VA",
+        "da": "VA",
+        "sv": "VA",
+        "no": "VA",
+        "pl": "VA",
+        "ru": "ВА",
+        "ar": "فولت أمبير",
+        "ko": "VA"
+      },
+      "decimals": 0,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/measure_power_factor.svg"
+    },
     "measure_battery_cycles": {
       "type": "number",
       "title": {
@@ -3195,6 +3651,71 @@
       "insights": true,
       "uiComponent": "sensor",
       "icon": "./assets/measure_battery_cycles.svg"
+    },
+    "measure_power_factor": {
+      "type": "number",
+      "title": {
+        "en": "Power factor",
+        "nl": "Arbeidsfactor",
+        "de": "Leistungsfaktor",
+        "fr": "Facteur de puissance",
+        "es": "Factor de potencia",
+        "it": "Fattore di potenza",
+        "da": "Effektfaktor",
+        "sv": "Effektfaktor",
+        "no": "Effektfaktor",
+        "pl": "Współczynnik mocy",
+        "ru": "Коэффициент мощности",
+        "ar": "معامل القدرة",
+        "ko": "역률"
+      },
+      "decimals": 3,
+      "min": -1,
+      "max": 1,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/measure_power_factor.svg"
+    },
+    "measure_reactive_power": {
+      "type": "number",
+      "title": {
+        "en": "Reactive power",
+        "nl": "Blindvermogen",
+        "de": "Blindleistung",
+        "fr": "Puissance réactive",
+        "es": "Potencia reactiva",
+        "it": "Potenza reattiva",
+        "da": "Reaktiv effekt",
+        "sv": "Reaktiv effekt",
+        "no": "Reaktiv effekt",
+        "pl": "Moc bierna",
+        "ru": "Реактивная мощность",
+        "ar": "القدرة غير الفعالة",
+        "ko": "무효 전력"
+      },
+      "units": {
+        "en": "var",
+        "nl": "var",
+        "de": "var",
+        "fr": "var",
+        "es": "var",
+        "it": "var",
+        "da": "var",
+        "sv": "var",
+        "no": "var",
+        "pl": "var",
+        "ru": "вар",
+        "ar": "فار",
+        "ko": "var"
+      },
+      "decimals": 0,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/measure_power_factor.svg"
     },
     "measure_residual_energy": {
       "type": "number",

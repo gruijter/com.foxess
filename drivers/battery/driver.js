@@ -48,6 +48,13 @@ module.exports = class MyDevice extends CommonDriver {
       support.socLimitsSupported = true;
       readings.socLimits = { minSoc, minSocOnGrid };
     }
+    // shown, not set: a MaxSoc write is accepted and ignored (see drivers/battery/device.js)
+    const rawMaxSoc = await this.tryCall('max SoC check', async () => (await client.getSetting({ sn: deviceSn, key: 'MaxSoc' }))?.result?.value);
+    const maxSoc = rawMaxSoc === null || rawMaxSoc === undefined || rawMaxSoc === '' ? NaN : Number(rawMaxSoc);
+    if (Number.isFinite(maxSoc)) {
+      support.maxSocSupported = true;
+      readings.maxSoc = maxSoc;
+    }
     return { support, readings };
   }
 
@@ -55,6 +62,7 @@ module.exports = class MyDevice extends CommonDriver {
     const caps = store?.controlSupported ? ['measure_power.target', 'target_power', 'target_power_mode'] : [];
     if (store?.socLimitsSupported) caps.push('battery_min_soc', 'battery_min_soc_ongrid');
     if (caps.length) caps.push('alarm_generic.control');
+    if (store?.maxSocSupported) caps.push('battery_max_soc');
     return caps;
   }
 

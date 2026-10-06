@@ -182,6 +182,42 @@
         "ko": "가정 소비 전력"
       },
       "decimals": 0
+    },
+    "meter_power.load": {
+      "title": {
+        "en": "Home consumption total",
+        "nl": "Thuisverbruik totaal",
+        "de": "Hausverbrauch gesamt",
+        "fr": "Consommation domestique totale",
+        "es": "Consumo doméstico total",
+        "it": "Consumo domestico totale",
+        "da": "Husforbrug i alt",
+        "sv": "Husförbrukning totalt",
+        "no": "Husforbruk totalt",
+        "pl": "Zużycie domowe łącznie",
+        "ru": "Домашнее потребление всего",
+        "ar": "إجمالي استهلاك المنزل",
+        "ko": "가정 소비 총량"
+      },
+      "decimals": 2
+    },
+    "meter_power.load_today": {
+      "title": {
+        "en": "Home consumption today",
+        "nl": "Thuisverbruik vandaag",
+        "de": "Hausverbrauch heute",
+        "fr": "Consommation domestique du jour",
+        "es": "Consumo doméstico hoy",
+        "it": "Consumo domestico oggi",
+        "da": "Husforbrug i dag",
+        "sv": "Husförbrukning idag",
+        "no": "Husforbruk i dag",
+        "pl": "Zużycie domowe dziś",
+        "ru": "Домашнее потребление за сегодня",
+        "ar": "استهلاك المنزل اليوم",
+        "ko": "오늘 가정 소비"
+      },
+      "decimals": 2
     }
   },
   "energy": {

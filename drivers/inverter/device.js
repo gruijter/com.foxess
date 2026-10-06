@@ -101,7 +101,7 @@ module.exports = class MyDevice extends CommonDevice {
     this.solarSidesDecided = false; // onInit runs again on every restartDevice(), a repair's too
     await super.onInit();
     if (!this.hasCapability('export_limit')) return;
-    if (this.exportLimit !== undefined) await this.setCapability('export_limit', this.exportLimit);
+    if (this.exportLimit !== undefined) await this.showExportLimit(this.exportLimit);
     if (this.exportListenerSet) return; // onInit runs again on every restartDevice()
     this.registerCapabilityListener('export_limit', (watts) => this.onExportLimit(watts));
     this.exportListenerSet = true;
@@ -113,6 +113,15 @@ module.exports = class MyDevice extends CommonDevice {
     if (!Number.isFinite(value)) return undefined;
     this.exportLimit = value;
     return value;
+  }
+
+  /**
+   * The export limit, and whether it holds the inverter below its rated power - as com.solarwatt's
+   * inverter_limit_active does for its export limit.
+   */
+  async showExportLimit(watts) {
+    await this.setCapability('export_limit', watts);
+    if (typeof watts === 'number') await this.setCapability('inverter_limit_active', watts < this.maxPowerW);
   }
 
   async onExportLimit(watts) {
@@ -136,7 +145,7 @@ module.exports = class MyDevice extends CommonDevice {
    */
   async setExportLimit(watts) {
     await this.onExportLimit(watts);
-    await this.setCapability('export_limit', Math.max(0, Math.round(Number(watts))));
+    await this.showExportLimit(Math.max(0, Math.round(Number(watts))));
   }
 
   /**
@@ -152,7 +161,7 @@ module.exports = class MyDevice extends CommonDevice {
       const startedAt = Date.now();
       try {
         const exportLimit = await this.readExportLimit();
-        await this.setCapability('export_limit', exportLimit);
+        await this.showExportLimit(exportLimit);
         await this.checkOverride({ exportLimit }, startedAt);
       } catch (error) {
         this.error('export limit failed:', error.message || error);

@@ -27,4 +27,14 @@ module.exports = class MyDevice extends CommonDevice {
     await super.onInit();
   }
 
+  /**
+   * The day's home consumption: FoxESS reports only the lifetime `loads`, so today is its growth
+   * since Homey's local midnight (see CommonDevice#todayFromTotal).
+   */
+  async handleData(data, options) {
+    const loads = data?.loads === undefined || data.loads === null || data.loads === '' ? undefined : Number(data.loads);
+    const loadsToday = this.todayFromTotal('meter_power.load_today', loads);
+    return super.handleData(loadsToday === undefined ? data : { ...data, loadsToday }, options);
+  }
+
 };

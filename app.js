@@ -97,6 +97,13 @@ module.exports = class FoxEssApp extends Homey.App {
     this.homey.flow.getConditionCard('running_state_is')
       .registerRunListener(async ({ device, status }) => device.getCapabilityValue('running_state') === status);
 
+    // Boolean sub- and custom capabilities get no "is on" condition from Homey; their
+    // `<capability>_true`/`_false` triggers Homey runs itself (as in com.solarwatt).
+    for (const capability of ['alarm_generic.control', 'inverter_limit_active']) {
+      this.homey.flow.getConditionCard(`${capability}_is`)
+        .registerRunListener(async ({ device }) => device.getCapabilityValue(capability) === true);
+    }
+
     this.homey.flow.getActionCard('set_soc_limits')
       .registerRunListener(({ device, min, ongrid }) => device.setSocLimits({ min, ongrid }));
 

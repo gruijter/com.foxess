@@ -44,7 +44,8 @@ module.exports = async (t) => {
         continue;
       }
       t.ok(!Number.isNaN(value), `${driverId}.${cap} is not NaN (got ${JSON.stringify(value)})`);
-      t.ok(typeof value === 'number' || (cap === 'running_state' && typeof value === 'string'), `${driverId}.${cap} is numeric (or the status enum)`);
+      const text = ['running_state', 'battery_charging_state', 'active_faults'].includes(cap);
+      t.ok(typeof value === 'number' || (text && (typeof value === 'string' || value === null)), `${driverId}.${cap} is numeric (or a status text)`);
       mapped += 1;
     }
     t.ok(mapped > 0, `${driverId} mapped at least one capability from ${sn}`);
@@ -56,6 +57,27 @@ module.exports = async (t) => {
   t.eq(inverter.measure_power({}), undefined, 'measure_power is undefined when nothing reported it');
   t.eq(inverter.measure_power({ pvPower: 0 }), 0, 'measure_power still reports a genuine zero');
   t.eq(inverter.measure_power({ pvPower: 2 }), 2000, 'measure_power converts kW to W');
+
+  // Capabilities taken over from com.solarwatt.
+  const { battery } = pointMap.batteryMap;
+  t.eq(battery.battery_charging_state({ batChargePower: 1.2, batDischargePower: 0 }), 'charging', 'charging above the idle band');
+  t.eq(battery.battery_charging_state({ batChargePower: 0, batDischargePower: 0.5 }), 'discharging', 'discharging below the idle band');
+  t.eq(battery.battery_charging_state({ batChargePower: 0.005, batDischargePower: 0 }), 'idle', 'idle within 10 W');
+  t.eq(battery.battery_charging_state({}), undefined, 'no state without battery power');
+  t.eq(battery['measure_power.charge_limit']({ maxChargeCurrent: 25, batVolt: 400 }), 10000, 'charge limit is A x V');
+  t.eq(battery['measure_power.discharge_limit']({ maxDischargeCurrent: -25, batVolt: 0, batVolt_1: 400 }), 10000, 'discharge limit uses the pack voltage, unsigned');
+  t.eq(battery['measure_power.charge_limit']({ maxChargeCurrent: 25 }), undefined, 'no limit without a voltage');
+  t.eq(inverter.active_faults({ faultTexts: [] }), null, 'no active fault clears the tile');
+  t.eq(inverter.active_faults({ faultTexts: ['Grid lost', 'Fault 7'] }), 'Grid lost, Fault 7', 'active faults joined');
+  t.eq(inverter.active_faults({}), undefined, 'faults not reported, tile untouched');
+  t.ok(pointMap.seenInPayload('inverter', { currentFault: '', faultTexts: [] }).active_faults, 'a fault-free report adds the tile');
+  t.eq(inverter.measure_reactive_power({ ReactivePower: -0.3 }), -300, 'reactive power kVar -> var');
+  t.eq(inverter.measure_apparent_power({ generationPower: 0.4, ReactivePower: 0.3 }), 500, 'apparent power from P and Q');
+  t.eq(inverter.measure_apparent_power({ generationPower: 0.4 }), undefined, 'no apparent power without Q');
+  const { meter } = pointMap.meterMap;
+  t.eq(meter['meter_power.load']({ loads: 1234.5 }), 1234.5, 'load total passes through');
+  t.eq(meter['meter_power.load_today']({ loadsToday: 0 }), 0, 'load today keeps a genuine zero');
+  t.ok(pointMap.seenInPayload('meter', { loads: 1234.5, loadsToday: 0 })['meter_power.load_today'], 'load today shows from midnight on');
 
   // Heat pump: enum + setpoints, no telemetry (that is Kafka-only).
   const hp = pointMap.heatpumpMap.heatpump;

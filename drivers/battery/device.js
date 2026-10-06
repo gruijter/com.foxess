@@ -26,8 +26,9 @@ const { CONTROL_POLL_EVERY_N_TICKS } = require('../../lib/foxEssConstants');
 
 const CONTROL_CAPS = ['target_power', 'target_power_mode'];
 
-// SoC limit capability -> key in battery/soc/get|set. No maximum SoC: setting 'MaxSoc' reads, but
-// writing it was accepted (errno 0) and ignored on De Brik (H3, 2026-10-04, watched for 5 min).
+// SoC limit capability -> key in battery/soc/get|set. The maximum SoC is shown only: setting 'MaxSoc'
+// reads, but writing it was accepted (errno 0) and ignored on De Brik (H3, 2026-10-04, watched for
+// 5 min), so battery_max_soc is not setable.
 const SOC_CAPS = {
   battery_min_soc: 'minSoc',
   battery_min_soc_ongrid: 'minSocOnGrid',
@@ -35,9 +36,10 @@ const SOC_CAPS = {
 
 module.exports = class MyDevice extends CommonDevice {
 
-  onReadings({ schedulerOn, socLimits }) {
+  onReadings({ schedulerOn, socLimits, maxSoc }) {
     this.schedulerOn = schedulerOn;
     if (socLimits) this.socLimits = { ...socLimits, time: Date.now() };
+    this.maxSoc = maxSoc;
   }
 
   /**
@@ -51,6 +53,7 @@ module.exports = class MyDevice extends CommonDevice {
   async onInit() {
     await super.onInit();
     if (this.socLimits) await this.showSocLimits(this.socLimits);
+    if (this.maxSoc !== undefined) await this.setCapability('battery_max_soc', this.maxSoc);
     this.registerControlListeners();
   }
 
@@ -81,6 +84,12 @@ module.exports = class MyDevice extends CommonDevice {
     const limits = { minSoc, minSocOnGrid };
     this.socLimits = { ...limits, time: Date.now() };
     return limits;
+  }
+
+  /** The MaxSoc setting, or undefined when the answer has none. */
+  async readMaxSoc() {
+    const value = (await this.client.getSetting({ sn: this.deviceSn, key: 'MaxSoc' }))?.result?.value;
+    return value === undefined || value === null || value === '' || !Number.isFinite(Number(value)) ? undefined : Number(value);
   }
 
   async showSocLimits(limits) {
@@ -261,6 +270,11 @@ module.exports = class MyDevice extends CommonDevice {
       } catch (error) {
         this.error('SoC limits failed:', error.message || error);
       }
+    }
+    if (this.hasCapability('battery_max_soc') && this.settingsDue(options)) {
+      await this.readMaxSoc()
+        .then((value) => this.setCapability('battery_max_soc', value))
+        .catch((error) => this.error('max SoC failed:', error.message || error));
     }
     if (!this.hasCapability('target_power_mode')) return common;
     try {

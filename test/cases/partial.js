@@ -67,6 +67,10 @@ module.exports = async (t) => {
     for (const [cap, fn] of Object.entries(map)) {
       const v = fn(values);
       if (v === undefined) continue;
+      if (cap === 'battery_charging_state') {
+        t.ok(['charging', 'discharging', 'idle'].includes(v), `${name}.${cap} still maps cleanly from a full payload`);
+        continue;
+      }
       t.ok(typeof v === 'number' && !Number.isNaN(v), `${name}.${cap} still maps cleanly from a full payload`);
     }
   }

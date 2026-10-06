@@ -80,7 +80,7 @@ module.exports = async (t) => {
     const driver = fixtures.makeDriver(driverId, { own: true });
     const all = [...pointMap.baseCapabilities(driverId), ...pointMap.optionalCapabilities(driverId),
       ...driver.extraCapabilities({
-        controlSupported: true, socLimitsSupported: true, exportLimitSupported: true,
+        controlSupported: true, socLimitsSupported: true, exportLimitSupported: true, maxSocSupported: true,
       })];
     t.eq(all.filter((cap) => !order.includes(cap)).join(','), '', `${driverId}: every capability has a place in the tile order`);
     t.eq(new Set(order).size, order.length, `${driverId}: no capability twice in the tile order`);

@@ -108,7 +108,7 @@ module.exports = class MyDevice extends CommonDriver {
   }
 
   extraCapabilities(store) {
-    return store?.exportLimitSupported ? ['export_limit', 'alarm_generic.control'] : [];
+    return store?.exportLimitSupported ? ['export_limit', 'alarm_generic.control', 'inverter_limit_active'] : [];
   }
 
 };
