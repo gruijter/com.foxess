@@ -19,7 +19,7 @@
     "unknownRegion": "Unbekannte Region:",
     "loginFailed": "Der API-Schlüssel wurde nicht akzeptiert:",
     "controlFailed": "Batteriesteuerung konnte nicht geändert werden:",
-    "noSchedule": "Kein FoxCloud-Zeitplan gefunden. Richte zuerst einen in FoxCloud ein.",
+    "noSchedule": "Kein eigener Zeitplan gefunden. Lege zuerst einen in der FoxCloud-App unter Mode Scheduler an.",
     "socRange": "SoC-Grenzen müssen 10–100 % sein, mit Minimum ≤ Minimum am Netz.",
     "settingFailed": "Die Einstellung konnte nicht geändert werden:",
     "heatpumpReadOnly": "In dieser Beta nur lesbar. Ändere es in der FoxESS-App.",

@@ -19,7 +19,7 @@
     "unknownRegion": "Ukendt region:",
     "loginFailed": "API-nøglen blev ikke accepteret:",
     "controlFailed": "Kunne ikke ændre batteristyringen:",
-    "noSchedule": "Ingen FoxCloud-plan fundet. Opret en i FoxCloud først.",
+    "noSchedule": "Ingen egen plan fundet. Opret først en i FoxCloud-appen under Mode Scheduler.",
     "socRange": "SoC-grænser skal være 10–100 %, med minimum ≤ minimum på nettet.",
     "settingFailed": "Kunne ikke ændre indstillingen:",
     "heatpumpReadOnly": "Skrivebeskyttet i denne beta. Skift det i FoxESS-appen.",

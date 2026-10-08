@@ -19,7 +19,7 @@
     "unknownRegion": "Onbekende regio:",
     "loginFailed": "De API-sleutel werd niet geaccepteerd:",
     "controlFailed": "Kon de batterijsturing niet wijzigen:",
-    "noSchedule": "Geen FoxCloud-schema gevonden. Stel er eerst een in via FoxCloud.",
+    "noSchedule": "Geen eigen schema gevonden. Maak er eerst een in de FoxCloud-app onder Mode Scheduler.",
     "socRange": "SoC-grenzen moeten 10–100% zijn, met minimum ≤ minimum op net.",
     "settingFailed": "Kon de instelling niet wijzigen:",
     "heatpumpReadOnly": "Alleen-lezen in deze beta. Wijzig het in de FoxESS-app.",

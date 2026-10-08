@@ -19,7 +19,7 @@
     "unknownRegion": "Región desconocida:",
     "loginFailed": "La clave API no fue aceptada:",
     "controlFailed": "No se pudo cambiar el control de la batería:",
-    "noSchedule": "No se encontró ninguna programación de FoxCloud. Crea una primero en FoxCloud.",
+    "noSchedule": "No se encontró ninguna programación propia. Crea una primero en la app FoxCloud en Mode Scheduler.",
     "socRange": "Los límites de SoC deben ser 10–100 %, con mínimo ≤ mínimo en red.",
     "settingFailed": "No se pudo cambiar el ajuste:",
     "heatpumpReadOnly": "Solo lectura en esta beta. Cámbialo en la app de FoxESS.",

@@ -204,10 +204,18 @@ module.exports = class MyDevice extends CommonDevice {
     this.log(`homey ${watts} W: ${next.workMode} fdPwr ${next.extraParam.fdPwr ?? '-'} W (PV ${this.pvW ?? '?'} W) until ${end.endHour}:${String(end.endMinute).padStart(2, '0')}`);
   }
 
-  /** Schedule mode: restore the owner's slots as last seen. */
+  /** Schedule mode: restore the owner's slots as last seen, else use the slots stored now. */
   async applySchedule() {
-    const groups = this.getStoreValue('ownerSchedule');
-    if (!Array.isArray(groups) || !groups.length) throw new Error(this.homey.__('errors.noSchedule'));
+    let groups = this.getStoreValue('ownerSchedule');
+    if (!Array.isArray(groups) || !groups.length) {
+      // the scheduler keeps its slots while it is off, and they are only read while it is on
+      const stored = (await this.client.getScheduler({ sn: this.deviceSn }))?.result?.groups;
+      if (!Array.isArray(stored) || !stored.length || ctl.isHomeyWrite(stored, this.getStoreValue('homeyHistory'))) {
+        throw new Error(this.homey.__('errors.noSchedule'));
+      }
+      groups = stored;
+      await this.setStoreValue('ownerSchedule', groups);
+    }
     await this.client.setScheduler({ sn: this.deviceSn, groups });
     await this.ensureScheduler(true);
   }

@@ -19,7 +19,7 @@
     "unknownRegion": "Nieznany region:",
     "loginFailed": "Klucz API nie został zaakceptowany:",
     "controlFailed": "Nie można zmienić sterowania baterią:",
-    "noSchedule": "Nie znaleziono harmonogramu FoxCloud. Najpierw utwórz go w FoxCloud.",
+    "noSchedule": "Nie znaleziono własnego harmonogramu. Najpierw utwórz go w aplikacji FoxCloud w Mode Scheduler.",
     "socRange": "Limity SoC muszą wynosić 10–100%, przy czym minimum ≤ minimum przy sieci.",
     "settingFailed": "Nie udało się zmienić ustawienia:",
     "heatpumpReadOnly": "W tej becie tylko do odczytu. Zmień to w aplikacji FoxESS.",
