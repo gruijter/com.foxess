@@ -66,6 +66,12 @@ module.exports = async (t) => {
   const other = [{ ...one[0], workMode: 'ForceDischarge' }];
   t.eq(ctl.modeFromState({ schedulerOn: true, groups: other, homeyHistory: history }), 'schedule', 'other slots: the owner\'s schedule');
   t.eq(ctl.modeFromState({ schedulerOn: true, groups: one }), 'schedule', 'and so it is without any history');
+  t.eq(ctl.modeFromState({
+    schedulerOn: true, groups: echoed, homeyHistory: history, now: { hour: 12, minute: 30 },
+  }), 'homey', 'a running Homey slot is homey');
+  t.eq(ctl.modeFromState({
+    schedulerOn: true, groups: echoed, homeyHistory: history, now: { hour: 20, minute: 0 },
+  }), 'schedule', 'an ended Homey slot switched back on elsewhere is not homey, so its old target is not revived');
   const backup = ctl.slotGroups({ now: { hour: 12, minute: 5 }, ...ctl.slotForPower(0, { minSocOnGrid: 15 }) });
   const backupEcho = backup.map((g) => ({ ...g, extraParam: { fdPwr: 0, fdSoc: 100, minSocOnGrid: 10 } }));
   t.ok(ctl.isHomeyWrite(backupEcho, [backup]), 'a Backup slot is recognised although it reads back with filled-in SoC');

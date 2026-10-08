@@ -292,14 +292,17 @@ module.exports = class MyDevice extends CommonDevice {
     if (workMode) this.workMode = workMode;
     let groups = [];
     if (this.schedulerOn) groups = (await this.client.getScheduler({ sn: this.deviceSn }))?.result?.groups || [];
+    const now = this.schedulerOn ? await this.inverterNow().catch(() => null) : null;
+    const homeyHistory = this.getStoreValue('homeyHistory');
     const mode = ctl.modeFromState({
-      schedulerOn: this.schedulerOn, groups, workMode: this.workMode, homeyHistory: this.getStoreValue('homeyHistory'),
+      schedulerOn: this.schedulerOn, groups, workMode: this.workMode, homeyHistory, now,
     });
-    if (mode === ctl.MODE_SCHEDULE && groups.length) await this.setStoreValue('ownerSchedule', groups);
+    if (mode === ctl.MODE_SCHEDULE && groups.length && !ctl.isHomeyWrite(groups, homeyHistory)) {
+      await this.setStoreValue('ownerSchedule', groups);
+    }
     if (mode) await this.setCapability('target_power_mode', mode);
     // no scheduler, no setpoint
-    await this.setCapability('measure_power.target', this.schedulerOn
-      ? ctl.activeSlotPower(groups, ctl.inverterNow(this.snapshotTime)) : null);
+    await this.setCapability('measure_power.target', this.schedulerOn ? ctl.activeSlotPower(groups, now) : null);
     await this.checkOverride({ mode }, startedAt);
   }
 
