@@ -4,5 +4,8 @@
   },
   "1.1.0": {
     "en": "Added external energy manager warning. Updated readme and links. Fixed FoxCloud schedule and Homey control modes."
+  },
+  "1.1.1": {
+    "en": "Removed battery alarm. Battery faults are now reported by the problem alarm. Migration improvements."
   }
 }
