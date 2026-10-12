@@ -74,10 +74,8 @@ module.exports = async (t) => {
   t.eq(bat.alarm_heat({ ...healthy, faultTexts: ['INV Module over temperature'] }), false, 'inverter heat fault is not battery heat');
   t.eq(bat.alarm_heat({ ...healthy, faultTexts: ['BMS Temperature High'] }), true, 'battery heat fault -> battery heat');
   t.eq(inv.alarm_heat({ ...healthy, faultTexts: ['BMS Temperature High'] }), false, 'battery heat fault is not inverter heat');
-  t.eq(bat.alarm_battery({ ...healthy, faultTexts: ['Bms Circuit Fault'] }), true, 'a BMS fault raises the battery alarm');
-  t.eq(bat.alarm_battery({ ...healthy, faultTexts: ['Grid Lost Fault'] }), false, 'a grid fault does not');
-  t.eq(bat.alarm_battery({ ...healthy, SoC: 5 }), false, 'a low state of charge is never an alarm');
-  t.ok(!('alarm_battery' in inv) && !('alarm_battery' in met), 'alarm_battery lives on the battery driver only');
+  t.eq(bat.alarm_problem({ ...healthy, faultTexts: ['Bms Circuit Fault'] }), true, 'a BMS fault raises the battery problem');
+  t.ok(!('alarm_battery' in bat), 'no alarm_battery next to measure_battery (Athom rule)');
 
   const hp = pointMap.heatpumpMap.heatpump;
   t.eq(hp.alarm_problem({ runningStatus: 2 }), true, 'heat pump fault raises problem');
@@ -90,7 +88,7 @@ module.exports = async (t) => {
   }
   // a reported false is evidence, so the alarms appear on the first healthy poll
   const seen = pointMap.seenInPayload('battery', healthy);
-  t.ok(seen.alarm_problem && seen.alarm_battery && seen.alarm_heat && seen.alarm_connectivity, 'a healthy poll adds the battery alarms');
+  t.ok(seen.alarm_problem && seen.alarm_heat && seen.alarm_connectivity, 'a healthy poll adds the battery alarms');
 
   faults.setTable(null);
 };
